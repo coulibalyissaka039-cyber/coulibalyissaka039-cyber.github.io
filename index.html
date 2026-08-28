@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Générateur de CV</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#F6F4EF;--ink:#17201B;--pine:#2F4B3C;--pine-dark:#1E3329;--gold:#B8925A;--line:#D9D4C6;--white:#FFFFFF;}
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--paper);font-family:'Inter',sans-serif;color:var(--ink);}
+  .shell{display:grid;grid-template-columns:380px 1fr;min-height:100vh;}
+  @media (max-width:900px){.shell{grid-template-columns:1fr;}}
+  .panel{padding:32px 28px;border-right:1px solid var(--line);background:var(--white);}
+  .eyebrow{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--pine);font-weight:600;margin-bottom:6px;}
+  h1{font-family:'Fraunces',serif;font-size:26px;margin:0 0 24px 0;font-weight:600;color:var(--pine-dark);}
+  label{display:block;font-size:12px;font-weight:600;margin:16px 0 6px;color:#5B6660;}
+  input, textarea{width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:4px;font-family:'Inter',sans-serif;font-size:14px;background:#FCFBF8;color:var(--ink);}
+  textarea{resize:vertical;min-height:64px;}
+  input:focus, textarea:focus{outline:2px solid var(--pine);outline-offset:1px;}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .exp-block{border-left:2px solid var(--line);padding-left:12px;margin-top:10px;}
+  .add-btn{margin-top:12px;background:none;border:1px dashed var(--pine);color:var(--pine);padding:8px 12px;border-radius:4px;font-size:13px;font-weight:600;cursor:pointer;width:100%;}
+  .add-btn:hover{background:#EEF3EF;}
+  .templates{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap;}
+  .tpl{flex:1;min-width:90px;padding:10px 8px;border:2px solid var(--line);border-radius:6px;text-align:center;font-size:12px;font-weight:600;cursor:pointer;position:relative;background:#FCFBF8;}
+  .tpl.active{border-color:var(--pine);color:var(--pine-dark);background:#EEF3EF;}
+  .tpl.locked::after{content:"🔒 Premium";display:block;font-size:10px;font-weight:600;color:var(--gold);margin-top:3px;}
+  .print-btn{margin-top:26px;width:100%;background:var(--pine-dark);color:var(--white);border:none;padding:13px;border-radius:5px;font-size:14px;font-weight:600;cursor:pointer;letter-spacing:0.02em;}
+  .print-btn:hover{background:var(--pine);}
+  .note{font-size:11.5px;color:#8A8377;margin-top:10px;line-height:1.5;}
+  .preview-wrap{padding:40px;display:flex;justify-content:center;background:#EFEBE1;}
+  .page{width:100%;max-width:680px;background:var(--white);box-shadow:0 8px 30px rgba(20,30,25,0.12);padding:52px 48px;min-height:900px;}
+  .cv-name{font-family:'Fraunces',serif;font-size:34px;font-weight:700;color:var(--pine-dark);margin:0;}
+  .cv-title{font-size:14px;color:var(--pine);font-weight:600;letter-spacing:0.03em;margin-top:2px;}
+  .cv-contact{font-size:12.5px;color:#6B7269;margin-top:10px;display:flex;gap:14px;flex-wrap:wrap;}
+  .cv-divider{height:2px;background:var(--pine-dark);width:44px;margin:22px 0 18px;}
+  .cv-section-title{font-family:'Fraunces',serif;font-size:15px;font-weight:600;color:var(--pine-dark);text-transform:uppercase;letter-spacing:0.06em;margin:26px 0 10px;}
+  .cv-body{font-size:13.5px;line-height:1.6;color:#2B332E;}
+  .exp-item{margin-bottom:14px;}
+  .exp-top{display:flex;justify-content:space-between;font-weight:600;font-size:13.5px;color:var(--ink);}
+  .exp-dates{font-size:12px;color:#8A8377;font-weight:500;}
+  .exp-place{font-size:12.5px;color:var(--pine);margin-bottom:3px;}
+  .skills-wrap{display:flex;flex-wrap:wrap;gap:7px;}
+  .skill-pill{background:#EEF3EF;color:var(--pine-dark);padding:4px 10px;border-radius:20px;font-size:12px;font-weight:600;}
+  @media print{.panel{display:none;}.preview-wrap{padding:0;background:white;}.page{box-shadow:none;max-width:100%;}}
+  .modal-overlay{display:none;position:fixed;inset:0;background:rgba(23,32,27,0.55);z-index:100;align-items:center;justify-content:center;padding:20px;}
+  .modal-overlay.open{display:flex;}
+  .modal-box{background:var(--white);border-radius:10px;max-width:380px;width:100%;padding:26px 22px;max-height:85vh;overflow-y:auto;}
+  .modal-box h2{font-family:'Fraunces',serif;font-size:20px;color:var(--pine-dark);margin:0 0 6px;}
+  .modal-price{font-size:13px;color:#6B7269;margin-bottom:16px;}
+  .pay-line{display:flex;justify-content:space-between;align-items:center;background:#F6F4EF;border-radius:6px;padding:10px 12px;margin-bottom:8px;font-size:13.5px;}
+  .pay-line b{color:var(--pine-dark);}
+  .copy-btn{background:var(--pine);color:white;border:none;border-radius:4px;padding:5px 10px;font-size:11px;font-weight:600;cursor:pointer;}
+  .modal-steps{font-size:12.5px;line-height:1.6;color:#3A423C;margin:16px 0;padding-left:18px;}
+  .wa-btn{display:block;text-align:center;background:#25D366;color:white;text-decoration:none;padding:11px;border-radius:6px;font-weight:600;font-size:13.5px;margin-bottom:10px;}
+  .code-btn{width:100%;background:var(--pine-dark);color:white;border:none;padding:11px;border-radius:6px;font-weight:600;font-size:13.5px;cursor:pointer;margin-bottom:10px;}
+  .close-modal{width:100%;background:none;border:1px solid var(--line);color:#6B7269;padding:9px;border-radius:6px;font-size:13px;cursor:pointer;}
+  .cv-header{display:flex;align-items:center;gap:20px;}
+  .cv-photo{width:92px;height:92px;border-radius:50%;object-fit:cover;border:3px solid var(--pine-dark);flex-shrink:0;display:none;}
+  .cv-photo.has-img{display:block;}
+  .photo-upload-wrap{border:1px dashed var(--line);border-radius:6px;padding:12px;text-align:center;margin-top:6px;}
+  .photo-upload-wrap input[type="file"]{width:auto;font-size:12px;}
+  .photo-preview-mini{width:44px;height:44px;border-radius:50%;object-fit:cover;display:none;margin:8px auto 0;border:2px solid var(--pine);}
+  .photo-preview-mini.has-img{display:block;}
+  .remove-photo-btn{display:none;margin-top:6px;background:none;border:none;color:#B0453D;font-size:11px;font-weight:600;cursor:pointer;}
+  .remove-photo-btn.show{display:inline-block;}
+  .watermark{text-align:center;font-size:11px;color:#B0AC9E;margin-top:30px;padding-top:14px;border-top:1px dashed var(--line);}
+  .locked-field{border:1px dashed var(--line);border-radius:6px;padding:12px;text-align:center;font-size:12px;color:#8A8377;cursor:pointer;}
+  .tier-badge{display:inline-block;font-size:10px;font-weight:600;padding:2px 8px;border-radius:10px;margin-left:6px;vertical-align:middle;}
+  .tier-badge.t1{background:#EEF3EF;color:var(--pine-dark);}
+  .tier-badge.t2{background:#F3E9D8;color:#5C4726;}
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="panel">
+    <div class="eyebrow">MVP — Étape 1</div>
+    <h1>Ton CV, en direct</h1>
+    <label>Nom complet</label>
+    <input id="f-name" value="Aïcha Koné" />
+    <label>Photo de profil <span class="tier-badge t1" id="badge-photo">1000 FCFA</span></label>
+    <div class="photo-upload-wrap" id="photo-locked-wrap" onclick="handlePremiumClick(null, 1)">
+      <div class="locked-field">🔒 Débloque la photo de profil — appuie ici</div>
+    </div>
+    <div class="photo-upload-wrap" id="photo-unlocked-wrap" style="display:none;">
+      <input type="file" id="f-photo" accept="image/*" onchange="handlePhotoUpload(event)" />
+      <img id="photo-preview-mini" class="photo-preview-mini" alt="aperçu" />
+      <div><button type="button" class="remove-photo-btn" id="remove-photo-btn" onclick="removePhoto()">Retirer la photo</button></div>
+    </div>
+    <label>Titre / poste visé</label>
+    <input id="f-title" value="Chargée de projet digital" />
+    <div class="row2">
+      <div><label>Email</label><input id="f-email" value="aicha.kone@email.com" /></div>
+      <div><label>Téléphone</label><input id="f-phone" value="+223 67 89 07 55" /></div>
+    </div>
+    <label>Ville</label>
+    <input id="f-city" value="Bamako, Mali" />
+    <label>Profil (2-3 lignes)</label>
+    <textarea id="f-summary">Professionnelle organisée avec 4 ans d'expérience en gestion de projets digitaux. Orientée résultats, à l'aise avec les équipes pluridisciplinaires.</textarea>
+    <label>Compétences (séparées par des virgules)</label>
+    <textarea id="f-skills">Gestion de projet, Excel avancé, Communication, Réseaux sociaux, Canva</textarea>
+    <label>Langues & certifications <span class="tier-badge t2" id="badge-langues">2000 FCFA</span></label>
+    <div id="langues-locked-wrap" onclick="handlePremiumClick(null, 2)">
+      <div class="locked-field">🔒 Débloque cette section — appuie ici</div>
+    </div>
+    <textarea id="f-langues" style="display:none;">Français (courant), Anglais (intermédiaire), Certification Google Digital Skills</textarea>
+    <label>Expériences</label>
+    <div id="exp-list"></div>
+    <button class="add-btn" onclick="addExp()">+ Ajouter une expérience</button>
+    <label>Modèle</label>
+    <div class="templates">
+      <div class="tpl active" data-t="pine" onclick="setTpl('pine')">Forêt</div>
+      <div class="tpl" data-t="navy" onclick="setTpl('navy')">Marine</div>
+      <div class="tpl locked" data-t="gold" id="tpl-gold" onclick="handlePremiumClick('gold', 2)">Doré</div>
+      <div class="tpl locked" data-t="mono" id="tpl-mono" onclick="handlePremiumClick('mono', 2)">Mono</div>
+    </div>
+    <div class="note">Clique sur un modèle 🔒 → les instructions de paiement Mobile Money s'affichent. Une fois payé, le client reçoit un code qui débloque le modèle définitivement.</div>
+    <div id="ad-slot" style="margin-top:18px;padding:14px;border:1px dashed var(--line);border-radius:6px;text-align:center;font-size:11px;color:#8A8377;">
+      Emplacement publicitaire — colle ici ton code Google AdSense une fois approuvé
+    </div>
+    <button class="print-btn" onclick="window.print()">Télécharger en PDF</button>
+    <div class="note">Le bouton ouvre l'impression du navigateur → "Enregistrer en PDF".</div>
+  </div>
+  <div class="preview-wrap">
+    <div class="page" id="page">
+      <div class="cv-header">
+        <img class="cv-photo" id="p-photo" alt="photo" />
+        <div>
+          <p class="cv-name" id="p-name"></p>
+          <p class="cv-title" id="p-title"></p>
+          <div class="cv-contact" id="p-contact"></div>
+        </div>
+      </div>
+      <div class="cv-divider"></div>
+      <div class="cv-section-title">Profil</div>
+      <div class="cv-body" id="p-summary"></div>
+      <div class="cv-section-title">Expérience</div>
+      <div class="cv-body" id="p-exp"></div>
+      <div class="cv-section-title">Compétences</div>
+      <div class="skills-wrap" id="p-skills"></div>
+      <div class="cv-section-title" id="p-langues-title" style="display:none;">Langues & certifications</div>
+      <div class="cv-body" id="p-langues" style="display:none;"></div>
+      <div class="watermark" id="p-watermark">CV généré via ton-generateur-cv — débloque un abonnement pour retirer ce filigrane</div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="pay-modal">
+  <div class="modal-box">
+    <h2>Débloquer ton CV</h2>
+    <div class="modal-price">1000 FCFA = photo de profil · 2000 FCFA = tout (photo + 4 modèles + langues)</div>
+    <div class="pay-line"><span>Wave : <b>77389150</b></span><button class="copy-btn" onclick="copyNum('77389150')">Copier</button></div>
+    <div class="pay-line"><span>Moov Money : <b>67890755</b></span><button class="copy-btn" onclick="copyNum('67890755')">Copier</button></div>
+    <ol class="modal-steps">
+      <li>Envoie 1000 FCFA (photo seule) ou 2000 FCFA (tout débloqué) sur l'un des numéros ci-dessus</li>
+      <li>Envoie la capture d'écran de paiement sur WhatsApp</li>
+      <li>Tu recevras un code à entrer ci-dessous pour débloquer</li>
+    </ol>
+    <a class="wa-btn" href="https://wa.me/22367890755?text=Bonjour%2C%20je%20viens%20de%20payer%20pour%20d%C3%A9bloquer%20un%20mod%C3%A8le%20premium%20du%20g%C3%A9n%C3%A9rateur%20de%20CV%2C%20voici%20ma%20preuve%20de%20paiement." target="_blank">Envoyer ma preuve sur WhatsApp</a>
+    <button class="code-btn" onclick="askCode()">J'ai déjà reçu mon code</button>
+    <button class="close-modal" onclick="closeModal()">Fermer</button>
+  </div>
+</div>
+
+<script>
+let expCount = 0;
+const colors = {pine:{main:'#2F4B3C',dark:'#1E3329'},navy:{main:'#2A4E6E',dark:'#183454'},gold:{main:'#8A6D3B',dark:'#5C4726'},mono:{main:'#2B2B2B',dark:'#111111'}};
+let currentTpl = 'pine';
+let currentPhoto = null;
+function handlePhotoUpload(event){
+  const file = event.target.files[0];
+  if(!file) return;
+  if(file.size > 3 * 1024 * 1024){ alert("Photo trop lourde (max 3 Mo). Choisis une image plus légère."); return; }
+  const reader = new FileReader();
+  reader.onload = function(e){
+    currentPhoto = e.target.result;
+    const mini = document.getElementById('photo-preview-mini');
+    mini.src = currentPhoto;
+    mini.classList.add('has-img');
+    document.getElementById('remove-photo-btn').classList.add('show');
+    render();
+  };
+  reader.readAsDataURL(file);
+}
+function removePhoto(){
+  currentPhoto = null;
+  document.getElementById('f-photo').value = '';
+  document.getElementById('photo-preview-mini').classList.remove('has-img');
+  document.getElementById('remove-photo-btn').classList.remove('show');
+  render();
+}
+const UNLOCK_CODE_T1 = "CVPHOTO";
+const UNLOCK_CODE_T2 = "CVPRO";
+let pendingTpl = null;
+let pendingTier = 1;
+function tierUnlocked(n){
+  if(n === 1) return localStorage.getItem('tier1_unlocked') === 'true' || localStorage.getItem('tier2_unlocked') === 'true';
+  return localStorage.getItem('tier2_unlocked') === 'true';
+}
+function handlePremiumClick(t, tier){
+  if(t && tierUnlocked(2)){ setTpl(t); return; }
+  pendingTpl = t; pendingTier = tier;
+  document.getElementById('pay-modal').classList.add('open');
+}
+function closeModal(){ document.getElementById('pay-modal').classList.remove('open'); }
+function copyNum(num){ navigator.clipboard.writeText(num); alert("Numéro copié : " + num); }
+function askCode(){
+  const entered = prompt("Entre le code reçu après vérification de ton paiement :");
+  if(!entered) return;
+  const code = entered.trim().toUpperCase();
+  if(code === UNLOCK_CODE_T2){
+    localStorage.setItem('tier2_unlocked', 'true');
+    localStorage.setItem('tier1_unlocked', 'true');
+    closeModal(); applyUnlocks();
+    if(pendingTpl) setTpl(pendingTpl);
+    alert("Débloqué ! CV Complet activé : photo, tous les modèles, langues & certifications.");
+  } else if(code === UNLOCK_CODE_T1){
+    localStorage.setItem('tier1_unlocked', 'true');
+    closeModal(); applyUnlocks();
+    alert("Débloqué ! Photo de profil activée.");
+  } else { alert("Code incorrect. Vérifie auprès du vendeur."); }
+}
+function applyUnlocks(){
+  if(tierUnlocked(1)){
+    document.getElementById('photo-locked-wrap').style.display = 'none';
+    document.getElementById('photo-unlocked-wrap').style.display = 'block';
+    document.getElementById('badge-photo').style.display = 'none';
+    document.getElementById('p-watermark').style.display = 'none';
+  }
+  if(tierUnlocked(2)){
+    document.querySelectorAll('.tpl.locked').forEach(el=>{
+      el.classList.remove('locked');
+      el.innerHTML = el.innerHTML.replace('Doré','Doré ✓').replace('Mono','Mono ✓');
+    });
+    document.getElementById('langues-locked-wrap').style.display = 'none';
+    document.getElementById('f-langues').style.display = 'block';
+    document.getElementById('badge-langues').style.display = 'none';
+  }
+  render();
+}
+function addExp(role, place, dates, desc){
+  expCount++;
+  const wrap = document.createElement('div');
+  wrap.className = 'exp-block';
+  wrap.innerHTML = `
+    <label>Poste</label><input class="e-role" value="${role||''}" oninput="render()" />
+    <div class="row2">
+      <div><label>Entreprise</label><input class="e-place" value="${place||''}" oninput="render()" /></div>
+      <div><label>Dates</label><input class="e-dates" value="${dates||''}" oninput="render()" /></div>
+    </div>
+    <label>Description</label><textarea class="e-desc" oninput="render()">${desc||''}</textarea>`;
+  document.getElementById('exp-list').appendChild(wrap);
+  render();
+}
+function setTpl(t){
+  currentTpl = t;
+  document.querySelectorAll('.tpl').forEach(el=>el.classList.remove('active'));
+  document.querySelector(`.tpl[data-t="${t}"]`).classList.add('active');
+  render();
+}
+function render(){
+  const c = colors[currentTpl] || colors.pine;
+  document.documentElement.style.setProperty('--pine', c.main);
+  document.documentElement.style.setProperty('--pine-dark', c.dark);
+  document.getElementById('p-name').textContent = document.getElementById('f-name').value;
+  document.getElementById('p-title').textContent = document.getElementById('f-title').value;
+  document.getElementById('p-contact').innerHTML = `<span>${document.getElementById('f-email').value}</span><span>${document.getElementById('f-phone').value}</span><span>${document.getElementById('f-city').value}</span>`;
+  document.getElementById('p-summary').textContent = document.getElementById('f-summary').value;
+  const photoEl = document.getElementById('p-photo');
+  if(currentPhoto){ photoEl.src = currentPhoto; photoEl.classList.add('has-img'); }
+  else { photoEl.classList.remove('has-img'); }
+  const expHtml = Array.from(document.querySelectorAll('.exp-block')).map(b=>{
+    const role = b.querySelector('.e-role').value, place = b.querySelector('.e-place').value, dates = b.querySelector('.e-dates').value, desc = b.querySelector('.e-desc').value;
+    if(!role && !place) return '';
+    return `<div class="exp-item"><div class="exp-top"><span>${role}</span><span class="exp-dates">${dates}</span></div><div class="exp-place">${place}</div><div>${desc}</div></div>`;
+  }).join('');
+  document.getElementById('p-exp').innerHTML = expHtml;
+  const skills = document.getElementById('f-skills').value.split(',').map(s=>s.trim()).filter(Boolean);
+  document.getElementById('p-skills').innerHTML = skills.map(s=>`<span class="skill-pill">${s}</span>`).join('');
+  if(tierUnlocked(2)){
+    document.getElementById('p-langues-title').style.display = 'block';
+    document.getElementById('p-langues').style.display = 'block';
+    document.getElementById('p-langues').textContent = document.getElementById('f-langues').value;
+  }
+}
+['f-name','f-title','f-email','f-phone','f-city','f-summary','f-skills'].forEach(id=>{
+  document.getElementById(id).addEventListener('input', render);
+});
+addExp('Chargée de projet digital', 'Agence Kora Média — Bamako', '2022 — Aujourd\'hui', 'Pilotage de 6 campagnes clients simultanées, coordination d\'une équipe de 4 personnes, +30% de satisfaction client.');
+addExp('Assistante marketing', 'Nexa Group — Bamako', '2020 — 2022', 'Gestion des réseaux sociaux et création de contenu pour 3 marques.');
+applyUnlocks();
+render();
+</script>
+</body>
+</html>
