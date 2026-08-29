@@ -7,6 +7,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6364128969715295" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2C6CGMBX63"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2C6CGMBX63');
+</script>
 <style>
   :root{--paper:#F6F4EF;--ink:#17201B;--pine:#2F4B3C;--pine-dark:#1E3329;--gold:#B8925A;--line:#D9D4C6;--white:#FFFFFF;}
   *{box-sizing:border-box;}
@@ -353,6 +360,47 @@ function positionPhoto(){
     if(headerEl.firstChild !== photoEl){ headerEl.insertBefore(photoEl, headerEl.firstChild); }
   }
 }
+function saveDraft(){
+  const exps = Array.from(document.querySelectorAll('.exp-block')).map(b=>({
+    role: b.querySelector('.e-role').value,
+    place: b.querySelector('.e-place').value,
+    dates: b.querySelector('.e-dates').value,
+    desc: b.querySelector('.e-desc').value
+  }));
+  const draft = {
+    name: document.getElementById('f-name').value,
+    title: document.getElementById('f-title').value,
+    email: document.getElementById('f-email').value,
+    phone: document.getElementById('f-phone').value,
+    city: document.getElementById('f-city').value,
+    summary: document.getElementById('f-summary').value,
+    skills: document.getElementById('f-skills').value,
+    langues: document.getElementById('f-langues').value,
+    tpl: currentTpl,
+    experiences: exps
+  };
+  try{ localStorage.setItem('cv_draft', JSON.stringify(draft)); }catch(e){}
+}
+function loadDraft(){
+  const raw = localStorage.getItem('cv_draft');
+  if(!raw) return false;
+  try{
+    const d = JSON.parse(raw);
+    document.getElementById('f-name').value = d.name || '';
+    document.getElementById('f-title').value = d.title || '';
+    document.getElementById('f-email').value = d.email || '';
+    document.getElementById('f-phone').value = d.phone || '';
+    document.getElementById('f-city').value = d.city || '';
+    document.getElementById('f-summary').value = d.summary || '';
+    document.getElementById('f-skills').value = d.skills || '';
+    document.getElementById('f-langues').value = d.langues || '';
+    document.getElementById('exp-list').innerHTML = '';
+    expCount = 0;
+    (d.experiences || []).forEach(e => addExp(e.role, e.place, e.dates, e.desc));
+    if(d.tpl){ currentTpl = d.tpl; }
+    return true;
+  }catch(e){ return false; }
+}
 function render(){
   const c = colors[currentTpl] || colors.pine;
   document.documentElement.style.setProperty('--pine', c.main);
@@ -389,14 +437,18 @@ function render(){
     document.getElementById('p-langues').textContent = document.getElementById('f-langues').value;
     document.getElementById('p-langues-side').textContent = document.getElementById('f-langues').value;
   }
+  saveDraft();
 }
 ['f-name','f-title','f-email','f-phone','f-city','f-summary','f-skills'].forEach(id=>{
   document.getElementById(id).addEventListener('input', render);
 });
-addExp('Chargée de projet digital', 'Agence Kora Média — Bamako', '2022 — Aujourd\'hui', 'Pilotage de 6 campagnes clients simultanées, coordination d\'une équipe de 4 personnes, +30% de satisfaction client.');
-addExp('Assistante marketing', 'Nexa Group — Bamako', '2020 — 2022', 'Gestion des réseaux sociaux et création de contenu pour 3 marques.');
+const hadDraft = loadDraft();
+if(!hadDraft){
+  addExp('Chargée de projet digital', 'Agence Kora Média — Bamako', '2022 — Aujourd\'hui', 'Pilotage de 6 campagnes clients simultanées, coordination d\'une équipe de 4 personnes, +30% de satisfaction client.');
+  addExp('Assistante marketing', 'Nexa Group — Bamako', '2020 — 2022', 'Gestion des réseaux sociaux et création de contenu pour 3 marques.');
+}
 applyUnlocks();
 render();
 </script>
 </body>
-      </html>
+  </html>
