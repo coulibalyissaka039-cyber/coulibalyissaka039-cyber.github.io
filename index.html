@@ -88,6 +88,19 @@
   .side-title{font-family:'Fraunces',serif;font-size:11.5px;text-transform:uppercase;letter-spacing:0.08em;color:white;border-bottom:1px solid rgba(255,255,255,0.35);padding-bottom:6px;margin:22px 0 10px;}
   .page.premium-look .cv-sidebar .skill-pill{display:block;width:fit-content;background:rgba(255,255,255,0.16);color:white;margin-bottom:6px;}
   .page.premium-look .cv-sidebar .cv-body{font-size:11px;line-height:1.6;color:rgba(255,255,255,0.85);}
+  .page.banner-look{padding:0;}
+  .page.banner-look .cv-main{padding:0;}
+  .page.banner-look .cv-header{background:linear-gradient(135deg, var(--pine-dark), var(--pine));padding:32px 40px;justify-content:space-between;color:white;}
+  .page.banner-look .cv-name{color:white;}
+  .page.banner-look .cv-title{color:rgba(255,255,255,0.85);}
+  .page.banner-look .cv-contact{color:rgba(255,255,255,0.75);}
+  .page.banner-look .cv-photo{border-color:white;}
+  .page.banner-look .cv-divider{display:none;}
+  .page.banner-look .cv-main > *:not(.cv-header){padding-left:40px;padding-right:40px;}
+  .page.banner-look .cv-section-title{display:inline-block;background:var(--pine-dark);color:white;padding:5px 16px;border-radius:4px;text-transform:uppercase;font-size:12px;letter-spacing:0.06em;}
+  .page.banner-look .exp-item{position:relative;padding-left:16px;}
+  .page.banner-look .exp-item::before{content:'';position:absolute;left:0;top:6px;width:8px;height:8px;border-radius:50%;background:var(--pine);}
+  .page.banner-look .skill-pill{background:var(--pine-dark);color:white;}
 </style>
 </head>
 <body>
@@ -104,6 +117,12 @@
     <div class="photo-upload-wrap" id="photo-unlocked-wrap" style="display:none;">
       <input type="file" id="f-photo" accept="image/*" onchange="handlePhotoUpload(event)" />
       <img id="photo-preview-mini" class="photo-preview-mini" alt="aperçu" />
+      <div id="crop-controls" style="display:none;margin-top:10px;">
+        <label style="margin-top:0;">Recadrer — horizontal</label>
+        <input type="range" id="crop-x" min="0" max="100" value="50" oninput="applyCrop()" />
+        <label>Recadrer — vertical</label>
+        <input type="range" id="crop-y" min="0" max="100" value="50" oninput="applyCrop()" />
+      </div>
       <div><button type="button" class="remove-photo-btn" id="remove-photo-btn" onclick="removePhoto()">Retirer la photo</button></div>
     </div>
     <label>Titre / poste visé</label>
@@ -218,6 +237,9 @@ function handlePhotoUpload(event){
     mini.src = currentPhoto;
     mini.classList.add('has-img');
     document.getElementById('remove-photo-btn').classList.add('show');
+    document.getElementById('crop-controls').style.display = 'block';
+    document.getElementById('crop-x').value = 50;
+    document.getElementById('crop-y').value = 50;
     render();
   };
   reader.readAsDataURL(file);
@@ -227,7 +249,14 @@ function removePhoto(){
   document.getElementById('f-photo').value = '';
   document.getElementById('photo-preview-mini').classList.remove('has-img');
   document.getElementById('remove-photo-btn').classList.remove('show');
+  document.getElementById('crop-controls').style.display = 'none';
   render();
+}
+function applyCrop(){
+  const x = document.getElementById('crop-x').value;
+  const y = document.getElementById('crop-y').value;
+  document.getElementById('p-photo').style.objectPosition = x + '% ' + y + '%';
+  document.getElementById('photo-preview-mini').style.objectPosition = x + '% ' + y + '%';
 }
 const UNLOCK_CODE_T1 = "CVPHOTO";
 const UNLOCK_CODE_T2 = "CVPRO";
@@ -312,13 +341,28 @@ function setTpl(t){
   document.querySelector(`.tpl[data-t="${t}"]`).classList.add('active');
   render();
 }
+function positionPhoto(){
+  const photoEl = document.getElementById('p-photo');
+  const headerEl = document.getElementById('cv-header');
+  const sidebarEl = document.getElementById('cv-sidebar');
+  if(currentTpl === 'gold'){
+    if(photoEl.parentElement !== sidebarEl){ sidebarEl.insertBefore(photoEl, sidebarEl.firstChild); }
+  } else if(currentTpl === 'mono'){
+    if(photoEl.parentElement !== headerEl){ headerEl.appendChild(photoEl); }
+  } else {
+    if(headerEl.firstChild !== photoEl){ headerEl.insertBefore(photoEl, headerEl.firstChild); }
+  }
+}
 function render(){
   const c = colors[currentTpl] || colors.pine;
   document.documentElement.style.setProperty('--pine', c.main);
   document.documentElement.style.setProperty('--pine-dark', c.dark);
   const pageEl = document.getElementById('page');
-  if(currentTpl === 'gold' || currentTpl === 'mono'){ pageEl.classList.add('premium-look'); }
-  else { pageEl.classList.remove('premium-look'); }
+  const useSidebar = (currentTpl === 'gold');
+  const useBanner = (currentTpl === 'mono');
+  pageEl.classList.toggle('premium-look', useSidebar);
+  pageEl.classList.toggle('banner-look', useBanner);
+  positionPhoto();
   document.getElementById('p-name').textContent = document.getElementById('f-name').value;
   document.getElementById('p-title').textContent = document.getElementById('f-title').value;
   document.getElementById('p-contact').innerHTML = `<span>${document.getElementById('f-email').value}</span><span>${document.getElementById('f-phone').value}</span><span>${document.getElementById('f-city').value}</span>`;
@@ -334,14 +378,13 @@ function render(){
   document.getElementById('p-exp').innerHTML = expHtml;
   const skills = document.getElementById('f-skills').value.split(',').map(s=>s.trim()).filter(Boolean);
   const skillsHtml = skills.map(s=>`<span class="skill-pill">${s}</span>`).join('');
-  const isPremiumLook = (currentTpl === 'gold' || currentTpl === 'mono');
-  document.getElementById('skills-block').style.display = isPremiumLook ? 'none' : 'block';
+  document.getElementById('skills-block').style.display = useSidebar ? 'none' : 'block';
   document.getElementById('p-skills').innerHTML = skillsHtml;
   document.getElementById('p-skills-side').innerHTML = skillsHtml;
   const languesOn = tierUnlocked(2);
-  document.getElementById('langues-block').style.display = (languesOn && !isPremiumLook) ? 'block' : 'none';
-  document.getElementById('side-langues-title').style.display = (languesOn && isPremiumLook) ? 'block' : 'none';
-  document.getElementById('p-langues-side').style.display = (languesOn && isPremiumLook) ? 'block' : 'none';
+  document.getElementById('langues-block').style.display = (languesOn && !useSidebar) ? 'block' : 'none';
+  document.getElementById('side-langues-title').style.display = (languesOn && useSidebar) ? 'block' : 'none';
+  document.getElementById('p-langues-side').style.display = (languesOn && useSidebar) ? 'block' : 'none';
   if(languesOn){
     document.getElementById('p-langues').textContent = document.getElementById('f-langues').value;
     document.getElementById('p-langues-side').textContent = document.getElementById('f-langues').value;
@@ -356,4 +399,4 @@ applyUnlocks();
 render();
 </script>
 </body>
-  </html>
+      </html>
