@@ -1,455 +1,4342 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+
 <meta charset="UTF-8">
-<title>Générateur de CV</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color" content="#123c32">
+
+<meta name="description"
+      content="CVPro — Crée ton CV professionnel rapidement depuis ton téléphone.">
+
+<title>CVPro — Crée ton CV professionnel</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6364128969715295" crossorigin="anonymous"></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2C6CGMBX63"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-2C6CGMBX63');
-</script>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet">
+
+
 <style>
-  :root{--paper:#F6F4EF;--ink:#17201B;--pine:#2F4B3C;--pine-dark:#1E3329;--gold:#B8925A;--line:#D9D4C6;--white:#FFFFFF;}
-  *{box-sizing:border-box;}
-  body{margin:0;background:var(--paper);font-family:'Inter',sans-serif;color:var(--ink);}
-  .shell{display:grid;grid-template-columns:380px 1fr;min-height:100vh;}
-  @media (max-width:900px){.shell{grid-template-columns:1fr;}}
-  .panel{padding:32px 28px;border-right:1px solid var(--line);background:var(--white);}
-  .eyebrow{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--pine);font-weight:600;margin-bottom:6px;}
-  h1{font-family:'Fraunces',serif;font-size:26px;margin:0 0 24px 0;font-weight:600;color:var(--pine-dark);}
-  label{display:block;font-size:12px;font-weight:600;margin:16px 0 6px;color:#5B6660;}
-  input, textarea{width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:4px;font-family:'Inter',sans-serif;font-size:14px;background:#FCFBF8;color:var(--ink);}
-  textarea{resize:vertical;min-height:64px;}
-  input:focus, textarea:focus{outline:2px solid var(--pine);outline-offset:1px;}
-  .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-  .exp-block{border-left:2px solid var(--line);padding-left:12px;margin-top:10px;}
-  .add-btn{margin-top:12px;background:none;border:1px dashed var(--pine);color:var(--pine);padding:8px 12px;border-radius:4px;font-size:13px;font-weight:600;cursor:pointer;width:100%;}
-  .add-btn:hover{background:#EEF3EF;}
-  .templates{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap;}
-  .tpl{flex:1;min-width:90px;padding:10px 8px;border:2px solid var(--line);border-radius:6px;text-align:center;font-size:12px;font-weight:600;cursor:pointer;position:relative;background:#FCFBF8;}
-  .tpl.active{border-color:var(--pine);color:var(--pine-dark);background:#EEF3EF;}
-  .tpl.locked::after{content:"🔒 Premium";display:block;font-size:10px;font-weight:600;color:var(--gold);margin-top:3px;}
-  .print-btn{margin-top:26px;width:100%;background:var(--pine-dark);color:var(--white);border:none;padding:13px;border-radius:5px;font-size:14px;font-weight:600;cursor:pointer;letter-spacing:0.02em;}
-  .print-btn:hover{background:var(--pine);}
-  .note{font-size:11.5px;color:#8A8377;margin-top:10px;line-height:1.5;}
-  .preview-wrap{padding:40px;display:flex;justify-content:center;background:#EFEBE1;}
-  .page{width:100%;max-width:680px;background:var(--white);box-shadow:0 8px 30px rgba(20,30,25,0.12);padding:52px 48px;min-height:900px;}
-  .cv-name{font-family:'Fraunces',serif;font-size:34px;font-weight:700;color:var(--pine-dark);margin:0;}
-  .cv-title{font-size:14px;color:var(--pine);font-weight:600;letter-spacing:0.03em;margin-top:2px;}
-  .cv-contact{font-size:12.5px;color:#6B7269;margin-top:10px;display:flex;gap:14px;flex-wrap:wrap;}
-  .cv-divider{height:2px;background:var(--pine-dark);width:44px;margin:22px 0 18px;}
-  .cv-section-title{font-family:'Fraunces',serif;font-size:15px;font-weight:600;color:var(--pine-dark);text-transform:uppercase;letter-spacing:0.06em;margin:26px 0 10px;}
-  .cv-body{font-size:13.5px;line-height:1.6;color:#2B332E;}
-  .exp-item{margin-bottom:14px;}
-  .exp-top{display:flex;justify-content:space-between;font-weight:600;font-size:13.5px;color:var(--ink);}
-  .exp-dates{font-size:12px;color:#8A8377;font-weight:500;}
-  .exp-place{font-size:12.5px;color:var(--pine);margin-bottom:3px;}
-  .skills-wrap{display:flex;flex-wrap:wrap;gap:7px;}
-  .skill-pill{background:#EEF3EF;color:var(--pine-dark);padding:4px 10px;border-radius:20px;font-size:12px;font-weight:600;}
-  @media print{
-    .panel{display:none;}
-    .preview-wrap{padding:0;background:white;}
-    .page{box-shadow:none;max-width:100%;min-height:auto;}
-    .cv-sidebar{min-height:100%;}
-    *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;color-adjust:exact !important;}
-  }
-  .modal-overlay{display:none;position:fixed;inset:0;background:rgba(23,32,27,0.55);z-index:100;align-items:center;justify-content:center;padding:20px;}
-  .modal-overlay.open{display:flex;}
-  .modal-box{background:var(--white);border-radius:10px;max-width:380px;width:100%;padding:26px 22px;max-height:85vh;overflow-y:auto;}
-  .modal-box h2{font-family:'Fraunces',serif;font-size:20px;color:var(--pine-dark);margin:0 0 6px;}
-  .modal-price{font-size:13px;color:#6B7269;margin-bottom:16px;}
-  .pay-line{display:flex;justify-content:space-between;align-items:center;background:#F6F4EF;border-radius:6px;padding:10px 12px;margin-bottom:8px;font-size:13.5px;}
-  .pay-line b{color:var(--pine-dark);}
-  .copy-btn{background:var(--pine);color:white;border:none;border-radius:4px;padding:5px 10px;font-size:11px;font-weight:600;cursor:pointer;}
-  .modal-steps{font-size:12.5px;line-height:1.6;color:#3A423C;margin:16px 0;padding-left:18px;}
-  .wa-btn{display:block;text-align:center;background:#25D366;color:white;text-decoration:none;padding:11px;border-radius:6px;font-weight:600;font-size:13.5px;margin-bottom:10px;}
-  .code-btn{width:100%;background:var(--pine-dark);color:white;border:none;padding:11px;border-radius:6px;font-weight:600;font-size:13.5px;cursor:pointer;margin-bottom:10px;}
-  .close-modal{width:100%;background:none;border:1px solid var(--line);color:#6B7269;padding:9px;border-radius:6px;font-size:13px;cursor:pointer;}
-  .cv-header{display:flex;align-items:center;gap:20px;}
-  .cv-photo{width:92px;height:92px;border-radius:50%;object-fit:cover;border:3px solid var(--pine-dark);flex-shrink:0;display:none;}
-  .cv-photo.has-img{display:block;}
-  .photo-upload-wrap{border:1px dashed var(--line);border-radius:6px;padding:12px;text-align:center;margin-top:6px;}
-  .photo-upload-wrap input[type="file"]{width:auto;font-size:12px;}
-  .photo-preview-mini{width:44px;height:44px;border-radius:50%;object-fit:cover;display:none;margin:8px auto 0;border:2px solid var(--pine);}
-  .photo-preview-mini.has-img{display:block;}
-  .remove-photo-btn{display:none;margin-top:6px;background:none;border:none;color:#B0453D;font-size:11px;font-weight:600;cursor:pointer;}
-  .remove-photo-btn.show{display:inline-block;}
-  .watermark{text-align:center;font-size:11px;color:#B0AC9E;margin-top:30px;padding-top:14px;border-top:1px dashed var(--line);}
-  .locked-field{border:1px dashed var(--line);border-radius:6px;padding:12px;text-align:center;font-size:12px;color:#8A8377;cursor:pointer;}
-  .tier-badge{display:inline-block;font-size:10px;font-weight:600;padding:2px 8px;border-radius:10px;margin-left:6px;vertical-align:middle;}
-  .tier-badge.t1{background:#EEF3EF;color:var(--pine-dark);}
-  .tier-badge.t2{background:#F3E9D8;color:#5C4726;}
-  .page{display:flex;}
-  .cv-sidebar{display:none;}
-  .cv-main{flex:1;min-width:0;}
-  .page.premium-look{padding:0;overflow:hidden;}
-  .page.premium-look .cv-sidebar{display:flex;flex-direction:column;width:180px;flex-shrink:0;background:var(--pine-dark);padding:40px 20px;}
-  .page.premium-look .cv-main{padding:40px 36px;}
-  .page.premium-look .cv-sidebar .cv-photo{width:100px;height:100px;margin:0 auto;border-color:rgba(255,255,255,0.85);display:block;}
-  .page.premium-look .cv-divider{display:none;}
-  .side-title{font-family:'Fraunces',serif;font-size:11.5px;text-transform:uppercase;letter-spacing:0.08em;color:white;border-bottom:1px solid rgba(255,255,255,0.35);padding-bottom:6px;margin:22px 0 10px;}
-  .page.premium-look .cv-sidebar .skill-pill{display:block;width:fit-content;background:rgba(255,255,255,0.16);color:white;margin-bottom:6px;}
-  .page.premium-look .cv-sidebar .cv-body{font-size:11px;line-height:1.6;color:rgba(255,255,255,0.85);}
-  .page.banner-look{padding:0;}
-  .page.banner-look .cv-main{padding:0;}
-  .page.banner-look .cv-header{background:linear-gradient(135deg, var(--pine-dark), var(--pine));padding:32px 40px;justify-content:space-between;color:white;}
-  .page.banner-look .cv-name{color:white;}
-  .page.banner-look .cv-title{color:rgba(255,255,255,0.85);}
-  .page.banner-look .cv-contact{color:rgba(255,255,255,0.75);}
-  .page.banner-look .cv-photo{border-color:white;}
-  .page.banner-look .cv-divider{display:none;}
-  .page.banner-look .cv-main > *:not(.cv-header){padding-left:40px;padding-right:40px;}
-  .page.banner-look .cv-section-title{display:inline-block;background:var(--pine-dark);color:white;padding:5px 16px;border-radius:4px;text-transform:uppercase;font-size:12px;letter-spacing:0.06em;}
-  .page.banner-look .exp-item{position:relative;padding-left:16px;}
-  .page.banner-look .exp-item::before{content:'';position:absolute;left:0;top:6px;width:8px;height:8px;border-radius:50%;background:var(--pine);}
-  .page.banner-look .skill-pill{background:var(--pine-dark);color:white;}
+
+/* =========================================================
+   CVPRO
+   DESIGN SYSTEM
+========================================================= */
+
+:root{
+
+    --primary:#123c32;
+    --primary-light:#286454;
+    --primary-soft:#eaf3ef;
+
+    --gold:#c49a55;
+    --gold-soft:#f6ead6;
+
+    --background:#f5f7f5;
+    --white:#ffffff;
+
+    --text:#17201d;
+    --muted:#6e7974;
+
+    --border:#dfe5e1;
+
+    --success:#25845c;
+    --danger:#c94b45;
+
+    --shadow:
+        0 15px 45px rgba(16,40,32,.10);
+
+    --radius:12px;
+}
+
+
+*{
+    box-sizing:border-box;
+}
+
+
+html{
+    scroll-behavior:smooth;
+}
+
+
+body{
+
+    margin:0;
+
+    font-family:"DM Sans",sans-serif;
+
+    background:var(--background);
+
+    color:var(--text);
+
+    line-height:1.5;
+}
+
+
+button,
+input,
+textarea,
+select{
+
+    font-family:inherit;
+}
+
+
+button{
+
+    cursor:pointer;
+}
+
+
+img{
+
+    max-width:100%;
+}
+
+
+/* =========================================================
+   UTILITIES
+========================================================= */
+
+.container{
+
+    width:min(1180px,calc(100% - 32px));
+
+    margin:auto;
+}
+
+
+.hidden{
+
+    display:none!important;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header{
+
+    position:sticky;
+
+    top:0;
+
+    z-index:100;
+
+    background:rgba(255,255,255,.96);
+
+    backdrop-filter:blur(12px);
+
+    border-bottom:1px solid var(--border);
+}
+
+
+.nav{
+
+    height:70px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+}
+
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    color:var(--primary);
+
+    font-weight:700;
+
+    font-size:20px;
+
+    text-decoration:none;
+}
+
+
+.logo-mark{
+
+    width:38px;
+
+    height:38px;
+
+    border-radius:10px;
+
+    background:var(--primary);
+
+    color:white;
+
+    display:grid;
+
+    place-items:center;
+
+    font-size:13px;
+
+    font-weight:700;
+}
+
+
+.nav-links{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:25px;
+}
+
+
+.nav-links a{
+
+    text-decoration:none;
+
+    color:#52605a;
+
+    font-size:14px;
+
+    font-weight:600;
+}
+
+
+.nav-links a:hover{
+
+    color:var(--primary);
+}
+
+
+.nav-actions{
+
+    display:flex;
+
+    gap:8px;
+
+    align-items:center;
+}
+
+
+.btn{
+
+    border:0;
+
+    border-radius:8px;
+
+    padding:11px 16px;
+
+    font-weight:700;
+
+    font-size:13px;
+
+    transition:.2s;
+}
+
+
+.btn-primary{
+
+    background:var(--primary);
+
+    color:white;
+}
+
+
+.btn-primary:hover{
+
+    background:var(--primary-light);
+
+    transform:translateY(-1px);
+}
+
+
+.btn-outline{
+
+    background:white;
+
+    color:var(--primary);
+
+    border:1px solid var(--border);
+}
+
+
+.btn-gold{
+
+    background:var(--gold);
+
+    color:white;
+}
+
+
+.mobile-menu{
+
+    display:none;
+
+    background:none;
+
+    border:0;
+
+    font-size:24px;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+
+    padding:85px 0 70px;
+
+    background:
+
+      radial-gradient(
+        circle at 80% 20%,
+        rgba(196,154,85,.14),
+        transparent 30%
+      ),
+
+      linear-gradient(
+        180deg,
+        #ffffff,
+        #f5f7f5
+      );
+}
+
+
+.hero-grid{
+
+    display:grid;
+
+    grid-template-columns:1.05fr .95fr;
+
+    gap:65px;
+
+    align-items:center;
+}
+
+
+.hero-badge{
+
+    display:inline-flex;
+
+    padding:7px 11px;
+
+    border-radius:30px;
+
+    background:var(--primary-soft);
+
+    color:var(--primary);
+
+    font-size:11px;
+
+    font-weight:700;
+
+    margin-bottom:17px;
+}
+
+
+.hero h1{
+
+    font-family:"Playfair Display",serif;
+
+    font-size:clamp(40px,5vw,64px);
+
+    line-height:1.05;
+
+    color:var(--primary);
+
+    margin:0 0 20px;
+}
+
+
+.hero h1 span{
+
+    color:var(--gold);
+}
+
+
+.hero p{
+
+    font-size:17px;
+
+    color:var(--muted);
+
+    max-width:590px;
+
+    line-height:1.7;
+}
+
+
+.hero-buttons{
+
+    display:flex;
+
+    gap:10px;
+
+    margin-top:28px;
+
+    flex-wrap:wrap;
+}
+
+
+.hero-note{
+
+    margin-top:15px;
+
+    font-size:11px!important;
+
+    color:#88928d!important;
+}
+
+
+/* HERO MOCKUP */
+
+.hero-card{
+
+    background:white;
+
+    border-radius:18px;
+
+    box-shadow:var(--shadow);
+
+    padding:22px;
+
+    transform:rotate(1deg);
+}
+
+
+.mock-window{
+
+    border:1px solid var(--border);
+
+    border-radius:12px;
+
+    overflow:hidden;
+}
+
+
+.mock-top{
+
+    height:35px;
+
+    background:#f4f5f3;
+
+    border-bottom:1px solid var(--border);
+
+    display:flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    padding:0 12px;
+}
+
+
+.dot{
+
+    width:7px;
+
+    height:7px;
+
+    border-radius:50%;
+
+    background:#bbc4bf;
+}
+
+
+.mock-cv{
+
+    padding:30px;
+
+    min-height:390px;
+
+    background:white;
+}
+
+
+.mock-name{
+
+    font-family:"Playfair Display",serif;
+
+    color:var(--primary);
+
+    font-size:25px;
+
+    font-weight:700;
+}
+
+
+.mock-line{
+
+    height:7px;
+
+    background:#e8ece9;
+
+    margin:10px 0;
+
+    border-radius:5px;
+}
+
+
+.mock-line.short{
+
+    width:55%;
+}
+
+
+.mock-title{
+
+    color:var(--primary-light);
+
+    font-size:11px;
+
+    font-weight:700;
+}
+
+
+.mock-section{
+
+    margin-top:25px;
+
+    font-family:"Playfair Display",serif;
+
+    color:var(--primary);
+
+    font-size:12px;
+
+    font-weight:700;
+}
+
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.stats{
+
+    background:var(--primary);
+
+    color:white;
+
+    padding:25px 0;
+}
+
+
+.stats-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    text-align:center;
+}
+
+
+.stat strong{
+
+    font-size:25px;
+
+    display:block;
+}
+
+
+.stat span{
+
+    font-size:11px;
+
+    opacity:.75;
+}
+
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+.section{
+
+    padding:80px 0;
+}
+
+
+.section-head{
+
+    text-align:center;
+
+    max-width:700px;
+
+    margin:0 auto 45px;
+}
+
+
+.section-head .eyebrow{
+
+    color:var(--primary-light);
+
+    text-transform:uppercase;
+
+    font-size:11px;
+
+    letter-spacing:.15em;
+
+    font-weight:700;
+}
+
+
+.section-head h2{
+
+    font-family:"Playfair Display",serif;
+
+    color:var(--primary);
+
+    font-size:38px;
+
+    margin:8px 0 12px;
+}
+
+
+.section-head p{
+
+    color:var(--muted);
+
+    font-size:15px;
+}
+
+
+/* =========================================================
+   FEATURES
+========================================================= */
+
+.features{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:18px;
+}
+
+
+.feature{
+
+    background:white;
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius);
+
+    padding:25px;
+}
+
+
+.feature-icon{
+
+    width:43px;
+
+    height:43px;
+
+    background:var(--primary-soft);
+
+    color:var(--primary);
+
+    border-radius:10px;
+
+    display:grid;
+
+    place-items:center;
+
+    margin-bottom:16px;
+
+    font-size:20px;
+}
+
+
+.feature h3{
+
+    margin:0 0 7px;
+
+    color:var(--primary);
+
+    font-size:16px;
+}
+
+
+.feature p{
+
+    color:var(--muted);
+
+    font-size:13px;
+
+    margin:0;
+}
+
+
+/* =========================================================
+   PRICING
+========================================================= */
+
+.pricing{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:20px;
+
+    max-width:850px;
+
+    margin:auto;
+}
+
+
+.price-card{
+
+    background:white;
+
+    border:1px solid var(--border);
+
+    border-radius:15px;
+
+    padding:30px;
+
+    position:relative;
+}
+
+
+.price-card.featured{
+
+    border:2px solid var(--primary);
+
+    box-shadow:var(--shadow);
+}
+
+
+.price-badge{
+
+    position:absolute;
+
+    right:20px;
+
+    top:20px;
+
+    background:var(--gold);
+
+    color:white;
+
+    font-size:9px;
+
+    font-weight:700;
+
+    padding:5px 8px;
+
+    border-radius:20px;
+}
+
+
+.price-card h3{
+
+    color:var(--primary);
+
+    font-size:19px;
+}
+
+
+.price{
+
+    font-family:"Playfair Display",serif;
+
+    font-size:38px;
+
+    color:var(--primary);
+
+    margin:15px 0;
+}
+
+
+.price small{
+
+    font-family:"DM Sans",sans-serif;
+
+    font-size:12px;
+
+    color:var(--muted);
+}
+
+
+.price-list{
+
+    list-style:none;
+
+    padding:0;
+
+    margin:20px 0;
+}
+
+
+.price-list li{
+
+    margin:10px 0;
+
+    font-size:13px;
+
+    color:#52605a;
+}
+
+
+/* =========================================================
+   APP / BUILDER
+========================================================= */
+
+.builder{
+
+    display:none;
+
+    grid-template-columns:390px 1fr;
+
+    min-height:calc(100vh - 70px);
+}
+
+
+.builder.active{
+
+    display:grid;
+}
+
+
+.editor{
+
+    background:white;
+
+    border-right:1px solid var(--border);
+
+    padding:25px;
+
+    height:calc(100vh - 70px);
+
+    overflow-y:auto;
+
+    position:sticky;
+
+    top:70px;
+}
+
+
+.editor h2{
+
+    font-family:"Playfair Display",serif;
+
+    color:var(--primary);
+
+    margin:5px 0 20px;
+}
+
+
+.eyebrow{
+
+    color:var(--primary-light);
+
+    font-size:10px;
+
+    letter-spacing:.15em;
+
+    font-weight:700;
+
+    text-transform:uppercase;
+}
+
+
+.form-group{
+
+    margin-bottom:15px;
+}
+
+
+label{
+
+    display:block;
+
+    font-size:11px;
+
+    color:#59655f;
+
+    font-weight:700;
+
+    margin-bottom:6px;
+}
+
+
+input,
+textarea,
+select{
+
+    width:100%;
+
+    border:1px solid var(--border);
+
+    border-radius:7px;
+
+    background:#fbfcfa;
+
+    padding:10px 11px;
+
+    color:var(--text);
+
+    outline:none;
+
+    font-size:13px;
+}
+
+
+input:focus,
+textarea:focus,
+select:focus{
+
+    border-color:var(--primary-light);
+
+    box-shadow:0 0 0 3px rgba(40,100,84,.08);
+}
+
+
+textarea{
+
+    resize:vertical;
+
+    min-height:75px;
+}
+
+
+.form-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:9px;
+}
+
+
+.editor-section{
+
+    border-top:1px solid var(--border);
+
+    padding-top:17px;
+
+    margin-top:18px;
+}
+
+
+.editor-section-title{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:12px;
+
+    font-weight:700;
+
+    font-size:13px;
+}
+
+
+.experience{
+
+    border-left:3px solid #dfe9e4;
+
+    padding-left:12px;
+
+    margin-bottom:15px;
+}
+
+
+.experience-remove{
+
+    border:0;
+
+    background:none;
+
+    color:var(--danger);
+
+    font-size:10px;
+
+    padding:0;
+}
+
+
+.add-btn{
+
+    width:100%;
+
+    border:1px dashed var(--primary-light);
+
+    background:var(--primary-soft);
+
+    color:var(--primary);
+
+    border-radius:7px;
+
+    padding:9px;
+
+    font-size:12px;
+
+    font-weight:700;
+}
+
+
+/* =========================================================
+   TEMPLATE SELECTOR
+========================================================= */
+
+.templates{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:8px;
+}
+
+
+.template{
+
+    border:2px solid var(--border);
+
+    border-radius:7px;
+
+    padding:10px;
+
+    background:white;
+
+    text-align:center;
+
+    font-size:11px;
+
+    font-weight:700;
+
+    color:#59645f;
+
+    position:relative;
+}
+
+
+.template.active{
+
+    border-color:var(--primary);
+
+    background:var(--primary-soft);
+
+    color:var(--primary);
+}
+
+
+.template.premium::after{
+
+    content:"★ PREMIUM";
+
+    display:block;
+
+    color:var(--gold);
+
+    font-size:8px;
+
+    margin-top:3px;
+}
+
+
+/* =========================================================
+   PREVIEW
+========================================================= */
+
+.preview{
+
+    padding:40px;
+
+    background:#e9ece8;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+    overflow:auto;
+}
+
+
+.cv-page{
+
+    width:794px;
+
+    min-height:1123px;
+
+    background:white;
+
+    box-shadow:var(--shadow);
+
+    padding:55px;
+
+    position:relative;
+
+    flex-shrink:0;
+}
+
+
+.cv-header{
+
+    border-bottom:2px solid var(--primary);
+
+    padding-bottom:20px;
+
+    margin-bottom:25px;
+}
+
+
+.cv-name{
+
+    font-family:"Playfair Display",serif;
+
+    color:var(--primary);
+
+    font-size:36px;
+
+    margin:0;
+}
+
+
+.cv-title{
+
+    color:var(--primary-light);
+
+    font-weight:700;
+
+    font-size:13px;
+}
+
+
+.cv-contact{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:13px;
+
+    font-size:10px;
+
+    color:#718079;
+
+    margin-top:9px;
+}
+
+
+.cv-photo{
+
+    width:100px;
+
+    height:100px;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+    border:3px solid var(--primary);
+
+    float:right;
+
+    margin-left:20px;
+
+    display:none;
+}
+
+
+.cv-photo.show{
+
+    display:block;
+}
+
+
+.cv-section{
+
+    margin-top:23px;
+}
+
+
+.cv-section h3{
+
+    font-family:"Playfair Display",serif;
+
+    color:var(--primary);
+
+    font-size:15px;
+
+    text-transform:uppercase;
+
+    border-bottom:1px solid #e3e8e4;
+
+    padding-bottom:6px;
+
+    margin-bottom:12px;
+}
+
+
+.cv-summary,
+.cv-language{
+
+    font-size:12px;
+
+    line-height:1.65;
+}
+
+
+.cv-exp{
+
+    margin-bottom:17px;
+}
+
+
+.cv-exp-head{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:10px;
+}
+
+
+.cv-role{
+
+    font-size:12.5px;
+
+    font-weight:700;
+}
+
+
+.cv-date{
+
+    font-size:10px;
+
+    color:#7c8681;
+}
+
+
+.cv-company{
+
+    color:var(--primary-light);
+
+    font-size:11px;
+
+    margin:2px 0;
+}
+
+
+.cv-description{
+
+    font-size:11.5px;
+
+    line-height:1.55;
+}
+
+
+.skills{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:7px;
+}
+
+
+.skill{
+
+    background:var(--primary-soft);
+
+    color:var(--primary);
+
+    padding:4px 9px;
+
+    border-radius:20px;
+
+    font-size:10px;
+
+    font-weight:700;
+}
+
+
+.watermark{
+
+    position:absolute;
+
+    bottom:20px;
+
+    left:0;
+
+    right:0;
+
+    text-align:center;
+
+    color:#b9c0bc;
+
+    font-size:9px;
+}
+
+
+/* =========================================================
+   MODERN TEMPLATE
+========================================================= */
+
+.cv-page.modern{
+
+    padding:0;
+}
+
+
+.modern .cv-header{
+
+    background:var(--primary);
+
+    color:white;
+
+    padding:42px 50px;
+
+    border:0;
+
+    margin:0;
+}
+
+
+.modern .cv-name{
+
+    color:white;
+}
+
+
+.modern .cv-title{
+
+    color:#dce9e3;
+}
+
+
+.modern .cv-contact{
+
+    color:#d1dfda;
+}
+
+
+.modern .cv-body{
+
+    padding:0 50px 50px;
+}
+
+
+/* =========================================================
+   SIDEBAR TEMPLATE
+========================================================= */
+
+.cv-page.sidebar{
+
+    padding:0;
+
+    display:grid;
+
+    grid-template-columns:190px 1fr;
+}
+
+
+.sidebar-left{
+
+    background:var(--primary);
+
+    color:white;
+
+    padding:35px 20px;
+}
+
+
+.sidebar-right{
+
+    padding:45px;
+}
+
+
+.sidebar-left .cv-photo{
+
+    float:none;
+
+    margin:0 auto 20px;
+
+    border-color:white;
+}
+
+
+.sidebar-left h4{
+
+    font-size:9px;
+
+    text-transform:uppercase;
+
+    letter-spacing:.1em;
+
+    border-bottom:1px solid rgba(255,255,255,.3);
+
+    padding-bottom:6px;
+
+    margin-top:20px;
+}
+
+
+.sidebar-left .skill{
+
+    display:block;
+
+    background:rgba(255,255,255,.12);
+
+    color:white;
+
+    margin-bottom:5px;
+}
+
+
+/* =========================================================
+   PREMIUM CTA
+========================================================= */
+
+.premium-panel{
+
+    margin-top:20px;
+
+    padding:15px;
+
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--primary-light)
+    );
+
+    color:white;
+
+    border-radius:9px;
+}
+
+
+.premium-panel strong{
+
+    display:block;
+
+    margin-bottom:4px;
+}
+
+
+.premium-panel p{
+
+    font-size:10px;
+
+    opacity:.85;
+
+    margin:0 0 10px;
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(10,25,20,.65);
+
+    z-index:500;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:20px;
+}
+
+
+.modal.open{
+
+    display:flex;
+}
+
+
+.modal-card{
+
+    width:100%;
+
+    max-width:440px;
+
+    background:white;
+
+    border-radius:14px;
+
+    padding:25px;
+
+    box-shadow:0 25px 80px rgba(0,0,0,.25);
+}
+
+
+.modal-card h2{
+
+    font-family:"Playfair Display",serif;
+
+    color:var(--primary);
+
+    margin:0 0 7px;
+}
+
+
+.modal-price{
+
+    font-size:30px;
+
+    font-weight:700;
+
+    color:var(--primary);
+
+    margin:15px 0;
+}
+
+
+.payment{
+
+    border:1px solid var(--border);
+
+    border-radius:8px;
+
+    padding:12px;
+
+    margin:8px 0;
+}
+
+
+.payment strong{
+
+    display:block;
+}
+
+
+.payment small{
+
+    color:var(--muted);
+}
+
+
+.modal-actions{
+
+    margin-top:16px;
+}
+
+
+.full{
+
+    width:100%;
+}
+
+
+.close-btn{
+
+    width:100%;
+
+    border:1px solid var(--border);
+
+    background:white;
+
+    padding:10px;
+
+    border-radius:7px;
+
+    margin-top:8px;
+}
+
+
+/* =========================================================
+   FAQ
+========================================================= */
+
+.faq{
+
+    max-width:760px;
+
+    margin:auto;
+}
+
+
+.faq-item{
+
+    background:white;
+
+    border:1px solid var(--border);
+
+    border-radius:9px;
+
+    margin-bottom:8px;
+
+    overflow:hidden;
+}
+
+
+.faq-question{
+
+    padding:16px;
+
+    font-weight:700;
+
+    font-size:13px;
+
+    cursor:pointer;
+
+    display:flex;
+
+    justify-content:space-between;
+}
+
+
+.faq-answer{
+
+    display:none;
+
+    padding:0 16px 16px;
+
+    color:var(--muted);
+
+    font-size:12px;
+}
+
+
+.faq-item.open .faq-answer{
+
+    display:block;
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.final-cta{
+
+    background:var(--primary);
+
+    color:white;
+
+    padding:75px 20px;
+
+    text-align:center;
+}
+
+
+.final-cta h2{
+
+    font-family:"Playfair Display",serif;
+
+    font-size:38px;
+
+    margin:0 0 12px;
+}
+
+
+.final-cta p{
+
+    opacity:.8;
+
+    max-width:580px;
+
+    margin:0 auto 25px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer{
+
+    background:#0d2c25;
+
+    color:white;
+
+    padding:35px 0;
+}
+
+
+.footer-grid{
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr 1fr;
+
+    gap:30px;
+}
+
+
+.footer h3{
+
+    font-size:13px;
+}
+
+
+.footer p,
+.footer a{
+
+    font-size:11px;
+
+    color:#b6c3be;
+
+    text-decoration:none;
+
+    line-height:1.8;
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast{
+
+    position:fixed;
+
+    bottom:20px;
+
+    right:20px;
+
+    background:var(--primary);
+
+    color:white;
+
+    padding:12px 16px;
+
+    border-radius:8px;
+
+    font-size:12px;
+
+    box-shadow:var(--shadow);
+
+    opacity:0;
+
+    transform:translateY(15px);
+
+    pointer-events:none;
+
+    transition:.3s;
+
+    z-index:1000;
+}
+
+
+.toast.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:900px){
+
+    .nav-links,
+    .nav-actions .btn-outline{
+
+        display:none;
+    }
+
+
+    .mobile-menu{
+
+        display:block;
+    }
+
+
+    .hero{
+
+        padding:55px 0;
+    }
+
+
+    .hero-grid{
+
+        grid-template-columns:1fr;
+
+        gap:35px;
+    }
+
+
+    .features{
+
+        grid-template-columns:1fr;
+    }
+
+
+    .pricing{
+
+        grid-template-columns:1fr;
+    }
+
+
+    .stats-grid{
+
+        grid-template-columns:1fr;
+
+        gap:15px;
+    }
+
+
+    .builder.active{
+
+        display:block;
+    }
+
+
+    .editor{
+
+        position:relative;
+
+        top:0;
+
+        height:auto;
+
+        border:0;
+    }
+
+
+    .preview{
+
+        padding:15px;
+
+        display:block;
+
+        overflow:auto;
+    }
+
+
+    .cv-page{
+
+        margin:auto;
+
+        transform-origin:top left;
+    }
+
+
+    .footer-grid{
+
+        grid-template-columns:1fr;
+    }
+
+}
+
+
+@media(max-width:520px){
+
+    .container{
+
+        width:min(100% - 22px,1180px);
+    }
+
+
+    .hero h1{
+
+        font-size:42px;
+    }
+
+
+    .section{
+
+        padding:55px 0;
+    }
+
+
+    .section-head h2{
+
+        font-size:30px;
+    }
+
+
+    .form-grid{
+
+        grid-template-columns:1fr;
+    }
+
+
+    .hero-card{
+
+        padding:10px;
+    }
+
+}
+
+
+/* =========================================================
+   PRINT
+========================================================= */
+
+@media print{
+
+    body{
+
+        background:white;
+    }
+
+
+    .header,
+    .editor,
+    .builder ~ *,
+    .watermark{
+
+        display:none!important;
+    }
+
+
+    .builder{
+
+        display:block!important;
+    }
+
+
+    .preview{
+
+        padding:0;
+
+        background:white;
+    }
+
+
+    .cv-page{
+
+        box-shadow:none;
+
+        width:100%;
+
+        min-height:auto;
+    }
+
+}
+
 </style>
+
 </head>
+
+
 <body>
-<div class="shell">
-  <div class="panel">
-    <div class="eyebrow">MVP — Étape 1</div>
-    <h1>Ton CV, en direct</h1>
-    <label>Nom complet</label>
-    <input id="f-name" value="Aïcha Koné" />
-    <label>Photo de profil <span class="tier-badge t1" id="badge-photo">1000 FCFA</span></label>
-    <div class="photo-upload-wrap" id="photo-locked-wrap" onclick="handlePremiumClick(null, 1)">
-      <div class="locked-field">🔒 Débloque la photo de profil — appuie ici</div>
-    </div>
-    <div class="photo-upload-wrap" id="photo-unlocked-wrap" style="display:none;">
-      <input type="file" id="f-photo" accept="image/*" onchange="handlePhotoUpload(event)" />
-      <img id="photo-preview-mini" class="photo-preview-mini" alt="aperçu" />
-      <div id="crop-controls" style="display:none;margin-top:10px;">
-        <label style="margin-top:0;">Recadrer — horizontal</label>
-        <input type="range" id="crop-x" min="0" max="100" value="50" oninput="applyCrop()" />
-        <label>Recadrer — vertical</label>
-        <input type="range" id="crop-y" min="0" max="100" value="50" oninput="applyCrop()" />
-      </div>
-      <div><button type="button" class="remove-photo-btn" id="remove-photo-btn" onclick="removePhoto()">Retirer la photo</button></div>
-    </div>
-    <label>Titre / poste visé</label>
-    <input id="f-title" value="Chargée de projet digital" />
-    <div class="row2">
-      <div><label>Email</label><input id="f-email" value="aicha.kone@email.com" /></div>
-      <div><label>Téléphone</label><input id="f-phone" value="+223 67 89 07 55" /></div>
-    </div>
-    <label>Ville</label>
-    <input id="f-city" value="Bamako, Mali" />
-    <label>Profil (2-3 lignes)</label>
-    <textarea id="f-summary">Professionnelle organisée avec 4 ans d'expérience en gestion de projets digitaux. Orientée résultats, à l'aise avec les équipes pluridisciplinaires.</textarea>
-    <label>Compétences (séparées par des virgules)</label>
-    <textarea id="f-skills">Gestion de projet, Excel avancé, Communication, Réseaux sociaux, Canva</textarea>
-    <label>Langues & certifications <span class="tier-badge t2" id="badge-langues">2000 FCFA</span></label>
-    <div id="langues-locked-wrap" onclick="handlePremiumClick(null, 2)">
-      <div class="locked-field">🔒 Débloque cette section — appuie ici</div>
-    </div>
-    <textarea id="f-langues" style="display:none;">Français (courant), Anglais (intermédiaire), Certification Google Digital Skills</textarea>
-    <label>Expériences</label>
-    <div id="exp-list"></div>
-    <button class="add-btn" onclick="addExp()">+ Ajouter une expérience</button>
-    <label>Modèle</label>
-    <div class="templates">
-      <div class="tpl active" data-t="pine" onclick="setTpl('pine')">Forêt</div>
-      <div class="tpl" data-t="navy" onclick="setTpl('navy')">Marine</div>
-      <div class="tpl locked" data-t="gold" id="tpl-gold" onclick="handlePremiumClick('gold', 2)">Doré</div>
-      <div class="tpl locked" data-t="mono" id="tpl-mono" onclick="handlePremiumClick('mono', 2)">Mono</div>
-    </div>
-    <div class="note">Clique sur un modèle 🔒 → les instructions de paiement Mobile Money s'affichent. Une fois payé, le client reçoit un code qui débloque le modèle définitivement.</div>
-    <div id="color-locked-wrap" onclick="handlePremiumClick(null, 2)">
-      <label>Couleur personnalisée <span class="tier-badge t2">2000 FCFA</span></label>
-      <div class="locked-field">🔒 Choisis ta propre couleur — appuie ici</div>
-    </div>
-    <div id="color-unlocked-wrap" style="display:none;">
-      <label>Couleur personnalisée</label>
-      <input type="color" id="f-customcolor" value="#8A6D3B" oninput="applyCustomColor()" style="height:40px;padding:4px;cursor:pointer;" />
-    </div>
-    <div id="ad-slot" style="margin-top:18px;padding:14px;border:1px dashed var(--line);border-radius:6px;text-align:center;font-size:11px;color:#8A8377;">
-      Emplacement publicitaire — remplace ce bloc par ton code Google AdSense une fois ton compte approuvé (voir instructions)
-    </div>
-    <button class="print-btn" onclick="window.print()">Télécharger en PDF</button>
-    <div class="note">Le bouton ouvre l'impression du navigateur → "Enregistrer en PDF".</div>
-  </div>
 
-  <div class="preview-wrap">
-    <div class="page" id="page">
-      <div class="cv-sidebar" id="cv-sidebar">
-        <img class="cv-photo" id="p-photo" alt="photo" />
-        <div class="side-title">Compétences</div>
-        <div class="skills-wrap" id="p-skills-side"></div>
-        <div class="side-title" id="side-langues-title" style="display:none;">Langues</div>
-        <div class="cv-body" id="p-langues-side" style="display:none;"></div>
-      </div>
-      <div class="cv-main" id="cv-main">
-        <div class="cv-header" id="cv-header">
-          <div>
-            <p class="cv-name" id="p-name"></p>
-            <p class="cv-title" id="p-title"></p>
-            <div class="cv-contact" id="p-contact"></div>
-          </div>
-        </div>
-        <div class="cv-divider"></div>
-        <div class="cv-section-title">Profil</div>
-        <div class="cv-body" id="p-summary"></div>
-        <div class="cv-section-title">Expérience</div>
-        <div class="cv-body" id="p-exp"></div>
-        <div id="skills-block">
-          <div class="cv-section-title">Compétences</div>
-          <div class="skills-wrap" id="p-skills"></div>
-        </div>
-        <div id="langues-block" style="display:none;">
-          <div class="cv-section-title">Langues & certifications</div>
-          <div class="cv-body" id="p-langues"></div>
-        </div>
-        <div class="watermark" id="p-watermark">CV généré via ton-generateur-cv — débloque un abonnement pour retirer ce filigrane</div>
-      </div>
-    </div>
-  </div>
+
+<!-- =======================================================
+     HEADER
+======================================================= -->
+
+<header class="header">
+
+<div class="container nav">
+
+<a href="#" class="logo">
+
+<div class="logo-mark">
+CV
 </div>
 
-<div class="modal-overlay" id="pay-modal">
-  <div class="modal-box">
-    <h2>Débloquer ton CV</h2>
-    <div class="modal-price">1000 FCFA = photo de profil · 2000 FCFA = tout (photo + 4 modèles + langues)</div>
-    <div class="pay-line"><span>Wave : <b>77389150</b></span><button class="copy-btn" onclick="copyNum('77389150')">Copier</button></div>
-    <div class="pay-line"><span>Moov Money : <b>67890755</b></span><button class="copy-btn" onclick="copyNum('67890755')">Copier</button></div>
-    <ol class="modal-steps">
-      <li>Envoie 1000 FCFA (photo seule) ou 2000 FCFA (tout débloqué) sur l'un des numéros ci-dessus</li>
-      <li>Envoie la capture d'écran de paiement sur WhatsApp</li>
-      <li>Tu recevras un code à entrer ci-dessous pour débloquer</li>
-    </ol>
-    <a class="wa-btn" href="https://wa.me/22367890755?text=Bonjour%2C%20je%20viens%20de%20payer%20pour%20d%C3%A9bloquer%20un%20mod%C3%A8le%20premium%20du%20g%C3%A9n%C3%A9rateur%20de%20CV%2C%20voici%20ma%20preuve%20de%20paiement." target="_blank">Envoyer ma preuve sur WhatsApp</a>
-    <button class="code-btn" onclick="askCode()">J'ai déjà reçu mon code</button>
-    <button class="close-modal" onclick="closeModal()">Fermer</button>
-  </div>
+CVPro
+
+</a>
+
+
+<nav class="nav-links">
+
+<a href="#accueil">Accueil</a>
+
+<a href="#fonctionnalites">Fonctionnalités</a>
+
+<a href="#tarifs">Tarifs</a>
+
+<a href="#faq">FAQ</a>
+
+</nav>
+
+
+<div class="nav-actions">
+
+<button
+class="btn btn-outline"
+onclick="openBuilder()">
+
+Créer mon CV
+
+</button>
+
+<button
+class="btn btn-primary"
+onclick="openPremium()">
+
+Premium
+
+</button>
+
 </div>
+
+
+<button
+class="mobile-menu"
+onclick="toggleMobileMenu()">
+
+☰
+
+</button>
+
+</div>
+
+</header>
+
+
+<!-- =======================================================
+     PAGE ACCUEIL
+======================================================= -->
+
+<main id="home">
+
+
+<section class="hero" id="accueil">
+
+<div class="container hero-grid">
+
+
+<div>
+
+<div class="hero-badge">
+🇲🇱 Pensé pour le marché francophone africain
+</div>
+
+
+<h1>
+
+Ton CV.
+
+<br>
+
+<strong>Ton avenir.</strong>
+
+<br>
+
+<span>En quelques minutes.</span>
+
+</h1>
+
+
+<p>
+
+Crée facilement un CV professionnel,
+moderne et adapté aux recruteurs,
+directement depuis ton téléphone.
+</p>
+
+
+<div class="hero-buttons">
+
+<button
+class="btn btn-primary"
+onclick="openBuilder()">
+
+✍️ Créer mon CV gratuitement
+
+</button>
+
+
+<button
+class="btn btn-outline"
+onclick="document.getElementById('tarifs').scrollIntoView()">
+
+Voir les tarifs
+
+</button>
+
+</div>
+
+
+<p class="hero-note">
+
+✓ Aucune installation
+&nbsp; • &nbsp;
+✓ Fonctionne sur téléphone
+&nbsp; • &nbsp;
+✓ Sauvegarde automatique
+
+</p>
+
+</div>
+
+
+<div class="hero-card">
+
+<div class="mock-window">
+
+<div class="mock-top">
+
+<span class="dot"></span>
+<span class="dot"></span>
+<span class="dot"></span>
+
+</div>
+
+
+<div class="mock-cv">
+
+<div class="mock-name">
+Aïcha Koné
+</div>
+
+<div class="mock-title">
+CHARGÉE DE PROJET DIGITAL
+</div>
+
+<div class="mock-line short"></div>
+<div class="mock-line"></div>
+
+<div class="mock-section">
+PROFIL
+</div>
+
+<div class="mock-line"></div>
+<div class="mock-line short"></div>
+
+<div class="mock-section">
+EXPÉRIENCE
+</div>
+
+<div class="mock-line"></div>
+<div class="mock-line"></div>
+<div class="mock-line short"></div>
+
+<div class="mock-section">
+COMPÉTENCES
+</div>
+
+<div class="mock-line short"></div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     STATS
+======================================================= -->
+
+<section class="stats">
+
+<div class="container stats-grid">
+
+<div class="stat">
+
+<strong>5 min</strong>
+
+<span>pour créer ton CV</span>
+
+</div>
+
+
+<div class="stat">
+
+<strong>100%</strong>
+
+<span>adapté au mobile</span>
+
+</div>
+
+
+<div class="stat">
+
+<strong>FCFA</strong>
+
+<span>paiement pensé pour l'Afrique</span>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     FONCTIONNALITES
+======================================================= -->
+
+<section
+class="section"
+id="fonctionnalites">
+
+<div class="container">
+
+<div class="section-head">
+
+<div class="eyebrow">
+Pourquoi CVPro ?
+</div>
+
+<h2>
+Tout ce qu'il faut pour un CV professionnel
+</h2>
+
+<p>
+Une expérience simple, rapide et pensée
+pour les utilisateurs francophones.
+</p>
+
+</div>
+
+
+<div class="features">
+
+
+<div class="feature">
+
+<div class="feature-icon">
+⚡
+</div>
+
+<h3>
+Création instantanée
+</h3>
+
+<p>
+Modifie ton CV et vois immédiatement
+le résultat à l'écran.
+</p>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-icon">
+📱
+</div>
+
+<h3>
+Pensé pour le téléphone
+</h3>
+
+<p>
+Pas besoin d'un ordinateur pour créer
+un CV professionnel.
+</p>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-icon">
+🎨
+</div>
+
+<h3>
+Modèles modernes
+</h3>
+
+<p>
+Choisis différents styles selon
+le poste que tu recherches.
+</p>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-icon">
+💾
+</div>
+
+<h3>
+Sauvegarde automatique
+</h3>
+
+<p>
+Ton travail peut être conservé
+sur ton appareil.
+</p>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-icon">
+📄
+</div>
+
+<h3>
+Export PDF
+</h3>
+
+<p>
+Imprime ou enregistre ton CV
+au format PDF.
+</p>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-icon">
+💰
+</div>
+
+<h3>
+Paiement local
+</h3>
+
+<p>
+Architecture préparée pour intégrer
+les solutions de paiement utilisées
+en Afrique de l'Ouest.
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     TARIFS
+======================================================= -->
+
+<section
+class="section"
+id="tarifs">
+
+<div class="container">
+
+<div class="section-head">
+
+<div class="eyebrow">
+Tarifs simples
+</div>
+
+<h2>
+Commence gratuitement
+</h2>
+
+<p>
+Crée ton CV puis passe à Premium
+si tu veux les fonctionnalités avancées.
+</p>
+
+</div>
+
+
+<div class="pricing">
+
+
+<div class="price-card">
+
+<h3>
+Gratuit
+</h3>
+
+<div class="price">
+0 <small>FCFA</small>
+</div>
+
+<ul class="price-list">
+
+<li>✓ Création du CV</li>
+
+<li>✓ Aperçu en direct</li>
+
+<li>✓ Modèle classique</li>
+
+<li>✓ Sauvegarde locale</li>
+
+<li>✓ Impression PDF</li>
+
+</ul>
+
+<button
+class="btn btn-outline full"
+onclick="openBuilder()">
+
+Commencer gratuitement
+
+</button>
+
+</div>
+
+
+<div class="price-card featured">
+
+<div class="price-badge">
+POPULAIRE
+</div>
+
+<h3>
+Premium
+</h3>
+
+<div class="price">
+2 000 <small>FCFA</small>
+</div>
+
+<ul class="price-list">
+
+<li>✓ Tous les modèles</li>
+
+<li>✓ Photo professionnelle</li>
+
+<li>✓ Langues & certifications</li>
+
+<li>✓ Couleurs personnalisées</li>
+
+<li>✓ Sans filigrane</li>
+
+<li>✓ Export professionnel</li>
+
+</ul>
+
+<button
+class="btn btn-primary full"
+onclick="openPremium()">
+
+Débloquer Premium
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     FAQ
+======================================================= -->
+
+<section
+class="section"
+id="faq">
+
+<div class="container">
+
+<div class="section-head">
+
+<div class="eyebrow">
+Questions fréquentes
+</div>
+
+<h2>
+Tu veux savoir comment ça marche ?
+</h2>
+
+</div>
+
+
+<div class="faq">
+
+
+<div class="faq-item">
+
+<div class="faq-question"
+onclick="toggleFAQ(this)">
+
+Est-ce que je peux utiliser CVPro sur mon téléphone ?
+
+<span>+</span>
+
+</div>
+
+<div class="faq-answer">
+
+Oui. L'interface est conçue pour fonctionner
+sur les smartphones Android et les ordinateurs.
+
+</div>
+
+</div>
+
+
+<div class="faq-item">
+
+<div class="faq-question"
+onclick="toggleFAQ(this)">
+
+Est-ce que je dois créer un compte ?
+
+<span>+</span>
+
+</div>
+
+<div class="faq-answer">
+
+Dans cette première version, non.
+Ton brouillon peut être sauvegardé directement
+dans le navigateur de ton appareil.
+
+</div>
+
+</div>
+
+
+<div class="faq-item">
+
+<div class="faq-question"
+onclick="toggleFAQ(this)">
+
+Comment fonctionne Premium ?
+
+<span>+</span>
+
+</div>
+
+<div class="faq-answer">
+
+Tu choisis Premium, tu effectues le paiement
+et, une fois la transaction confirmée par
+le système de paiement connecté, les
+fonctionnalités Premium sont activées.
+
+</div>
+
+</div>
+
+
+<div class="faq-item">
+
+<div class="faq-question"
+onclick="toggleFAQ(this)">
+
+Quels moyens de paiement seront disponibles ?
+
+<span>+</span>
+
+</div>
+
+<div class="faq-answer">
+
+L'architecture est prévue pour intégrer
+les solutions disponibles dans ton marché,
+notamment Orange Money, Moov Money et Wave,
+selon les API et prestataires accessibles.
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     CTA
+======================================================= -->
+
+<section class="final-cta">
+
+<h2>
+Prêt à créer ton CV ?
+</h2>
+
+<p>
+Commence gratuitement et transforme
+tes informations en CV professionnel.
+</p>
+
+<button
+class="btn btn-gold"
+onclick="openBuilder()">
+
+Créer mon CV
+
+</button>
+
+</section>
+
+
+</main>
+
+
+<!-- =======================================================
+     BUILDER
+======================================================= -->
+
+<section
+class="builder"
+id="builder">
+
+
+<!-- EDITOR -->
+
+<aside class="editor">
+
+<div class="eyebrow">
+CVPro — Créateur
+</div>
+
+<h2>
+Construis ton CV
+</h2>
+
+
+<div class="form-group">
+
+<label>
+Nom complet
+</label>
+
+<input
+id="f-name"
+value="Aïcha Koné">
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Poste recherché
+</label>
+
+<input
+id="f-title"
+value="Chargée de projet digital">
+
+</div>
+
+
+<div class="form-grid">
+
+
+<div class="form-group">
+
+<label>
+Email
+</label>
+
+<input
+id="f-email"
+value="aicha.kone@email.com">
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Téléphone
+</label>
+
+<input
+id="f-phone"
+value="+223 67 00 00 00">
+
+</div>
+
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Ville / Pays
+</label>
+
+<input
+id="f-city"
+value="Bamako, Mali">
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Photo de profil
+</label>
+
+<input
+type="file"
+id="f-photo"
+accept="image/*">
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Profil professionnel
+</label>
+
+<textarea
+id="f-summary">Professionnelle organisée et orientée résultats, avec une expérience dans la gestion de projets digitaux et la communication.</textarea>
+
+</div>
+
+
+<div class="editor-section">
+
+<div class="editor-section-title">
+
+<span>
+Compétences
+</span>
+
+</div>
+
+<textarea
+id="f-skills">Gestion de projet, Excel, Communication, Canva, Réseaux sociaux</textarea>
+
+</div>
+
+
+<div class="editor-section">
+
+<div class="editor-section-title">
+
+<span>
+Expériences
+</span>
+
+</div>
+
+
+<div id="experience-list"></div>
+
+
+<button
+class="add-btn"
+onclick="addExperience()">
+
++ Ajouter une expérience
+
+</button>
+
+</div>
+
+
+<div class="editor-section">
+
+<div class="editor-section-title">
+
+<span>
+Langues & certifications
+</span>
+
+</div>
+
+<textarea
+id="f-languages">Français — Courant
+Anglais — Intermédiaire
+Certification Google Digital Skills</textarea>
+
+</div>
+
+
+<div class="editor-section">
+
+<div class="editor-section-title">
+
+<span>
+Modèle
+</span>
+
+</div>
+
+
+<div class="templates">
+
+
+<button
+class="template active"
+data-template="classic">
+
+Classique
+
+</button>
+
+
+<button
+class="template"
+data-template="modern">
+
+Moderne
+
+</button>
+
+
+<button
+class="template premium"
+data-template="sidebar">
+
+Élite
+
+</button>
+
+
+<button
+class="template premium"
+data-template="executive">
+
+Executive
+
+</button>
+
+
+</div>
+
+</div>
+
+
+<div class="premium-panel">
+
+<strong>
+⭐ Passe à CVPro Premium
+</strong>
+
+<p>
+
+Débloque les modèles avancés,
+la photo, les couleurs et le CV
+sans filigrane.
+
+</p>
+
+<button
+class="btn btn-gold full"
+onclick="openPremium()">
+
+2 000 FCFA — Débloquer
+
+</button>
+
+</div>
+
+
+<button
+class="btn btn-primary full"
+style="margin-top:15px"
+onclick="downloadPDF()">
+
+📄 Télécharger mon CV
+
+</button>
+
+
+<button
+class="btn btn-outline full"
+onclick="saveCV()">
+
+💾 Sauvegarder
+
+</button>
+
+
+<button
+class="btn btn-outline full"
+onclick="closeBuilder()">
+
+← Retour au site
+
+</button>
+
+
+</aside>
+
+
+<!-- PREVIEW -->
+
+<div class="preview">
+
+<div
+class="cv-page"
+id="cv-page">
+
+
+<div id="cv-normal-content">
+
+
+<img
+id="cv-photo"
+class="cv-photo">
+
+
+<div class="cv-header">
+
+<h1
+class="cv-name"
+id="p-name">
+Aïcha Koné
+</h1>
+
+<div
+class="cv-title"
+id="p-title">
+Chargée de projet digital
+</div>
+
+
+<div class="cv-contact">
+
+<span id="p-email"></span>
+
+<span id="p-phone"></span>
+
+<span id="p-city"></span>
+
+</div>
+
+</div>
+
+
+<div class="cv-section">
+
+<h3>
+Profil
+</h3>
+
+<div
+class="cv-summary"
+id="p-summary">
+</div>
+
+</div>
+
+
+<div class="cv-section">
+
+<h3>
+Expérience professionnelle
+</h3>
+
+<div
+id="p-experiences">
+</div>
+
+</div>
+
+
+<div class="cv-section">
+
+<h3>
+Compétences
+</h3>
+
+<div
+class="skills"
+id="p-skills">
+</div>
+
+</div>
+
+
+<div class="cv-section">
+
+<h3>
+Langues & certifications
+</h3>
+
+<div
+class="cv-language"
+id="p-languages">
+</div>
+
+</div>
+
+
+</div>
+
+
+<div
+class="watermark"
+id="cv-watermark">
+
+Créé avec CVPro
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     MODAL PREMIUM
+======================================================= -->
+
+<div
+class="modal"
+id="premium-modal">
+
+
+<div class="modal-card">
+
+<h2>
+CVPro Premium
+</h2>
+
+<p>
+Débloque toutes les fonctionnalités
+professionnelles.
+</p>
+
+
+<div class="modal-price">
+
+2 000 FCFA
+
+</div>
+
+
+<div class="payment">
+
+<strong>
+🟠 Orange Money
+</strong>
+
+<small>
+Paiement mobile prévu dans le système.
+</small>
+
+</div>
+
+
+<div class="payment">
+
+<strong>
+🔵 Moov Money
+</strong>
+
+<small>
+Paiement mobile prévu dans le système.
+</small>
+
+</div>
+
+
+<div class="payment">
+
+<strong>
+🟣 Wave
+</strong>
+
+<small>
+Paiement mobile prévu dans le système.
+</small>
+
+</div>
+
+
+<div class="modal-actions">
+
+<button
+class="btn btn-primary full"
+onclick="startPayment()">
+
+Continuer vers le paiement
+
+</button>
+
+
+<button
+class="close-btn"
+onclick="closePremium()">
+
+Annuler
+
+</button>
+
+</div>
+
+
+<p style="
+font-size:10px;
+color:#89938e;
+margin-top:15px;
+line-height:1.5;
+">
+
+La connexion automatique aux paiements
+sera réalisée avec un backend sécurisé.
+Les clés secrètes ne doivent jamais être
+placées dans le code HTML.
+
+</p>
+
+</div>
+
+</div>
+
+
+<!-- =======================================================
+     TOAST
+======================================================= -->
+
+<div
+class="toast"
+id="toast">
+
+CV sauvegardé.
+
+</div>
+
+
+<!-- =======================================================
+     FOOTER
+======================================================= -->
+
+<footer class="footer">
+
+<div class="container footer-grid">
+
+
+<div>
+
+<h3>
+CVPro
+</h3>
+
+<p>
+Une plateforme simple pour aider
+les talents francophones à présenter
+leur parcours professionnel.
+</p>
+
+</div>
+
+
+<div>
+
+<h3>
+Navigation
+</h3>
+
+<p>
+<a href="#accueil">Accueil</a><br>
+
+<a href="#fonctionnalites">
+Fonctionnalités
+</a><br>
+
+<a href="#tarifs">
+Tarifs
+</a>
+
+</p>
+
+</div>
+
+
+<div>
+
+<h3>
+Support
+</h3>
+
+<p>
+
+Questions ?<br>
+
+Contacte-nous lorsque
+le support sera activé.
+
+</p>
+
+</div>
+
+
+</div>
+
+</footer>
+
 
 <script>
-let expCount = 0;
-const colors = {pine:{main:'#2F4B3C',dark:'#1E3329'},navy:{main:'#2A4E6E',dark:'#183454'},gold:{main:'#8A6D3B',dark:'#5C4726'},mono:{main:'#2B2B2B',dark:'#111111'}};
-let currentTpl = 'pine';
-let currentPhoto = null;
-function handlePhotoUpload(event){
-  const file = event.target.files[0];
-  if(!file) return;
-  if(file.size > 3 * 1024 * 1024){ alert("Photo trop lourde (max 3 Mo). Choisis une image plus légère."); return; }
-  const reader = new FileReader();
-  reader.onload = function(e){
-    currentPhoto = e.target.result;
-    const mini = document.getElementById('photo-preview-mini');
-    mini.src = currentPhoto;
-    mini.classList.add('has-img');
-    document.getElementById('remove-photo-btn').classList.add('show');
-    document.getElementById('crop-controls').style.display = 'block';
-    document.getElementById('crop-x').value = 50;
-    document.getElementById('crop-y').value = 50;
-    render();
-  };
-  reader.readAsDataURL(file);
+
+/* =========================================================
+   CVPRO ENGINE
+========================================================= */
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+let experiences = [];
+
+let selectedTemplate = "classic";
+
+let premium =
+    localStorage.getItem("cvpro_premium") === "true";
+
+
+/* =========================================================
+   OUTILS
+========================================================= */
+
+function $(id){
+
+    return document.getElementById(id);
+
 }
-function removePhoto(){
-  currentPhoto = null;
-  document.getElementById('f-photo').value = '';
-  document.getElementById('photo-preview-mini').classList.remove('has-img');
-  document.getElementById('remove-photo-btn').classList.remove('show');
-  document.getElementById('crop-controls').style.display = 'none';
-  render();
+
+
+function get(id){
+
+    return $(id).value;
+
 }
-function applyCrop(){
-  const x = document.getElementById('crop-x').value;
-  const y = document.getElementById('crop-y').value;
-  document.getElementById('p-photo').style.objectPosition = x + '% ' + y + '%';
-  document.getElementById('photo-preview-mini').style.objectPosition = x + '% ' + y + '%';
+
+
+function escapeHTML(value){
+
+    return String(value || "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
 }
-const UNLOCK_CODE_T1 = "CVPHOTO";
-const UNLOCK_CODE_T2 = "CVPRO";
-let pendingTpl = null;
-let pendingTier = 1;
-function tierUnlocked(n){
-  if(n === 1) return localStorage.getItem('tier1_unlocked') === 'true' || localStorage.getItem('tier2_unlocked') === 'true';
-  return localStorage.getItem('tier2_unlocked') === 'true';
+
+
+function toast(message){
+
+    const el = $("toast");
+
+    el.textContent = message;
+
+    el.classList.add("show");
+
+    setTimeout(() => {
+
+        el.classList.remove("show");
+
+    },2500);
+
 }
-function handlePremiumClick(t, tier){
-  if(t && tierUnlocked(2)){ setTpl(t); return; }
-  pendingTpl = t; pendingTier = tier;
-  document.getElementById('pay-modal').classList.add('open');
+
+
+/* =========================================================
+   ACCUEIL / BUILDER
+========================================================= */
+
+function openBuilder(){
+
+    $("home").style.display = "none";
+
+    $("builder").classList.add("active");
+
+    window.scrollTo(0,0);
+
 }
-function closeModal(){ document.getElementById('pay-modal').classList.remove('open'); }
-function copyNum(num){ navigator.clipboard.writeText(num); alert("Numéro copié : " + num); }
-function askCode(){
-  const entered = prompt("Entre le code reçu après vérification de ton paiement :");
-  if(!entered) return;
-  const code = entered.trim().toUpperCase();
-  if(code === UNLOCK_CODE_T2){
-    localStorage.setItem('tier2_unlocked', 'true');
-    localStorage.setItem('tier1_unlocked', 'true');
-    closeModal(); applyUnlocks();
-    if(pendingTpl) setTpl(pendingTpl);
-    alert("Débloqué ! CV Complet activé : photo, tous les modèles, langues & certifications.");
-  } else if(code === UNLOCK_CODE_T1){
-    localStorage.setItem('tier1_unlocked', 'true');
-    closeModal(); applyUnlocks();
-    alert("Débloqué ! Photo de profil activée.");
-  } else { alert("Code incorrect. Vérifie auprès du vendeur."); }
+
+
+function closeBuilder(){
+
+    $("builder").classList.remove("active");
+
+    $("home").style.display = "block";
+
+    window.scrollTo(0,0);
+
 }
-function applyCustomColor(){
-  const hex = document.getElementById('f-customcolor').value;
-  document.documentElement.style.setProperty('--pine', hex);
-  document.documentElement.style.setProperty('--pine-dark', shadeColor(hex, -25));
+
+
+function toggleMobileMenu(){
+
+    const links =
+        document.querySelector(".nav-links");
+
+    if(
+        links.style.display === "flex"
+    ){
+
+        links.style.display = "";
+
+    }else{
+
+        links.style.display = "flex";
+
+        links.style.flexDirection = "column";
+
+        links.style.position = "absolute";
+
+        links.style.top = "70px";
+
+        links.style.left = "0";
+
+        links.style.right = "0";
+
+        links.style.background = "white";
+
+        links.style.padding = "20px";
+
+    }
+
 }
-function shadeColor(hex, percent){
-  let r = parseInt(hex.substring(1,3),16), g = parseInt(hex.substring(3,5),16), b = parseInt(hex.substring(5,7),16);
-  r = Math.max(0, Math.min(255, Math.round(r + (percent/100)*255)));
-  g = Math.max(0, Math.min(255, Math.round(g + (percent/100)*255)));
-  b = Math.max(0, Math.min(255, Math.round(b + (percent/100)*255)));
-  return "#" + [r,g,b].map(x=>x.toString(16).padStart(2,'0')).join('');
-}
-function applyUnlocks(){
-  if(tierUnlocked(1)){
-    document.getElementById('photo-locked-wrap').style.display = 'none';
-    document.getElementById('photo-unlocked-wrap').style.display = 'block';
-    document.getElementById('badge-photo').style.display = 'none';
-    document.getElementById('p-watermark').style.display = 'none';
-  }
-  if(tierUnlocked(2)){
-    document.querySelectorAll('.tpl.locked').forEach(el=>{
-      el.classList.remove('locked');
-      el.innerHTML = el.innerHTML.replace('Doré','Doré ✓').replace('Mono','Mono ✓');
+
+
+/* =========================================================
+   EXPERIENCES
+========================================================= */
+
+function addExperience(
+
+    role = "Chargée de projet digital",
+
+    company = "Agence Kora Média — Bamako",
+
+    dates = "2022 — Aujourd'hui",
+
+    description =
+        "Pilotage de campagnes clients, coordination d'équipe et création de contenu digital."
+
+){
+
+    const id =
+        Date.now() + Math.random();
+
+    experiences.push({
+
+        id,
+
+        role,
+
+        company,
+
+        dates,
+
+        description
+
     });
-    document.getElementById('langues-locked-wrap').style.display = 'none';
-    document.getElementById('f-langues').style.display = 'block';
-    document.getElementById('badge-langues').style.display = 'none';
-    document.getElementById('color-locked-wrap').style.display = 'none';
-    document.getElementById('color-unlocked-wrap').style.display = 'block';
-  }
-  render();
+
+
+    renderExperienceEditor();
+
+    renderCV();
+
 }
-function addExp(role, place, dates, desc){
-  expCount++;
-  const wrap = document.createElement('div');
-  wrap.className = 'exp-block';
-  wrap.innerHTML = `
-    <label>Poste</label><input class="e-role" value="${role||''}" oninput="render()" />
-    <div class="row2">
-      <div><label>Entreprise</label><input class="e-place" value="${place||''}" oninput="render()" /></div>
-      <div><label>Dates</label><input class="e-dates" value="${dates||''}" oninput="render()" /></div>
-    </div>
-    <label>Description</label><textarea class="e-desc" oninput="render()">${desc||''}</textarea>`;
-  document.getElementById('exp-list').appendChild(wrap);
-  render();
+
+
+function removeExperience(id){
+
+    experiences =
+        experiences.filter(
+            e => String(e.id) !== String(id)
+        );
+
+    renderExperienceEditor();
+
+    renderCV();
+
 }
-function setTpl(t){
-  currentTpl = t;
-  document.querySelectorAll('.tpl').forEach(el=>el.classList.remove('active'));
-  document.querySelector(`.tpl[data-t="${t}"]`).classList.add('active');
-  render();
+
+
+function updateExperience(
+    id,
+    field,
+    value
+){
+
+    const experience =
+        experiences.find(
+            e => String(e.id) === String(id)
+        );
+
+    if(!experience)
+        return;
+
+    experience[field] = value;
+
+    renderCV();
+
+    saveDraft(false);
+
 }
-function positionPhoto(){
-  const photoEl = document.getElementById('p-photo');
-  const headerEl = document.getElementById('cv-header');
-  const sidebarEl = document.getElementById('cv-sidebar');
-  if(currentTpl === 'gold'){
-    if(photoEl.parentElement !== sidebarEl){ sidebarEl.insertBefore(photoEl, sidebarEl.firstChild); }
-  } else if(currentTpl === 'mono'){
-    if(photoEl.parentElement !== headerEl){ headerEl.appendChild(photoEl); }
-  } else {
-    if(headerEl.firstChild !== photoEl){ headerEl.insertBefore(photoEl, headerEl.firstChild); }
-  }
+
+
+function renderExperienceEditor(){
+
+    const container =
+        $("experience-list");
+
+    container.innerHTML = "";
+
+
+    experiences.forEach(exp => {
+
+        const div =
+            document.createElement("div");
+
+        div.className = "experience";
+
+
+        div.innerHTML = `
+
+            <div class="form-group">
+
+                <label>
+                    Poste
+                </label>
+
+                <input
+                    value="${escapeHTML(exp.role)}"
+                    oninput="
+                    updateExperience(
+                        '${exp.id}',
+                        'role',
+                        this.value
+                    )">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Entreprise
+                </label>
+
+                <input
+                    value="${escapeHTML(exp.company)}"
+                    oninput="
+                    updateExperience(
+                        '${exp.id}',
+                        'company',
+                        this.value
+                    )">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Dates
+                </label>
+
+                <input
+                    value="${escapeHTML(exp.dates)}"
+                    oninput="
+                    updateExperience(
+                        '${exp.id}',
+                        'dates',
+                        this.value
+                    )">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Description
+                </label>
+
+                <textarea
+                    oninput="
+                    updateExperience(
+                        '${exp.id}',
+                        'description',
+                        this.value
+                    )">${escapeHTML(exp.description)}</textarea>
+
+            </div>
+
+
+            <button
+                class="experience-remove"
+                onclick="
+                removeExperience('${exp.id}')">
+
+                Supprimer cette expérience
+
+            </button>
+
+        `;
+
+
+        container.appendChild(div);
+
+    });
+
 }
-function saveDraft(){
-  const exps = Array.from(document.querySelectorAll('.exp-block')).map(b=>({
-    role: b.querySelector('.e-role').value,
-    place: b.querySelector('.e-place').value,
-    dates: b.querySelector('.e-dates').value,
-    desc: b.querySelector('.e-desc').value
-  }));
-  const draft = {
-    name: document.getElementById('f-name').value,
-    title: document.getElementById('f-title').value,
-    email: document.getElementById('f-email').value,
-    phone: document.getElementById('f-phone').value,
-    city: document.getElementById('f-city').value,
-    summary: document.getElementById('f-summary').value,
-    skills: document.getElementById('f-skills').value,
-    langues: document.getElementById('f-langues').value,
-    tpl: currentTpl,
-    experiences: exps
-  };
-  try{ localStorage.setItem('cv_draft', JSON.stringify(draft)); }catch(e){}
+
+
+/* =========================================================
+   CV RENDER
+========================================================= */
+
+function renderCV(){
+
+    $("p-name").textContent =
+        get("f-name");
+
+    $("p-title").textContent =
+        get("f-title");
+
+    $("p-email").textContent =
+        get("f-email");
+
+    $("p-phone").textContent =
+        get("f-phone");
+
+    $("p-city").textContent =
+        get("f-city");
+
+    $("p-summary").textContent =
+        get("f-summary");
+
+
+    /* EXPERIENCES */
+
+    const container =
+        $("p-experiences");
+
+    container.innerHTML = "";
+
+
+    experiences.forEach(exp => {
+
+        if(
+            !exp.role &&
+            !exp.company
+        )
+            return;
+
+
+        const item =
+            document.createElement("div");
+
+        item.className = "cv-exp";
+
+
+        item.innerHTML = `
+
+            <div class="cv-exp-head">
+
+                <div class="cv-role">
+                    ${escapeHTML(exp.role)}
+                </div>
+
+                <div class="cv-date">
+                    ${escapeHTML(exp.dates)}
+                </div>
+
+            </div>
+
+
+            <div class="cv-company">
+                ${escapeHTML(exp.company)}
+            </div>
+
+
+            <div class="cv-description">
+                ${escapeHTML(exp.description)}
+            </div>
+
+        `;
+
+
+        container.appendChild(item);
+
+    });
+
+
+    /* COMPETENCES */
+
+    const skills =
+        $("p-skills");
+
+    skills.innerHTML = "";
+
+
+    get("f-skills")
+        .split(",")
+        .map(x => x.trim())
+        .filter(Boolean)
+        .forEach(skill => {
+
+            const el =
+                document.createElement("span");
+
+            el.className = "skill";
+
+            el.textContent = skill;
+
+            skills.appendChild(el);
+
+        });
+
+
+    $("p-languages").textContent =
+        get("f-languages");
+
+
+    applyTemplate();
+
+    saveDraft(false);
+
 }
-function loadDraft(){
-  const raw = localStorage.getItem('cv_draft');
-  if(!raw) return false;
-  try{
-    const d = JSON.parse(raw);
-    document.getElementById('f-name').value = d.name || '';
-    document.getElementById('f-title').value = d.title || '';
-    document.getElementById('f-email').value = d.email || '';
-    document.getElementById('f-phone').value = d.phone || '';
-    document.getElementById('f-city').value = d.city || '';
-    document.getElementById('f-summary').value = d.summary || '';
-    document.getElementById('f-skills').value = d.skills || '';
-    document.getElementById('f-langues').value = d.langues || '';
-    document.getElementById('exp-list').innerHTML = '';
-    expCount = 0;
-    (d.experiences || []).forEach(e => addExp(e.role, e.place, e.dates, e.desc));
-    if(d.tpl){ currentTpl = d.tpl; }
-    return true;
-  }catch(e){ return false; }
-}
-function render(){
-  const c = colors[currentTpl] || colors.pine;
-  document.documentElement.style.setProperty('--pine', c.main);
-  document.documentElement.style.setProperty('--pine-dark', c.dark);
-  const pageEl = document.getElementById('page');
-  const useSidebar = (currentTpl === 'gold');
-  const useBanner = (currentTpl === 'mono');
-  pageEl.classList.toggle('premium-look', useSidebar);
-  pageEl.classList.toggle('banner-look', useBanner);
-  positionPhoto();
-  document.getElementById('p-name').textContent = document.getElementById('f-name').value;
-  document.getElementById('p-title').textContent = document.getElementById('f-title').value;
-  document.getElementById('p-contact').innerHTML = `<span>${document.getElementById('f-email').value}</span><span>${document.getElementById('f-phone').value}</span><span>${document.getElementById('f-city').value}</span>`;
-  document.getElementById('p-summary').textContent = document.getElementById('f-summary').value;
-  const photoEl = document.getElementById('p-photo');
-  if(currentPhoto){ photoEl.src = currentPhoto; photoEl.classList.add('has-img'); }
-  else { photoEl.classList.remove('has-img'); }
-  const expHtml = Array.from(document.querySelectorAll('.exp-block')).map(b=>{
-    const role = b.querySelector('.e-role').value, place = b.querySelector('.e-place').value, dates = b.querySelector('.e-dates').value, desc = b.querySelector('.e-desc').value;
-    if(!role && !place) return '';
-    return `<div class="exp-item"><div class="exp-top"><span>${role}</span><span class="exp-dates">${dates}</span></div><div class="exp-place">${place}</div><div>${desc}</div></div>`;
-  }).join('');
-  document.getElementById('p-exp').innerHTML = expHtml;
-  const skills = document.getElementById('f-skills').value.split(',').map(s=>s.trim()).filter(Boolean);
-  const skillsHtml = skills.map(s=>`<span class="skill-pill">${s}</span>`).join('');
-  document.getElementById('skills-block').style.display = useSidebar ? 'none' : 'block';
-  document.getElementById('p-skills').innerHTML = skillsHtml;
-  document.getElementById('p-skills-side').innerHTML = skillsHtml;
-  const languesOn = tierUnlocked(2);
-  document.getElementById('langues-block').style.display = (languesOn && !useSidebar) ? 'block' : 'none';
-  document.getElementById('side-langues-title').style.display = (languesOn && useSidebar) ? 'block' : 'none';
-  document.getElementById('p-langues-side').style.display = (languesOn && useSidebar) ? 'block' : 'none';
-  if(languesOn){
-    document.getElementById('p-langues').textContent = document.getElementById('f-langues').value;
-    document.getElementById('p-langues-side').textContent = document.getElementById('f-langues').value;
-  }
-  saveDraft();
-}
-['f-name','f-title','f-email','f-phone','f-city','f-summary','f-skills'].forEach(id=>{
-  document.getElementById(id).addEventListener('input', render);
+
+
+/* =========================================================
+   TEMPLATES
+========================================================= */
+
+document
+.querySelectorAll(".template")
+.forEach(button => {
+
+    button.addEventListener(
+        "click",
+        function(){
+
+            const template =
+                this.dataset.template;
+
+
+            if(
+                (
+                    template === "sidebar" ||
+                    template === "executive"
+                ) &&
+                !premium
+            ){
+
+                openPremium();
+
+                return;
+
+            }
+
+
+            selectedTemplate =
+                template;
+
+
+            renderCV();
+
+        }
+    );
+
 });
-const hadDraft = loadDraft();
-if(!hadDraft){
-  addExp('Chargée de projet digital', 'Agence Kora Média — Bamako', '2022 — Aujourd\'hui', 'Pilotage de 6 campagnes clients simultanées, coordination d\'une équipe de 4 personnes, +30% de satisfaction client.');
-  addExp('Assistante marketing', 'Nexa Group — Bamako', '2020 — 2022', 'Gestion des réseaux sociaux et création de contenu pour 3 marques.');
+
+
+function applyTemplate(){
+
+    const page =
+        $("cv-page");
+
+    page.classList.remove(
+        "modern",
+        "sidebar"
+    );
+
+
+    if(
+        selectedTemplate === "modern"
+    ){
+
+        page.classList.add("modern");
+
+    }
+
+
+    if(
+        selectedTemplate === "sidebar"
+    ){
+
+        page.classList.add("sidebar");
+
+        buildSidebar();
+
+    }else{
+
+        removeSidebar();
+
+    }
+
+
+    if(
+        selectedTemplate === "executive"
+    ){
+
+        page.style.borderTop =
+            "8px solid var(--gold)";
+
+    }else{
+
+        page.style.borderTop = "";
+
+    }
+
+
+    document
+    .querySelectorAll(".template")
+    .forEach(btn => {
+
+        btn.classList.toggle(
+            "active",
+            btn.dataset.template ===
+                selectedTemplate
+        );
+
+    });
+
 }
-applyUnlocks();
-render();
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+function buildSidebar(){
+
+    const content =
+        $("cv-normal-content");
+
+
+    if(
+        content.dataset.sidebar === "true"
+    )
+        return;
+
+
+    const original =
+        content.innerHTML;
+
+
+    content.dataset.original =
+        original;
+
+    content.dataset.sidebar =
+        "true";
+
+
+    content.innerHTML = `
+
+        <div class="sidebar-left">
+
+            <img
+                id="sidebar-photo"
+                class="cv-photo">
+
+            <h4>
+                Contact
+            </h4>
+
+            <div
+                style="
+                font-size:10px;
+                line-height:1.8">
+
+                ${escapeHTML(get("f-email"))}
+                <br>
+
+                ${escapeHTML(get("f-phone"))}
+                <br>
+
+                ${escapeHTML(get("f-city"))}
+
+            </div>
+
+
+            <h4>
+                Compétences
+            </h4>
+
+            <div
+                id="sidebar-skills">
+            </div>
+
+        </div>
+
+
+        <div class="sidebar-right">
+
+            ${original}
+
+        </div>
+
+    `;
+
+
+    const skills =
+        $("sidebar-skills");
+
+
+    get("f-skills")
+    .split(",")
+    .map(x=>x.trim())
+    .filter(Boolean)
+    .forEach(skill => {
+
+        const span =
+            document.createElement("span");
+
+        span.className =
+            "skill";
+
+        span.textContent =
+            skill;
+
+        skills.appendChild(span);
+
+    });
+
+
+    updateSidebarPhoto();
+
+}
+
+
+function removeSidebar(){
+
+    const content =
+        $("cv-normal-content");
+
+
+    if(
+        content.dataset.sidebar === "true"
+    ){
+
+        content.innerHTML =
+            content.dataset.original;
+
+        content.dataset.sidebar =
+            "false";
+
+    }
+
+}
+
+
+function updateSidebarPhoto(){
+
+    const original =
+        $("cv-photo");
+
+    const sidebar =
+        $("sidebar-photo");
+
+
+    if(
+        original &&
+        sidebar &&
+        original.src
+    ){
+
+        sidebar.src =
+            original.src;
+
+        sidebar.classList.add("show");
+
+    }
+
+}
+
+
+/* =========================================================
+   PHOTO
+========================================================= */
+
+$("f-photo")
+.addEventListener(
+    "change",
+    function(event){
+
+        if(!premium){
+
+            openPremium();
+
+            this.value = "";
+
+            return;
+
+        }
+
+
+        const file =
+            event.target.files[0];
+
+
+        if(!file)
+            return;
+
+
+        if(
+            file.size >
+            4 * 1024 * 1024
+        ){
+
+            alert(
+                "La photo doit faire moins de 4 Mo."
+            );
+
+            return;
+
+        }
+
+
+        const reader =
+            new FileReader();
+
+
+        reader.onload =
+            function(e){
+
+                $("cv-photo").src =
+                    e.target.result;
+
+                $("cv-photo")
+                    .classList
+                    .add("show");
+
+
+                try{
+
+                    localStorage.setItem(
+                        "cvpro_photo",
+                        e.target.result
+                    );
+
+                }catch(error){}
+
+
+                updateSidebarPhoto();
+
+            };
+
+
+        reader.readAsDataURL(file);
+
+    }
+);
+
+
+/* =========================================================
+   CHAMPS
+========================================================= */
+
+[
+    "f-name",
+    "f-title",
+    "f-email",
+    "f-phone",
+    "f-city",
+    "f-summary",
+    "f-skills",
+    "f-languages"
+]
+.forEach(id => {
+
+    $(id)
+    .addEventListener(
+        "input",
+        renderCV
+    );
+
+});
+
+
+/* =========================================================
+   SAUVEGARDE
+========================================================= */
+
+function saveDraft(showToast=true){
+
+    const data = {
+
+        name:get("f-name"),
+
+        title:get("f-title"),
+
+        email:get("f-email"),
+
+        phone:get("f-phone"),
+
+        city:get("f-city"),
+
+        summary:get("f-summary"),
+
+        skills:get("f-skills"),
+
+        languages:get("f-languages"),
+
+        experiences:experiences,
+
+        template:selectedTemplate
+
+    };
+
+
+    try{
+
+        localStorage.setItem(
+            "cvpro_draft",
+            JSON.stringify(data)
+        );
+
+
+        if(showToast)
+            toast("CV sauvegardé ✓");
+
+    }catch(error){}
+
+}
+
+
+function saveCV(){
+
+    saveDraft(true);
+
+}
+
+
+function loadDraft(){
+
+    try{
+
+        const raw =
+            localStorage.getItem(
+                "cvpro_draft"
+            );
+
+
+        if(!raw)
+            return;
+
+
+        const data =
+            JSON.parse(raw);
+
+
+        if(data.name !== undefined)
+            $("f-name").value =
+                data.name;
+
+
+        if(data.title !== undefined)
+            $("f-title").value =
+                data.title;
+
+
+        if(data.email !== undefined)
+            $("f-email").value =
+                data.email;
+
+
+        if(data.phone !== undefined)
+            $("f-phone").value =
+                data.phone;
+
+
+        if(data.city !== undefined)
+            $("f-city").value =
+                data.city;
+
+
+        if(data.summary !== undefined)
+            $("f-summary").value =
+                data.summary;
+
+
+        if(data.skills !== undefined)
+            $("f-skills").value =
+                data.skills;
+
+
+        if(data.languages !== undefined)
+            $("f-languages").value =
+                data.languages;
+
+
+        experiences =
+            data.experiences || [];
+
+
+        selectedTemplate =
+            data.template ||
+            "classic";
+
+
+    }catch(error){}
+
+}
+
+
+/* =========================================================
+   PHOTO SAUVEGARDEE
+========================================================= */
+
+function loadPhoto(){
+
+    try{
+
+        const photo =
+            localStorage.getItem(
+                "cvpro_photo"
+            );
+
+
+        if(photo){
+
+            $("cv-photo").src =
+                photo;
+
+            $("cv-photo")
+                .classList
+                .add("show");
+
+        }
+
+    }catch(error){}
+
+}
+
+
+/* =========================================================
+   PREMIUM
+========================================================= */
+
+function openPremium(){
+
+    $("premium-modal")
+        .classList
+        .add("open");
+
+}
+
+
+function closePremium(){
+
+    $("premium-modal")
+        .classList
+        .remove("open");
+
+}
+
+
+/* =========================================================
+   PAIEMENT
+========================================================= */
+
+function startPayment(){
+
+    /*
+    ==========================================================
+    IMPORTANT
+
+    CETTE FONCTION EST LE POINT D'ENTREE DU PAIEMENT.
+
+    Plus tard elle pourra appeler ton backend :
+
+        POST /api/payment/create
+
+    avec par exemple :
+
+        {
+            amount: 2000,
+            currency: "XOF",
+            product: "cvpro-premium"
+        }
+
+    Le backend communiquera avec le prestataire.
+
+    NE JAMAIS mettre une clé secrète ici.
+
+    ==========================================================
+    */
+
+
+    alert(
+        "Le module de paiement est prêt à être connecté à ton prestataire de paiement."
+    );
+
+}
+
+
+/*
+=============================================================
+MODE TEST PREMIUM
+
+À UTILISER UNIQUEMENT POUR TESTER LE DESIGN.
+
+NE PAS LAISSER COMME SYSTÈME DE PAIEMENT RÉEL.
+=============================================================
+*/
+
+function activatePremiumForTest(){
+
+    premium = true;
+
+    localStorage.setItem(
+        "cvpro_premium",
+        "true"
+    );
+
+    closePremium();
+
+    renderCV();
+
+    toast(
+        "Mode Premium activé"
+    );
+
+}
+
+
+/* =========================================================
+   TELECHARGEMENT / IMPRESSION
+========================================================= */
+
+function downloadPDF(){
+
+    /*
+       Le navigateur permet l'impression
+       vers PDF sans bibliothèque externe.
+    */
+
+    window.print();
+
+}
+
+
+/* =========================================================
+   FAQ
+========================================================= */
+
+function toggleFAQ(element){
+
+    element
+        .parentElement
+        .classList
+        .toggle("open");
+
+}
+
+
+/* =========================================================
+   INITIALISATION
+========================================================= */
+
+loadDraft();
+
+loadPhoto();
+
+
+if(experiences.length === 0){
+
+    addExperience(
+
+        "Chargée de projet digital",
+
+        "Agence Kora Média — Bamako",
+
+        "2022 — Aujourd'hui",
+
+        "Pilotage de campagnes clients, coordination d'équipe et création de contenu digital."
+
+    );
+
+
+    addExperience(
+
+        "Assistante marketing",
+
+        "Nexa Group — Bamako",
+
+        "2020 — 2022",
+
+        "Gestion des réseaux sociaux et création de contenu pour plusieurs marques."
+
+    );
+
+}else{
+
+    renderExperienceEditor();
+
+}
+
+
+renderCV();
+
+
+/* =========================================================
+   AUTO-SAVE
+========================================================= */
+
+setInterval(
+    () => saveDraft(false),
+    10000
+);
+
+
+/* =========================================================
+   FERMETURE MODAL EN CLIQUANT DEHORS
+========================================================= */
+
+$("premium-modal")
+.addEventListener(
+    "click",
+    function(e){
+
+        if(
+            e.target === this
+        ){
+
+            closePremium();
+
+        }
+
+    }
+);
+
 </script>
+
 </body>
   </html>
