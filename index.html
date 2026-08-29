@@ -1,4342 +1,1578 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#173f35">
+<title>CV Pro Afrique — CV & Lettre de motivation</title>
 
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2C6CGMBX63"></script>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-2C6CGMBX63');
+</script>
 
-<meta name="theme-color" content="#123c32">
-
-<meta name="description"
-      content="CVPro — Crée ton CV professionnel rapidement depuis ton téléphone.">
-
-<title>CVPro — Crée ton CV professionnel</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
-      rel="stylesheet">
-
+<!-- Google AdSense : garde ce script si ton compte est approuvé -->
+<script async
+src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6364128969715295"
+crossorigin="anonymous"></script>
 
 <style>
-
-/* =========================================================
-   CVPRO
-   DESIGN SYSTEM
-========================================================= */
-
 :root{
-
-    --primary:#123c32;
-    --primary-light:#286454;
-    --primary-soft:#eaf3ef;
-
-    --gold:#c49a55;
-    --gold-soft:#f6ead6;
-
-    --background:#f5f7f5;
-    --white:#ffffff;
-
-    --text:#17201d;
-    --muted:#6e7974;
-
-    --border:#dfe5e1;
-
-    --success:#25845c;
-    --danger:#c94b45;
-
-    --shadow:
-        0 15px 45px rgba(16,40,32,.10);
-
-    --radius:12px;
+  --green:#173f35;
+  --green2:#245c4c;
+  --gold:#c59a55;
+  --cream:#f5f2ea;
+  --white:#fff;
+  --text:#18221e;
+  --muted:#707a75;
+  --line:#ddd8ca;
+  --danger:#b33d35;
 }
 
-
-*{
-    box-sizing:border-box;
-}
-
-
-html{
-    scroll-behavior:smooth;
-}
-
+*{box-sizing:border-box}
 
 body{
-
-    margin:0;
-
-    font-family:"DM Sans",sans-serif;
-
-    background:var(--background);
-
-    color:var(--text);
-
-    line-height:1.5;
+  margin:0;
+  background:var(--cream);
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
 }
 
+button,input,textarea,select{font:inherit}
 
-button,
-input,
-textarea,
-select{
+button{cursor:pointer}
 
-    font-family:inherit;
+header{
+  background:linear-gradient(135deg,var(--green),#28604f);
+  color:white;
+  padding:18px 24px;
+  position:sticky;
+  top:0;
+  z-index:20;
+  box-shadow:0 4px 18px #0002;
 }
-
-
-button{
-
-    cursor:pointer;
-}
-
-
-img{
-
-    max-width:100%;
-}
-
-
-/* =========================================================
-   UTILITIES
-========================================================= */
-
-.container{
-
-    width:min(1180px,calc(100% - 32px));
-
-    margin:auto;
-}
-
-
-.hidden{
-
-    display:none!important;
-}
-
-
-/* =========================================================
-   HEADER
-========================================================= */
-
-.header{
-
-    position:sticky;
-
-    top:0;
-
-    z-index:100;
-
-    background:rgba(255,255,255,.96);
-
-    backdrop-filter:blur(12px);
-
-    border-bottom:1px solid var(--border);
-}
-
 
 .nav{
-
-    height:70px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
+  max-width:1250px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
 }
-
 
 .logo{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:10px;
-
-    color:var(--primary);
-
-    font-weight:700;
-
-    font-size:20px;
-
-    text-decoration:none;
+  font-size:21px;
+  font-weight:800;
 }
 
+.logo span{color:#e7c27e}
 
-.logo-mark{
-
-    width:38px;
-
-    height:38px;
-
-    border-radius:10px;
-
-    background:var(--primary);
-
-    color:white;
-
-    display:grid;
-
-    place-items:center;
-
-    font-size:13px;
-
-    font-weight:700;
+.badge{
+  background:#ffffff20;
+  border:1px solid #ffffff35;
+  border-radius:20px;
+  padding:7px 12px;
+  font-size:12px;
 }
 
-
-.nav-links{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:25px;
+.app{
+  max-width:1250px;
+  margin:auto;
+  padding:25px 16px 60px;
 }
 
-
-.nav-links a{
-
-    text-decoration:none;
-
-    color:#52605a;
-
-    font-size:14px;
-
-    font-weight:600;
+.tabs{
+  display:flex;
+  gap:8px;
+  margin-bottom:20px;
+  flex-wrap:wrap;
 }
 
-
-.nav-links a:hover{
-
-    color:var(--primary);
+.tab{
+  border:1px solid var(--line);
+  background:white;
+  color:var(--green);
+  padding:11px 15px;
+  border-radius:8px;
+  font-weight:700;
 }
 
-
-.nav-actions{
-
-    display:flex;
-
-    gap:8px;
-
-    align-items:center;
+.tab.active{
+  background:var(--green);
+  color:white;
 }
 
-
-.btn{
-
-    border:0;
-
-    border-radius:8px;
-
-    padding:11px 16px;
-
-    font-weight:700;
-
-    font-size:13px;
-
-    transition:.2s;
+.layout{
+  display:grid;
+  grid-template-columns:400px 1fr;
+  gap:20px;
 }
 
-
-.btn-primary{
-
-    background:var(--primary);
-
-    color:white;
+.card{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:20px;
+  box-shadow:0 6px 22px #17201b0b;
 }
 
-
-.btn-primary:hover{
-
-    background:var(--primary-light);
-
-    transform:translateY(-1px);
+.panel h2{
+  margin:0 0 15px;
+  color:var(--green);
 }
-
-
-.btn-outline{
-
-    background:white;
-
-    color:var(--primary);
-
-    border:1px solid var(--border);
-}
-
-
-.btn-gold{
-
-    background:var(--gold);
-
-    color:white;
-}
-
-
-.mobile-menu{
-
-    display:none;
-
-    background:none;
-
-    border:0;
-
-    font-size:24px;
-}
-
-
-/* =========================================================
-   HERO
-========================================================= */
-
-.hero{
-
-    padding:85px 0 70px;
-
-    background:
-
-      radial-gradient(
-        circle at 80% 20%,
-        rgba(196,154,85,.14),
-        transparent 30%
-      ),
-
-      linear-gradient(
-        180deg,
-        #ffffff,
-        #f5f7f5
-      );
-}
-
-
-.hero-grid{
-
-    display:grid;
-
-    grid-template-columns:1.05fr .95fr;
-
-    gap:65px;
-
-    align-items:center;
-}
-
-
-.hero-badge{
-
-    display:inline-flex;
-
-    padding:7px 11px;
-
-    border-radius:30px;
-
-    background:var(--primary-soft);
-
-    color:var(--primary);
-
-    font-size:11px;
-
-    font-weight:700;
-
-    margin-bottom:17px;
-}
-
-
-.hero h1{
-
-    font-family:"Playfair Display",serif;
-
-    font-size:clamp(40px,5vw,64px);
-
-    line-height:1.05;
-
-    color:var(--primary);
-
-    margin:0 0 20px;
-}
-
-
-.hero h1 span{
-
-    color:var(--gold);
-}
-
-
-.hero p{
-
-    font-size:17px;
-
-    color:var(--muted);
-
-    max-width:590px;
-
-    line-height:1.7;
-}
-
-
-.hero-buttons{
-
-    display:flex;
-
-    gap:10px;
-
-    margin-top:28px;
-
-    flex-wrap:wrap;
-}
-
-
-.hero-note{
-
-    margin-top:15px;
-
-    font-size:11px!important;
-
-    color:#88928d!important;
-}
-
-
-/* HERO MOCKUP */
-
-.hero-card{
-
-    background:white;
-
-    border-radius:18px;
-
-    box-shadow:var(--shadow);
-
-    padding:22px;
-
-    transform:rotate(1deg);
-}
-
-
-.mock-window{
-
-    border:1px solid var(--border);
-
-    border-radius:12px;
-
-    overflow:hidden;
-}
-
-
-.mock-top{
-
-    height:35px;
-
-    background:#f4f5f3;
-
-    border-bottom:1px solid var(--border);
-
-    display:flex;
-
-    align-items:center;
-
-    gap:6px;
-
-    padding:0 12px;
-}
-
-
-.dot{
-
-    width:7px;
-
-    height:7px;
-
-    border-radius:50%;
-
-    background:#bbc4bf;
-}
-
-
-.mock-cv{
-
-    padding:30px;
-
-    min-height:390px;
-
-    background:white;
-}
-
-
-.mock-name{
-
-    font-family:"Playfair Display",serif;
-
-    color:var(--primary);
-
-    font-size:25px;
-
-    font-weight:700;
-}
-
-
-.mock-line{
-
-    height:7px;
-
-    background:#e8ece9;
-
-    margin:10px 0;
-
-    border-radius:5px;
-}
-
-
-.mock-line.short{
-
-    width:55%;
-}
-
-
-.mock-title{
-
-    color:var(--primary-light);
-
-    font-size:11px;
-
-    font-weight:700;
-}
-
-
-.mock-section{
-
-    margin-top:25px;
-
-    font-family:"Playfair Display",serif;
-
-    color:var(--primary);
-
-    font-size:12px;
-
-    font-weight:700;
-}
-
-
-/* =========================================================
-   STATS
-========================================================= */
-
-.stats{
-
-    background:var(--primary);
-
-    color:white;
-
-    padding:25px 0;
-}
-
-
-.stats-grid{
-
-    display:grid;
-
-    grid-template-columns:repeat(3,1fr);
-
-    text-align:center;
-}
-
-
-.stat strong{
-
-    font-size:25px;
-
-    display:block;
-}
-
-
-.stat span{
-
-    font-size:11px;
-
-    opacity:.75;
-}
-
-
-/* =========================================================
-   SECTIONS
-========================================================= */
-
-.section{
-
-    padding:80px 0;
-}
-
-
-.section-head{
-
-    text-align:center;
-
-    max-width:700px;
-
-    margin:0 auto 45px;
-}
-
-
-.section-head .eyebrow{
-
-    color:var(--primary-light);
-
-    text-transform:uppercase;
-
-    font-size:11px;
-
-    letter-spacing:.15em;
-
-    font-weight:700;
-}
-
-
-.section-head h2{
-
-    font-family:"Playfair Display",serif;
-
-    color:var(--primary);
-
-    font-size:38px;
-
-    margin:8px 0 12px;
-}
-
-
-.section-head p{
-
-    color:var(--muted);
-
-    font-size:15px;
-}
-
-
-/* =========================================================
-   FEATURES
-========================================================= */
-
-.features{
-
-    display:grid;
-
-    grid-template-columns:repeat(3,1fr);
-
-    gap:18px;
-}
-
-
-.feature{
-
-    background:white;
-
-    border:1px solid var(--border);
-
-    border-radius:var(--radius);
-
-    padding:25px;
-}
-
-
-.feature-icon{
-
-    width:43px;
-
-    height:43px;
-
-    background:var(--primary-soft);
-
-    color:var(--primary);
-
-    border-radius:10px;
-
-    display:grid;
-
-    place-items:center;
-
-    margin-bottom:16px;
-
-    font-size:20px;
-}
-
-
-.feature h3{
-
-    margin:0 0 7px;
-
-    color:var(--primary);
-
-    font-size:16px;
-}
-
-
-.feature p{
-
-    color:var(--muted);
-
-    font-size:13px;
-
-    margin:0;
-}
-
-
-/* =========================================================
-   PRICING
-========================================================= */
-
-.pricing{
-
-    display:grid;
-
-    grid-template-columns:repeat(2,1fr);
-
-    gap:20px;
-
-    max-width:850px;
-
-    margin:auto;
-}
-
-
-.price-card{
-
-    background:white;
-
-    border:1px solid var(--border);
-
-    border-radius:15px;
-
-    padding:30px;
-
-    position:relative;
-}
-
-
-.price-card.featured{
-
-    border:2px solid var(--primary);
-
-    box-shadow:var(--shadow);
-}
-
-
-.price-badge{
-
-    position:absolute;
-
-    right:20px;
-
-    top:20px;
-
-    background:var(--gold);
-
-    color:white;
-
-    font-size:9px;
-
-    font-weight:700;
-
-    padding:5px 8px;
-
-    border-radius:20px;
-}
-
-
-.price-card h3{
-
-    color:var(--primary);
-
-    font-size:19px;
-}
-
-
-.price{
-
-    font-family:"Playfair Display",serif;
-
-    font-size:38px;
-
-    color:var(--primary);
-
-    margin:15px 0;
-}
-
-
-.price small{
-
-    font-family:"DM Sans",sans-serif;
-
-    font-size:12px;
-
-    color:var(--muted);
-}
-
-
-.price-list{
-
-    list-style:none;
-
-    padding:0;
-
-    margin:20px 0;
-}
-
-
-.price-list li{
-
-    margin:10px 0;
-
-    font-size:13px;
-
-    color:#52605a;
-}
-
-
-/* =========================================================
-   APP / BUILDER
-========================================================= */
-
-.builder{
-
-    display:none;
-
-    grid-template-columns:390px 1fr;
-
-    min-height:calc(100vh - 70px);
-}
-
-
-.builder.active{
-
-    display:grid;
-}
-
-
-.editor{
-
-    background:white;
-
-    border-right:1px solid var(--border);
-
-    padding:25px;
-
-    height:calc(100vh - 70px);
-
-    overflow-y:auto;
-
-    position:sticky;
-
-    top:70px;
-}
-
-
-.editor h2{
-
-    font-family:"Playfair Display",serif;
-
-    color:var(--primary);
-
-    margin:5px 0 20px;
-}
-
-
-.eyebrow{
-
-    color:var(--primary-light);
-
-    font-size:10px;
-
-    letter-spacing:.15em;
-
-    font-weight:700;
-
-    text-transform:uppercase;
-}
-
-
-.form-group{
-
-    margin-bottom:15px;
-}
-
 
 label{
-
-    display:block;
-
-    font-size:11px;
-
-    color:#59655f;
-
-    font-weight:700;
-
-    margin-bottom:6px;
+  display:block;
+  margin:13px 0 6px;
+  font-size:12px;
+  font-weight:700;
+  color:#58635d;
 }
 
-
-input,
-textarea,
-select{
-
-    width:100%;
-
-    border:1px solid var(--border);
-
-    border-radius:7px;
-
-    background:#fbfcfa;
-
-    padding:10px 11px;
-
-    color:var(--text);
-
-    outline:none;
-
-    font-size:13px;
+input,textarea,select{
+  width:100%;
+  border:1px solid var(--line);
+  border-radius:7px;
+  padding:10px;
+  background:#fcfbf8;
+  color:var(--text);
 }
-
-
-input:focus,
-textarea:focus,
-select:focus{
-
-    border-color:var(--primary-light);
-
-    box-shadow:0 0 0 3px rgba(40,100,84,.08);
-}
-
 
 textarea{
-
-    resize:vertical;
-
-    min-height:75px;
+  min-height:85px;
+  resize:vertical;
 }
 
-
-.form-grid{
-
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    gap:9px;
+input:focus,textarea:focus,select:focus{
+  outline:2px solid #245c4c33;
+  border-color:var(--green2);
 }
 
-
-.editor-section{
-
-    border-top:1px solid var(--border);
-
-    padding-top:17px;
-
-    margin-top:18px;
+.row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:9px;
 }
 
-
-.editor-section-title{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    margin-bottom:12px;
-
-    font-weight:700;
-
-    font-size:13px;
+.section{
+  border-top:1px solid var(--line);
+  margin-top:18px;
+  padding-top:15px;
 }
 
+.btn{
+  border:0;
+  border-radius:7px;
+  padding:11px 14px;
+  font-weight:700;
+}
+
+.btn-primary{
+  background:var(--green);
+  color:white;
+}
+
+.btn-secondary{
+  background:#eef2ef;
+  color:var(--green);
+}
+
+.btn-gold{
+  background:var(--gold);
+  color:white;
+}
+
+.btn-danger{
+  background:#f8e8e6;
+  color:var(--danger);
+}
+
+.full{width:100%}
 
 .experience{
-
-    border-left:3px solid #dfe9e4;
-
-    padding-left:12px;
-
-    margin-bottom:15px;
+  border-left:3px solid var(--green);
+  padding-left:12px;
+  margin:12px 0;
 }
 
-
-.experience-remove{
-
-    border:0;
-
-    background:none;
-
-    color:var(--danger);
-
-    font-size:10px;
-
-    padding:0;
+.preview-area{
+  background:#e9e5da;
+  border-radius:12px;
+  padding:25px;
+  min-height:900px;
 }
 
-
-.add-btn{
-
-    width:100%;
-
-    border:1px dashed var(--primary-light);
-
-    background:var(--primary-soft);
-
-    color:var(--primary);
-
-    border-radius:7px;
-
-    padding:9px;
-
-    font-size:12px;
-
-    font-weight:700;
+.cv{
+  background:white;
+  width:100%;
+  max-width:760px;
+  margin:auto;
+  min-height:950px;
+  box-shadow:0 8px 30px #0002;
+  display:flex;
 }
 
-
-/* =========================================================
-   TEMPLATE SELECTOR
-========================================================= */
-
-.templates{
-
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    gap:8px;
+.cv-side{
+  width:190px;
+  background:var(--green);
+  color:white;
+  padding:30px 20px;
 }
 
-
-.template{
-
-    border:2px solid var(--border);
-
-    border-radius:7px;
-
-    padding:10px;
-
-    background:white;
-
-    text-align:center;
-
-    font-size:11px;
-
-    font-weight:700;
-
-    color:#59645f;
-
-    position:relative;
+.cv-main{
+  flex:1;
+  padding:40px;
 }
-
-
-.template.active{
-
-    border-color:var(--primary);
-
-    background:var(--primary-soft);
-
-    color:var(--primary);
-}
-
-
-.template.premium::after{
-
-    content:"★ PREMIUM";
-
-    display:block;
-
-    color:var(--gold);
-
-    font-size:8px;
-
-    margin-top:3px;
-}
-
-
-/* =========================================================
-   PREVIEW
-========================================================= */
-
-.preview{
-
-    padding:40px;
-
-    background:#e9ece8;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:flex-start;
-
-    overflow:auto;
-}
-
-
-.cv-page{
-
-    width:794px;
-
-    min-height:1123px;
-
-    background:white;
-
-    box-shadow:var(--shadow);
-
-    padding:55px;
-
-    position:relative;
-
-    flex-shrink:0;
-}
-
-
-.cv-header{
-
-    border-bottom:2px solid var(--primary);
-
-    padding-bottom:20px;
-
-    margin-bottom:25px;
-}
-
-
-.cv-name{
-
-    font-family:"Playfair Display",serif;
-
-    color:var(--primary);
-
-    font-size:36px;
-
-    margin:0;
-}
-
-
-.cv-title{
-
-    color:var(--primary-light);
-
-    font-weight:700;
-
-    font-size:13px;
-}
-
-
-.cv-contact{
-
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:13px;
-
-    font-size:10px;
-
-    color:#718079;
-
-    margin-top:9px;
-}
-
 
 .cv-photo{
-
-    width:100px;
-
-    height:100px;
-
-    object-fit:cover;
-
-    border-radius:50%;
-
-    border:3px solid var(--primary);
-
-    float:right;
-
-    margin-left:20px;
-
-    display:none;
+  width:105px;
+  height:105px;
+  border-radius:50%;
+  object-fit:cover;
+  display:none;
+  margin:0 auto 20px;
+  border:3px solid white;
 }
 
+.cv-photo.show{display:block}
 
-.cv-photo.show{
-
-    display:block;
+.cv-name{
+  font-size:34px;
+  font-weight:800;
+  margin:0;
+  color:var(--green);
 }
 
+.cv-title{
+  margin:5px 0;
+  color:var(--green2);
+  font-weight:700;
+}
+
+.cv-contact{
+  color:#69736d;
+  font-size:12px;
+  margin-top:10px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.cv-line{
+  height:2px;
+  width:45px;
+  background:var(--green);
+  margin:20px 0;
+}
 
 .cv-section{
-
-    margin-top:23px;
+  font-size:14px;
+  font-weight:800;
+  color:var(--green);
+  text-transform:uppercase;
+  margin:22px 0 8px;
 }
 
-
-.cv-section h3{
-
-    font-family:"Playfair Display",serif;
-
-    color:var(--primary);
-
-    font-size:15px;
-
-    text-transform:uppercase;
-
-    border-bottom:1px solid #e3e8e4;
-
-    padding-bottom:6px;
-
-    margin-bottom:12px;
+.cv-text{
+  font-size:13px;
+  line-height:1.6;
 }
-
-
-.cv-summary,
-.cv-language{
-
-    font-size:12px;
-
-    line-height:1.65;
-}
-
-
-.cv-exp{
-
-    margin-bottom:17px;
-}
-
-
-.cv-exp-head{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    gap:10px;
-}
-
-
-.cv-role{
-
-    font-size:12.5px;
-
-    font-weight:700;
-}
-
-
-.cv-date{
-
-    font-size:10px;
-
-    color:#7c8681;
-}
-
-
-.cv-company{
-
-    color:var(--primary-light);
-
-    font-size:11px;
-
-    margin:2px 0;
-}
-
-
-.cv-description{
-
-    font-size:11.5px;
-
-    line-height:1.55;
-}
-
-
-.skills{
-
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:7px;
-}
-
 
 .skill{
-
-    background:var(--primary-soft);
-
-    color:var(--primary);
-
-    padding:4px 9px;
-
-    border-radius:20px;
-
-    font-size:10px;
-
-    font-weight:700;
+  display:inline-block;
+  background:#edf3ef;
+  color:var(--green);
+  padding:5px 9px;
+  border-radius:20px;
+  margin:3px;
+  font-size:11px;
+  font-weight:700;
 }
 
-
-.watermark{
-
-    position:absolute;
-
-    bottom:20px;
-
-    left:0;
-
-    right:0;
-
-    text-align:center;
-
-    color:#b9c0bc;
-
-    font-size:9px;
+.side-title{
+  font-size:11px;
+  text-transform:uppercase;
+  border-bottom:1px solid #ffffff55;
+  padding-bottom:7px;
+  margin:18px 0 10px;
 }
 
-
-/* =========================================================
-   MODERN TEMPLATE
-========================================================= */
-
-.cv-page.modern{
-
-    padding:0;
+.side-text{
+  font-size:11px;
+  line-height:1.55;
+  color:#ffffffdd;
 }
 
-
-.modern .cv-header{
-
-    background:var(--primary);
-
-    color:white;
-
-    padding:42px 50px;
-
-    border:0;
-
-    margin:0;
+.lock{
+  border:1px dashed var(--gold);
+  background:#fffaf1;
+  padding:13px;
+  border-radius:8px;
+  color:#72572e;
+  font-size:12px;
 }
 
-
-.modern .cv-name{
-
-    color:white;
+.premium{
+  border:2px solid var(--gold);
+  position:relative;
 }
 
-
-.modern .cv-title{
-
-    color:#dce9e3;
+.premium::before{
+  content:"PREMIUM";
+  position:absolute;
+  right:10px;
+  top:-11px;
+  background:var(--gold);
+  color:white;
+  padding:3px 8px;
+  border-radius:10px;
+  font-size:9px;
+  font-weight:bold;
 }
 
-
-.modern .cv-contact{
-
-    color:#d1dfda;
+.bot{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  width:350px;
+  max-width:calc(100vw - 36px);
+  background:white;
+  border-radius:14px;
+  box-shadow:0 10px 40px #0003;
+  z-index:50;
+  overflow:hidden;
+  display:none;
 }
 
+.bot.open{display:block}
 
-.modern .cv-body{
-
-    padding:0 50px 50px;
+.bot-head{
+  background:var(--green);
+  color:white;
+  padding:13px 15px;
+  display:flex;
+  justify-content:space-between;
 }
 
-
-/* =========================================================
-   SIDEBAR TEMPLATE
-========================================================= */
-
-.cv-page.sidebar{
-
-    padding:0;
-
-    display:grid;
-
-    grid-template-columns:190px 1fr;
+.bot-body{
+  padding:14px;
+  max-height:360px;
+  overflow:auto;
 }
 
-
-.sidebar-left{
-
-    background:var(--primary);
-
-    color:white;
-
-    padding:35px 20px;
+.bot-message{
+  background:#f0f4f1;
+  border-radius:10px;
+  padding:10px;
+  font-size:13px;
+  margin-bottom:8px;
+  line-height:1.5;
 }
 
-
-.sidebar-right{
-
-    padding:45px;
+.bot-user{
+  background:#e9dfc9;
+  margin-left:25px;
 }
 
-
-.sidebar-left .cv-photo{
-
-    float:none;
-
-    margin:0 auto 20px;
-
-    border-color:white;
+.bot-actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:6px;
+  margin-top:10px;
 }
 
-
-.sidebar-left h4{
-
-    font-size:9px;
-
-    text-transform:uppercase;
-
-    letter-spacing:.1em;
-
-    border-bottom:1px solid rgba(255,255,255,.3);
-
-    padding-bottom:6px;
-
-    margin-top:20px;
+.bot-float{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  width:55px;
+  height:55px;
+  border:0;
+  border-radius:50%;
+  background:var(--green);
+  color:white;
+  font-size:22px;
+  box-shadow:0 7px 25px #0003;
+  z-index:49;
 }
-
-
-.sidebar-left .skill{
-
-    display:block;
-
-    background:rgba(255,255,255,.12);
-
-    color:white;
-
-    margin-bottom:5px;
-}
-
-
-/* =========================================================
-   PREMIUM CTA
-========================================================= */
-
-.premium-panel{
-
-    margin-top:20px;
-
-    padding:15px;
-
-    background:linear-gradient(
-        135deg,
-        var(--primary),
-        var(--primary-light)
-    );
-
-    color:white;
-
-    border-radius:9px;
-}
-
-
-.premium-panel strong{
-
-    display:block;
-
-    margin-bottom:4px;
-}
-
-
-.premium-panel p{
-
-    font-size:10px;
-
-    opacity:.85;
-
-    margin:0 0 10px;
-}
-
-
-/* =========================================================
-   MODAL
-========================================================= */
 
 .modal{
-
-    position:fixed;
-
-    inset:0;
-
-    background:rgba(10,25,20,.65);
-
-    z-index:500;
-
-    display:none;
-
-    align-items:center;
-
-    justify-content:center;
-
-    padding:20px;
+  display:none;
+  position:fixed;
+  inset:0;
+  background:#0008;
+  z-index:100;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
 }
 
+.modal.open{display:flex}
 
-.modal.open{
-
-    display:flex;
+.modal-box{
+  width:100%;
+  max-width:440px;
+  background:white;
+  border-radius:12px;
+  padding:22px;
 }
 
-
-.modal-card{
-
-    width:100%;
-
-    max-width:440px;
-
-    background:white;
-
-    border-radius:14px;
-
-    padding:25px;
-
-    box-shadow:0 25px 80px rgba(0,0,0,.25);
+.pay{
+  background:#f5f2ea;
+  border-radius:8px;
+  padding:12px;
+  margin:8px 0;
 }
 
+.pay b{color:var(--green)}
 
-.modal-card h2{
-
-    font-family:"Playfair Display",serif;
-
-    color:var(--primary);
-
-    margin:0 0 7px;
+.letter{
+  max-width:760px;
+  margin:auto;
+  background:white;
+  min-height:900px;
+  padding:60px;
+  box-shadow:0 8px 30px #0002;
+  line-height:1.7;
 }
 
-
-.modal-price{
-
-    font-size:30px;
-
-    font-weight:700;
-
-    color:var(--primary);
-
-    margin:15px 0;
+.ad{
+  border:1px dashed var(--line);
+  padding:15px;
+  margin:20px 0;
+  text-align:center;
+  color:#888;
+  font-size:11px;
 }
 
-
-.payment{
-
-    border:1px solid var(--border);
-
-    border-radius:8px;
-
-    padding:12px;
-
-    margin:8px 0;
-}
-
-
-.payment strong{
-
-    display:block;
-}
-
-
-.payment small{
-
-    color:var(--muted);
-}
-
-
-.modal-actions{
-
-    margin-top:16px;
-}
-
-
-.full{
-
-    width:100%;
-}
-
-
-.close-btn{
-
-    width:100%;
-
-    border:1px solid var(--border);
-
-    background:white;
-
-    padding:10px;
-
-    border-radius:7px;
-
-    margin-top:8px;
-}
-
-
-/* =========================================================
-   FAQ
-========================================================= */
-
-.faq{
-
-    max-width:760px;
-
-    margin:auto;
-}
-
-
-.faq-item{
-
-    background:white;
-
-    border:1px solid var(--border);
-
-    border-radius:9px;
-
-    margin-bottom:8px;
-
-    overflow:hidden;
-}
-
-
-.faq-question{
-
-    padding:16px;
-
-    font-weight:700;
-
-    font-size:13px;
-
-    cursor:pointer;
-
-    display:flex;
-
-    justify-content:space-between;
-}
-
-
-.faq-answer{
-
-    display:none;
-
-    padding:0 16px 16px;
-
-    color:var(--muted);
-
-    font-size:12px;
-}
-
-
-.faq-item.open .faq-answer{
-
-    display:block;
-}
-
-
-/* =========================================================
-   CTA
-========================================================= */
-
-.final-cta{
-
-    background:var(--primary);
-
-    color:white;
-
-    padding:75px 20px;
-
-    text-align:center;
-}
-
-
-.final-cta h2{
-
-    font-family:"Playfair Display",serif;
-
-    font-size:38px;
-
-    margin:0 0 12px;
-}
-
-
-.final-cta p{
-
-    opacity:.8;
-
-    max-width:580px;
-
-    margin:0 auto 25px;
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-.footer{
-
-    background:#0d2c25;
-
-    color:white;
-
-    padding:35px 0;
-}
-
-
-.footer-grid{
-
-    display:grid;
-
-    grid-template-columns:2fr 1fr 1fr;
-
-    gap:30px;
-}
-
-
-.footer h3{
-
-    font-size:13px;
-}
-
-
-.footer p,
-.footer a{
-
-    font-size:11px;
-
-    color:#b6c3be;
-
-    text-decoration:none;
-
-    line-height:1.8;
-}
-
-
-/* =========================================================
-   TOAST
-========================================================= */
-
-.toast{
-
-    position:fixed;
-
-    bottom:20px;
-
-    right:20px;
-
-    background:var(--primary);
-
-    color:white;
-
-    padding:12px 16px;
-
-    border-radius:8px;
-
-    font-size:12px;
-
-    box-shadow:var(--shadow);
-
-    opacity:0;
-
-    transform:translateY(15px);
-
-    pointer-events:none;
-
-    transition:.3s;
-
-    z-index:1000;
-}
-
-
-.toast.show{
-
-    opacity:1;
-
-    transform:translateY(0);
-}
-
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
+.hidden{display:none!important}
 
 @media(max-width:900px){
-
-    .nav-links,
-    .nav-actions .btn-outline{
-
-        display:none;
-    }
-
-
-    .mobile-menu{
-
-        display:block;
-    }
-
-
-    .hero{
-
-        padding:55px 0;
-    }
-
-
-    .hero-grid{
-
-        grid-template-columns:1fr;
-
-        gap:35px;
-    }
-
-
-    .features{
-
-        grid-template-columns:1fr;
-    }
-
-
-    .pricing{
-
-        grid-template-columns:1fr;
-    }
-
-
-    .stats-grid{
-
-        grid-template-columns:1fr;
-
-        gap:15px;
-    }
-
-
-    .builder.active{
-
-        display:block;
-    }
-
-
-    .editor{
-
-        position:relative;
-
-        top:0;
-
-        height:auto;
-
-        border:0;
-    }
-
-
-    .preview{
-
-        padding:15px;
-
-        display:block;
-
-        overflow:auto;
-    }
-
-
-    .cv-page{
-
-        margin:auto;
-
-        transform-origin:top left;
-    }
-
-
-    .footer-grid{
-
-        grid-template-columns:1fr;
-    }
-
+  .layout{grid-template-columns:1fr}
+  .preview-area{padding:8px}
+  .cv-main{padding:25px}
+  .cv-side{width:150px}
 }
 
-
-@media(max-width:520px){
-
-    .container{
-
-        width:min(100% - 22px,1180px);
-    }
-
-
-    .hero h1{
-
-        font-size:42px;
-    }
-
-
-    .section{
-
-        padding:55px 0;
-    }
-
-
-    .section-head h2{
-
-        font-size:30px;
-    }
-
-
-    .form-grid{
-
-        grid-template-columns:1fr;
-    }
-
-
-    .hero-card{
-
-        padding:10px;
-    }
-
+@media(max-width:600px){
+  .row{grid-template-columns:1fr}
+  .cv{display:block}
+  .cv-side{width:100%;padding:20px}
+  .cv-main{padding:22px}
+  .cv-name{font-size:27px}
+  .letter{padding:25px}
 }
-
-
-/* =========================================================
-   PRINT
-========================================================= */
 
 @media print{
-
-    body{
-
-        background:white;
-    }
-
-
-    .header,
-    .editor,
-    .builder ~ *,
-    .watermark{
-
-        display:none!important;
-    }
-
-
-    .builder{
-
-        display:block!important;
-    }
-
-
-    .preview{
-
-        padding:0;
-
-        background:white;
-    }
-
-
-    .cv-page{
-
-        box-shadow:none;
-
-        width:100%;
-
-        min-height:auto;
-    }
-
+  header,.panel,.tabs,.bot,.bot-float,.ad,.no-print{display:none!important}
+  body{background:white}
+  .app{padding:0}
+  .preview-area{padding:0;background:white}
+  .cv,.letter{
+    box-shadow:none;
+    max-width:none;
+  }
 }
-
 </style>
-
 </head>
-
 
 <body>
 
-
-<!-- =======================================================
-     HEADER
-======================================================= -->
-
-<header class="header">
-
-<div class="container nav">
-
-<a href="#" class="logo">
-
-<div class="logo-mark">
-CV
-</div>
-
-CVPro
-
-</a>
-
-
-<nav class="nav-links">
-
-<a href="#accueil">Accueil</a>
-
-<a href="#fonctionnalites">Fonctionnalités</a>
-
-<a href="#tarifs">Tarifs</a>
-
-<a href="#faq">FAQ</a>
-
-</nav>
-
-
-<div class="nav-actions">
-
-<button
-class="btn btn-outline"
-onclick="openBuilder()">
-
-Créer mon CV
-
-</button>
-
-<button
-class="btn btn-primary"
-onclick="openPremium()">
-
-Premium
-
-</button>
-
-</div>
-
-
-<button
-class="mobile-menu"
-onclick="toggleMobileMenu()">
-
-☰
-
-</button>
-
-</div>
-
+<header>
+  <div class="nav">
+    <div class="logo">CV<span>Pro</span> Afrique</div>
+    <div class="badge" id="accountBadge">Version Basic</div>
+  </div>
 </header>
 
+<div class="app">
 
-<!-- =======================================================
-     PAGE ACCUEIL
-======================================================= -->
+  <div class="tabs">
+    <button class="tab active" onclick="showTab('cv',this)">📄 Mon CV</button>
+    <button class="tab" onclick="showTab('letter',this)">✉️ Lettre de motivation</button>
+    <button class="tab" onclick="openBot()">🤖 Assistant CV</button>
+    <button class="tab" onclick="openPayment()">⭐ Passer Premium</button>
+  </div>
 
-<main id="home">
+  <!-- ================= CV ================= -->
 
+  <div id="cvTab">
 
-<section class="hero" id="accueil">
+    <div class="layout">
 
-<div class="container hero-grid">
+      <div class="panel">
 
+        <div class="card">
 
-<div>
+          <h2>Créer mon CV</h2>
 
-<div class="hero-badge">
-🇲🇱 Pensé pour le marché francophone africain
-</div>
-
-
-<h1>
-
-Ton CV.
-
-<br>
-
-<strong>Ton avenir.</strong>
-
-<br>
-
-<span>En quelques minutes.</span>
-
-</h1>
-
-
-<p>
-
-Crée facilement un CV professionnel,
-moderne et adapté aux recruteurs,
-directement depuis ton téléphone.
-</p>
-
-
-<div class="hero-buttons">
-
-<button
-class="btn btn-primary"
-onclick="openBuilder()">
-
-✍️ Créer mon CV gratuitement
-
-</button>
-
-
-<button
-class="btn btn-outline"
-onclick="document.getElementById('tarifs').scrollIntoView()">
-
-Voir les tarifs
-
-</button>
-
-</div>
-
-
-<p class="hero-note">
-
-✓ Aucune installation
-&nbsp; • &nbsp;
-✓ Fonctionne sur téléphone
-&nbsp; • &nbsp;
-✓ Sauvegarde automatique
-
-</p>
-
-</div>
-
-
-<div class="hero-card">
-
-<div class="mock-window">
-
-<div class="mock-top">
-
-<span class="dot"></span>
-<span class="dot"></span>
-<span class="dot"></span>
-
-</div>
-
-
-<div class="mock-cv">
-
-<div class="mock-name">
-Aïcha Koné
-</div>
-
-<div class="mock-title">
-CHARGÉE DE PROJET DIGITAL
-</div>
-
-<div class="mock-line short"></div>
-<div class="mock-line"></div>
-
-<div class="mock-section">
-PROFIL
-</div>
-
-<div class="mock-line"></div>
-<div class="mock-line short"></div>
-
-<div class="mock-section">
-EXPÉRIENCE
-</div>
-
-<div class="mock-line"></div>
-<div class="mock-line"></div>
-<div class="mock-line short"></div>
-
-<div class="mock-section">
-COMPÉTENCES
-</div>
-
-<div class="mock-line short"></div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =======================================================
-     STATS
-======================================================= -->
-
-<section class="stats">
-
-<div class="container stats-grid">
-
-<div class="stat">
-
-<strong>5 min</strong>
-
-<span>pour créer ton CV</span>
-
-</div>
-
-
-<div class="stat">
-
-<strong>100%</strong>
-
-<span>adapté au mobile</span>
-
-</div>
-
-
-<div class="stat">
-
-<strong>FCFA</strong>
-
-<span>paiement pensé pour l'Afrique</span>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =======================================================
-     FONCTIONNALITES
-======================================================= -->
-
-<section
-class="section"
-id="fonctionnalites">
-
-<div class="container">
-
-<div class="section-head">
-
-<div class="eyebrow">
-Pourquoi CVPro ?
-</div>
-
-<h2>
-Tout ce qu'il faut pour un CV professionnel
-</h2>
-
-<p>
-Une expérience simple, rapide et pensée
-pour les utilisateurs francophones.
-</p>
-
-</div>
-
-
-<div class="features">
-
-
-<div class="feature">
-
-<div class="feature-icon">
-⚡
-</div>
-
-<h3>
-Création instantanée
-</h3>
-
-<p>
-Modifie ton CV et vois immédiatement
-le résultat à l'écran.
-</p>
-
-</div>
-
-
-<div class="feature">
-
-<div class="feature-icon">
-📱
-</div>
-
-<h3>
-Pensé pour le téléphone
-</h3>
-
-<p>
-Pas besoin d'un ordinateur pour créer
-un CV professionnel.
-</p>
-
-</div>
-
-
-<div class="feature">
-
-<div class="feature-icon">
-🎨
-</div>
-
-<h3>
-Modèles modernes
-</h3>
-
-<p>
-Choisis différents styles selon
-le poste que tu recherches.
-</p>
-
-</div>
-
-
-<div class="feature">
-
-<div class="feature-icon">
-💾
-</div>
-
-<h3>
-Sauvegarde automatique
-</h3>
-
-<p>
-Ton travail peut être conservé
-sur ton appareil.
-</p>
-
-</div>
-
-
-<div class="feature">
-
-<div class="feature-icon">
-📄
-</div>
-
-<h3>
-Export PDF
-</h3>
-
-<p>
-Imprime ou enregistre ton CV
-au format PDF.
-</p>
-
-</div>
-
-
-<div class="feature">
-
-<div class="feature-icon">
-💰
-</div>
-
-<h3>
-Paiement local
-</h3>
-
-<p>
-Architecture préparée pour intégrer
-les solutions de paiement utilisées
-en Afrique de l'Ouest.
-</p>
-
-</div>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =======================================================
-     TARIFS
-======================================================= -->
-
-<section
-class="section"
-id="tarifs">
-
-<div class="container">
-
-<div class="section-head">
-
-<div class="eyebrow">
-Tarifs simples
-</div>
-
-<h2>
-Commence gratuitement
-</h2>
-
-<p>
-Crée ton CV puis passe à Premium
-si tu veux les fonctionnalités avancées.
-</p>
-
-</div>
-
-
-<div class="pricing">
-
-
-<div class="price-card">
-
-<h3>
-Gratuit
-</h3>
-
-<div class="price">
-0 <small>FCFA</small>
-</div>
-
-<ul class="price-list">
-
-<li>✓ Création du CV</li>
-
-<li>✓ Aperçu en direct</li>
-
-<li>✓ Modèle classique</li>
-
-<li>✓ Sauvegarde locale</li>
-
-<li>✓ Impression PDF</li>
-
-</ul>
-
-<button
-class="btn btn-outline full"
-onclick="openBuilder()">
-
-Commencer gratuitement
-
-</button>
-
-</div>
-
-
-<div class="price-card featured">
-
-<div class="price-badge">
-POPULAIRE
-</div>
-
-<h3>
-Premium
-</h3>
-
-<div class="price">
-2 000 <small>FCFA</small>
-</div>
-
-<ul class="price-list">
-
-<li>✓ Tous les modèles</li>
-
-<li>✓ Photo professionnelle</li>
-
-<li>✓ Langues & certifications</li>
-
-<li>✓ Couleurs personnalisées</li>
-
-<li>✓ Sans filigrane</li>
-
-<li>✓ Export professionnel</li>
-
-</ul>
-
-<button
-class="btn btn-primary full"
-onclick="openPremium()">
-
-Débloquer Premium
-
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =======================================================
-     FAQ
-======================================================= -->
-
-<section
-class="section"
-id="faq">
-
-<div class="container">
-
-<div class="section-head">
-
-<div class="eyebrow">
-Questions fréquentes
-</div>
-
-<h2>
-Tu veux savoir comment ça marche ?
-</h2>
-
-</div>
-
-
-<div class="faq">
-
-
-<div class="faq-item">
-
-<div class="faq-question"
-onclick="toggleFAQ(this)">
-
-Est-ce que je peux utiliser CVPro sur mon téléphone ?
-
-<span>+</span>
-
-</div>
-
-<div class="faq-answer">
-
-Oui. L'interface est conçue pour fonctionner
-sur les smartphones Android et les ordinateurs.
-
-</div>
+          <label>Nom complet</label>
+          <input id="name" value="Aïcha Koné">
 
-</div>
-
-
-<div class="faq-item">
-
-<div class="faq-question"
-onclick="toggleFAQ(this)">
-
-Est-ce que je dois créer un compte ?
-
-<span>+</span>
-
-</div>
-
-<div class="faq-answer">
-
-Dans cette première version, non.
-Ton brouillon peut être sauvegardé directement
-dans le navigateur de ton appareil.
-
-</div>
-
-</div>
-
-
-<div class="faq-item">
-
-<div class="faq-question"
-onclick="toggleFAQ(this)">
-
-Comment fonctionne Premium ?
-
-<span>+</span>
-
-</div>
-
-<div class="faq-answer">
-
-Tu choisis Premium, tu effectues le paiement
-et, une fois la transaction confirmée par
-le système de paiement connecté, les
-fonctionnalités Premium sont activées.
-
-</div>
-
-</div>
-
-
-<div class="faq-item">
-
-<div class="faq-question"
-onclick="toggleFAQ(this)">
-
-Quels moyens de paiement seront disponibles ?
-
-<span>+</span>
-
-</div>
-
-<div class="faq-answer">
-
-L'architecture est prévue pour intégrer
-les solutions disponibles dans ton marché,
-notamment Orange Money, Moov Money et Wave,
-selon les API et prestataires accessibles.
-
-</div>
-
-</div>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =======================================================
-     CTA
-======================================================= -->
-
-<section class="final-cta">
-
-<h2>
-Prêt à créer ton CV ?
-</h2>
-
-<p>
-Commence gratuitement et transforme
-tes informations en CV professionnel.
-</p>
-
-<button
-class="btn btn-gold"
-onclick="openBuilder()">
-
-Créer mon CV
-
-</button>
-
-</section>
-
-
-</main>
-
-
-<!-- =======================================================
-     BUILDER
-======================================================= -->
-
-<section
-class="builder"
-id="builder">
-
-
-<!-- EDITOR -->
-
-<aside class="editor">
-
-<div class="eyebrow">
-CVPro — Créateur
-</div>
-
-<h2>
-Construis ton CV
-</h2>
-
-
-<div class="form-group">
-
-<label>
-Nom complet
-</label>
-
-<input
-id="f-name"
-value="Aïcha Koné">
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Poste recherché
-</label>
-
-<input
-id="f-title"
-value="Chargée de projet digital">
-
-</div>
-
-
-<div class="form-grid">
-
-
-<div class="form-group">
-
-<label>
-Email
-</label>
-
-<input
-id="f-email"
-value="aicha.kone@email.com">
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Téléphone
-</label>
-
-<input
-id="f-phone"
-value="+223 67 00 00 00">
-
-</div>
-
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Ville / Pays
-</label>
-
-<input
-id="f-city"
-value="Bamako, Mali">
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Photo de profil
-</label>
-
-<input
-type="file"
-id="f-photo"
-accept="image/*">
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Profil professionnel
-</label>
-
-<textarea
-id="f-summary">Professionnelle organisée et orientée résultats, avec une expérience dans la gestion de projets digitaux et la communication.</textarea>
-
-</div>
-
-
-<div class="editor-section">
+          <label>Poste recherché</label>
+          <input id="job" value="Chargée de projet digital">
 
-<div class="editor-section-title">
+          <div class="row">
+            <div>
+              <label>Email</label>
+              <input id="email" value="aicha@email.com">
+            </div>
+            <div>
+              <label>Téléphone</label>
+              <input id="phone" value="+223 67 00 00 00">
+            </div>
+          </div>
 
-<span>
-Compétences
-</span>
+          <label>Ville / Pays</label>
+          <input id="city" value="Bamako, Mali">
 
-</div>
-
-<textarea
-id="f-skills">Gestion de projet, Excel, Communication, Canva, Réseaux sociaux</textarea>
-
-</div>
-
-
-<div class="editor-section">
-
-<div class="editor-section-title">
-
-<span>
-Expériences
-</span>
-
-</div>
-
-
-<div id="experience-list"></div>
-
-
-<button
-class="add-btn"
-onclick="addExperience()">
-
-+ Ajouter une expérience
-
-</button>
-
-</div>
-
-
-<div class="editor-section">
-
-<div class="editor-section-title">
-
-<span>
-Langues & certifications
-</span>
-
-</div>
-
-<textarea
-id="f-languages">Français — Courant
-Anglais — Intermédiaire
-Certification Google Digital Skills</textarea>
-
-</div>
-
-
-<div class="editor-section">
-
-<div class="editor-section-title">
-
-<span>
-Modèle
-</span>
-
-</div>
-
-
-<div class="templates">
-
-
-<button
-class="template active"
-data-template="classic">
-
-Classique
-
-</button>
-
-
-<button
-class="template"
-data-template="modern">
-
-Moderne
-
-</button>
-
-
-<button
-class="template premium"
-data-template="sidebar">
-
-Élite
-
-</button>
-
-
-<button
-class="template premium"
-data-template="executive">
-
-Executive
-
-</button>
-
-
-</div>
-
-</div>
-
-
-<div class="premium-panel">
+          <label>Photo</label>
 
-<strong>
-⭐ Passe à CVPro Premium
-</strong>
+          <div id="photoLock" class="lock">
+            🔒 Photo disponible avec Premium
+            <button class="btn btn-gold full" onclick="openPayment()" style="margin-top:8px">
+              Débloquer
+            </button>
+          </div>
 
-<p>
+          <div id="photoBox" class="hidden">
+            <input type="file" id="photo" accept="image/*">
+          </div>
 
-Débloque les modèles avancés,
-la photo, les couleurs et le CV
-sans filigrane.
+          <label>Profil professionnel</label>
+          <textarea id="summary">Professionnelle organisée et orientée résultats. Je souhaite mettre mes compétences au service d'une entreprise dynamique.</textarea>
 
-</p>
+          <label>Compétences</label>
+          <textarea id="skills">Excel, Gestion de projet, Communication, Canva, Réseaux sociaux</textarea>
 
-<button
-class="btn btn-gold full"
-onclick="openPremium()">
+          <div class="section">
 
-2 000 FCFA — Débloquer
+            <label>Expériences professionnelles</label>
 
-</button>
+            <div id="experiences"></div>
 
-</div>
-
-
-<button
-class="btn btn-primary full"
-style="margin-top:15px"
-onclick="downloadPDF()">
-
-📄 Télécharger mon CV
-
-</button>
-
-
-<button
-class="btn btn-outline full"
-onclick="saveCV()">
-
-💾 Sauvegarder
-
-</button>
-
-
-<button
-class="btn btn-outline full"
-onclick="closeBuilder()">
-
-← Retour au site
-
-</button>
-
-
-</aside>
-
-
-<!-- PREVIEW -->
-
-<div class="preview">
-
-<div
-class="cv-page"
-id="cv-page">
-
-
-<div id="cv-normal-content">
-
-
-<img
-id="cv-photo"
-class="cv-photo">
-
-
-<div class="cv-header">
-
-<h1
-class="cv-name"
-id="p-name">
-Aïcha Koné
-</h1>
-
-<div
-class="cv-title"
-id="p-title">
-Chargée de projet digital
-</div>
-
+            <button class="btn btn-secondary full" onclick="addExperience()">
+              + Ajouter une expérience
+            </button>
 
-<div class="cv-contact">
+          </div>
 
-<span id="p-email"></span>
+          <div class="section">
 
-<span id="p-phone"></span>
+            <label>Langues & certifications</label>
 
-<span id="p-city"></span>
+            <div id="languageLock" class="lock">
+              🔒 Fonction Premium
+              <button class="btn btn-gold full" onclick="openPayment()" style="margin-top:8px">
+                Débloquer
+              </button>
+            </div>
 
-</div>
-
-</div>
+            <textarea id="languages" class="hidden">Français (courant)
+Anglais (intermédiaire)
+Certification Google</textarea>
 
+          </div>
 
-<div class="cv-section">
+          <div class="section">
 
-<h3>
-Profil
-</h3>
+            <label>Modèle</label>
 
-<div
-class="cv-summary"
-id="p-summary">
-</div>
+            <select id="template" onchange="changeTemplate()">
+              <option value="basic">Basic — Gratuit</option>
+              <option value="premium">Premium ⭐</option>
+            </select>
 
-</div>
+            <div id="premiumNotice" class="lock" style="margin-top:10px">
+              ⭐ Le modèle Premium comprend une présentation plus élégante,
+              la photo, les langues et les personnalisations avancées.
+            </div>
 
+          </div>
 
-<div class="cv-section">
+          <div class="section">
 
-<h3>
-Expérience professionnelle
-</h3>
+            <label>Couleur</label>
 
-<div
-id="p-experiences">
-</div>
+            <input type="color" id="color" value="#173f35" onchange="changeColor()">
 
-</div>
+          </div>
 
+          <div class="ad">
+            ESPACE PUBLICITAIRE<br>
+            Ton annonce Google AdSense apparaîtra ici après validation.
+          </div>
 
-<div class="cv-section">
+          <button class="btn btn-primary full" onclick="window.print()">
+            📥 Télécharger / Enregistrer en PDF
+          </button>
 
-<h3>
-Compétences
-</h3>
+          <button class="btn btn-secondary full" onclick="saveData()" style="margin-top:8px">
+            💾 Sauvegarder mon CV
+          </button>
 
-<div
-class="skills"
-id="p-skills">
-</div>
+        </div>
 
-</div>
+      </div>
 
+      <!-- PREVIEW -->
 
-<div class="cv-section">
+      <div class="preview-area">
 
-<h3>
-Langues & certifications
-</h3>
+        <div class="cv" id="cv">
 
-<div
-class="cv-language"
-id="p-languages">
-</div>
+          <aside class="cv-side" id="cvSide">
 
-</div>
+            <img id="previewPhoto" class="cv-photo">
 
+            <div class="side-title">Compétences</div>
+            <div id="sideSkills" class="side-text"></div>
 
-</div>
+            <div id="sideLanguageBlock">
+              <div class="side-title">Langues</div>
+              <div id="sideLanguages" class="side-text"></div>
+            </div>
 
+          </aside>
 
-<div
-class="watermark"
-id="cv-watermark">
+          <main class="cv-main">
 
-Créé avec CVPro
+            <div class="cv-name" id="previewName"></div>
+            <div class="cv-title" id="previewJob"></div>
 
-</div>
+            <div class="cv-contact" id="previewContact"></div>
 
+            <div class="cv-line"></div>
 
-</div>
+            <div class="cv-section">Profil</div>
+            <div class="cv-text" id="previewSummary"></div>
 
-</div>
+            <div class="cv-section">Expérience</div>
+            <div class="cv-text" id="previewExperiences"></div>
 
-</section>
+            <div id="mainSkills">
 
+              <div class="cv-section">Compétences</div>
+              <div id="previewSkills"></div>
 
-<!-- =======================================================
-     MODAL PREMIUM
-======================================================= -->
+            </div>
 
-<div
-class="modal"
-id="premium-modal">
+            <div id="mainLanguages">
 
+              <div class="cv-section">Langues & certifications</div>
+              <div class="cv-text" id="previewLanguages"></div>
 
-<div class="modal-card">
+            </div>
 
-<h2>
-CVPro Premium
-</h2>
+            <div id="watermark" style="margin-top:50px;text-align:center;font-size:10px;color:#aaa">
+              CV créé avec CVPro Afrique
+            </div>
 
-<p>
-Débloque toutes les fonctionnalités
-professionnelles.
-</p>
+          </main>
 
+        </div>
 
-<div class="modal-price">
+      </div>
 
-2 000 FCFA
+    </div>
 
-</div>
+  </div>
 
+  <!-- ================= LETTRE ================= -->
 
-<div class="payment">
+  <div id="letterTab" class="hidden">
 
-<strong>
-🟠 Orange Money
-</strong>
+    <div class="layout">
 
-<small>
-Paiement mobile prévu dans le système.
-</small>
+      <div class="panel">
 
-</div>
+        <div class="card">
 
+          <h2>Lettre de motivation</h2>
 
-<div class="payment">
+          <label>Nom du candidat</label>
+          <input id="letterName">
 
-<strong>
-🔵 Moov Money
-</strong>
+          <label>Poste recherché</label>
+          <input id="letterJob">
 
-<small>
-Paiement mobile prévu dans le système.
-</small>
+          <label>Entreprise</label>
+          <input id="company" placeholder="Nom de l'entreprise">
 
-</div>
+          <label>Ville</label>
+          <input id="letterCity" value="Bamako">
 
+          <label>Pourquoi ce poste vous intéresse ?</label>
+          <textarea id="motivation" placeholder="Ex : Je souhaite rejoindre votre entreprise parce que..."></textarea>
 
-<div class="payment">
+          <button class="btn btn-primary full" onclick="generateLetter()">
+            🤖 Générer ma lettre
+          </button>
 
-<strong>
-🟣 Wave
-</strong>
+          <button class="btn btn-secondary full" onclick="window.print()" style="margin-top:8px">
+            📥 Télécharger en PDF
+          </button>
 
-<small>
-Paiement mobile prévu dans le système.
-</small>
+        </div>
 
-</div>
+      </div>
 
+      <div class="preview-area">
 
-<div class="modal-actions">
+        <div class="letter">
 
-<button
-class="btn btn-primary full"
-onclick="startPayment()">
+          <div id="letterPreview">
 
-Continuer vers le paiement
+            <p>Votre lettre apparaîtra ici.</p>
 
-</button>
+          </div>
 
+        </div>
 
-<button
-class="close-btn"
-onclick="closePremium()">
+      </div>
 
-Annuler
+    </div>
 
-</button>
+  </div>
 
 </div>
-
-
-<p style="
-font-size:10px;
-color:#89938e;
-margin-top:15px;
-line-height:1.5;
-">
 
-La connexion automatique aux paiements
-sera réalisée avec un backend sécurisé.
-Les clés secrètes ne doivent jamais être
-placées dans le code HTML.
 
-</p>
+<!-- ================= BOT ================= -->
 
-</div>
+<button class="bot-float" onclick="openBot()">🤖</button>
 
-</div>
+<div class="bot" id="bot">
 
+  <div class="bot-head">
 
-<!-- =======================================================
-     TOAST
-======================================================= -->
+    <strong>Assistant CV 🤖</strong>
 
-<div
-class="toast"
-id="toast">
+    <button onclick="closeBot()" style="background:none;border:0;color:white;font-size:18px">
+      ×
+    </button>
 
-CV sauvegardé.
+  </div>
 
-</div>
+  <div class="bot-body" id="botBody">
 
+    <div class="bot-message">
+      Bonjour 👋 Je suis ton assistant CV.
+      Je peux t'aider à améliorer ton profil, trouver des compétences
+      adaptées à ton métier ou préparer ta lettre de motivation.
+    </div>
 
-<!-- =======================================================
-     FOOTER
-======================================================= -->
+    <div class="bot-actions">
 
-<footer class="footer">
+      <button class="btn btn-secondary" onclick="botProfile()">
+        ✍️ Améliorer mon profil
+      </button>
 
-<div class="container footer-grid">
+      <button class="btn btn-secondary" onclick="botSkills()">
+        🎯 Suggérer des compétences
+      </button>
 
+      <button class="btn btn-secondary" onclick="botExperience()">
+        💼 Améliorer expérience
+      </button>
 
-<div>
+      <button class="btn btn-secondary" onclick="botLetter()">
+        ✉️ Préparer ma lettre
+      </button>
 
-<h3>
-CVPro
-</h3>
+    </div>
 
-<p>
-Une plateforme simple pour aider
-les talents francophones à présenter
-leur parcours professionnel.
-</p>
+  </div>
 
 </div>
-
 
-<div>
 
-<h3>
-Navigation
-</h3>
+<!-- ================= PAIEMENT ================= -->
 
-<p>
-<a href="#accueil">Accueil</a><br>
+<div class="modal" id="paymentModal">
 
-<a href="#fonctionnalites">
-Fonctionnalités
-</a><br>
+  <div class="modal-box">
 
-<a href="#tarifs">
-Tarifs
-</a>
+    <h2 style="color:var(--green)">⭐ Passer Premium</h2>
 
-</p>
+    <p>
+      Débloque les fonctionnalités Premium de CVPro Afrique.
+    </p>
 
-</div>
-
+    <div class="pay">
+      <strong>Premium</strong><br>
+      <b>2 000 FCFA</b><br>
+      CV Premium + photo + langues + personnalisation.
+    </div>
 
-<div>
+    <h3>Orange Money</h3>
 
-<h3>
-Support
-</h3>
+    <div class="pay">
+      Le paiement Orange Money sera connecté ici
+      à ton système marchand/API.
+      <br><br>
+      <strong>Statut :</strong>
+      <span id="orangeStatus">En attente</span>
+    </div>
 
-<p>
+    <button class="btn btn-gold full" onclick="startOrangePayment()">
+      🟠 Payer avec Orange Money
+    </button>
 
-Questions ?<br>
+    <h3>Wave</h3>
 
-Contacte-nous lorsque
-le support sera activé.
+    <div class="pay">
+      Envoie le montant au numéro marchand indiqué
+      par ton compte Wave.
+    </div>
 
-</p>
+    <button class="btn btn-secondary full" onclick="manualWave()">
+      🔵 J'ai payé avec Wave
+    </button>
 
-</div>
+    <button class="btn btn-secondary full" onclick="closePayment()" style="margin-top:8px">
+      Fermer
+    </button>
 
+  </div>
 
 </div>
-
-</footer>
 
 
 <script>
 
 /* =========================================================
-   CVPRO ENGINE
-========================================================= */
+   CV PRO AFRIQUE
+   Générateur CV + Lettre + Assistant + Premium
+   ========================================================= */
 
-
-/* =========================================================
-   VARIABLES
-========================================================= */
+let premium = localStorage.getItem("cvpro_premium")==="true";
 
 let experiences = [];
 
-let selectedTemplate = "classic";
 
-let premium =
-    localStorage.getItem("cvpro_premium") === "true";
+/* ================= INITIALISATION ================= */
 
+function init(){
 
-/* =========================================================
-   OUTILS
-========================================================= */
+  loadData();
 
-function $(id){
-
-    return document.getElementById(id);
-
-}
-
-
-function get(id){
-
-    return $(id).value;
-
-}
-
-
-function escapeHTML(value){
-
-    return String(value || "")
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
-
-}
-
-
-function toast(message){
-
-    const el = $("toast");
-
-    el.textContent = message;
-
-    el.classList.add("show");
-
-    setTimeout(() => {
-
-        el.classList.remove("show");
-
-    },2500);
-
-}
-
-
-/* =========================================================
-   ACCUEIL / BUILDER
-========================================================= */
-
-function openBuilder(){
-
-    $("home").style.display = "none";
-
-    $("builder").classList.add("active");
-
-    window.scrollTo(0,0);
-
-}
-
-
-function closeBuilder(){
-
-    $("builder").classList.remove("active");
-
-    $("home").style.display = "block";
-
-    window.scrollTo(0,0);
-
-}
-
-
-function toggleMobileMenu(){
-
-    const links =
-        document.querySelector(".nav-links");
-
-    if(
-        links.style.display === "flex"
-    ){
-
-        links.style.display = "";
-
-    }else{
-
-        links.style.display = "flex";
-
-        links.style.flexDirection = "column";
-
-        links.style.position = "absolute";
-
-        links.style.top = "70px";
-
-        links.style.left = "0";
-
-        links.style.right = "0";
-
-        links.style.background = "white";
-
-        links.style.padding = "20px";
-
-    }
-
-}
-
-
-/* =========================================================
-   EXPERIENCES
-========================================================= */
-
-function addExperience(
-
-    role = "Chargée de projet digital",
-
-    company = "Agence Kora Média — Bamako",
-
-    dates = "2022 — Aujourd'hui",
-
-    description =
-        "Pilotage de campagnes clients, coordination d'équipe et création de contenu digital."
-
-){
-
-    const id =
-        Date.now() + Math.random();
+  if(experiences.length===0){
 
     experiences.push({
-
-        id,
-
-        role,
-
-        company,
-
-        dates,
-
-        description
-
+      role:"Chargée de projet digital",
+      company:"Agence Kora Média",
+      dates:"2022 — Aujourd'hui",
+      description:"Coordination de projets digitaux et création de contenu."
     });
 
+  }
 
-    renderExperienceEditor();
+  document.getElementById("letterName").value =
+    document.getElementById("name").value;
 
-    renderCV();
+  document.getElementById("letterJob").value =
+    document.getElementById("job").value;
 
-}
-
-
-function removeExperience(id){
-
-    experiences =
-        experiences.filter(
-            e => String(e.id) !== String(id)
-        );
-
-    renderExperienceEditor();
-
-    renderCV();
+  updatePremiumUI();
+  render();
 
 }
 
 
-function updateExperience(
-    id,
-    field,
-    value
-){
+/* ================= ONGLETS ================= */
 
-    const experience =
-        experiences.find(
-            e => String(e.id) === String(id)
-        );
+function showTab(tab,button){
 
-    if(!experience)
-        return;
+  document.querySelectorAll(".tab")
+    .forEach(x=>x.classList.remove("active"));
 
-    experience[field] = value;
+  if(button) button.classList.add("active");
 
-    renderCV();
+  document.getElementById("cvTab")
+    .classList.toggle("hidden",tab!=="cv");
 
-    saveDraft(false);
+  document.getElementById("letterTab")
+    .classList.toggle("hidden",tab!=="letter");
 
 }
 
 
-function renderExperienceEditor(){
+/* ================= EXPERIENCE ================= */
 
-    const container =
-        $("experience-list");
+function addExperience(data){
 
-    container.innerHTML = "";
+  data=data||{
+    role:"",
+    company:"",
+    dates:"",
+    description:""
+  };
 
+  experiences.push(data);
 
-    experiences.forEach(exp => {
-
-        const div =
-            document.createElement("div");
-
-        div.className = "experience";
-
-
-        div.innerHTML = `
-
-            <div class="form-group">
-
-                <label>
-                    Poste
-                </label>
-
-                <input
-                    value="${escapeHTML(exp.role)}"
-                    oninput="
-                    updateExperience(
-                        '${exp.id}',
-                        'role',
-                        this.value
-                    )">
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    Entreprise
-                </label>
-
-                <input
-                    value="${escapeHTML(exp.company)}"
-                    oninput="
-                    updateExperience(
-                        '${exp.id}',
-                        'company',
-                        this.value
-                    )">
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    Dates
-                </label>
-
-                <input
-                    value="${escapeHTML(exp.dates)}"
-                    oninput="
-                    updateExperience(
-                        '${exp.id}',
-                        'dates',
-                        this.value
-                    )">
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    Description
-                </label>
-
-                <textarea
-                    oninput="
-                    updateExperience(
-                        '${exp.id}',
-                        'description',
-                        this.value
-                    )">${escapeHTML(exp.description)}</textarea>
-
-            </div>
-
-
-            <button
-                class="experience-remove"
-                onclick="
-                removeExperience('${exp.id}')">
-
-                Supprimer cette expérience
-
-            </button>
-
-        `;
-
-
-        container.appendChild(div);
-
-    });
+  renderExperience();
 
 }
 
 
-/* =========================================================
-   CV RENDER
-========================================================= */
+function removeExperience(index){
 
-function renderCV(){
+  experiences.splice(index,1);
 
-    $("p-name").textContent =
-        get("f-name");
-
-    $("p-title").textContent =
-        get("f-title");
-
-    $("p-email").textContent =
-        get("f-email");
-
-    $("p-phone").textContent =
-        get("f-phone");
-
-    $("p-city").textContent =
-        get("f-city");
-
-    $("p-summary").textContent =
-        get("f-summary");
-
-
-    /* EXPERIENCES */
-
-    const container =
-        $("p-experiences");
-
-    container.innerHTML = "";
-
-
-    experiences.forEach(exp => {
-
-        if(
-            !exp.role &&
-            !exp.company
-        )
-            return;
-
-
-        const item =
-            document.createElement("div");
-
-        item.className = "cv-exp";
-
-
-        item.innerHTML = `
-
-            <div class="cv-exp-head">
-
-                <div class="cv-role">
-                    ${escapeHTML(exp.role)}
-                </div>
-
-                <div class="cv-date">
-                    ${escapeHTML(exp.dates)}
-                </div>
-
-            </div>
-
-
-            <div class="cv-company">
-                ${escapeHTML(exp.company)}
-            </div>
-
-
-            <div class="cv-description">
-                ${escapeHTML(exp.description)}
-            </div>
-
-        `;
-
-
-        container.appendChild(item);
-
-    });
-
-
-    /* COMPETENCES */
-
-    const skills =
-        $("p-skills");
-
-    skills.innerHTML = "";
-
-
-    get("f-skills")
-        .split(",")
-        .map(x => x.trim())
-        .filter(Boolean)
-        .forEach(skill => {
-
-            const el =
-                document.createElement("span");
-
-            el.className = "skill";
-
-            el.textContent = skill;
-
-            skills.appendChild(el);
-
-        });
-
-
-    $("p-languages").textContent =
-        get("f-languages");
-
-
-    applyTemplate();
-
-    saveDraft(false);
+  renderExperience();
 
 }
 
 
-/* =========================================================
-   TEMPLATES
-========================================================= */
+function renderExperience(){
 
-document
-.querySelectorAll(".template")
-.forEach(button => {
+  const box=document.getElementById("experiences");
 
-    button.addEventListener(
-        "click",
-        function(){
+  box.innerHTML="";
 
-            const template =
-                this.dataset.template;
+  experiences.forEach((e,i)=>{
 
+    const div=document.createElement("div");
 
-            if(
-                (
-                    template === "sidebar" ||
-                    template === "executive"
-                ) &&
-                !premium
-            ){
+    div.className="experience";
 
-                openPremium();
+    div.innerHTML=`
 
-                return;
+      <label>Poste</label>
+      <input value="${escapeHtml(e.role)}"
+      oninput="experiences[${i}].role=this.value;render()">
 
-            }
+      <label>Entreprise</label>
+      <input value="${escapeHtml(e.company)}"
+      oninput="experiences[${i}].company=this.value;render()">
 
+      <label>Dates</label>
+      <input value="${escapeHtml(e.dates)}"
+      oninput="experiences[${i}].dates=this.value;render()">
 
-            selectedTemplate =
-                template;
+      <label>Description</label>
+      <textarea
+      oninput="experiences[${i}].description=this.value;render()">${escapeHtml(e.description)}</textarea>
 
-
-            renderCV();
-
-        }
-    );
-
-});
-
-
-function applyTemplate(){
-
-    const page =
-        $("cv-page");
-
-    page.classList.remove(
-        "modern",
-        "sidebar"
-    );
-
-
-    if(
-        selectedTemplate === "modern"
-    ){
-
-        page.classList.add("modern");
-
-    }
-
-
-    if(
-        selectedTemplate === "sidebar"
-    ){
-
-        page.classList.add("sidebar");
-
-        buildSidebar();
-
-    }else{
-
-        removeSidebar();
-
-    }
-
-
-    if(
-        selectedTemplate === "executive"
-    ){
-
-        page.style.borderTop =
-            "8px solid var(--gold)";
-
-    }else{
-
-        page.style.borderTop = "";
-
-    }
-
-
-    document
-    .querySelectorAll(".template")
-    .forEach(btn => {
-
-        btn.classList.toggle(
-            "active",
-            btn.dataset.template ===
-                selectedTemplate
-        );
-
-    });
-
-}
-
-
-/* =========================================================
-   SIDEBAR
-========================================================= */
-
-function buildSidebar(){
-
-    const content =
-        $("cv-normal-content");
-
-
-    if(
-        content.dataset.sidebar === "true"
-    )
-        return;
-
-
-    const original =
-        content.innerHTML;
-
-
-    content.dataset.original =
-        original;
-
-    content.dataset.sidebar =
-        "true";
-
-
-    content.innerHTML = `
-
-        <div class="sidebar-left">
-
-            <img
-                id="sidebar-photo"
-                class="cv-photo">
-
-            <h4>
-                Contact
-            </h4>
-
-            <div
-                style="
-                font-size:10px;
-                line-height:1.8">
-
-                ${escapeHTML(get("f-email"))}
-                <br>
-
-                ${escapeHTML(get("f-phone"))}
-                <br>
-
-                ${escapeHTML(get("f-city"))}
-
-            </div>
-
-
-            <h4>
-                Compétences
-            </h4>
-
-            <div
-                id="sidebar-skills">
-            </div>
-
-        </div>
-
-
-        <div class="sidebar-right">
-
-            ${original}
-
-        </div>
+      <button class="btn btn-danger"
+      onclick="removeExperience(${i})">
+      Supprimer
+      </button>
 
     `;
 
+    box.appendChild(div);
 
-    const skills =
-        $("sidebar-skills");
+  });
+
+}
 
 
-    get("f-skills")
+/* ================= RENDU CV ================= */
+
+function render(){
+
+  const name=document.getElementById("name").value;
+  const job=document.getElementById("job").value;
+  const email=document.getElementById("email").value;
+  const phone=document.getElementById("phone").value;
+  const city=document.getElementById("city").value;
+  const summary=document.getElementById("summary").value;
+  const skills=document.getElementById("skills").value
     .split(",")
     .map(x=>x.trim())
-    .filter(Boolean)
-    .forEach(skill => {
+    .filter(Boolean);
 
-        const span =
-            document.createElement("span");
+  document.getElementById("previewName").textContent=name;
+  document.getElementById("previewJob").textContent=job;
 
-        span.className =
-            "skill";
+  document.getElementById("previewContact").innerHTML=
+    `<span>${escapeHtml(email)}</span>
+     <span>${escapeHtml(phone)}</span>
+     <span>${escapeHtml(city)}</span>`;
 
-        span.textContent =
-            skill;
+  document.getElementById("previewSummary").textContent=summary;
 
-        skills.appendChild(span);
+  let html="";
 
-    });
+  experiences.forEach(e=>{
 
+    if(!e.role&&!e.company) return;
 
-    updateSidebarPhoto();
+    html+=`
+
+      <div style="margin-bottom:15px">
+
+        <strong>${escapeHtml(e.role)}</strong>
+
+        <span style="float:right;color:#888">
+          ${escapeHtml(e.dates)}
+        </span>
+
+        <br>
+
+        <span style="color:var(--green2)">
+          ${escapeHtml(e.company)}
+        </span>
+
+        <br>
+
+        ${escapeHtml(e.description)}
+
+      </div>
+
+    `;
+
+  });
+
+  document.getElementById("previewExperiences").innerHTML=html;
+
+  const skillsHTML=skills
+    .map(s=>`<span class="skill">${escapeHtml(s)}</span>`)
+    .join("");
+
+  document.getElementById("previewSkills").innerHTML=skillsHTML;
+  document.getElementById("sideSkills").innerHTML=skillsHTML;
+
+  const lang=document.getElementById("languages").value;
+
+  document.getElementById("previewLanguages").textContent=lang;
+  document.getElementById("sideLanguages").textContent=lang;
+
+  const useSide=premium &&
+    document.getElementById("template").value==="premium";
+
+  document.getElementById("cvSide").style.display=
+    useSide ? "block":"none";
+
+  document.getElementById("mainSkills").style.display=
+    useSide ? "none":"block";
+
+  document.getElementById("mainLanguages").style.display=
+    premium ? "block":"none";
+
+  document.getElementById("sideLanguageBlock").style.display=
+    useSide && premium ? "block":"none";
+
+  document.getElementById("watermark").style.display=
+    premium ? "none":"block";
 
 }
 
 
-function removeSidebar(){
+/* ================= PREMIUM ================= */
 
-    const content =
-        $("cv-normal-content");
+function updatePremiumUI(){
 
+  premium =
+    localStorage.getItem("cvpro_premium")==="true";
 
-    if(
-        content.dataset.sidebar === "true"
-    ){
+  document.getElementById("accountBadge").textContent=
+    premium ? "⭐ Version Premium":"Version Basic";
 
-        content.innerHTML =
-            content.dataset.original;
+  document.getElementById("photoLock")
+    .classList.toggle("hidden",premium);
 
-        content.dataset.sidebar =
-            "false";
+  document.getElementById("photoBox")
+    .classList.toggle("hidden",!premium);
 
-    }
+  document.getElementById("languageLock")
+    .classList.toggle("hidden",premium);
 
-}
+  document.getElementById("languages")
+    .classList.toggle("hidden",!premium);
 
+  document.getElementById("premiumNotice")
+    .classList.toggle("hidden",premium);
 
-function updateSidebarPhoto(){
+  if(!premium)
+    document.getElementById("template").value="basic";
 
-    const original =
-        $("cv-photo");
-
-    const sidebar =
-        $("sidebar-photo");
-
-
-    if(
-        original &&
-        sidebar &&
-        original.src
-    ){
-
-        sidebar.src =
-            original.src;
-
-        sidebar.classList.add("show");
-
-    }
+  render();
 
 }
 
 
-/* =========================================================
-   PHOTO
-========================================================= */
+function changeTemplate(){
 
-$("f-photo")
-.addEventListener(
-    "change",
-    function(event){
+  if(document.getElementById("template").value==="premium" && !premium){
 
-        if(!premium){
+    openPayment();
 
-            openPremium();
+    document.getElementById("template").value="basic";
 
-            this.value = "";
+    return;
 
-            return;
+  }
 
-        }
+  render();
+
+}
 
 
-        const file =
-            event.target.files[0];
+function changeColor(){
+
+  const color=document.getElementById("color").value;
+
+  document.documentElement.style.setProperty(
+    "--green",
+    color
+  );
+
+  render();
+
+}
 
 
-        if(!file)
-            return;
+/* ================= PHOTO ================= */
 
+document.getElementById("photo")
+.addEventListener("change",function(e){
 
-        if(
-            file.size >
-            4 * 1024 * 1024
-        ){
+  if(!premium){
 
-            alert(
-                "La photo doit faire moins de 4 Mo."
-            );
+    openPayment();
 
-            return;
+    return;
 
-        }
+  }
 
+  const file=e.target.files[0];
 
-        const reader =
-            new FileReader();
+  if(!file)return;
 
+  const reader=new FileReader();
 
-        reader.onload =
-            function(e){
+  reader.onload=function(){
 
-                $("cv-photo").src =
-                    e.target.result;
+    const img=document.getElementById("previewPhoto");
 
-                $("cv-photo")
-                    .classList
-                    .add("show");
+    img.src=reader.result;
 
+    img.classList.add("show");
 
-                try{
+  };
 
-                    localStorage.setItem(
-                        "cvpro_photo",
-                        e.target.result
-                    );
-
-                }catch(error){}
-
-
-                updateSidebarPhoto();
-
-            };
-
-
-        reader.readAsDataURL(file);
-
-    }
-);
-
-
-/* =========================================================
-   CHAMPS
-========================================================= */
-
-[
-    "f-name",
-    "f-title",
-    "f-email",
-    "f-phone",
-    "f-city",
-    "f-summary",
-    "f-skills",
-    "f-languages"
-]
-.forEach(id => {
-
-    $(id)
-    .addEventListener(
-        "input",
-        renderCV
-    );
+  reader.readAsDataURL(file);
 
 });
 
 
-/* =========================================================
-   SAUVEGARDE
-========================================================= */
+/* ================= LETTRE ================= */
 
-function saveDraft(showToast=true){
+function generateLetter(){
 
-    const data = {
+  const name=document.getElementById("letterName").value;
+  const job=document.getElementById("letterJob").value;
+  const company=document.getElementById("company").value;
+  const city=document.getElementById("letterCity").value;
+  const motivation=document.getElementById("motivation").value;
 
-        name:get("f-name"),
+  const today=new Date().toLocaleDateString("fr-FR");
 
-        title:get("f-title"),
+  const text=`
 
-        email:get("f-email"),
+    <div style="text-align:right">
+      ${escapeHtml(city)}, le ${today}
+    </div>
 
-        phone:get("f-phone"),
+    <br>
 
-        city:get("f-city"),
+    <strong>
+      Objet : Candidature au poste de ${escapeHtml(job)}
+    </strong>
 
-        summary:get("f-summary"),
+    <p>
+      Madame, Monsieur,
+    </p>
 
-        skills:get("f-skills"),
+    <p>
+      Je souhaite vous adresser ma candidature au poste de
+      <strong>${escapeHtml(job)}</strong>
+      au sein de ${escapeHtml(company||"votre entreprise")}.
+    </p>
 
-        languages:get("f-languages"),
+    <p>
+      ${escapeHtml(
+        motivation ||
+        "Votre entreprise représente pour moi une opportunité de mettre mes compétences à contribution et de continuer à développer mon expérience professionnelle."
+      )}
+    </p>
 
-        experiences:experiences,
+    <p>
+      Sérieux(se), motivé(e) et prêt(e) à apprendre,
+      je suis convaincu(e) de pouvoir contribuer positivement
+      à vos activités.
+    </p>
 
-        template:selectedTemplate
+    <p>
+      Je serais heureux(se) de pouvoir échanger avec vous
+      afin de vous présenter davantage ma motivation.
+    </p>
 
-    };
+    <p>
+      Dans l'attente de votre retour, veuillez agréer,
+      Madame, Monsieur, l'expression de mes salutations distinguées.
+    </p>
 
+    <br>
 
-    try{
+    <strong>${escapeHtml(name)}</strong>
 
-        localStorage.setItem(
-            "cvpro_draft",
-            JSON.stringify(data)
-        );
+  `;
 
-
-        if(showToast)
-            toast("CV sauvegardé ✓");
-
-    }catch(error){}
-
-}
-
-
-function saveCV(){
-
-    saveDraft(true);
-
-}
-
-
-function loadDraft(){
-
-    try{
-
-        const raw =
-            localStorage.getItem(
-                "cvpro_draft"
-            );
-
-
-        if(!raw)
-            return;
-
-
-        const data =
-            JSON.parse(raw);
-
-
-        if(data.name !== undefined)
-            $("f-name").value =
-                data.name;
-
-
-        if(data.title !== undefined)
-            $("f-title").value =
-                data.title;
-
-
-        if(data.email !== undefined)
-            $("f-email").value =
-                data.email;
-
-
-        if(data.phone !== undefined)
-            $("f-phone").value =
-                data.phone;
-
-
-        if(data.city !== undefined)
-            $("f-city").value =
-                data.city;
-
-
-        if(data.summary !== undefined)
-            $("f-summary").value =
-                data.summary;
-
-
-        if(data.skills !== undefined)
-            $("f-skills").value =
-                data.skills;
-
-
-        if(data.languages !== undefined)
-            $("f-languages").value =
-                data.languages;
-
-
-        experiences =
-            data.experiences || [];
-
-
-        selectedTemplate =
-            data.template ||
-            "classic";
-
-
-    }catch(error){}
+  document.getElementById("letterPreview").innerHTML=text;
 
 }
 
 
-/* =========================================================
-   PHOTO SAUVEGARDEE
-========================================================= */
+/* ================= BOT ================= */
 
-function loadPhoto(){
+function openBot(){
 
-    try{
-
-        const photo =
-            localStorage.getItem(
-                "cvpro_photo"
-            );
-
-
-        if(photo){
-
-            $("cv-photo").src =
-                photo;
-
-            $("cv-photo")
-                .classList
-                .add("show");
-
-        }
-
-    }catch(error){}
+  document.getElementById("bot").classList.add("open");
 
 }
 
 
-/* =========================================================
-   PREMIUM
-========================================================= */
+function closeBot(){
 
-function openPremium(){
-
-    $("premium-modal")
-        .classList
-        .add("open");
+  document.getElementById("bot").classList.remove("open");
 
 }
 
 
-function closePremium(){
+function botAdd(message,user=false){
 
-    $("premium-modal")
-        .classList
-        .remove("open");
+  const body=document.getElementById("botBody");
+
+  const div=document.createElement("div");
+
+  div.className="bot-message"+(user?" bot-user":"");
+
+  div.textContent=message;
+
+  body.appendChild(div);
+
+  body.scrollTop=body.scrollHeight;
 
 }
 
 
-/* =========================================================
-   PAIEMENT
-========================================================= */
+function botProfile(){
 
-function startPayment(){
+  const job=document.getElementById("job").value;
 
-    /*
-    ==========================================================
-    IMPORTANT
+  botAdd("Pour le poste de "+job+", je te conseille un profil court qui met en avant les résultats, les compétences et la motivation.");
 
-    CETTE FONCTION EST LE POINT D'ENTREE DU PAIEMENT.
+  const profile=
+    "Professionnel(le) motivé(e), organisé(e) et orienté(e) résultats, "+
+    "avec des compétences adaptées au poste de "+job+". "+
+    "Capable de travailler avec sérieux, d'apprendre rapidement et "+
+    "de contribuer efficacement aux objectifs d'une équipe.";
 
-    Plus tard elle pourra appeler ton backend :
+  document.getElementById("summary").value=profile;
 
-        POST /api/payment/create
+  render();
 
-    avec par exemple :
+  botAdd("J'ai amélioré ton profil. Tu peux encore le modifier dans le formulaire.");
 
-        {
-            amount: 2000,
-            currency: "XOF",
-            product: "cvpro-premium"
-        }
-
-    Le backend communiquera avec le prestataire.
-
-    NE JAMAIS mettre une clé secrète ici.
-
-    ==========================================================
-    */
+}
 
 
-    alert(
-        "Le module de paiement est prêt à être connecté à ton prestataire de paiement."
-    );
+function botSkills(){
+
+  const job=document.getElementById("job").value.toLowerCase();
+
+  let skills=[
+    "Communication",
+    "Travail en équipe",
+    "Organisation",
+    "Gestion du temps",
+    "Adaptabilité"
+  ];
+
+  if(job.includes("marketing"))
+    skills=[
+      "Marketing digital",
+      "Réseaux sociaux",
+      "Canva",
+      "Création de contenu",
+      "Communication"
+    ];
+
+  if(job.includes("compt"))
+    skills=[
+      "Excel",
+      "Comptabilité",
+      "Saisie de données",
+      "Analyse financière",
+      "Organisation"
+    ];
+
+  if(job.includes("informat"))
+    skills=[
+      "Informatique",
+      "Microsoft Office",
+      "Résolution de problèmes",
+      "Gestion de données",
+      "Support technique"
+    ];
+
+  document.getElementById("skills").value=skills.join(", ");
+
+  render();
+
+  botAdd("J'ai proposé des compétences adaptées au poste de "+job+".");
+
+}
+
+
+function botExperience(){
+
+  if(experiences.length===0){
+
+    addExperience();
+
+  }
+
+  const e=experiences[0];
+
+  if(!e.description){
+
+    e.description=
+      "Participation aux activités de l'entreprise, "+
+      "organisation des tâches, collaboration avec l'équipe "+
+      "et contribution aux objectifs du service.";
+
+  }
+
+  renderExperience();
+
+  render();
+
+  botAdd("J'ai ajouté une formulation professionnelle à ton expérience. Pense à la modifier pour qu'elle corresponde exactement à ce que tu as réellement fait.");
+
+}
+
+
+function botLetter(){
+
+  showTab("letter");
+
+  document.getElementById("letterName").value=
+    document.getElementById("name").value;
+
+  document.getElementById("letterJob").value=
+    document.getElementById("job").value;
+
+  generateLetter();
+
+  closeBot();
+
+}
+
+
+/* ================= PAIEMENT ================= */
+
+function openPayment(){
+
+  document.getElementById("paymentModal")
+    .classList.add("open");
+
+}
+
+
+function closePayment(){
+
+  document.getElementById("paymentModal")
+    .classList.remove("open");
 
 }
 
 
 /*
-=============================================================
-MODE TEST PREMIUM
+ IMPORTANT :
 
-À UTILISER UNIQUEMENT POUR TESTER LE DESIGN.
+ Cette fonction est volontairement une interface de préparation.
 
-NE PAS LAISSER COMME SYSTÈME DE PAIEMENT RÉEL.
-=============================================================
+ Ne mets JAMAIS une clé secrète Orange Money ici.
+
+ La vraie version doit appeler ton backend :
+
+ POST /api/orange-money/create-payment
+
+ puis le backend communique avec l'API Orange Money.
+
 */
 
-function activatePremiumForTest(){
+async function startOrangePayment(){
 
-    premium = true;
+  document.getElementById("orangeStatus").textContent=
+    "Connexion au service de paiement...";
 
-    localStorage.setItem(
-        "cvpro_premium",
-        "true"
-    );
-
-    closePremium();
-
-    renderCV();
-
-    toast(
-        "Mode Premium activé"
-    );
-
-}
-
-
-/* =========================================================
-   TELECHARGEMENT / IMPRESSION
-========================================================= */
-
-function downloadPDF(){
+  try{
 
     /*
-       Le navigateur permet l'impression
-       vers PDF sans bibliothèque externe.
+      EXEMPLE D'APPEL :
+
+      const response=await fetch("/api/orange-money/create-payment",{
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+          amount:2000,
+          product:"CVPro Premium"
+        })
+      });
+
+      const data=await response.json();
+
+      if(data.paymentUrl){
+        window.location.href=data.paymentUrl;
+      }
     */
 
-    window.print();
+    setTimeout(()=>{
+
+      document.getElementById("orangeStatus").textContent=
+        "API Orange Money à connecter";
+
+      alert(
+        "Le paiement automatique est prêt côté interface. "+
+        "Il faut maintenant connecter les identifiants de ton compte marchand Orange Money au backend."
+      );
+
+    },800);
+
+  }catch(error){
+
+    document.getElementById("orangeStatus").textContent=
+      "Erreur";
+
+  }
 
 }
 
 
-/* =========================================================
-   FAQ
-========================================================= */
+/* ================= WAVE MANUEL ================= */
 
-function toggleFAQ(element){
+function manualWave(){
 
-    element
-        .parentElement
-        .classList
-        .toggle("open");
+  alert(
+    "Après ton paiement Wave, la vérification devra être effectuée "+
+    "selon le système de validation que tu choisiras."
+  );
 
 }
 
 
-/* =========================================================
-   INITIALISATION
-========================================================= */
+/* ================= SAUVEGARDE ================= */
 
-loadDraft();
+function saveData(){
 
-loadPhoto();
+  const data={
 
+    name:document.getElementById("name").value,
+    job:document.getElementById("job").value,
+    email:document.getElementById("email").value,
+    phone:document.getElementById("phone").value,
+    city:document.getElementById("city").value,
+    summary:document.getElementById("summary").value,
+    skills:document.getElementById("skills").value,
+    languages:document.getElementById("languages").value,
+    experiences:experiences
 
-if(experiences.length === 0){
+  };
 
-    addExperience(
+  localStorage.setItem(
+    "cvpro_data",
+    JSON.stringify(data)
+  );
 
-        "Chargée de projet digital",
-
-        "Agence Kora Média — Bamako",
-
-        "2022 — Aujourd'hui",
-
-        "Pilotage de campagnes clients, coordination d'équipe et création de contenu digital."
-
-    );
-
-
-    addExperience(
-
-        "Assistante marketing",
-
-        "Nexa Group — Bamako",
-
-        "2020 — 2022",
-
-        "Gestion des réseaux sociaux et création de contenu pour plusieurs marques."
-
-    );
-
-}else{
-
-    renderExperienceEditor();
+  alert("CV sauvegardé sur cet appareil.");
 
 }
 
 
-renderCV();
+function loadData(){
+
+  const raw=localStorage.getItem("cvpro_data");
+
+  if(!raw)return;
+
+  try{
+
+    const d=JSON.parse(raw);
+
+    const ids=[
+      "name","job","email","phone","city",
+      "summary","skills","languages"
+    ];
+
+    ids.forEach(id=>{
+
+      if(d[id]!==undefined)
+        document.getElementById(id).value=d[id];
+
+    });
+
+    experiences=d.experiences||[];
+
+  }catch(e){}
+
+}
 
 
-/* =========================================================
-   AUTO-SAVE
-========================================================= */
+/* ================= OUTILS ================= */
 
-setInterval(
-    () => saveDraft(false),
-    10000
-);
+function escapeHtml(text){
+
+  return String(text||"")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
 
 
-/* =========================================================
-   FERMETURE MODAL EN CLIQUANT DEHORS
-========================================================= */
+/* ================= EVENEMENTS ================= */
 
-$("premium-modal")
-.addEventListener(
-    "click",
-    function(e){
+[
+  "name",
+  "job",
+  "email",
+  "phone",
+  "city",
+  "summary",
+  "skills",
+  "languages"
+].forEach(id=>{
 
-        if(
-            e.target === this
-        ){
+  document.getElementById(id)
+    .addEventListener("input",function(){
 
-            closePremium();
+      render();
 
-        }
+    });
 
-    }
-);
+});
+
+
+/* ================= DEMARRAGE ================= */
+
+init();
 
 </script>
 
 </body>
-  </html>
+                                                                </html>
