@@ -45,7 +45,12 @@
   .exp-place{font-size:12.5px;color:var(--pine);margin-bottom:3px;}
   .skills-wrap{display:flex;flex-wrap:wrap;gap:7px;}
   .skill-pill{background:#EEF3EF;color:var(--pine-dark);padding:4px 10px;border-radius:20px;font-size:12px;font-weight:600;}
-  @media print{.panel{display:none;}.preview-wrap{padding:0;background:white;}.page{box-shadow:none;max-width:100%;}}
+  @media print{
+    .panel{display:none;}
+    .preview-wrap{padding:0;background:white;}
+    .page{box-shadow:none;max-width:100%;}
+    *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;color-adjust:exact !important;}
+  }
   .modal-overlay{display:none;position:fixed;inset:0;background:rgba(23,32,27,0.55);z-index:100;align-items:center;justify-content:center;padding:20px;}
   .modal-overlay.open{display:flex;}
   .modal-box{background:var(--white);border-radius:10px;max-width:380px;width:100%;padding:26px 22px;max-height:85vh;overflow-y:auto;}
@@ -72,15 +77,17 @@
   .tier-badge{display:inline-block;font-size:10px;font-weight:600;padding:2px 8px;border-radius:10px;margin-left:6px;vertical-align:middle;}
   .tier-badge.t1{background:#EEF3EF;color:var(--pine-dark);}
   .tier-badge.t2{background:#F3E9D8;color:#5C4726;}
-  .page.premium-look .cv-header{background:linear-gradient(135deg, var(--pine-dark), var(--pine));margin:-52px -48px 0;padding:36px 48px 28px;color:white;}
-  .page.premium-look .cv-name{color:white;}
-  .page.premium-look .cv-title{color:rgba(255,255,255,0.85);}
-  .page.premium-look .cv-contact{color:rgba(255,255,255,0.75);}
-  .page.premium-look .cv-photo{border-color:white;box-shadow:0 4px 14px rgba(0,0,0,0.25);}
+  .page{display:flex;}
+  .cv-sidebar{display:none;}
+  .cv-main{flex:1;min-width:0;}
+  .page.premium-look{padding:0;overflow:hidden;}
+  .page.premium-look .cv-sidebar{display:flex;flex-direction:column;width:180px;flex-shrink:0;background:var(--pine-dark);padding:40px 20px;}
+  .page.premium-look .cv-main{padding:40px 36px;}
+  .page.premium-look .cv-sidebar .cv-photo{width:100px;height:100px;margin:0 auto;border-color:rgba(255,255,255,0.85);display:block;}
   .page.premium-look .cv-divider{display:none;}
-  .page.premium-look{padding-top:0;}
-  .page.premium-look .cv-section-title{display:inline-block;background:var(--pine-dark);color:white;padding:5px 16px;border-radius:4px;text-transform:uppercase;font-size:12px;letter-spacing:0.06em;margin-top:24px;}
-  .page.premium-look .skill-pill{background:var(--pine-dark);color:white;}
+  .side-title{font-family:'Fraunces',serif;font-size:11.5px;text-transform:uppercase;letter-spacing:0.08em;color:white;border-bottom:1px solid rgba(255,255,255,0.35);padding-bottom:6px;margin:22px 0 10px;}
+  .page.premium-look .cv-sidebar .skill-pill{display:block;width:fit-content;background:rgba(255,255,255,0.16);color:white;margin-bottom:6px;}
+  .page.premium-look .cv-sidebar .cv-body{font-size:11px;line-height:1.6;color:rgba(255,255,255,0.85);}
 </style>
 </head>
 <body>
@@ -141,26 +148,39 @@
     <button class="print-btn" onclick="window.print()">Télécharger en PDF</button>
     <div class="note">Le bouton ouvre l'impression du navigateur → "Enregistrer en PDF".</div>
   </div>
+
   <div class="preview-wrap">
     <div class="page" id="page">
-      <div class="cv-header">
+      <div class="cv-sidebar" id="cv-sidebar">
         <img class="cv-photo" id="p-photo" alt="photo" />
-        <div>
-          <p class="cv-name" id="p-name"></p>
-          <p class="cv-title" id="p-title"></p>
-          <div class="cv-contact" id="p-contact"></div>
-        </div>
+        <div class="side-title">Compétences</div>
+        <div class="skills-wrap" id="p-skills-side"></div>
+        <div class="side-title" id="side-langues-title" style="display:none;">Langues</div>
+        <div class="cv-body" id="p-langues-side" style="display:none;"></div>
       </div>
-      <div class="cv-divider"></div>
-      <div class="cv-section-title">Profil</div>
-      <div class="cv-body" id="p-summary"></div>
-      <div class="cv-section-title">Expérience</div>
-      <div class="cv-body" id="p-exp"></div>
-      <div class="cv-section-title">Compétences</div>
-      <div class="skills-wrap" id="p-skills"></div>
-      <div class="cv-section-title" id="p-langues-title" style="display:none;">Langues & certifications</div>
-      <div class="cv-body" id="p-langues" style="display:none;"></div>
-      <div class="watermark" id="p-watermark">CV généré via ton-generateur-cv — débloque un abonnement pour retirer ce filigrane</div>
+      <div class="cv-main" id="cv-main">
+        <div class="cv-header" id="cv-header">
+          <div>
+            <p class="cv-name" id="p-name"></p>
+            <p class="cv-title" id="p-title"></p>
+            <div class="cv-contact" id="p-contact"></div>
+          </div>
+        </div>
+        <div class="cv-divider"></div>
+        <div class="cv-section-title">Profil</div>
+        <div class="cv-body" id="p-summary"></div>
+        <div class="cv-section-title">Expérience</div>
+        <div class="cv-body" id="p-exp"></div>
+        <div id="skills-block">
+          <div class="cv-section-title">Compétences</div>
+          <div class="skills-wrap" id="p-skills"></div>
+        </div>
+        <div id="langues-block" style="display:none;">
+          <div class="cv-section-title">Langues & certifications</div>
+          <div class="cv-body" id="p-langues"></div>
+        </div>
+        <div class="watermark" id="p-watermark">CV généré via ton-generateur-cv — débloque un abonnement pour retirer ce filigrane</div>
+      </div>
     </div>
   </div>
 </div>
@@ -313,11 +333,18 @@ function render(){
   }).join('');
   document.getElementById('p-exp').innerHTML = expHtml;
   const skills = document.getElementById('f-skills').value.split(',').map(s=>s.trim()).filter(Boolean);
-  document.getElementById('p-skills').innerHTML = skills.map(s=>`<span class="skill-pill">${s}</span>`).join('');
-  if(tierUnlocked(2)){
-    document.getElementById('p-langues-title').style.display = 'block';
-    document.getElementById('p-langues').style.display = 'block';
+  const skillsHtml = skills.map(s=>`<span class="skill-pill">${s}</span>`).join('');
+  const isPremiumLook = (currentTpl === 'gold' || currentTpl === 'mono');
+  document.getElementById('skills-block').style.display = isPremiumLook ? 'none' : 'block';
+  document.getElementById('p-skills').innerHTML = skillsHtml;
+  document.getElementById('p-skills-side').innerHTML = skillsHtml;
+  const languesOn = tierUnlocked(2);
+  document.getElementById('langues-block').style.display = (languesOn && !isPremiumLook) ? 'block' : 'none';
+  document.getElementById('side-langues-title').style.display = (languesOn && isPremiumLook) ? 'block' : 'none';
+  document.getElementById('p-langues-side').style.display = (languesOn && isPremiumLook) ? 'block' : 'none';
+  if(languesOn){
     document.getElementById('p-langues').textContent = document.getElementById('f-langues').value;
+    document.getElementById('p-langues-side').textContent = document.getElementById('f-langues').value;
   }
 }
 ['f-name','f-title','f-email','f-phone','f-city','f-summary','f-skills'].forEach(id=>{
@@ -329,4 +356,4 @@ applyUnlocks();
 render();
 </script>
 </body>
-  </html>
+</html>
