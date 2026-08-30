@@ -5,7 +5,7 @@
 <title>Générateur de CV</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6364128969715295" crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2C6CGMBX63"></script>
 <script>
@@ -15,16 +15,16 @@
   gtag('config', 'G-2C6CGMBX63');
 </script>
 <style>
-  :root{--paper:#F6F4EF;--ink:#17201B;--pine:#2F4B3C;--pine-dark:#1E3329;--gold:#B8925A;--line:#D9D4C6;--white:#FFFFFF;}
+  :root{--paper:#F6F4EF;--ink:#17201B;--pine:#123c32;--pine-dark:#0d2c25;--gold:#c49a55;--line:#D9D4C6;--white:#FFFFFF;}
   *{box-sizing:border-box;}
-  body{margin:0;background:var(--paper);font-family:'Inter',sans-serif;color:var(--ink);}
+  body{margin:0;background:var(--paper);font-family:'DM Sans',sans-serif;color:var(--ink);}
   .shell{display:grid;grid-template-columns:380px 1fr;min-height:100vh;}
   @media (max-width:900px){.shell{grid-template-columns:1fr;}}
   .panel{padding:32px 28px;border-right:1px solid var(--line);background:var(--white);}
   .eyebrow{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--pine);font-weight:600;margin-bottom:6px;}
-  h1{font-family:'Fraunces',serif;font-size:26px;margin:0 0 24px 0;font-weight:600;color:var(--pine-dark);}
+  h1{font-family:'Playfair Display',serif;font-size:26px;margin:0 0 24px 0;font-weight:600;color:var(--pine-dark);}
   label{display:block;font-size:12px;font-weight:600;margin:16px 0 6px;color:#5B6660;}
-  input, textarea{width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:4px;font-family:'Inter',sans-serif;font-size:14px;background:#FCFBF8;color:var(--ink);}
+  input, textarea{width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:4px;font-family:'DM Sans',sans-serif;font-size:14px;background:#FCFBF8;color:var(--ink);}
   textarea{resize:vertical;min-height:64px;}
   input:focus, textarea:focus{outline:2px solid var(--pine);outline-offset:1px;}
   .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
@@ -40,11 +40,11 @@
   .note{font-size:11.5px;color:#8A8377;margin-top:10px;line-height:1.5;}
   .preview-wrap{padding:40px;display:flex;justify-content:center;background:#EFEBE1;}
   .page{width:100%;max-width:680px;background:var(--white);box-shadow:0 8px 30px rgba(20,30,25,0.12);padding:52px 48px;min-height:900px;}
-  .cv-name{font-family:'Fraunces',serif;font-size:34px;font-weight:700;color:var(--pine-dark);margin:0;}
+  .cv-name{font-family:'Playfair Display',serif;font-size:34px;font-weight:700;color:var(--pine-dark);margin:0;}
   .cv-title{font-size:14px;color:var(--pine);font-weight:600;letter-spacing:0.03em;margin-top:2px;}
   .cv-contact{font-size:12.5px;color:#6B7269;margin-top:10px;display:flex;gap:14px;flex-wrap:wrap;}
   .cv-divider{height:2px;background:var(--pine-dark);width:44px;margin:22px 0 18px;}
-  .cv-section-title{font-family:'Fraunces',serif;font-size:15px;font-weight:600;color:var(--pine-dark);text-transform:uppercase;letter-spacing:0.06em;margin:26px 0 10px;}
+  .cv-section-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--pine-dark);text-transform:uppercase;letter-spacing:0.06em;margin:26px 0 10px;}
   .cv-body{font-size:13.5px;line-height:1.6;color:#2B332E;}
   .exp-item{margin-bottom:14px;}
   .exp-top{display:flex;justify-content:space-between;font-weight:600;font-size:13.5px;color:var(--ink);}
@@ -56,14 +56,17 @@
     .panel{display:none;}
     .preview-wrap{padding:0;background:white;}
     .page{box-shadow:none;max-width:100%;min-height:auto;}
+    .letter-page{box-shadow:none;max-width:100%;min-height:auto;padding:30px;}
     .cv-sidebar{min-height:100%;}
     .maintabs, .bot-float, .bot-panel{display:none !important;}
+    .site-header, .hero, .stats-bar, .marketing-section, .site-footer{display:none !important;}
+    body{background:white;}
     *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;color-adjust:exact !important;}
   }
   .modal-overlay{display:none;position:fixed;inset:0;background:rgba(23,32,27,0.55);z-index:100;align-items:center;justify-content:center;padding:20px;}
   .modal-overlay.open{display:flex;}
   .modal-box{background:var(--white);border-radius:10px;max-width:380px;width:100%;padding:26px 22px;max-height:85vh;overflow-y:auto;}
-  .modal-box h2{font-family:'Fraunces',serif;font-size:20px;color:var(--pine-dark);margin:0 0 6px;}
+  .modal-box h2{font-family:'Playfair Display',serif;font-size:20px;color:var(--pine-dark);margin:0 0 6px;}
   .modal-price{font-size:13px;color:#6B7269;margin-bottom:16px;}
   .pay-line{display:flex;justify-content:space-between;align-items:center;background:#F6F4EF;border-radius:6px;padding:10px 12px;margin-bottom:8px;font-size:13.5px;}
   .pay-line b{color:var(--pine-dark);}
@@ -93,7 +96,7 @@
   .page.premium-look .cv-main{padding:40px 36px;}
   .page.premium-look .cv-sidebar .cv-photo{width:100px;height:100px;margin:0 auto;border-color:rgba(255,255,255,0.85);display:block;}
   .page.premium-look .cv-divider{display:none;}
-  .side-title{font-family:'Fraunces',serif;font-size:11.5px;text-transform:uppercase;letter-spacing:0.08em;color:white;border-bottom:1px solid rgba(255,255,255,0.35);padding-bottom:6px;margin:22px 0 10px;}
+  .side-title{font-family:'Playfair Display',serif;font-size:11.5px;text-transform:uppercase;letter-spacing:0.08em;color:white;border-bottom:1px solid rgba(255,255,255,0.35);padding-bottom:6px;margin:22px 0 10px;}
   .page.premium-look .cv-sidebar .skill-pill{display:block;width:fit-content;background:rgba(255,255,255,0.16);color:white;margin-bottom:6px;}
   .page.premium-look .cv-sidebar .cv-body{font-size:11px;line-height:1.6;color:rgba(255,255,255,0.85);}
   .page.banner-look{padding:0;}
@@ -124,9 +127,129 @@
   .bot-msg{background:#F6F4EF;border-radius:8px;padding:10px;font-size:12.5px;line-height:1.5;margin-bottom:8px;}
   .bot-actions{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px;}
   .bot-actions button{border:1px solid var(--line);background:#FCFBF8;color:var(--pine-dark);padding:8px;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;}
+  .site-header{background:rgba(255,255,255,.97);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:150;}
+  .site-nav{max-width:1150px;margin:auto;height:66px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;}
+  .site-logo{display:flex;align-items:center;gap:9px;font-weight:700;font-size:19px;color:var(--pine-dark);}
+  .site-logo-mark{width:36px;height:36px;border-radius:9px;background:var(--pine-dark);color:white;display:grid;place-items:center;font-size:12px;font-weight:700;}
+  .site-cta{background:var(--pine-dark);color:white;border:none;padding:11px 18px;border-radius:8px;font-weight:700;font-size:13px;cursor:pointer;}
+  .hero{padding:60px 20px 50px;background:radial-gradient(circle at 80% 15%, rgba(196,154,85,.14), transparent 35%), linear-gradient(180deg,#fff,var(--paper));text-align:center;}
+  .hero-badge{display:inline-block;padding:6px 12px;border-radius:20px;background:#EAF3EF;color:var(--pine-dark);font-size:11px;font-weight:700;margin-bottom:14px;}
+  .hero h1{font-family:'Playfair Display',serif;font-size:clamp(32px,6vw,48px);color:var(--pine-dark);margin:0 0 14px;line-height:1.1;}
+  .hero h1 span{color:var(--gold);}
+  .hero p{color:var(--muted,#6e7974);max-width:520px;margin:0 auto 22px;font-size:15px;line-height:1.6;}
+  .hero-cta{background:var(--pine-dark);color:white;border:none;padding:14px 22px;border-radius:9px;font-weight:700;font-size:14px;cursor:pointer;}
+  .stats-bar{background:var(--pine-dark);color:white;padding:20px;display:flex;justify-content:center;gap:50px;flex-wrap:wrap;text-align:center;}
+  .stats-bar strong{display:block;font-size:20px;}
+  .stats-bar span{font-size:11px;opacity:.75;}
+  .marketing-section{max-width:1050px;margin:auto;padding:50px 20px;}
+  .marketing-head{text-align:center;max-width:600px;margin:0 auto 30px;}
+  .marketing-head .eyebrow{color:var(--pine);text-transform:uppercase;font-size:11px;letter-spacing:.12em;font-weight:700;}
+  .marketing-head h2{font-family:'Playfair Display',serif;color:var(--pine-dark);font-size:30px;margin:8px 0 8px;}
+  .marketing-head p{color:#6e7974;font-size:14px;}
+  .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  @media(max-width:700px){.feat-grid{grid-template-columns:1fr;}}
+  .feat-card{background:white;border:1px solid var(--line);border-radius:11px;padding:20px;}
+  .feat-icon{width:38px;height:38px;background:#EAF3EF;color:var(--pine-dark);border-radius:9px;display:grid;place-items:center;margin-bottom:12px;font-size:18px;}
+  .feat-card h3{margin:0 0 5px;color:var(--pine-dark);font-size:15px;}
+  .feat-card p{margin:0;color:#6e7974;font-size:12.5px;}
+  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:900px;margin:auto;}
+  @media(max-width:700px){.price-grid{grid-template-columns:1fr;}}
+  .price-card{background:white;border:1px solid var(--line);border-radius:13px;padding:24px;position:relative;}
+  .price-card.featured{border:2px solid var(--pine-dark);box-shadow:0 15px 40px rgba(16,40,32,.1);}
+  .price-flag{position:absolute;right:16px;top:16px;background:var(--gold);color:white;font-size:9px;font-weight:700;padding:4px 8px;border-radius:20px;}
+  .price-card h3{color:var(--pine-dark);font-size:16px;margin:0;}
+  .price-num{font-family:'Playfair Display',serif;font-size:30px;color:var(--pine-dark);margin:12px 0;}
+  .price-num small{font-family:'DM Sans',sans-serif;font-size:12px;color:#6e7974;}
+  .price-ul{list-style:none;padding:0;margin:16px 0;font-size:12.5px;color:#52605a;}
+  .price-ul li{margin:7px 0;}
+  .faq-wrap{max-width:680px;margin:auto;}
+  .faq-item{background:white;border:1px solid var(--line);border-radius:9px;margin-bottom:8px;overflow:hidden;}
+  .faq-q{padding:15px;font-weight:700;font-size:13px;cursor:pointer;display:flex;justify-content:space-between;color:var(--pine-dark);}
+  .faq-a{display:none;padding:0 15px 15px;color:#6e7974;font-size:12.5px;line-height:1.6;}
+  .faq-item.open .faq-a{display:block;}
+  .site-footer{background:var(--pine-dark);color:#cbd8d2;padding:26px 20px;text-align:center;font-size:11.5px;}
+  #builder-anchor{scroll-margin-top:75px;}
 </style>
 </head>
 <body>
+
+<header class="site-header">
+  <div class="site-nav">
+    <div class="site-logo">
+      <div class="site-logo-mark">CV</div>
+      CVPro
+    </div>
+    <button class="site-cta" onclick="document.getElementById('builder-anchor').scrollIntoView({behavior:'smooth'})">Créer mon CV</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-badge">🇲🇱 Pensé pour le marché malien</div>
+  <h1>Ton CV. <br>Ton avenir. <br><span>En quelques minutes.</span></h1>
+  <p>Crée un CV professionnel et une lettre de motivation directement depuis ton téléphone — sans Word, sans ordinateur.</p>
+  <button class="hero-cta" onclick="document.getElementById('builder-anchor').scrollIntoView({behavior:'smooth'})">✍️ Créer mon CV maintenant</button>
+</section>
+
+<div class="stats-bar">
+  <div><strong>5 min</strong><span>pour créer ton CV</span></div>
+  <div><strong>100%</strong><span>depuis ton téléphone</span></div>
+  <div><strong>FCFA</strong><span>paiement Orange/Moov/Wave</span></div>
+</div>
+
+<section class="marketing-section">
+  <div class="marketing-head">
+    <div class="eyebrow">Pourquoi CVPro ?</div>
+    <h2>Tout ce qu'il faut pour un CV professionnel</h2>
+    <p>Une expérience simple, rapide, pensée pour le marché local.</p>
+  </div>
+  <div class="feat-grid">
+    <div class="feat-card"><div class="feat-icon">⚡</div><h3>Création instantanée</h3><p>Aperçu en direct pendant que tu remplis le formulaire.</p></div>
+    <div class="feat-card"><div class="feat-icon">📱</div><h3>100% mobile</h3><p>Pas besoin d'ordinateur pour créer un CV pro.</p></div>
+    <div class="feat-card"><div class="feat-icon">🎨</div><h3>Modèles variés</h3><p>Plusieurs designs selon le poste recherché.</p></div>
+    <div class="feat-card"><div class="feat-icon">✉️</div><h3>Lettre de motivation</h3><p>Génère aussi ta lettre en un clic.</p></div>
+    <div class="feat-card"><div class="feat-icon">🤖</div><h3>Assistant intégré</h3><p>Suggestions de compétences et de formulations.</p></div>
+    <div class="feat-card"><div class="feat-icon">💰</div><h3>Paiement local</h3><p>Wave, Orange Money et Moov Money.</p></div>
+  </div>
+</section>
+
+<section class="marketing-section">
+  <div class="marketing-head">
+    <div class="eyebrow">Tarifs simples</div>
+    <h2>Commence gratuitement</h2>
+  </div>
+  <div class="price-grid">
+    <div class="price-card">
+      <h3>Gratuit</h3>
+      <div class="price-num">0 <small>FCFA</small></div>
+      <ul class="price-ul"><li>✓ Modèles Forêt & Marine</li><li>✓ Export PDF</li><li>✓ Sauvegarde auto</li></ul>
+    </div>
+    <div class="price-card">
+      <h3>Photo</h3>
+      <div class="price-num">1000 <small>FCFA</small></div>
+      <ul class="price-ul"><li>✓ Tout le gratuit</li><li>✓ Photo de profil</li><li>✓ Sans filigrane</li></ul>
+    </div>
+    <div class="price-card featured">
+      <div class="price-flag">POPULAIRE</div>
+      <h3>Complet</h3>
+      <div class="price-num">2000 <small>FCFA</small></div>
+      <ul class="price-ul"><li>✓ Tout Photo</li><li>✓ Modèles Doré & Mono</li><li>✓ Langues & certifications</li><li>✓ Couleur personnalisée</li></ul>
+    </div>
+  </div>
+</section>
+
+<section class="marketing-section">
+  <div class="marketing-head">
+    <div class="eyebrow">Questions fréquentes</div>
+    <h2>Comment ça marche ?</h2>
+  </div>
+  <div class="faq-wrap">
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Dois-je créer un compte ? <span>+</span></div><div class="faq-a">Non. Ton CV se sauvegarde automatiquement sur ton appareil pendant que tu le remplis.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Comment fonctionne le paiement ? <span>+</span></div><div class="faq-a">Tu envoies le montant via Wave ou Moov Money, tu montres la preuve sur WhatsApp, et tu reçois un code qui débloque instantanément les fonctionnalités.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Puis-je aussi faire une lettre de motivation ? <span>+</span></div><div class="faq-a">Oui, un onglet dédié permet de générer une lettre adaptée au poste et à l'entreprise visés.</div></div>
+  </div>
+</section>
+
+<div id="builder-anchor"></div>
 <div class="maintabs">
   <button class="maintab active" id="tab-cv" onclick="showView('cv')">📄 Mon CV</button>
   <button class="maintab" id="tab-letter" onclick="showView('letter')">✉️ Lettre de motivation</button>
@@ -449,144 +572,5 @@ function loadDraft(){
     const d = JSON.parse(raw);
     document.getElementById('f-name').value = d.name || '';
     document.getElementById('f-title').value = d.title || '';
-    document.getElementById('f-email').value = d.email || '';
-    document.getElementById('f-phone').value = d.phone || '';
-    document.getElementById('f-city').value = d.city || '';
-    document.getElementById('f-summary').value = d.summary || '';
-    document.getElementById('f-skills').value = d.skills || '';
-    document.getElementById('f-langues').value = d.langues || '';
-    document.getElementById('exp-list').innerHTML = '';
-    expCount = 0;
-    (d.experiences || []).forEach(e => addExp(e.role, e.place, e.dates, e.desc));
-    if(d.tpl){ currentTpl = d.tpl; }
-    return true;
-  }catch(e){ return false; }
-}
-function render(){
-  const c = colors[currentTpl] || colors.pine;
-  document.documentElement.style.setProperty('--pine', c.main);
-  document.documentElement.style.setProperty('--pine-dark', c.dark);
-  const pageEl = document.getElementById('page');
-  const useSidebar = (currentTpl === 'gold');
-  const useBanner = (currentTpl === 'mono');
-  pageEl.classList.toggle('premium-look', useSidebar);
-  pageEl.classList.toggle('banner-look', useBanner);
-  positionPhoto();
-  document.getElementById('p-name').textContent = document.getElementById('f-name').value;
-  document.getElementById('p-title').textContent = document.getElementById('f-title').value;
-  document.getElementById('p-contact').innerHTML = `<span>${document.getElementById('f-email').value}</span><span>${document.getElementById('f-phone').value}</span><span>${document.getElementById('f-city').value}</span>`;
-  document.getElementById('p-summary').textContent = document.getElementById('f-summary').value;
-  const photoEl = document.getElementById('p-photo');
-  if(currentPhoto){ photoEl.src = currentPhoto; photoEl.classList.add('has-img'); }
-  else { photoEl.classList.remove('has-img'); }
-  const expHtml = Array.from(document.querySelectorAll('.exp-block')).map(b=>{
-    const role = b.querySelector('.e-role').value, place = b.querySelector('.e-place').value, dates = b.querySelector('.e-dates').value, desc = b.querySelector('.e-desc').value;
-    if(!role && !place) return '';
-    return `<div class="exp-item"><div class="exp-top"><span>${role}</span><span class="exp-dates">${dates}</span></div><div class="exp-place">${place}</div><div>${desc}</div></div>`;
-  }).join('');
-  document.getElementById('p-exp').innerHTML = expHtml;
-  const skills = document.getElementById('f-skills').value.split(',').map(s=>s.trim()).filter(Boolean);
-  const skillsHtml = skills.map(s=>`<span class="skill-pill">${s}</span>`).join('');
-  document.getElementById('skills-block').style.display = useSidebar ? 'none' : 'block';
-  document.getElementById('p-skills').innerHTML = skillsHtml;
-  document.getElementById('p-skills-side').innerHTML = skillsHtml;
-  const languesOn = tierUnlocked(2);
-  document.getElementById('langues-block').style.display = (languesOn && !useSidebar) ? 'block' : 'none';
-  document.getElementById('side-langues-title').style.display = (languesOn && useSidebar) ? 'block' : 'none';
-  document.getElementById('p-langues-side').style.display = (languesOn && useSidebar) ? 'block' : 'none';
-  if(languesOn){
-    document.getElementById('p-langues').textContent = document.getElementById('f-langues').value;
-    document.getElementById('p-langues-side').textContent = document.getElementById('f-langues').value;
-  }
-  saveDraft();
-}
-['f-name','f-title','f-email','f-phone','f-city','f-summary','f-skills'].forEach(id=>{
-  document.getElementById(id).addEventListener('input', render);
-});
-const hadDraft = loadDraft();
-if(!hadDraft){
-  addExp('Chargée de projet digital', 'Agence Kora Média — Bamako', '2022 — Aujourd\'hui', 'Pilotage de 6 campagnes clients simultanées, coordination d\'une équipe de 4 personnes, +30% de satisfaction client.');
-  addExp('Assistante marketing', 'Nexa Group — Bamako', '2020 — 2022', 'Gestion des réseaux sociaux et création de contenu pour 3 marques.');
-}
-applyUnlocks();
-render();
-
-function showView(view){
-  document.getElementById('cv-view').style.display = view === 'cv' ? 'grid' : 'none';
-  document.getElementById('letter-view').style.display = view === 'letter' ? 'grid' : 'none';
-  document.getElementById('tab-cv').classList.toggle('active', view === 'cv');
-  document.getElementById('tab-letter').classList.toggle('active', view === 'letter');
-}
-function escapeHtml(text){
-  return String(text||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-}
-function generateLetter(){
-  const name = document.getElementById('l-name').value;
-  const job = document.getElementById('l-job').value;
-  const company = document.getElementById('l-company').value;
-  const city = document.getElementById('l-city').value;
-  const motivation = document.getElementById('l-motivation').value;
-  const today = new Date().toLocaleDateString('fr-FR');
-  const html = `
-    <div class="letter-date">${escapeHtml(city)}, le ${today}</div>
-    <div class="letter-object">Objet : Candidature au poste de ${escapeHtml(job)}</div>
-    <p>Madame, Monsieur,</p>
-    <p>Je souhaite vous adresser ma candidature au poste de <strong>${escapeHtml(job)}</strong> au sein de ${escapeHtml(company || "votre entreprise")}.</p>
-    <p>${escapeHtml(motivation || "Votre entreprise représente pour moi une opportunité de mettre mes compétences à contribution et de continuer à développer mon expérience professionnelle.")}</p>
-    <p>Sérieux(se), motivé(e) et prêt(e) à apprendre, je suis convaincu(e) de pouvoir contribuer positivement à vos activités.</p>
-    <p>Je serais heureux(se) de pouvoir échanger avec vous afin de vous présenter davantage ma motivation.</p>
-    <p>Dans l'attente de votre retour, veuillez agréer, Madame, Monsieur, l'expression de mes salutations distinguées.</p>
-    <br>
-    <strong>${escapeHtml(name)}</strong>
-  `;
-  document.getElementById('letter-preview').innerHTML = html;
-}
-function openBot(){ document.getElementById('bot-panel').classList.add('open'); }
-function closeBot(){ document.getElementById('bot-panel').classList.remove('open'); }
-function botAdd(message){
-  const body = document.getElementById('bot-body');
-  const div = document.createElement('div');
-  div.className = 'bot-msg';
-  div.textContent = message;
-  body.appendChild(div);
-  body.scrollTop = body.scrollHeight;
-}
-function botProfile(){
-  const job = document.getElementById('f-title').value || 'ce poste';
-  const profile = `Professionnel(le) motivé(e), organisé(e) et orienté(e) résultats, avec des compétences adaptées au poste de ${job}. Capable de travailler avec sérieux, d'apprendre rapidement et de contribuer efficacement aux objectifs d'une équipe.`;
-  document.getElementById('f-summary').value = profile;
-  render();
-  botAdd("J'ai amélioré ton profil ci-contre. Tu peux encore le modifier dans le formulaire.");
-}
-function botSkills(){
-  const job = (document.getElementById('f-title').value || '').toLowerCase();
-  let skills = ["Communication","Travail en équipe","Organisation","Gestion du temps","Adaptabilité"];
-  if(job.includes('marketing')) skills = ["Marketing digital","Réseaux sociaux","Canva","Création de contenu","Communication"];
-  if(job.includes('compt')) skills = ["Excel","Comptabilité","Saisie de données","Analyse financière","Organisation"];
-  if(job.includes('informat')) skills = ["Informatique","Microsoft Office","Résolution de problèmes","Gestion de données","Support technique"];
-  if(job.includes('vente') || job.includes('commercial')) skills = ["Négociation","Relation client","Prospection","Sens du résultat","Communication"];
-  document.getElementById('f-skills').value = skills.join(', ');
-  render();
-  botAdd(`J'ai proposé des compétences adaptées au poste de ${document.getElementById('f-title').value}.`);
-}
-function botExperience(){
-  const firstBlock = document.querySelector('.exp-block');
-  if(!firstBlock){ botAdd("Ajoute d'abord une expérience, puis reclique ici."); return; }
-  const descField = firstBlock.querySelector('.e-desc');
-  if(!descField.value.trim()){
-    descField.value = "Participation active aux activités de l'équipe, organisation des tâches quotidiennes, collaboration avec les collègues et contribution aux objectifs du service.";
-    render();
-  }
-  botAdd("J'ai proposé une formulation professionnelle pour ta première expérience. Ajuste-la pour qu'elle corresponde exactement à ce que tu as fait.");
-}
-function botPrepareLetter(){
-  showView('letter');
-  document.getElementById('l-name').value = document.getElementById('f-name').value;
-  document.getElementById('l-job').value = document.getElementById('f-title').value;
-  generateLetter();
-  closeBot();
-}
-</script>
-</body>
-  </html>
+    d
                                                                 </html>
