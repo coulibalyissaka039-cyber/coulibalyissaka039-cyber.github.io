@@ -3,107 +3,97 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#123c32">
-<meta name="description" content="CVPro - Créateur de CV et lettre de motivation professionnel">
+<meta name="theme-color" content="#102f27">
 <title>CVPro — Créateur de CV professionnel</title>
 
 <style>
 :root{
   --primary:#123c32;
-  --primary2:#2f5d50;
+  --primary2:#0b2922;
   --accent:#c49a55;
-  --bg:#f4f2ed;
-  --card:#ffffff;
-  --text:#17201b;
-  --muted:#69736d;
-  --line:#ddd8cc;
+  --bg:#f3f1eb;
+  --card:#fff;
+  --text:#18231e;
+  --muted:#68736d;
+  --border:#ddd8cc;
+  --shadow:0 15px 45px rgba(15,35,28,.12);
 }
 
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
-html{
-  scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth}
 
 body{
   margin:0;
   font-family:Arial,Helvetica,sans-serif;
-  background:var(--bg);
   color:var(--text);
+  background:var(--bg);
 }
 
-button,
-input,
-textarea,
-select{
-  font:inherit;
-}
+button,input,textarea,select{font:inherit}
 
-button{
-  cursor:pointer;
-}
+button{cursor:pointer}
 
-.site-header{
+.topbar{
   position:sticky;
   top:0;
-  z-index:100;
-  background:rgba(255,255,255,.97);
-  border-bottom:1px solid var(--line);
+  z-index:1000;
+  height:64px;
+  background:rgba(255,255,255,.96);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
 }
 
 .nav{
-  max-width:1200px;
+  max-width:1250px;
+  height:100%;
   margin:auto;
-  min-height:64px;
-  padding:10px 18px;
+  padding:0 18px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:15px;
 }
 
 .logo{
   display:flex;
   align-items:center;
-  gap:9px;
-  color:var(--primary);
-  font-size:20px;
+  gap:10px;
   font-weight:800;
+  color:var(--primary2);
+  font-size:20px;
 }
 
-.logo-mark{
+.logo-icon{
   width:38px;
   height:38px;
-  border-radius:9px;
+  border-radius:10px;
+  background:var(--primary);
+  color:#fff;
   display:grid;
   place-items:center;
-  background:var(--primary);
-  color:white;
-  font-size:12px;
+  font-size:13px;
 }
 
 .nav button{
   border:0;
   background:var(--primary);
   color:white;
-  padding:11px 16px;
+  padding:10px 16px;
   border-radius:8px;
   font-weight:700;
 }
 
 .hero{
-  padding:55px 20px 45px;
+  padding:70px 20px 60px;
   text-align:center;
   background:
-    radial-gradient(circle at 80% 10%,rgba(196,154,85,.18),transparent 30%),
+    radial-gradient(circle at 80% 20%,rgba(196,154,85,.16),transparent 30%),
     linear-gradient(#fff,var(--bg));
 }
 
-.hero-badge{
+.badge{
   display:inline-block;
-  background:#e7f0eb;
+  background:#e8f1ed;
   color:var(--primary);
   padding:7px 13px;
   border-radius:30px;
@@ -112,121 +102,137 @@ button{
 }
 
 .hero h1{
-  max-width:720px;
-  margin:18px auto 12px;
+  max-width:850px;
+  margin:20px auto 14px;
   font-family:Georgia,serif;
-  font-size:clamp(34px,7vw,58px);
-  line-height:1.05;
-  color:var(--primary);
+  font-size:clamp(38px,7vw,70px);
+  line-height:1.03;
+  color:var(--primary2);
 }
 
-.hero h1 span{
-  color:var(--accent);
-}
+.hero h1 span{color:var(--accent)}
 
 .hero p{
-  max-width:620px;
-  margin:0 auto 22px;
+  max-width:650px;
+  margin:auto;
   color:var(--muted);
-  line-height:1.6;
+  line-height:1.7;
+  font-size:16px;
 }
 
-.hero button{
+.hero-actions{
+  margin-top:25px;
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.btn{
   border:0;
-  background:var(--primary);
-  color:white;
-  padding:14px 22px;
+  padding:13px 20px;
   border-radius:9px;
   font-weight:700;
 }
 
+.btn-primary{
+  background:var(--primary);
+  color:#fff;
+}
+
+.btn-light{
+  background:#fff;
+  color:var(--primary);
+  border:1px solid var(--border);
+}
+
 .stats{
+  background:var(--primary2);
+  color:white;
   display:flex;
   justify-content:center;
-  gap:55px;
+  gap:70px;
+  padding:22px;
   flex-wrap:wrap;
-  padding:20px;
-  background:var(--primary);
-  color:white;
   text-align:center;
 }
 
 .stats strong{
   display:block;
-  font-size:20px;
+  font-size:22px;
 }
 
 .stats span{
+  opacity:.7;
   font-size:11px;
-  opacity:.75;
 }
 
-.features{
-  max-width:1050px;
+.section{
+  max-width:1150px;
   margin:auto;
-  padding:45px 20px;
+  padding:55px 20px;
 }
 
 .section-title{
   text-align:center;
-  margin-bottom:28px;
+  margin-bottom:30px;
 }
 
 .section-title small{
-  color:var(--primary2);
+  color:var(--primary);
   font-weight:800;
   text-transform:uppercase;
-  letter-spacing:.1em;
+  letter-spacing:.12em;
 }
 
 .section-title h2{
-  margin:8px 0;
   font-family:Georgia,serif;
-  color:var(--primary);
-  font-size:30px;
+  font-size:32px;
+  color:var(--primary2);
+  margin:8px 0;
 }
 
-.section-title p{
-  color:var(--muted);
-}
-
-.feature-grid{
+.features{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:14px;
+  gap:15px;
 }
 
 .feature{
   background:white;
-  border:1px solid var(--line);
-  border-radius:12px;
-  padding:20px;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:22px;
 }
 
 .feature-icon{
-  font-size:25px;
-  margin-bottom:10px;
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  background:#e8f1ed;
+  border-radius:10px;
+  margin-bottom:12px;
 }
 
 .feature h3{
-  color:var(--primary);
   margin:0 0 7px;
-  font-size:16px;
+  color:var(--primary2);
 }
 
 .feature p{
   margin:0;
   color:var(--muted);
   font-size:13px;
-  line-height:1.5;
+  line-height:1.6;
 }
 
-/* BUILDER */
+/* APPLICATION */
 
-.builder{
-  max-width:1250px;
-  margin:auto;
-  padding:25px 15px 50px;
+.app{
+  max-width:1400px;
+  margin:30px auto 80px;
+  padding:0 18px;
 }
 
 .tabs{
@@ -236,87 +242,66 @@ button{
 }
 
 .tab{
-  flex:1;
-  border:1px solid var(--line);
+  border:1px solid var(--border);
   background:white;
-  color:var(--primary);
-  padding:12px;
-  border-radius:8px;
+  padding:12px 18px;
+  border-radius:9px;
   font-weight:700;
+  color:var(--primary2);
 }
 
 .tab.active{
   background:var(--primary);
   color:white;
+  border-color:var(--primary);
 }
 
-.workspace{
+.builder{
   display:grid;
   grid-template-columns:390px minmax(0,1fr);
-  gap:18px;
-  align-items:start;
+  gap:20px;
 }
 
-.panel{
+.form-panel{
   background:white;
-  border:1px solid var(--line);
-  border-radius:12px;
-  padding:20px;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:22px;
+  height:max-content;
+  box-shadow:var(--shadow);
 }
 
-.panel h2{
+.form-panel h2{
   margin:0 0 5px;
-  color:var(--primary);
+  color:var(--primary2);
   font-family:Georgia,serif;
 }
 
-.panel-subtitle{
-  color:var(--muted);
+.form-subtitle{
   font-size:12px;
+  color:var(--muted);
   margin-bottom:20px;
 }
 
-.form-section{
-  margin-bottom:20px;
-  padding-bottom:18px;
-  border-bottom:1px solid #eeeae1;
+.field{
+  margin-bottom:13px;
 }
 
-.form-section:last-child{
-  border-bottom:0;
-}
-
-.form-section h3{
-  margin:0 0 12px;
-  color:var(--primary);
-  font-size:14px;
-}
-
-label{
+.field label{
   display:block;
-  margin:11px 0 5px;
-  color:#53605a;
   font-size:12px;
   font-weight:700;
+  margin-bottom:6px;
+  color:#52605a;
 }
 
-input,
-textarea,
-select{
+input,textarea,select{
   width:100%;
-  border:1px solid var(--line);
+  border:1px solid var(--border);
   background:#fcfbf8;
-  color:var(--text);
-  padding:10px 11px;
   border-radius:7px;
-  outline:none;
-}
-
-input:focus,
-textarea:focus,
-select:focus{
-  border-color:var(--primary);
-  box-shadow:0 0 0 2px rgba(18,60,50,.08);
+  padding:10px;
+  color:var(--text);
 }
 
 textarea{
@@ -324,493 +309,454 @@ textarea{
   resize:vertical;
 }
 
-.row2{
+input:focus,textarea:focus,select:focus{
+  outline:2px solid rgba(18,60,50,.15);
+  border-color:var(--primary);
+}
+
+.two{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:9px;
 }
 
-.photo-box{
-  border:1px dashed #bcb6a8;
-  padding:14px;
-  border-radius:8px;
-  text-align:center;
-}
-
-.photo-box input{
-  background:white;
-}
-
-.photo-mini{
-  display:none;
-  width:65px;
-  height:65px;
-  border-radius:50%;
-  object-fit:cover;
-  margin:10px auto 0;
-  border:2px solid var(--primary);
-}
-
-.photo-mini.show{
-  display:block;
-}
-
-.remove-photo{
-  display:none;
-  border:0;
-  background:none;
-  color:#a63f38;
-  font-size:11px;
-  margin-top:6px;
-}
-
-.remove-photo.show{
-  display:inline-block;
-}
-
 .experience{
-  border-left:3px solid var(--line);
+  border-left:3px solid var(--border);
   padding-left:12px;
   margin-bottom:12px;
 }
 
-.delete-exp{
-  margin-top:7px;
+.remove{
+  background:none;
   border:0;
-  background:#f7eaea;
-  color:#a63f38;
-  padding:7px 10px;
-  border-radius:6px;
+  color:#b13d36;
   font-size:11px;
-  font-weight:700;
+  padding:3px 0;
 }
 
 .add{
   width:100%;
+  background:white;
   border:1px dashed var(--primary);
   color:var(--primary);
-  background:#f5f8f6;
   padding:10px;
   border-radius:7px;
   font-weight:700;
 }
 
-.template-grid{
+.photo-box{
+  border:1px dashed var(--border);
+  padding:12px;
+  border-radius:8px;
+}
+
+.photo-box img{
+  width:65px;
+  height:65px;
+  border-radius:50%;
+  object-fit:cover;
+  display:none;
+  margin:8px auto;
+}
+
+.photo-box img.show{display:block}
+
+.actions{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:8px;
+  margin-top:20px;
 }
 
-.template{
-  border:2px solid var(--line);
-  background:#faf9f5;
-  padding:11px;
-  border-radius:7px;
-  font-weight:700;
-  color:var(--primary);
-}
-
-.template.active{
-  border-color:var(--primary);
-  background:#eaf1ed;
-}
-
-.color-row{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
-.color-row input[type=color]{
-  width:60px;
-  height:42px;
-  padding:3px;
-}
-
-.action{
-  width:100%;
-  border:0;
-  background:var(--primary);
-  color:white;
-  padding:13px;
+.actions button{
+  padding:12px;
   border-radius:8px;
-  font-weight:800;
-  margin-top:10px;
+  font-weight:700;
 }
 
-.secondary{
-  background:white;
-  color:var(--primary);
-  border:1px solid var(--primary);
+.full{
+  grid-column:1/-1;
 }
 
-.save-status{
-  text-align:center;
-  color:#718078;
-  font-size:11px;
-  margin-top:8px;
-}
-
-/* A4 PREVIEW */
+/* PREVIEW */
 
 .preview-area{
-  background:#e8e4db;
-  padding:25px;
-  border-radius:12px;
+  min-width:0;
+  background:#e9e5dc;
+  border-radius:14px;
+  padding:30px;
   overflow:auto;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
 }
 
 .a4{
-  width:210mm;
-  min-height:297mm;
-  max-width:100%;
-  margin:auto;
+  width:794px;
+  min-height:1123px;
   background:white;
-  box-shadow:0 8px 30px rgba(0,0,0,.14);
+  box-shadow:0 10px 35px rgba(0,0,0,.15);
+  position:relative;
   overflow:hidden;
-  color:#222;
+  flex-shrink:0;
 }
 
-.cv-content{
-  padding:16mm 17mm;
+.cv{
+  min-height:1123px;
+  display:flex;
+}
+
+.cv-main{
+  width:100%;
+  padding:48px;
 }
 
 .cv-header{
   display:flex;
-  gap:16px;
   align-items:center;
+  gap:20px;
 }
 
 .cv-photo{
-  width:27mm;
-  height:27mm;
+  width:105px;
+  height:105px;
   border-radius:50%;
   object-fit:cover;
   display:none;
-  border:2px solid var(--primary);
+  border:4px solid var(--primary);
   flex-shrink:0;
 }
 
-.cv-photo.show{
-  display:block;
-}
-
-.cv-header-text{
-  flex:1;
-  min-width:0;
-}
+.cv-photo.show{display:block}
 
 .cv-name{
-  font-family:Georgia,serif;
-  font-size:29px;
-  line-height:1.05;
   margin:0;
-  color:var(--primary);
-  overflow-wrap:anywhere;
+  font-family:Georgia,serif;
+  font-size:36px;
+  line-height:1.05;
+  color:var(--primary2);
 }
 
 .cv-title{
-  margin:4px 0 0;
-  font-size:13px;
-  color:var(--primary2);
+  margin:7px 0;
+  color:var(--primary);
   font-weight:700;
+  font-size:14px;
 }
 
-.cv-contact{
+.contact{
   display:flex;
   flex-wrap:wrap;
-  gap:6px 13px;
-  margin-top:8px;
-  color:#68716c;
-  font-size:9.5px;
+  gap:8px 16px;
+  color:#69736d;
+  font-size:11px;
 }
 
-.divider{
-  height:2px;
-  width:45px;
-  background:var(--primary);
-  margin:13px 0;
+.rule{
+  width:55px;
+  height:3px;
+  background:var(--accent);
+  margin:22px 0;
 }
 
 .cv-section{
-  margin-top:13px;
+  margin-top:24px;
 }
 
-.cv-section-title{
+.cv-section h3{
   font-family:Georgia,serif;
-  color:var(--primary);
+  color:var(--primary2);
   text-transform:uppercase;
-  letter-spacing:.07em;
-  font-size:11px;
-  font-weight:800;
-  border-bottom:1px solid #ddd9d0;
-  padding-bottom:4px;
-  margin-bottom:7px;
+  font-size:14px;
+  letter-spacing:.08em;
+  margin:0 0 9px;
 }
 
-.cv-text{
-  font-size:9.5px;
-  line-height:1.45;
-  color:#333a36;
+.cv-section p{
+  margin:0;
+  font-size:11.5px;
+  line-height:1.65;
+  color:#333b36;
   white-space:pre-line;
 }
 
 .exp-item{
-  margin-bottom:9px;
+  margin-bottom:14px;
 }
 
-.exp-head{
+.exp-top{
   display:flex;
   justify-content:space-between;
   gap:10px;
-  font-size:10px;
-  font-weight:800;
+  font-size:12px;
+  font-weight:700;
 }
 
 .exp-date{
-  color:#777;
-  font-weight:600;
+  color:#7c827d;
+  font-weight:400;
   white-space:nowrap;
 }
 
 .exp-place{
-  font-size:9px;
-  color:var(--primary2);
-  margin-top:2px;
-}
-
-.exp-desc{
-  font-size:9px;
-  line-height:1.4;
-  margin-top:3px;
-  color:#3e4541;
-  white-space:pre-line;
+  color:var(--primary);
+  font-size:11px;
+  font-weight:700;
+  margin:3px 0;
 }
 
 .skills{
   display:flex;
   flex-wrap:wrap;
-  gap:5px;
+  gap:6px;
 }
 
 .skill{
-  background:#edf2ef;
-  color:var(--primary);
-  border-radius:12px;
-  padding:4px 8px;
-  font-size:8.5px;
+  padding:5px 9px;
+  background:#edf3ef;
+  color:var(--primary2);
+  border-radius:15px;
+  font-size:10px;
   font-weight:700;
 }
 
-/* MODELE 2 */
+/* DESIGN 2 */
 
-.a4.model-navy .cv-name,
-.a4.model-navy .cv-section-title{
-  color:#244c70;
+.design-modern .cv-main{
+  padding:0;
 }
 
-.a4.model-navy .divider{
-  background:#244c70;
-}
-
-.a4.model-navy .skill{
-  background:#e8eef4;
-  color:#244c70;
-}
-
-/* MODELE 3 */
-
-.a4.model-gold{
-  display:grid;
-  grid-template-columns:58mm 1fr;
-}
-
-.a4.model-gold .cv-sidebar{
-  display:block;
-  background:#20382f;
+.design-modern .cv-header{
+  background:var(--primary2);
   color:white;
-  padding:16mm 9mm;
+  padding:42px;
 }
 
-.a4.model-gold .cv-main{
-  padding:16mm 13mm;
+.design-modern .cv-name{
+  color:white;
 }
 
-.a4.model-gold .cv-sidebar .cv-photo{
-  display:block;
-  margin:0 auto 14px;
+.design-modern .cv-title{
+  color:#d9c18f;
+}
+
+.design-modern .contact{
+  color:#d4ddd8;
+}
+
+.design-modern .cv-photo{
   border-color:white;
 }
 
-.a4.model-gold .cv-sidebar .cv-name{
-  color:white;
-  font-size:20px;
-  text-align:center;
+.design-modern .cv-content{
+  padding:0 42px 42px;
 }
 
-.a4.model-gold .cv-sidebar .cv-title{
-  color:#d8c49a;
-  text-align:center;
-  font-size:10px;
-}
-
-.a4.model-gold .cv-sidebar .cv-contact{
-  color:#dbe4df;
-  display:block;
-  text-align:center;
-  line-height:1.7;
-}
-
-.a4.model-gold .cv-sidebar .cv-section-title{
-  color:white;
-  border-color:rgba(255,255,255,.3);
-  margin-top:18px;
-}
-
-.a4.model-gold .cv-sidebar .skill{
-  background:rgba(255,255,255,.12);
-  color:white;
-}
-
-.a4.model-gold .cv-sidebar .cv-text{
-  color:#e1e8e4;
-}
-
-.a4.model-gold .main-header{
+.design-modern .rule{
   display:none;
 }
 
-/* MODELE 4 */
+/* DESIGN 3 */
 
-.a4.model-mono .top-banner{
-  background:#242424;
+.design-sidebar{
+  display:grid;
+  grid-template-columns:225px 1fr;
+}
+
+.design-sidebar .side{
+  background:var(--primary2);
   color:white;
-  padding:14mm 17mm;
+  padding:38px 22px;
 }
 
-.a4.model-mono .top-banner .cv-name{
-  color:white;
+.design-sidebar .main{
+  padding:40px;
 }
 
-.a4.model-mono .top-banner .cv-title,
-.a4.model-mono .top-banner .cv-contact{
-  color:#ddd;
-}
-
-.a4.model-mono .top-banner .cv-photo{
+.side .cv-photo{
+  margin:0 auto 22px;
   border-color:white;
 }
 
-.a4.model-mono .cv-content{
-  padding-top:12mm;
+.side-title{
+  color:white;
+  font-family:Georgia,serif;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  border-bottom:1px solid rgba(255,255,255,.3);
+  padding-bottom:6px;
+  margin:20px 0 10px;
 }
 
-.a4.model-mono .cv-section-title{
-  color:#222;
+.side .skill{
+  background:rgba(255,255,255,.12);
+  color:white;
+  margin-bottom:5px;
 }
 
-.a4.model-mono .divider{
+.side-text{
+  font-size:10px;
+  line-height:1.6;
+  color:rgba(255,255,255,.82);
+}
+
+/* DESIGN 4 */
+
+.design-minimal .cv-main{
+  padding:60px;
+}
+
+.design-minimal .cv-name{
+  font-family:Arial,sans-serif;
+  font-weight:800;
+  letter-spacing:-1px;
+}
+
+.design-minimal .rule{
+  width:100%;
+  height:1px;
   background:#222;
 }
 
-.letter-workspace{
+.design-minimal .cv-section h3{
+  font-family:Arial,sans-serif;
+  font-size:11px;
+}
+
+/* TEMPLATE CARDS */
+
+.templates{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  margin-top:12px;
+}
+
+.template{
+  border:2px solid var(--border);
+  background:white;
+  border-radius:9px;
+  padding:12px 5px;
+  text-align:center;
+  font-size:11px;
+  font-weight:700;
+}
+
+.template.active{
+  border-color:var(--primary);
+  background:#edf3ef;
+  color:var(--primary);
+}
+
+/* LETTER */
+
+.letter-builder{
   display:grid;
   grid-template-columns:390px minmax(0,1fr);
-  gap:18px;
+  gap:20px;
 }
 
 .letter-page{
-  width:210mm;
-  min-height:297mm;
-  max-width:100%;
-  margin:auto;
+  width:794px;
+  min-height:1123px;
   background:white;
-  padding:20mm;
-  box-shadow:0 8px 30px rgba(0,0,0,.14);
-  font-size:11px;
-  line-height:1.7;
-  color:#303632;
+  padding:65px;
+  box-shadow:0 10px 35px rgba(0,0,0,.15);
+  flex-shrink:0;
 }
 
-.letter-page h2{
+.letter-page h1{
   font-family:Georgia,serif;
-  color:var(--primary);
-  font-size:24px;
+  color:var(--primary2);
+  font-size:30px;
 }
 
 .letter-date{
   text-align:right;
   color:#777;
-  margin-bottom:22px;
+  font-size:11px;
+  margin-bottom:45px;
 }
 
 .letter-object{
-  font-weight:800;
-  color:var(--primary);
-  margin-bottom:20px;
+  font-weight:700;
+  margin:25px 0;
 }
+
+.letter-body{
+  font-size:13px;
+  line-height:1.9;
+  color:#333;
+}
+
+.letter-sign{
+  margin-top:45px;
+}
+
+/* BOT */
 
 .bot{
   position:fixed;
-  right:18px;
-  bottom:18px;
-  z-index:150;
+  right:20px;
+  bottom:20px;
+  z-index:1500;
 }
 
 .bot-button{
-  width:54px;
-  height:54px;
+  width:58px;
+  height:58px;
   border:0;
   border-radius:50%;
-  background:var(--primary);
+  background:var(--primary2);
   color:white;
-  font-size:22px;
-  box-shadow:0 7px 25px rgba(0,0,0,.25);
+  font-size:23px;
+  box-shadow:0 8px 25px rgba(0,0,0,.25);
 }
 
-.bot-box{
+.bot-window{
   display:none;
   position:absolute;
   right:0;
-  bottom:65px;
-  width:320px;
+  bottom:70px;
+  width:330px;
   max-width:calc(100vw - 35px);
   background:white;
-  border-radius:12px;
-  box-shadow:0 12px 40px rgba(0,0,0,.25);
+  border-radius:14px;
+  box-shadow:0 15px 50px rgba(0,0,0,.25);
   overflow:hidden;
 }
 
-.bot-box.open{
-  display:block;
-}
+.bot-window.open{display:block}
 
 .bot-head{
-  background:var(--primary);
+  background:var(--primary2);
   color:white;
-  padding:13px;
+  padding:14px;
   display:flex;
   justify-content:space-between;
-  font-weight:800;
+  font-weight:700;
 }
 
 .bot-head button{
   background:none;
-  border:0;
   color:white;
-  font-size:18px;
+  border:0;
+  font-size:20px;
 }
 
 .bot-body{
-  padding:12px;
+  padding:13px;
+  max-height:350px;
+  overflow:auto;
 }
 
-.bot-message{
-  background:#f3f1eb;
+.bot-msg{
+  background:#f4f2ed;
+  border-radius:9px;
   padding:10px;
-  border-radius:8px;
   font-size:12px;
-  line-height:1.5;
+  line-height:1.55;
   margin-bottom:9px;
 }
 
@@ -821,160 +767,102 @@ textarea{
 }
 
 .bot-actions button{
-  border:1px solid var(--line);
+  border:1px solid var(--border);
   background:white;
-  padding:8px;
-  border-radius:6px;
-  color:var(--primary);
+  border-radius:7px;
+  padding:9px 5px;
   font-size:11px;
   font-weight:700;
+  color:var(--primary2);
 }
 
+/* FAQ */
+
 .faq{
-  max-width:700px;
+  max-width:750px;
   margin:auto;
 }
 
 .faq-item{
   background:white;
-  border:1px solid var(--line);
-  border-radius:8px;
+  border:1px solid var(--border);
+  border-radius:9px;
   margin-bottom:8px;
   overflow:hidden;
 }
 
 .faq-q{
-  padding:14px;
-  font-weight:700;
-  color:var(--primary);
-  cursor:pointer;
+  padding:15px;
   display:flex;
   justify-content:space-between;
+  font-weight:700;
+  cursor:pointer;
+  font-size:13px;
 }
 
 .faq-a{
   display:none;
-  padding:0 14px 14px;
+  padding:0 15px 15px;
   color:var(--muted);
-  font-size:13px;
-  line-height:1.5;
+  line-height:1.6;
+  font-size:12px;
 }
 
-.faq-item.open .faq-a{
-  display:block;
-}
+.faq-item.open .faq-a{display:block}
 
-.footer{
-  background:var(--primary);
-  color:#dce7e1;
+footer{
+  background:var(--primary2);
+  color:#cbd7d2;
+  padding:30px;
   text-align:center;
-  padding:25px;
   font-size:12px;
 }
 
 /* MOBILE */
 
 @media(max-width:950px){
-  .workspace,
-  .letter-workspace{
+  .builder,
+  .letter-builder{
     grid-template-columns:1fr;
   }
 
   .preview-area{
-    padding:10px;
-  }
-
-  .a4{
-    width:100%;
-    min-height:auto;
-    transform:none;
-  }
-
-  .feature-grid{
-    grid-template-columns:1fr 1fr;
+    padding:15px;
   }
 }
 
-@media(max-width:600px){
-  .nav{
-    padding:8px 12px;
+@media(max-width:700px){
+  .features{
+    grid-template-columns:1fr;
   }
 
-  .hero{
-    padding:40px 15px;
+  .two{
+    grid-template-columns:1fr;
+  }
+
+  .templates{
+    grid-template-columns:repeat(2,1fr);
   }
 
   .stats{
     gap:25px;
   }
 
-  .feature-grid{
-    grid-template-columns:1fr;
+  .preview-area{
+    justify-content:flex-start;
   }
 
-  .row2{
-    grid-template-columns:1fr;
-  }
-
-  .tabs{
-    position:sticky;
-    top:64px;
-    z-index:50;
-    background:var(--bg);
-    padding:5px 0;
+  .a4,
+  .letter-page{
+    transform-origin:top left;
   }
 
   .preview-area{
-    overflow-x:auto;
+    min-height:620px;
   }
 
-  .a4{
-    min-width:0;
-  }
-
-  .cv-content{
-    padding:10mm;
-  }
-
-  .cv-name{
-    font-size:22px;
-  }
-
-  .cv-contact{
-    font-size:8px;
-  }
-
-  .cv-text{
-    font-size:8.5px;
-  }
-
-  .exp-head{
-    font-size:9px;
-  }
-
-  .exp-desc,
-  .exp-place{
-    font-size:8px;
-  }
-
-  .skill{
-    font-size:7.5px;
-  }
-
-  .a4.model-gold{
-    grid-template-columns:42mm 1fr;
-  }
-
-  .a4.model-gold .cv-sidebar{
-    padding:10mm 5mm;
-  }
-
-  .a4.model-gold .cv-main{
-    padding:10mm 7mm;
-  }
-
-  .letter-page{
-    padding:12mm;
+  .form-panel{
+    padding:16px;
   }
 }
 
@@ -987,54 +875,43 @@ textarea{
 
 @media print{
   body{
-    background:white;
+    background:white!important;
   }
 
-  .site-header,
+  .topbar,
   .hero,
   .stats,
-  .features,
+  .section,
   .tabs,
-  .panel,
+  .form-panel,
   .bot,
-  .footer{
-    display:none !important;
+  footer{
+    display:none!important;
   }
 
-  .builder{
-    padding:0;
+  .app{
     margin:0;
+    padding:0;
   }
 
-  .workspace,
-  .letter-workspace{
+  .builder,
+  .letter-builder{
     display:block;
   }
 
   .preview-area{
+    display:block;
     padding:0;
     background:white;
     overflow:visible;
   }
 
-  .a4{
-    width:210mm;
-    min-height:297mm;
-    max-width:none;
-    margin:0;
-    box-shadow:none;
-  }
-
+  .a4,
   .letter-page{
     width:210mm;
     min-height:297mm;
-    max-width:none;
     box-shadow:none;
     margin:0;
-  }
-
-  .no-print{
-    display:none !important;
   }
 }
 </style>
@@ -1042,599 +919,462 @@ textarea{
 
 <body>
 
-<header class="site-header">
-  <nav class="nav">
+<header class="topbar">
+  <div class="nav">
     <div class="logo">
-      <div class="logo-mark">CV</div>
+      <div class="logo-icon">CV</div>
       CVPro
     </div>
-
     <button onclick="goBuilder()">Créer mon CV</button>
-  </nav>
+  </div>
 </header>
 
 <section class="hero">
-  <div class="hero-badge">🇲🇱 Pensé pour les candidats maliens</div>
+  <div class="badge">🇲🇱 Créateur de CV pensé pour les candidats africains</div>
 
   <h1>
-    Ton CV.<br>
-    Ton avenir.<br>
-    <span>En quelques minutes.</span>
+    Crée un CV qui donne envie<br>
+    de te rencontrer <span>professionnellement.</span>
   </h1>
 
   <p>
-    Crée gratuitement un CV professionnel et une lettre de motivation
-    directement depuis ton téléphone.
+    Construis ton CV directement depuis ton téléphone,
+    choisis un design professionnel, ajoute ta photo,
+    prépare ta lettre de motivation et imprime ton document en PDF.
   </p>
 
-  <button onclick="goBuilder()">✍️ Commencer gratuitement</button>
+  <div class="hero-actions">
+    <button class="btn btn-primary" onclick="goBuilder()">✍️ Créer mon CV</button>
+    <button class="btn btn-light" onclick="showView('letter')">✉️ Lettre de motivation</button>
+  </div>
 </section>
 
 <div class="stats">
-  <div>
-    <strong>5 min</strong>
-    <span>pour créer ton CV</span>
-  </div>
-
-  <div>
-    <strong>100%</strong>
-    <span>accessible sur mobile</span>
-  </div>
-
-  <div>
-    <strong>A4</strong>
-    <span>format professionnel</span>
-  </div>
+  <div><strong>100%</strong><span>accessible</span></div>
+  <div><strong>A4</strong><span>format professionnel</span></div>
+  <div><strong>📱</strong><span>compatible mobile</span></div>
+  <div><strong>🤖</strong><span>assistant intégré</span></div>
 </div>
 
-<section class="features">
+<section class="section">
   <div class="section-title">
     <small>CVPro</small>
-    <h2>Tout ce dont tu as besoin</h2>
-    <p>Sans paiement et sans fonctionnalité verrouillée.</p>
+    <h2>Tout ce qu'il faut pour une candidature sérieuse</h2>
   </div>
 
-  <div class="feature-grid">
+  <div class="features">
     <div class="feature">
-      <div class="feature-icon">📄</div>
-      <h3>CV professionnel</h3>
-      <p>Aperçu en direct avec une mise en page optimisée pour le format A4.</p>
+      <div class="feature-icon">⚡</div>
+      <h3>Aperçu instantané</h3>
+      <p>Chaque modification apparaît immédiatement dans ton CV.</p>
     </div>
 
     <div class="feature">
-      <div class="feature-icon">📷</div>
-      <h3>Photo de profil</h3>
-      <p>Ajoute directement ta photo depuis ton téléphone.</p>
+      <div class="feature-icon">📱</div>
+      <h3>Conçu pour mobile</h3>
+      <p>Tu peux créer ton CV directement depuis ton téléphone.</p>
     </div>
 
     <div class="feature">
       <div class="feature-icon">🎨</div>
-      <h3>4 modèles</h3>
-      <p>Forêt, Marine, Doré et Mono sont entièrement accessibles.</p>
+      <h3>Designs professionnels</h3>
+      <p>Plusieurs styles modernes adaptés à différents profils.</p>
+    </div>
+
+    <div class="feature">
+      <div class="feature-icon">📸</div>
+      <h3>Photo de profil</h3>
+      <p>Ajoute une photo directement depuis ton appareil.</p>
     </div>
 
     <div class="feature">
       <div class="feature-icon">✉️</div>
       <h3>Lettre de motivation</h3>
-      <p>Prépare rapidement une lettre adaptée au poste recherché.</p>
+      <p>Prépare une lettre personnalisée pour ton poste.</p>
     </div>
 
     <div class="feature">
       <div class="feature-icon">🤖</div>
       <h3>Assistant CV</h3>
-      <p>Améliore ton profil, tes compétences et tes expériences.</p>
-    </div>
-
-    <div class="feature">
-      <div class="feature-icon">💾</div>
-      <h3>Sauvegarde automatique</h3>
-      <p>Ton travail reste sauvegardé dans ton navigateur.</p>
+      <p>Obtiens des suggestions pour améliorer ton profil.</p>
     </div>
   </div>
 </section>
 
-<main class="builder" id="builder">
+<main class="app" id="builder">
 
   <div class="tabs">
-    <button class="tab active" id="cvTab" onclick="showView('cv')">
+    <button class="tab active" id="tabCV" onclick="showView('cv')">
       📄 Mon CV
     </button>
 
-    <button class="tab" id="letterTab" onclick="showView('letter')">
+    <button class="tab" id="tabLetter" onclick="showView('letter')">
       ✉️ Lettre de motivation
     </button>
   </div>
 
   <!-- ================= CV ================= -->
 
-  <div id="cvView" class="workspace">
+  <section id="cvView">
 
-    <aside class="panel">
+    <div class="builder">
 
-      <h2>Créer mon CV</h2>
-      <div class="panel-subtitle">
-        Remplis les informations et regarde ton CV se construire automatiquement.
-      </div>
+      <div class="form-panel">
 
-      <div class="form-section">
+        <h2>Construis ton CV</h2>
+        <div class="form-subtitle">
+          Remplis les informations et regarde ton CV se construire en direct.
+        </div>
 
-        <h3>👤 Informations personnelles</h3>
+        <div class="field">
+          <label>Nom complet</label>
+          <input id="name" value="Aïcha Koné">
+        </div>
 
-        <label>Nom complet</label>
-        <input id="name" value="Aïcha Koné">
+        <div class="field">
+          <label>Poste recherché</label>
+          <input id="job" value="Chargée de projet digital">
+        </div>
 
-        <label>Titre / poste recherché</label>
-        <input id="title" value="Chargée de projet digital">
+        <div class="field">
+          <label>Photo de profil</label>
 
-        <div class="row2">
+          <div class="photo-box">
+            <input type="file" id="photo" accept="image/*">
+            <img id="photoMini" alt="Photo">
+            <button class="remove" id="removePhoto" onclick="removePhoto()" style="display:none">
+              Retirer la photo
+            </button>
+          </div>
+        </div>
 
-          <div>
+        <div class="two">
+
+          <div class="field">
             <label>Email</label>
             <input id="email" value="aicha.kone@email.com">
           </div>
 
-          <div>
+          <div class="field">
             <label>Téléphone</label>
             <input id="phone" value="+223 67 89 07 55">
           </div>
 
         </div>
 
-        <label>Ville / Pays</label>
-        <input id="city" value="Bamako, Mali">
+        <div class="field">
+          <label>Ville / pays</label>
+          <input id="city" value="Bamako, Mali">
+        </div>
+
+        <div class="field">
+          <label>Profil professionnel</label>
+          <textarea id="summary">Professionnelle organisée, motivée et orientée résultats. À l'aise avec la gestion de projets, la communication et les outils numériques.</textarea>
+        </div>
+
+        <div class="field">
+          <label>Compétences — séparées par des virgules</label>
+          <textarea id="skills">Gestion de projet, Excel, Communication, Canva, Réseaux sociaux, Organisation</textarea>
+        </div>
+
+        <div class="field">
+          <label>Langues & certifications</label>
+          <textarea id="languages">Français — Courant
+Anglais — Intermédiaire
+Certification Google Digital Skills</textarea>
+        </div>
+
+        <div class="field">
+          <label>Expériences professionnelles</label>
+          <div id="experiences"></div>
+
+          <button class="add" onclick="addExperience()">
+            + Ajouter une expérience
+          </button>
+        </div>
+
+        <div class="field">
+          <label>Design du CV</label>
+
+          <div class="templates">
+
+            <button class="template active" data-design="classic" onclick="changeDesign('classic')">
+              Classique
+            </button>
+
+            <button class="template" data-design="modern" onclick="changeDesign('modern')">
+              Moderne
+            </button>
+
+            <button class="template" data-design="sidebar" onclick="changeDesign('sidebar')">
+              Élégant
+            </button>
+
+            <button class="template" data-design="minimal" onclick="changeDesign('minimal')">
+              Minimal
+            </button>
+
+          </div>
+        </div>
+
+        <div class="two">
+
+          <div class="field">
+            <label>Couleur principale</label>
+            <input type="color" id="color" value="#123c32">
+          </div>
+
+          <div class="field">
+            <label>Couleur accent</label>
+            <input type="color" id="accent" value="#c49a55">
+          </div>
+
+        </div>
+
+        <div class="actions">
+          <button class="btn btn-primary" onclick="window.print()">
+            🖨️ Imprimer / PDF
+          </button>
+
+          <button class="btn btn-light" onclick="clearDraft()">
+            🗑️ Effacer
+          </button>
+        </div>
 
       </div>
 
-      <div class="form-section">
+      <div class="preview-area">
 
-        <h3>📷 Photo</h3>
+        <div class="a4" id="cvPage">
 
-        <div class="photo-box">
+          <!-- CLASSIC / MODERN -->
 
-          <input
-            type="file"
-            id="photoInput"
-            accept="image/*"
-          >
+          <div class="cv" id="normalCV">
 
-          <img
-            id="photoMini"
-            class="photo-mini"
-            alt="Photo"
-          >
+            <div class="cv-main">
 
-          <button
-            type="button"
-            id="removePhoto"
-            class="remove-photo"
-            onclick="removePhoto()"
-          >
-            Retirer la photo
-          </button>
+              <div class="cv-header">
+
+                <img class="cv-photo" id="cvPhoto" alt="Photo">
+
+                <div>
+                  <h1 class="cv-name" id="previewName"></h1>
+                  <div class="cv-title" id="previewJob"></div>
+
+                  <div class="contact">
+                    <span id="previewEmail"></span>
+                    <span id="previewPhone"></span>
+                    <span id="previewCity"></span>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="rule"></div>
+
+              <div class="cv-content">
+
+                <section class="cv-section">
+                  <h3>Profil</h3>
+                  <p id="previewSummary"></p>
+                </section>
+
+                <section class="cv-section">
+                  <h3>Expérience professionnelle</h3>
+                  <div id="previewExperiences"></div>
+                </section>
+
+                <section class="cv-section">
+                  <h3>Compétences</h3>
+                  <div class="skills" id="previewSkills"></div>
+                </section>
+
+                <section class="cv-section">
+                  <h3>Langues & certifications</h3>
+                  <p id="previewLanguages"></p>
+                </section>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- SIDEBAR -->
+
+          <div class="design-sidebar" id="sidebarCV" style="display:none">
+
+            <aside class="side">
+
+              <img class="cv-photo" id="sidePhoto" alt="Photo">
+
+              <div class="side-title">Contact</div>
+              <div class="side-text" id="sideContact"></div>
+
+              <div class="side-title">Compétences</div>
+              <div class="skills" id="sideSkills"></div>
+
+              <div class="side-title">Langues</div>
+              <div class="side-text" id="sideLanguages"></div>
+
+            </aside>
+
+            <div class="main">
+
+              <h1 class="cv-name" id="sideName"></h1>
+              <div class="cv-title" id="sideJob"></div>
+
+              <div class="cv-section">
+                <h3>Profil</h3>
+                <p id="sideSummary"></p>
+              </div>
+
+              <div class="cv-section">
+                <h3>Expérience</h3>
+                <div id="sideExperiences"></div>
+              </div>
+
+            </div>
+
+          </div>
 
         </div>
 
       </div>
 
-      <div class="form-section">
+    </div>
 
-        <h3>📝 Profil</h3>
+  </section>
 
-        <textarea id="summary">Professionnelle organisée et motivée, orientée résultats et capable de travailler efficacement en équipe. Je souhaite mettre mes compétences au service d'une organisation dynamique tout en continuant à développer mon expérience professionnelle.</textarea>
+  <!-- ================= LETTRE ================= -->
 
-      </div>
+  <section id="letterView" style="display:none">
 
-      <div class="form-section">
+    <div class="letter-builder">
 
-        <h3>🎯 Compétences</h3>
+      <div class="form-panel">
 
-        <textarea id="skills">Gestion de projet, Excel, Communication, Réseaux sociaux, Canva, Organisation</textarea>
+        <h2>Lettre de motivation</h2>
 
-      </div>
+        <div class="form-subtitle">
+          Prépare une lettre adaptée à ta candidature.
+        </div>
 
-      <div class="form-section">
+        <div class="field">
+          <label>Nom complet</label>
+          <input id="letterName" value="Aïcha Koné">
+        </div>
 
-        <h3>💼 Expériences professionnelles</h3>
+        <div class="field">
+          <label>Poste recherché</label>
+          <input id="letterJob" value="Chargée de projet digital">
+        </div>
 
-        <div id="experienceList"></div>
+        <div class="field">
+          <label>Entreprise</label>
+          <input id="letterCompany" placeholder="Nom de l'entreprise">
+        </div>
 
-        <button
-          type="button"
-          class="add"
-          onclick="addExperience()"
-        >
-          + Ajouter une expérience
+        <div class="field">
+          <label>Ville</label>
+          <input id="letterCity" value="Bamako">
+        </div>
+
+        <div class="field">
+          <label>Pourquoi ce poste t'intéresse ?</label>
+          <textarea id="letterMotivation" placeholder="Explique en quelques phrases pourquoi tu souhaites ce poste."></textarea>
+        </div>
+
+        <button class="btn btn-primary" style="width:100%" onclick="generateLetter()">
+          🤖 Générer la lettre
+        </button>
+
+        <button class="btn btn-light" style="width:100%;margin-top:8px" onclick="window.print()">
+          🖨️ Imprimer / PDF
         </button>
 
       </div>
 
-      <div class="form-section">
+      <div class="preview-area">
 
-        <h3>🎓 Formation</h3>
+        <article class="letter-page">
 
-        <label>Diplôme / formation</label>
-        <input id="education" value="Baccalauréat">
+          <div class="letter-date" id="letterDate"></div>
 
-        <label>Établissement</label>
-        <input id="school" value="Lycée">
-
-        <label>Année</label>
-        <input id="educationYear" value="2026">
-
-      </div>
-
-      <div class="form-section">
-
-        <h3>🌍 Langues & certifications</h3>
-
-        <textarea id="languages">Français — Courant
-Anglais — Intermédiaire
-Certification Google Digital Skills</textarea>
-
-      </div>
-
-      <div class="form-section">
-
-        <h3>🎨 Modèle</h3>
-
-        <div class="template-grid">
-
-          <button
-            type="button"
-            class="template active"
-            data-model="pine"
-            onclick="changeModel('pine')"
-          >
-            🌲 Forêt
-          </button>
-
-          <button
-            type="button"
-            class="template"
-            data-model="navy"
-            onclick="changeModel('navy')"
-          >
-            🔵 Marine
-          </button>
-
-          <button
-            type="button"
-            class="template"
-            data-model="gold"
-            onclick="changeModel('gold')"
-          >
-            🟡 Doré
-          </button>
-
-          <button
-            type="button"
-            class="template"
-            data-model="mono"
-            onclick="changeModel('mono')"
-          >
-            ⚫ Mono
-          </button>
-
-        </div>
-
-      </div>
-
-      <div class="form-section">
-
-        <h3>🌈 Couleur</h3>
-
-        <div class="color-row">
-
-          <input
-            type="color"
-            id="customColor"
-            value="#123c32"
-          >
-
-          <span style="font-size:12px;color:#69736d;">
-            Choisis la couleur principale de ton CV.
-          </span>
-
-        </div>
-
-      </div>
-
-      <button
-        type="button"
-        class="action"
-        onclick="window.print()"
-      >
-        📥 Télécharger / Enregistrer en PDF
-      </button>
-
-      <button
-        type="button"
-        class="action secondary"
-        onclick="clearDraft()"
-      >
-        🗑️ Réinitialiser le CV
-      </button>
-
-      <div class="save-status" id="saveStatus">
-        ✓ Sauvegarde automatique activée
-      </div>
-
-    </aside>
-
-    <!-- APERÇU CV -->
-
-    <section class="preview-area">
-
-      <div class="a4 model-pine" id="cvPage">
-
-        <!-- modèle normal -->
-        <div class="cv-content" id="normalContent">
-
-          <div class="cv-header">
-
-            <img
-              id="cvPhoto"
-              class="cv-photo"
-              alt="Photo"
-            >
-
-            <div class="cv-header-text">
-
-              <h1 class="cv-name" id="previewName">
-                Aïcha Koné
-              </h1>
-
-              <div class="cv-title" id="previewTitle">
-                Chargée de projet digital
-              </div>
-
-              <div class="cv-contact">
-                <span id="previewEmail"></span>
-                <span id="previewPhone"></span>
-                <span id="previewCity"></span>
-              </div>
-
-            </div>
-
-          </div>
-
-          <div class="divider"></div>
-
-          <section class="cv-section">
-
-            <div class="cv-section-title">
-              Profil
-            </div>
-
-            <div class="cv-text" id="previewSummary"></div>
-
-          </section>
-
-          <section class="cv-section">
-
-            <div class="cv-section-title">
-              Expérience professionnelle
-            </div>
-
-            <div id="previewExperience"></div>
-
-          </section>
-
-          <section class="cv-section">
-
-            <div class="cv-section-title">
-              Compétences
-            </div>
-
-            <div class="skills" id="previewSkills"></div>
-
-          </section>
-
-          <section class="cv-section">
-
-            <div class="cv-section-title">
-              Formation
-            </div>
-
-            <div class="cv-text" id="previewEducation"></div>
-
-          </section>
-
-          <section class="cv-section">
-
-            <div class="cv-section-title">
-              Langues & certifications
-            </div>
-
-            <div class="cv-text" id="previewLanguages"></div>
-
-          </section>
-
-        </div>
-
-      </div>
-
-    </section>
-
-  </div>
-
-  <!-- ================= LETTRE ================= -->
-
-  <div
-    id="letterView"
-    class="letter-workspace"
-    style="display:none;"
-  >
-
-    <aside class="panel">
-
-      <h2>Lettre de motivation</h2>
-
-      <div class="panel-subtitle">
-        Prépare une lettre professionnelle adaptée à ta candidature.
-      </div>
-
-      <label>Nom complet</label>
-      <input id="letterName" value="Aïcha Koné">
-
-      <label>Poste recherché</label>
-      <input id="letterJob" value="Chargée de projet digital">
-
-      <label>Entreprise</label>
-      <input id="letterCompany" placeholder="Nom de l'entreprise">
-
-      <label>Ville</label>
-      <input id="letterCity" value="Bamako">
-
-      <label>Pourquoi ce poste t'intéresse ?</label>
-      <textarea
-        id="letterReason"
-        placeholder="Explique brièvement pourquoi tu souhaites ce poste..."
-      ></textarea>
-
-      <label>Tes qualités / compétences</label>
-      <textarea
-        id="letterQualities"
-        placeholder="Ex : organisation, communication, maîtrise d'Excel..."
-      ></textarea>
-
-      <button
-        class="action"
-        onclick="generateLetter()"
-      >
-        🤖 Générer la lettre
-      </button>
-
-      <button
-        class="action secondary"
-        onclick="window.print()"
-      >
-        📥 Télécharger en PDF
-      </button>
-
-    </aside>
-
-    <section class="preview-area">
-
-      <div class="letter-page" id="letterPage">
-
-        <div id="letterContent">
-
-          <div class="letter-date">
-            Bamako, le <span id="letterDate"></span>
-          </div>
-
-          <h2>Lettre de motivation</h2>
+          <h1 id="letterPreviewName">Aïcha Koné</h1>
 
           <div class="letter-object">
-            Objet : Candidature
+            Objet : Candidature au poste de
+            <span id="letterPreviewJob"></span>
           </div>
 
-          <p>
-            Madame, Monsieur,
-          </p>
+          <div class="letter-body">
 
-          <p>
-            Votre lettre de motivation apparaîtra ici.
-            Remplissez le formulaire puis cliquez sur
-            « Générer la lettre ».
-          </p>
+            <p>Madame, Monsieur,</p>
 
-        </div>
+            <p>
+              Je souhaite vous adresser ma candidature au poste de
+              <strong id="letterJobStrong"></strong>
+              au sein de
+              <strong id="letterCompanyStrong">votre entreprise</strong>.
+            </p>
+
+            <p id="letterMotivationPreview">
+              Je suis particulièrement intéressé(e) par cette opportunité et
+              souhaite mettre mes compétences, ma motivation et mon sérieux
+              au service de votre équipe.
+            </p>
+
+            <p>
+              Sérieux(se), organisé(e), motivé(e) et disposé(e) à apprendre,
+              je suis prêt(e) à m'investir pleinement dans les missions qui
+              me seront confiées.
+            </p>
+
+            <p>
+              Je serais heureux(se) de pouvoir échanger avec vous afin de
+              vous présenter plus précisément ma motivation et mon parcours.
+            </p>
+
+            <p>
+              Dans l'attente de votre retour, veuillez agréer, Madame,
+              Monsieur, l'expression de mes salutations distinguées.
+            </p>
+
+            <div class="letter-sign">
+              <strong id="letterSign">Aïcha Koné</strong>
+            </div>
+
+          </div>
+
+        </article>
 
       </div>
 
-    </section>
+    </div>
 
-  </div>
+  </section>
 
 </main>
 
-<section class="features">
-
-  <div class="section-title">
-    <small>Questions fréquentes</small>
-    <h2>Comment ça marche ?</h2>
-  </div>
-
-  <div class="faq">
-
-    <div class="faq-item">
-      <div
-        class="faq-q"
-        onclick="toggleFaq(this)"
-      >
-        Est-ce vraiment gratuit ?
-        <span>+</span>
-      </div>
-
-      <div class="faq-a">
-        Oui. Toutes les fonctionnalités présentes dans cette version
-        sont accessibles sans paiement et sans code de déblocage.
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div
-        class="faq-q"
-        onclick="toggleFaq(this)"
-      >
-        Puis-je ajouter une photo ?
-        <span>+</span>
-      </div>
-
-      <div class="faq-a">
-        Oui. Tu peux sélectionner une photo depuis ton téléphone
-        et elle apparaîtra automatiquement dans ton CV.
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div
-        class="faq-q"
-        onclick="toggleFaq(this)"
-      >
-        Comment télécharger mon CV ?
-        <span>+</span>
-      </div>
-
-      <div class="faq-a">
-        Clique sur « Télécharger / Enregistrer en PDF », puis
-        choisis « Enregistrer au format PDF » dans la fenêtre
-        d'impression de ton téléphone ou de ton ordinateur.
-      </div>
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ASSISTANT -->
+<!-- ================= BOT ================= -->
 
 <div class="bot">
 
-  <button
-    class="bot-button"
-    onclick="toggleBot()"
-    aria-label="Assistant"
-  >
-    🤖
-  </button>
+  <button class="bot-button" onclick="toggleBot()">🤖</button>
 
-  <div class="bot-box" id="botBox">
+  <div class="bot-window" id="botWindow">
 
     <div class="bot-head">
-
       <span>Assistant CV</span>
-
       <button onclick="toggleBot()">×</button>
-
     </div>
 
-    <div class="bot-body">
+    <div class="bot-body" id="botBody">
 
-      <div class="bot-message">
+      <div class="bot-msg">
         Bonjour 👋 Je peux t'aider à améliorer ton CV.
+        Choisis une action ci-dessous.
       </div>
 
       <div class="bot-actions">
@@ -1663,24 +1403,82 @@ Certification Google Digital Skills</textarea>
 
 </div>
 
-<footer class="footer">
-  CVPro — Créateur de CV professionnel
+<section class="section">
+
+  <div class="section-title">
+    <small>Questions fréquentes</small>
+    <h2>Comment fonctionne CVPro ?</h2>
+  </div>
+
+  <div class="faq">
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)">
+        Puis-je créer mon CV depuis mon téléphone ?
+        <span>+</span>
+      </div>
+
+      <div class="faq-a">
+        Oui. L'interface est conçue pour fonctionner sur téléphone,
+        tablette et ordinateur.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)">
+        Puis-je ajouter une photo ?
+        <span>+</span>
+      </div>
+
+      <div class="faq-a">
+        Oui. Tu peux sélectionner une photo depuis ton appareil et
+        elle apparaîtra automatiquement dans ton CV.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)">
+        Puis-je obtenir mon CV en PDF ?
+        <span>+</span>
+      </div>
+
+      <div class="faq-a">
+        Oui. Le bouton « Imprimer / PDF » utilise la fonction
+        d'impression du navigateur. Choisis ensuite « Enregistrer en PDF ».
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)">
+        Les fonctionnalités sont-elles verrouillées ?
+        <span>+</span>
+      </div>
+
+      <div class="faq-a">
+        Non. Cette version du site fonctionne sans paiement,
+        sans code de déblocage et sans fonctionnalités Premium verrouillées.
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<footer>
+  <strong>CVPro</strong><br><br>
+  Crée un CV professionnel directement depuis ton téléphone.
 </footer>
 
 <script>
 /* =========================================================
-   CVPRO — JAVASCRIPT COMPLET
-   Aucun système de paiement.
-   Toutes les fonctionnalités sont accessibles.
-========================================================= */
+   CVPRO — APPLICATION COMPLÈTE
+   ========================================================= */
 
-let currentModel = "pine";
-let photoData = null;
-let experienceCounter = 0;
+let currentDesign = "classic";
+let photoData = "";
+let experienceCount = 0;
 
-/* -----------------------------
-   OUTILS
------------------------------ */
+/* ================= OUTILS ================= */
 
 function $(id){
   return document.getElementById(id);
@@ -1696,771 +1494,518 @@ function escapeHTML(value){
 }
 
 function goBuilder(){
-  $("builder").scrollIntoView({
-    behavior:"smooth"
-  });
+  $("builder").scrollIntoView({behavior:"smooth"});
 }
 
-/* -----------------------------
-   ONGLETS
------------------------------ */
+/* ================= NAVIGATION ================= */
 
 function showView(view){
 
   const cv = $("cvView");
   const letter = $("letterView");
 
-  const cvTab = $("cvTab");
-  const letterTab = $("letterTab");
-
   if(view === "cv"){
-
-    cv.style.display = "grid";
+    cv.style.display = "block";
     letter.style.display = "none";
 
-    cvTab.classList.add("active");
-    letterTab.classList.remove("active");
+    $("tabCV").classList.add("active");
+    $("tabLetter").classList.remove("active");
 
   }else{
 
     cv.style.display = "none";
-    letter.style.display = "grid";
+    letter.style.display = "block";
 
-    cvTab.classList.remove("active");
-    letterTab.classList.add("active");
+    $("tabCV").classList.remove("active");
+    $("tabLetter").classList.add("active");
 
+    syncLetterFromCV();
   }
-
 }
 
-/* -----------------------------
-   PHOTO
------------------------------ */
+/* ================= PHOTO ================= */
 
-$("photoInput").addEventListener("change",function(event){
+$("photo").addEventListener("change",function(e){
 
-  const file = event.target.files[0];
+  const file = e.target.files[0];
 
   if(!file) return;
 
-  if(!file.type.startsWith("image/")){
-    alert("Veuillez sélectionner une image.");
-    return;
-  }
-
   if(file.size > 5 * 1024 * 1024){
-    alert("La photo est trop lourde. Maximum : 5 Mo.");
+    alert("La photo doit faire moins de 5 Mo.");
+    this.value = "";
     return;
   }
 
   const reader = new FileReader();
 
-  reader.onload = function(e){
+  reader.onload = function(event){
 
-    photoData = e.target.result;
+    photoData = event.target.result;
 
     $("photoMini").src = photoData;
     $("photoMini").classList.add("show");
 
-    $("removePhoto").classList.add("show");
+    $("removePhoto").style.display = "inline-block";
 
-    render();
+    $("cvPhoto").src = photoData;
+    $("cvPhoto").classList.add("show");
 
+    $("sidePhoto").src = photoData;
+    $("sidePhoto").classList.add("show");
+
+    saveDraft();
   };
 
   reader.readAsDataURL(file);
-
 });
 
 function removePhoto(){
 
-  photoData = null;
+  photoData = "";
 
-  $("photoInput").value = "";
+  $("photo").value = "";
 
   $("photoMini").src = "";
   $("photoMini").classList.remove("show");
 
-  $("removePhoto").classList.remove("show");
+  $("removePhoto").style.display = "none";
 
-  render();
+  $("cvPhoto").src = "";
+  $("cvPhoto").classList.remove("show");
+
+  $("sidePhoto").src = "";
+  $("sidePhoto").classList.remove("show");
+
+  saveDraft();
 }
 
-/* -----------------------------
-   EXPÉRIENCES
------------------------------ */
+/* ================= EXPERIENCES ================= */
 
-function addExperience(
-  role="",
-  company="",
-  dates="",
-  description=""
-){
+function addExperience(data = {}){
 
-  experienceCounter++;
+  experienceCount++;
 
-  const id = "experience-" + experienceCounter;
+  const id = experienceCount;
 
-  const div = document.createElement("div");
+  const box = document.createElement("div");
 
-  div.className = "experience";
+  box.className = "experience";
+  box.dataset.id = id;
 
-  div.id = id;
+  box.innerHTML = `
+    <div class="field">
+      <label>Poste</label>
+      <input class="exp-role" value="${escapeHTML(data.role || "")}">
+    </div>
 
-  div.innerHTML = `
+    <div class="two">
 
-    <label>Poste</label>
-
-    <input
-      class="exp-role"
-      value="${escapeHTML(role)}"
-      placeholder="Ex : Assistant commercial"
-    >
-
-    <div class="row2">
-
-      <div>
-
+      <div class="field">
         <label>Entreprise</label>
-
-        <input
-          class="exp-company"
-          value="${escapeHTML(company)}"
-          placeholder="Entreprise"
-        >
-
+        <input class="exp-place" value="${escapeHTML(data.place || "")}">
       </div>
 
-      <div>
-
+      <div class="field">
         <label>Dates</label>
-
-        <input
-          class="exp-dates"
-          value="${escapeHTML(dates)}"
-          placeholder="2024 — 2026"
-        >
-
+        <input class="exp-date" value="${escapeHTML(data.date || "")}">
       </div>
 
     </div>
 
-    <label>Description</label>
+    <div class="field">
+      <label>Description</label>
+      <textarea class="exp-desc">${escapeHTML(data.desc || "")}</textarea>
+    </div>
 
-    <textarea
-      class="exp-description"
-      placeholder="Décris tes principales missions..."
-    >${escapeHTML(description)}</textarea>
-
-    <button
-      type="button"
-      class="delete-exp"
-      onclick="removeExperience('${id}')"
-    >
+    <button class="remove" type="button">
       Supprimer cette expérience
     </button>
-
   `;
 
-  $("experienceList").appendChild(div);
-
-  const fields = div.querySelectorAll("input, textarea");
-
-  fields.forEach(field=>{
-    field.addEventListener("input",render);
+  box.querySelector(".remove").addEventListener("click",function(){
+    box.remove();
+    render();
   });
+
+  box.querySelectorAll("input,textarea").forEach(el=>{
+    el.addEventListener("input",render);
+  });
+
+  $("experiences").appendChild(box);
 
   render();
 }
 
-function removeExperience(id){
+/* ================= RENDU ================= */
 
-  const element = $(id);
+function render(){
 
-  if(element){
-    element.remove();
-    render();
-  }
+  $("previewName").textContent = $("name").value;
+  $("previewJob").textContent = $("job").value;
 
+  $("previewEmail").textContent = $("email").value;
+  $("previewPhone").textContent = $("phone").value;
+  $("previewCity").textContent = $("city").value;
+
+  $("previewSummary").textContent = $("summary").value;
+  $("previewLanguages").textContent = $("languages").value;
+
+  $("sideName").textContent = $("name").value;
+  $("sideJob").textContent = $("job").value;
+
+  $("sideContact").innerHTML = `
+    ${escapeHTML($("email").value)}<br><br>
+    ${escapeHTML($("phone").value)}<br><br>
+    ${escapeHTML($("city").value)}
+  `;
+
+  $("sideSummary").textContent = $("summary").value;
+  $("sideLanguages").textContent = $("languages").value;
+
+  /* compétences */
+
+  const skills = $("skills").value
+    .split(",")
+    .map(s=>s.trim())
+    .filter(Boolean);
+
+  const skillHTML = skills
+    .map(s=>`<span class="skill">${escapeHTML(s)}</span>`)
+    .join("");
+
+  $("previewSkills").innerHTML = skillHTML;
+  $("sideSkills").innerHTML = skillHTML;
+
+  /* expériences */
+
+  const blocks = [...document.querySelectorAll(".experience")];
+
+  const html = blocks.map(block=>{
+
+    const role = block.querySelector(".exp-role").value;
+    const place = block.querySelector(".exp-place").value;
+    const date = block.querySelector(".exp-date").value;
+    const desc = block.querySelector(".exp-desc").value;
+
+    if(!role && !place && !desc) return "";
+
+    return `
+      <div class="exp-item">
+
+        <div class="exp-top">
+          <span>${escapeHTML(role)}</span>
+          <span class="exp-date">${escapeHTML(date)}</span>
+        </div>
+
+        <div class="exp-place">
+          ${escapeHTML(place)}
+        </div>
+
+        <p>${escapeHTML(desc)}</p>
+
+      </div>
+    `;
+
+  }).join("");
+
+  $("previewExperiences").innerHTML = html;
+  $("sideExperiences").innerHTML = html;
+
+  saveDraft();
 }
 
-/* -----------------------------
-   MODÈLES
------------------------------ */
+/* ================= DESIGNS ================= */
 
-function changeModel(model){
+function changeDesign(design){
 
-  currentModel = model;
+  currentDesign = design;
 
-  document.querySelectorAll(".template").forEach(button=>{
-    button.classList.toggle(
+  document.querySelectorAll(".template").forEach(btn=>{
+    btn.classList.toggle(
       "active",
-      button.dataset.model === model
+      btn.dataset.design === design
     );
   });
 
   const page = $("cvPage");
 
-  page.classList.remove(
-    "model-pine",
-    "model-navy",
-    "model-gold",
-    "model-mono"
-  );
+  page.className = "a4";
 
-  page.classList.add("model-" + model);
+  $("normalCV").style.display = "none";
+  $("sidebarCV").style.display = "none";
 
-  render();
+  if(design === "classic"){
 
+    $("normalCV").style.display = "block";
+    page.classList.add("design-classic");
+
+  }
+
+  if(design === "modern"){
+
+    $("normalCV").style.display = "block";
+    page.classList.add("design-modern");
+
+  }
+
+  if(design === "minimal"){
+
+    $("normalCV").style.display = "block";
+    page.classList.add("design-minimal");
+
+  }
+
+  if(design === "sidebar"){
+
+    $("sidebarCV").style.display = "grid";
+    page.classList.add("design-sidebar");
+
+  }
+
+  saveDraft();
 }
 
-/* -----------------------------
-   COULEUR
------------------------------ */
+/* ================= COULEURS ================= */
 
-$("customColor").addEventListener("input",function(){
+$("color").addEventListener("input",function(){
 
   document.documentElement.style.setProperty(
     "--primary",
     this.value
   );
 
-  render();
+  document.documentElement.style.setProperty(
+    "--primary2",
+    darken(this.value,25)
+  );
 
+  render();
 });
 
-/* -----------------------------
-   RENDU CV
------------------------------ */
+$("accent").addEventListener("input",function(){
 
-function render(){
+  document.documentElement.style.setProperty(
+    "--accent",
+    this.value
+  );
 
-  const name = $("name").value;
-  const title = $("title").value;
-  const email = $("email").value;
-  const phone = $("phone").value;
-  const city = $("city").value;
-  const summary = $("summary").value;
-  const skills = $("skills").value;
-  const education = $("education").value;
-  const school = $("school").value;
-  const educationYear = $("educationYear").value;
-  const languages = $("languages").value;
+  render();
+});
 
-  $("previewName").textContent = name;
-  $("previewTitle").textContent = title;
+function darken(hex,amount){
 
-  $("previewEmail").textContent =
-    email ? "✉ " + email : "";
+  hex = hex.replace("#","");
 
-  $("previewPhone").textContent =
-    phone ? "☎ " + phone : "";
+  let r = parseInt(hex.substring(0,2),16);
+  let g = parseInt(hex.substring(2,4),16);
+  let b = parseInt(hex.substring(4,6),16);
 
-  $("previewCity").textContent =
-    city ? "📍 " + city : "";
+  r = Math.max(0,r-amount);
+  g = Math.max(0,g-amount);
+  b = Math.max(0,b-amount);
 
-  $("previewSummary").textContent = summary;
-
-  /* PHOTO */
-
-  const photo = $("cvPhoto");
-
-  if(photoData){
-
-    photo.src = photoData;
-    photo.classList.add("show");
-
-  }else{
-
-    photo.src = "";
-    photo.classList.remove("show");
-
-  }
-
-  /* COMPÉTENCES */
-
-  const skillArray = skills
-    .split(",")
-    .map(x=>x.trim())
-    .filter(Boolean);
-
-  $("previewSkills").innerHTML =
-    skillArray.map(skill=>`
-      <span class="skill">
-        ${escapeHTML(skill)}
-      </span>
-    `).join("");
-
-  /* EXPÉRIENCES */
-
-  const experiences =
-    document.querySelectorAll(".experience");
-
-  let expHTML = "";
-
-  experiences.forEach(exp=>{
-
-    const role =
-      exp.querySelector(".exp-role").value.trim();
-
-    const company =
-      exp.querySelector(".exp-company").value.trim();
-
-    const dates =
-      exp.querySelector(".exp-dates").value.trim();
-
-    const description =
-      exp.querySelector(".exp-description").value.trim();
-
-    if(!role && !company && !description){
-      return;
-    }
-
-    expHTML += `
-
-      <div class="exp-item">
-
-        <div class="exp-head">
-
-          <span>
-            ${escapeHTML(role)}
-          </span>
-
-          <span class="exp-date">
-            ${escapeHTML(dates)}
-          </span>
-
-        </div>
-
-        <div class="exp-place">
-          ${escapeHTML(company)}
-        </div>
-
-        <div class="exp-desc">
-          ${escapeHTML(description)}
-        </div>
-
-      </div>
-
-    `;
-
-  });
-
-  $("previewExperience").innerHTML =
-    expHTML ||
-    `<div class="cv-text">
-      Aucune expérience renseignée.
-    </div>`;
-
-  /* FORMATION */
-
-  $("previewEducation").textContent =
-    [education,school,educationYear]
-      .filter(Boolean)
-      .join(" — ");
-
-  /* LANGUES */
-
-  $("previewLanguages").textContent =
-    languages;
-
-  saveDraft();
-
+  return "#" +
+    [r,g,b]
+    .map(v=>v.toString(16).padStart(2,"0"))
+    .join("");
 }
 
-/* -----------------------------
-   SAUVEGARDE
------------------------------ */
+/* ================= SAUVEGARDE ================= */
 
 function saveDraft(){
 
-  const experiences = [];
-
-  document.querySelectorAll(".experience").forEach(exp=>{
-
-    experiences.push({
-
-      role:
-        exp.querySelector(".exp-role").value,
-
-      company:
-        exp.querySelector(".exp-company").value,
-
-      dates:
-        exp.querySelector(".exp-dates").value,
-
-      description:
-        exp.querySelector(".exp-description").value
-
-    });
-
-  });
-
-  const data = {
-
-    name:$("name").value,
-    title:$("title").value,
-    email:$("email").value,
-    phone:$("phone").value,
-    city:$("city").value,
-    summary:$("summary").value,
-    skills:$("skills").value,
-    education:$("education").value,
-    school:$("school").value,
-    educationYear:$("educationYear").value,
-    languages:$("languages").value,
-    color:$("customColor").value,
-    model:currentModel,
-    photo:photoData,
-    experiences:experiences
-
-  };
-
   try{
+
+    const experiences = [...document.querySelectorAll(".experience")]
+      .map(block=>({
+        role:block.querySelector(".exp-role").value,
+        place:block.querySelector(".exp-place").value,
+        date:block.querySelector(".exp-date").value,
+        desc:block.querySelector(".exp-desc").value
+      }));
+
+    const draft = {
+      name:$("name").value,
+      job:$("job").value,
+      email:$("email").value,
+      phone:$("phone").value,
+      city:$("city").value,
+      summary:$("summary").value,
+      skills:$("skills").value,
+      languages:$("languages").value,
+      experiences,
+      design:currentDesign,
+      photo:photoData
+    };
 
     localStorage.setItem(
       "cvpro_draft",
-      JSON.stringify(data)
+      JSON.stringify(draft)
     );
-
-    $("saveStatus").textContent =
-      "✓ Sauvegardé automatiquement";
 
   }catch(error){
 
-    $("saveStatus").textContent =
-      "✓ CV actif — sauvegarde limitée";
+    console.warn("Sauvegarde impossible",error);
 
   }
-
 }
-
-/* -----------------------------
-   CHARGEMENT
------------------------------ */
 
 function loadDraft(){
 
   try{
 
-    const raw =
-      localStorage.getItem("cvpro_draft");
+    const raw = localStorage.getItem("cvpro_draft");
 
-    if(!raw) return false;
+    if(!raw) return;
 
-    const data = JSON.parse(raw);
+    const draft = JSON.parse(raw);
 
-    $("name").value =
-      data.name || "";
+    $("name").value = draft.name || "";
+    $("job").value = draft.job || "";
+    $("email").value = draft.email || "";
+    $("phone").value = draft.phone || "";
+    $("city").value = draft.city || "";
+    $("summary").value = draft.summary || "";
+    $("skills").value = draft.skills || "";
+    $("languages").value = draft.languages || "";
 
-    $("title").value =
-      data.title || "";
+    if(draft.photo){
 
-    $("email").value =
-      data.email || "";
+      photoData = draft.photo;
 
-    $("phone").value =
-      data.phone || "";
-
-    $("city").value =
-      data.city || "";
-
-    $("summary").value =
-      data.summary || "";
-
-    $("skills").value =
-      data.skills || "";
-
-    $("education").value =
-      data.education || "";
-
-    $("school").value =
-      data.school || "";
-
-    $("educationYear").value =
-      data.educationYear || "";
-
-    $("languages").value =
-      data.languages || "";
-
-    if(data.color){
-
-      $("customColor").value =
-        data.color;
-
-      document.documentElement.style.setProperty(
-        "--primary",
-        data.color
-      );
-
-    }
-
-    if(data.model){
-      currentModel = data.model;
-    }
-
-    if(data.photo){
-
-      photoData = data.photo;
-
-      $("photoMini").src =
-        photoData;
-
+      $("photoMini").src = photoData;
       $("photoMini").classList.add("show");
+      $("removePhoto").style.display = "inline-block";
 
-      $("removePhoto").classList.add("show");
+      $("cvPhoto").src = photoData;
+      $("cvPhoto").classList.add("show");
+
+      $("sidePhoto").src = photoData;
+      $("sidePhoto").classList.add("show");
+    }
+
+    if(draft.experiences && draft.experiences.length){
+
+      draft.experiences.forEach(addExperience);
 
     }
 
-    $("experienceList").innerHTML = "";
+    if(draft.design){
 
-    experienceCounter = 0;
-
-    if(
-      Array.isArray(data.experiences) &&
-      data.experiences.length
-    ){
-
-      data.experiences.forEach(exp=>{
-
-        addExperience(
-          exp.role,
-          exp.company,
-          exp.dates,
-          exp.description
-        );
-
-      });
+      currentDesign = draft.design;
+      changeDesign(currentDesign);
 
     }
-
-    changeModel(currentModel);
-
-    return true;
 
   }catch(error){
 
-    console.log(
-      "Impossible de charger la sauvegarde",
-      error
-    );
-
-    return false;
+    console.warn("Impossible de charger le brouillon",error);
 
   }
-
 }
-
-/* -----------------------------
-   RESET
------------------------------ */
 
 function clearDraft(){
 
-  const confirmation =
-    confirm(
-      "Voulez-vous vraiment effacer votre CV et recommencer ?"
-    );
-
-  if(!confirmation) return;
+  if(!confirm("Effacer toutes les informations du CV ?")) return;
 
   localStorage.removeItem("cvpro_draft");
 
   location.reload();
-
 }
 
-/* -----------------------------
-   ÉCOUTE FORMULAIRES
------------------------------ */
+/* ================= LETTRE ================= */
 
-[
-  "name",
-  "title",
-  "email",
-  "phone",
-  "city",
-  "summary",
-  "skills",
-  "education",
-  "school",
-  "educationYear",
-  "languages"
-].forEach(id=>{
+function syncLetterFromCV(){
 
-  $(id).addEventListener(
-    "input",
-    render
-  );
+  $("letterName").value = $("name").value;
+  $("letterJob").value = $("job").value;
 
-});
-
-/* -----------------------------
-   LETTRE
------------------------------ */
+  generateLetter();
+}
 
 function generateLetter(){
 
-  const name =
-    $("letterName").value.trim();
+  const name = $("letterName").value.trim();
+  const job = $("letterJob").value.trim();
+  const company = $("letterCompany").value.trim();
+  const city = $("letterCity").value.trim();
+  const motivation = $("letterMotivation").value.trim();
 
-  const job =
-    $("letterJob").value.trim();
-
-  const company =
-    $("letterCompany").value.trim();
-
-  const city =
-    $("letterCity").value.trim();
-
-  const reason =
-    $("letterReason").value.trim();
-
-  const qualities =
-    $("letterQualities").value.trim();
-
-  const date =
-    new Date().toLocaleDateString(
-      "fr-FR",
-      {
-        day:"numeric",
-        month:"long",
-        year:"numeric"
-      }
-    );
+  const date = new Date().toLocaleDateString(
+    "fr-FR",
+    {
+      day:"numeric",
+      month:"long",
+      year:"numeric"
+    }
+  );
 
   $("letterDate").textContent =
-    date;
+    `${city || "Bamako"}, le ${date}`;
 
-  $("letterContent").innerHTML = `
+  $("letterPreviewName").textContent =
+    name || "Votre nom";
 
-    <div class="letter-date">
-      ${escapeHTML(city)}, le ${escapeHTML(date)}
-    </div>
+  $("letterPreviewJob").textContent =
+    job || "poste recherché";
 
-    <h2>
-      ${escapeHTML(name)}
-    </h2>
+  $("letterJobStrong").textContent =
+    job || "poste recherché";
 
-    <div>
-      Candidature au poste de
-      <strong>${escapeHTML(job)}</strong>
-    </div>
+  $("letterCompanyStrong").textContent =
+    company || "votre entreprise";
 
-    <br>
+  $("letterMotivationPreview").textContent =
+    motivation ||
+    "Je suis particulièrement intéressé(e) par cette opportunité et souhaite mettre mes compétences, ma motivation et mon sérieux au service de votre équipe.";
 
-    <div class="letter-object">
-      Objet : Candidature au poste de ${escapeHTML(job)}
-    </div>
-
-    <p>
-      Madame, Monsieur,
-    </p>
-
-    <p>
-      Je souhaite vous adresser ma candidature au poste de
-      <strong>${escapeHTML(job)}</strong>
-      au sein de
-      <strong>${escapeHTML(company || "votre entreprise")}</strong>.
-    </p>
-
-    <p>
-      ${escapeHTML(
-        reason ||
-        "Ce poste m'intéresse particulièrement car il représente une excellente opportunité de mettre mes compétences à contribution, d'acquérir davantage d'expérience et de contribuer aux objectifs de votre organisation."
-      )}
-    </p>
-
-    <p>
-      ${escapeHTML(
-        qualities ||
-        "Sérieux(se), motivé(e), organisé(e) et capable d'apprendre rapidement, je suis prêt(e) à m'investir pleinement dans les missions qui me seront confiées."
-      )}
-    </p>
-
-    <p>
-      Intégrer votre entreprise serait pour moi l'occasion
-      de développer mes compétences tout en apportant une
-      contribution positive à votre équipe.
-    </p>
-
-    <p>
-      Je serais heureux(se) de pouvoir vous rencontrer afin
-      de vous présenter plus en détail ma motivation et mon
-      parcours.
-    </p>
-
-    <p>
-      Dans l'attente de votre retour, veuillez agréer,
-      Madame, Monsieur, l'expression de mes salutations distinguées.
-    </p>
-
-    <br>
-
-    <strong>
-      ${escapeHTML(name)}
-    </strong>
-
-  `;
-
+  $("letterSign").textContent =
+    name || "Votre nom";
 }
 
-/* -----------------------------
-   ASSISTANT
------------------------------ */
+/* ================= BOT ================= */
 
 function toggleBot(){
 
-  $("botBox").classList.toggle("open");
+  $("botWindow").classList.toggle("open");
 
 }
 
 function botMessage(message){
 
-  const body =
-    document.querySelector(".bot-body");
+  const div = document.createElement("div");
 
-  const div =
-    document.createElement("div");
+  div.className = "bot-msg";
+  div.textContent = message;
 
-  div.className =
-    "bot-message";
+  $("botBody").appendChild(div);
 
-  div.textContent =
-    message;
-
-  body.insertBefore(
-    div,
-    body.querySelector(".bot-actions")
-  );
-
+  $("botBody").scrollTop =
+    $("botBody").scrollHeight;
 }
-
-/* PROFIL */
 
 function improveProfile(){
 
   const job =
-    $("title").value ||
-    "le poste recherché";
+    $("job").value || "poste recherché";
 
-  $("summary").value =
-    `Professionnel(le) motivé(e), organisé(e) et orienté(e) résultats, avec des compétences adaptées au poste de ${job}. Capable de travailler efficacement en équipe, d'apprendre rapidement et de contribuer aux objectifs de l'organisation.`;
+  const profile =
+    `Professionnel(le) motivé(e), organisé(e) et orienté(e) résultats, souhaitant mettre ses compétences au service d'un poste de ${job}. Sérieux(se), adaptable et capable d'apprendre rapidement, je souhaite contribuer efficacement aux objectifs de l'entreprise.`;
+
+  $("summary").value = profile;
 
   render();
 
   botMessage(
-    "J'ai amélioré ton profil. Pense à vérifier que la formulation correspond bien à ton expérience réelle."
+    "J'ai amélioré ton profil. Vérifie-le et adapte-le à ton expérience réelle."
   );
-
 }
-
-/* COMPÉTENCES */
 
 function suggestSkills(){
 
   const job =
-    $("title").value.toLowerCase();
+    $("job").value.toLowerCase();
 
   let skills = [
     "Communication",
@@ -2470,9 +2015,20 @@ function suggestSkills(){
     "Adaptabilité"
   ];
 
-  if(
+  if(job.includes("compt") || job.includes("finance")){
+
+    skills = [
+      "Comptabilité",
+      "Excel",
+      "Analyse financière",
+      "Saisie de données",
+      "Organisation"
+    ];
+
+  }else if(
     job.includes("marketing") ||
-    job.includes("digital")
+    job.includes("digital") ||
+    job.includes("communication")
   ){
 
     skills = [
@@ -2480,30 +2036,13 @@ function suggestSkills(){
       "Réseaux sociaux",
       "Canva",
       "Création de contenu",
-      "Communication",
-      "Analyse"
+      "Communication"
     ];
 
-  }
-
-  else if(
-    job.includes("compt")
-  ){
-
-    skills = [
-      "Comptabilité",
-      "Excel",
-      "Saisie de données",
-      "Analyse financière",
-      "Organisation",
-      "Rigueur"
-    ];
-
-  }
-
-  else if(
+  }else if(
     job.includes("informat") ||
-    job.includes("web")
+    job.includes("dévelop") ||
+    job.includes("tech")
   ){
 
     skills = [
@@ -2511,40 +2050,31 @@ function suggestSkills(){
       "Microsoft Office",
       "Gestion de données",
       "Résolution de problèmes",
-      "Support technique",
-      "Organisation"
+      "Support technique"
     ];
 
-  }
-
-  else if(
-    job.includes("commercial") ||
-    job.includes("vente")
+  }else if(
+    job.includes("vente") ||
+    job.includes("commercial")
   ){
 
     skills = [
-      "Relation client",
       "Prospection",
       "Négociation",
+      "Relation client",
       "Communication",
-      "Vente",
       "Sens du résultat"
     ];
-
   }
 
-  $("skills").value =
-    skills.join(", ");
+  $("skills").value = skills.join(", ");
 
   render();
 
   botMessage(
-    "J'ai proposé une liste de compétences en fonction du poste indiqué."
+    "J'ai proposé des compétences correspondant au poste indiqué."
   );
-
 }
-
-/* EXPÉRIENCE */
 
 function improveExperience(){
 
@@ -2556,94 +2086,98 @@ function improveExperience(){
     addExperience();
 
     botMessage(
-      "J'ai ajouté une expérience. Remplis-la avec tes informations réelles."
+      "J'ai ajouté une expérience vide. Renseigne maintenant le poste et l'entreprise."
     );
 
     return;
-
   }
 
-  const description =
-    first.querySelector(".exp-description");
+  const desc =
+    first.querySelector(".exp-desc");
 
-  if(!description.value.trim()){
+  if(!desc.value.trim()){
 
-    description.value =
-      "Participation aux activités du service, organisation des tâches, collaboration avec l'équipe et contribution aux objectifs de l'organisation.";
+    desc.value =
+      "Participation aux activités du service, organisation des tâches, collaboration avec l'équipe et contribution aux objectifs de l'entreprise.";
 
     render();
 
+    botMessage(
+      "J'ai proposé une formulation professionnelle. Modifie-la pour qu'elle corresponde exactement à ce que tu as réellement fait."
+    );
+
+  }else{
+
+    botMessage(
+      "Ton expérience contient déjà une description. Pense à utiliser des résultats concrets et des chiffres lorsque tu en as."
+    );
+
   }
-
-  botMessage(
-    "J'ai proposé une formulation professionnelle. Modifie-la afin qu'elle corresponde exactement à ce que tu as réellement fait."
-  );
-
 }
-
-/* PRÉPARER LETTRE */
 
 function prepareLetter(){
 
-  $("letterName").value =
-    $("name").value;
-
-  $("letterJob").value =
-    $("title").value;
+  syncLetterFromCV();
 
   showView("letter");
 
-  generateLetter();
-
-  $("botBox").classList.remove("open");
+  toggleBot();
 
 }
 
-/* -----------------------------
-   FAQ
------------------------------ */
+/* ================= FAQ ================= */
 
-function toggleFaq(element){
+function toggleFAQ(element){
 
-  const item =
-    element.parentElement;
-
-  item.classList.toggle("open");
+  element.parentElement.classList.toggle("open");
 
 }
 
-/* -----------------------------
-   INITIALISATION
------------------------------ */
+/* ================= EVENEMENTS ================= */
 
-const loaded =
-  loadDraft();
+[
+  "name",
+  "job",
+  "email",
+  "phone",
+  "city",
+  "summary",
+  "skills",
+  "languages"
+].forEach(id=>{
 
-if(!loaded){
-
-  addExperience(
-    "Chargée de projet digital",
-    "Agence Kora Média — Bamako",
-    "2022 — Aujourd'hui",
-    "Pilotage de campagnes digitales, coordination des tâches et suivi des résultats."
+  $(id).addEventListener(
+    "input",
+    render
   );
 
-  addExperience(
-    "Assistante marketing",
-    "Nexa Group — Bamako",
-    "2020 — 2022",
-    "Gestion des réseaux sociaux, création de contenus et participation aux actions marketing."
-  );
+});
 
-}
+/* ================= INITIALISATION ================= */
 
-changeModel(currentModel);
+addExperience({
+  role:"Chargée de projet digital",
+  place:"Agence Kora Média — Bamako",
+  date:"2022 — Aujourd'hui",
+  desc:"Pilotage de campagnes digitales, coordination d'équipe et suivi des objectifs clients."
+});
+
+addExperience({
+  role:"Assistante marketing",
+  place:"Nexa Group — Bamako",
+  date:"2020 — 2022",
+  desc:"Gestion des réseaux sociaux et participation à la création de contenus pour plusieurs marques."
+});
+
+loadDraft();
 
 render();
+
+changeDesign(currentDesign);
 
 generateLetter();
 
 </script>
 
 </body>
-  </html>
+              </html>
