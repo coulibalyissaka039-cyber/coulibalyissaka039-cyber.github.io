@@ -4,23 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#123c32">
-<meta name="description" content="CVPro — Créateur de CV professionnel gratuit">
-<title>CVPro — Créateur de CV</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<meta name="description" content="CVPro - Créateur de CV et lettre de motivation professionnel">
+<title>CVPro — Créateur de CV professionnel</title>
 
 <style>
 :root{
-  --primary:#2F4B3C;
-  --dark:#1E3329;
-  --accent:#C49A55;
-  --paper:#F5F3EE;
-  --line:#D9D4C6;
-  --white:#FFFFFF;
-  --text:#202822;
-  --muted:#6B7269;
-  --soft:#EEF3EF;
+  --primary:#123c32;
+  --primary2:#2f5d50;
+  --accent:#c49a55;
+  --bg:#f4f2ed;
+  --card:#ffffff;
+  --text:#17201b;
+  --muted:#69736d;
+  --line:#ddd8cc;
 }
 
 *{
@@ -33,16 +29,16 @@ html{
 
 body{
   margin:0;
-  background:var(--paper);
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);
   color:var(--text);
-  font-family:"DM Sans",sans-serif;
 }
 
 button,
 input,
 textarea,
 select{
-  font-family:inherit;
+  font:inherit;
 }
 
 button{
@@ -52,85 +48,76 @@ button{
 .site-header{
   position:sticky;
   top:0;
-  z-index:1000;
+  z-index:100;
   background:rgba(255,255,255,.97);
   border-bottom:1px solid var(--line);
-  backdrop-filter:blur(10px);
 }
 
-.site-nav{
-  max-width:1180px;
-  height:68px;
+.nav{
+  max-width:1200px;
   margin:auto;
-  padding:0 20px;
+  min-height:64px;
+  padding:10px 18px;
   display:flex;
   align-items:center;
   justify-content:space-between;
+  gap:15px;
 }
 
 .logo{
   display:flex;
   align-items:center;
-  gap:10px;
-  color:var(--dark);
+  gap:9px;
+  color:var(--primary);
   font-size:20px;
-  font-weight:700;
+  font-weight:800;
 }
 
 .logo-mark{
   width:38px;
   height:38px;
-  border-radius:10px;
-  background:var(--dark);
-  color:white;
+  border-radius:9px;
   display:grid;
   place-items:center;
+  background:var(--primary);
+  color:white;
   font-size:12px;
 }
 
-.header-btn,
-.hero-btn,
-.primary-btn{
+.nav button{
   border:0;
-  background:var(--dark);
+  background:var(--primary);
   color:white;
-  padding:12px 18px;
+  padding:11px 16px;
   border-radius:8px;
   font-weight:700;
 }
 
-.header-btn:hover,
-.hero-btn:hover,
-.primary-btn:hover{
-  background:var(--primary);
-}
-
 .hero{
-  padding:65px 20px 55px;
+  padding:55px 20px 45px;
   text-align:center;
   background:
-    radial-gradient(circle at 80% 15%,rgba(196,154,85,.14),transparent 35%),
-    linear-gradient(180deg,#fff,var(--paper));
+    radial-gradient(circle at 80% 10%,rgba(196,154,85,.18),transparent 30%),
+    linear-gradient(#fff,var(--bg));
 }
 
-.badge{
+.hero-badge{
   display:inline-block;
+  background:#e7f0eb;
+  color:var(--primary);
   padding:7px 13px;
   border-radius:30px;
-  background:#EAF3EF;
-  color:var(--dark);
-  font-size:11px;
+  font-size:12px;
   font-weight:700;
-  margin-bottom:15px;
 }
 
 .hero h1{
-  max-width:700px;
-  margin:0 auto 15px;
-  font-family:"Playfair Display",serif;
-  font-size:clamp(34px,6vw,52px);
-  line-height:1.08;
-  color:var(--dark);
+  max-width:720px;
+  margin:18px auto 12px;
+  font-family:Georgia,serif;
+  font-size:clamp(34px,7vw,58px);
+  line-height:1.05;
+  color:var(--primary);
 }
 
 .hero h1 span{
@@ -138,21 +125,29 @@ button{
 }
 
 .hero p{
-  max-width:590px;
-  margin:0 auto 24px;
+  max-width:620px;
+  margin:0 auto 22px;
   color:var(--muted);
-  line-height:1.7;
-  font-size:15px;
+  line-height:1.6;
+}
+
+.hero button{
+  border:0;
+  background:var(--primary);
+  color:white;
+  padding:14px 22px;
+  border-radius:9px;
+  font-weight:700;
 }
 
 .stats{
   display:flex;
   justify-content:center;
-  gap:60px;
+  gap:55px;
   flex-wrap:wrap;
-  background:var(--dark);
-  color:white;
   padding:20px;
+  background:var(--primary);
+  color:white;
   text-align:center;
 }
 
@@ -162,172 +157,146 @@ button{
 }
 
 .stats span{
-  display:block;
-  margin-top:3px;
   font-size:11px;
   opacity:.75;
 }
 
-.info-section{
+.features{
   max-width:1050px;
   margin:auto;
-  padding:55px 20px;
+  padding:45px 20px;
 }
 
-.section-head{
-  max-width:650px;
-  margin:0 auto 30px;
+.section-title{
   text-align:center;
+  margin-bottom:28px;
 }
 
-.eyebrow{
-  color:var(--primary);
+.section-title small{
+  color:var(--primary2);
+  font-weight:800;
   text-transform:uppercase;
-  font-size:11px;
-  font-weight:700;
-  letter-spacing:.12em;
+  letter-spacing:.1em;
 }
 
-.section-head h2{
+.section-title h2{
   margin:8px 0;
-  font-family:"Playfair Display",serif;
-  color:var(--dark);
+  font-family:Georgia,serif;
+  color:var(--primary);
   font-size:30px;
 }
 
-.section-head p{
+.section-title p{
   color:var(--muted);
-  font-size:14px;
 }
 
-.features{
+.feature-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:15px;
+  gap:14px;
 }
 
 .feature{
-  padding:20px;
   background:white;
   border:1px solid var(--line);
   border-radius:12px;
+  padding:20px;
 }
 
 .feature-icon{
-  width:40px;
-  height:40px;
-  border-radius:10px;
-  background:#EAF3EF;
-  display:grid;
-  place-items:center;
-  margin-bottom:12px;
-  font-size:19px;
+  font-size:25px;
+  margin-bottom:10px;
 }
 
 .feature h3{
-  margin:0 0 6px;
-  color:var(--dark);
-  font-size:15px;
+  color:var(--primary);
+  margin:0 0 7px;
+  font-size:16px;
 }
 
 .feature p{
   margin:0;
   color:var(--muted);
-  font-size:12.5px;
+  font-size:13px;
   line-height:1.5;
 }
 
+/* BUILDER */
+
 .builder{
-  max-width:1450px;
+  max-width:1250px;
   margin:auto;
-  padding:25px 20px 70px;
+  padding:25px 15px 50px;
 }
 
 .tabs{
-  max-width:1100px;
-  margin:0 auto 20px;
   display:flex;
   gap:8px;
+  margin-bottom:15px;
 }
 
 .tab{
   flex:1;
   border:1px solid var(--line);
   background:white;
-  color:var(--dark);
+  color:var(--primary);
   padding:12px;
   border-radius:8px;
   font-weight:700;
 }
 
 .tab.active{
-  background:var(--dark);
+  background:var(--primary);
   color:white;
 }
 
-.builder-grid{
+.workspace{
   display:grid;
-  grid-template-columns:380px 1fr;
-  gap:25px;
+  grid-template-columns:390px minmax(0,1fr);
+  gap:18px;
   align-items:start;
 }
 
-.editor{
+.panel{
   background:white;
   border:1px solid var(--line);
   border-radius:12px;
-  padding:24px;
-  position:sticky;
-  top:88px;
-  max-height:calc(100vh - 105px);
-  overflow-y:auto;
+  padding:20px;
 }
 
-.editor-title{
+.panel h2{
+  margin:0 0 5px;
+  color:var(--primary);
+  font-family:Georgia,serif;
+}
+
+.panel-subtitle{
+  color:var(--muted);
+  font-size:12px;
   margin-bottom:20px;
 }
 
-.editor-title .eyebrow{
-  margin-bottom:4px;
-}
-
-.editor-title h2{
-  font-family:"Playfair Display",serif;
-  color:var(--dark);
-  margin:0;
-  font-size:25px;
-}
-
-.editor-title p{
-  color:var(--muted);
-  font-size:12px;
-  margin:6px 0 0;
-}
-
 .form-section{
-  border-top:1px solid #eee;
-  padding-top:18px;
-  margin-top:18px;
+  margin-bottom:20px;
+  padding-bottom:18px;
+  border-bottom:1px solid #eeeae1;
 }
 
-.form-section:first-of-type{
-  border-top:0;
-  padding-top:0;
-  margin-top:0;
+.form-section:last-child{
+  border-bottom:0;
 }
 
-.form-section-title{
-  color:var(--dark);
-  font-size:13px;
-  font-weight:700;
-  margin-bottom:10px;
+.form-section h3{
+  margin:0 0 12px;
+  color:var(--primary);
+  font-size:14px;
 }
 
 label{
   display:block;
-  margin:12px 0 6px;
-  color:#59645D;
-  font-size:11.5px;
+  margin:11px 0 5px;
+  color:#53605a;
+  font-size:12px;
   font-weight:700;
 }
 
@@ -336,11 +305,10 @@ textarea,
 select{
   width:100%;
   border:1px solid var(--line);
-  border-radius:6px;
-  padding:9px 10px;
-  background:#FCFBF8;
+  background:#fcfbf8;
   color:var(--text);
-  font-size:13px;
+  padding:10px 11px;
+  border-radius:7px;
   outline:none;
 }
 
@@ -348,11 +316,11 @@ input:focus,
 textarea:focus,
 select:focus{
   border-color:var(--primary);
-  box-shadow:0 0 0 2px rgba(47,75,60,.08);
+  box-shadow:0 0 0 2px rgba(18,60,50,.08);
 }
 
 textarea{
-  min-height:72px;
+  min-height:80px;
   resize:vertical;
 }
 
@@ -363,10 +331,9 @@ textarea{
 }
 
 .photo-box{
-  padding:13px;
-  border:1px dashed var(--line);
+  border:1px dashed #bcb6a8;
+  padding:14px;
   border-radius:8px;
-  background:#FCFBF8;
   text-align:center;
 }
 
@@ -376,15 +343,15 @@ textarea{
 
 .photo-mini{
   display:none;
-  width:58px;
-  height:58px;
+  width:65px;
+  height:65px;
   border-radius:50%;
   object-fit:cover;
-  margin:10px auto 4px;
+  margin:10px auto 0;
   border:2px solid var(--primary);
 }
 
-.photo-mini.visible{
+.photo-mini.show{
   display:block;
 }
 
@@ -392,191 +359,177 @@ textarea{
   display:none;
   border:0;
   background:none;
-  color:#A43E36;
+  color:#a63f38;
   font-size:11px;
-  font-weight:700;
-  margin-top:3px;
+  margin-top:6px;
 }
 
-.remove-photo.visible{
+.remove-photo.show{
   display:inline-block;
 }
 
 .experience{
-  border-left:2px solid var(--line);
+  border-left:3px solid var(--line);
   padding-left:12px;
-  margin:12px 0;
+  margin-bottom:12px;
 }
 
-.remove-exp{
-  margin-top:8px;
+.delete-exp{
+  margin-top:7px;
   border:0;
-  background:#FFF1EF;
-  color:#A43E36;
-  border-radius:5px;
+  background:#f7eaea;
+  color:#a63f38;
   padding:7px 10px;
+  border-radius:6px;
   font-size:11px;
   font-weight:700;
 }
 
-.add-exp{
+.add{
   width:100%;
   border:1px dashed var(--primary);
   color:var(--primary);
-  background:white;
-  padding:9px;
-  border-radius:6px;
-  font-size:12px;
+  background:#f5f8f6;
+  padding:10px;
+  border-radius:7px;
   font-weight:700;
 }
 
 .template-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:7px;
+  gap:8px;
 }
 
 .template{
   border:2px solid var(--line);
-  background:#FCFBF8;
-  color:var(--dark);
-  padding:10px 5px;
+  background:#faf9f5;
+  padding:11px;
   border-radius:7px;
-  font-size:11px;
   font-weight:700;
+  color:var(--primary);
 }
 
 .template.active{
   border-color:var(--primary);
-  background:var(--soft);
+  background:#eaf1ed;
 }
 
 .color-row{
   display:flex;
-  gap:8px;
   align-items:center;
+  gap:10px;
 }
 
-.color-row input[type="color"]{
-  width:55px;
-  height:38px;
+.color-row input[type=color]{
+  width:60px;
+  height:42px;
   padding:3px;
 }
 
-.actions{
-  margin-top:20px;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:8px;
-}
-
-.action-btn{
+.action{
+  width:100%;
   border:0;
-  padding:12px 8px;
-  border-radius:7px;
-  font-size:12px;
-  font-weight:700;
-}
-
-.action-main{
-  background:var(--dark);
+  background:var(--primary);
   color:white;
-}
-
-.action-secondary{
-  background:#EEF3EF;
-  color:var(--dark);
-}
-
-.autosave{
-  text-align:center;
-  color:#8A8377;
-  font-size:10.5px;
+  padding:13px;
+  border-radius:8px;
+  font-weight:800;
   margin-top:10px;
 }
 
+.secondary{
+  background:white;
+  color:var(--primary);
+  border:1px solid var(--primary);
+}
+
+.save-status{
+  text-align:center;
+  color:#718078;
+  font-size:11px;
+  margin-top:8px;
+}
+
+/* A4 PREVIEW */
+
 .preview-area{
-  min-width:0;
-  background:#EDE9DF;
+  background:#e8e4db;
+  padding:25px;
   border-radius:12px;
-  padding:30px;
-  display:flex;
-  justify-content:center;
   overflow:auto;
 }
 
 .a4{
   width:210mm;
   min-height:297mm;
+  max-width:100%;
+  margin:auto;
   background:white;
-  box-shadow:0 8px 35px rgba(20,30,25,.16);
+  box-shadow:0 8px 30px rgba(0,0,0,.14);
   overflow:hidden;
-  flex-shrink:0;
+  color:#222;
 }
 
-.cv-page{
-  width:100%;
-  min-height:297mm;
-  padding:17mm 17mm 13mm;
-  background:white;
-  color:#252B27;
-  overflow:hidden;
+.cv-content{
+  padding:16mm 17mm;
 }
 
 .cv-header{
   display:flex;
+  gap:16px;
   align-items:center;
-  gap:18px;
 }
 
-.cv-header-content{
+.cv-photo{
+  width:27mm;
+  height:27mm;
+  border-radius:50%;
+  object-fit:cover;
+  display:none;
+  border:2px solid var(--primary);
+  flex-shrink:0;
+}
+
+.cv-photo.show{
+  display:block;
+}
+
+.cv-header-text{
   flex:1;
   min-width:0;
 }
 
 .cv-name{
+  font-family:Georgia,serif;
+  font-size:29px;
+  line-height:1.05;
   margin:0;
-  font-family:"Playfair Display",serif;
-  color:var(--dark);
-  font-size:30px;
-  line-height:1.1;
+  color:var(--primary);
+  overflow-wrap:anywhere;
 }
 
 .cv-title{
   margin:4px 0 0;
-  color:var(--primary);
-  font-size:12.5px;
+  font-size:13px;
+  color:var(--primary2);
   font-weight:700;
 }
 
 .cv-contact{
-  margin-top:9px;
   display:flex;
   flex-wrap:wrap;
-  gap:6px 12px;
-  color:#68716A;
-  font-size:10px;
-}
-
-.cv-photo{
-  width:84px;
-  height:84px;
-  border-radius:50%;
-  object-fit:cover;
-  display:none;
-  flex-shrink:0;
-  border:3px solid var(--dark);
-}
-
-.cv-photo.visible{
-  display:block;
+  gap:6px 13px;
+  margin-top:8px;
+  color:#68716c;
+  font-size:9.5px;
 }
 
 .divider{
-  width:42px;
   height:2px;
-  background:var(--dark);
-  margin:15px 0 12px;
+  width:45px;
+  background:var(--primary);
+  margin:13px 0;
 }
 
 .cv-section{
@@ -584,55 +537,53 @@ textarea{
 }
 
 .cv-section-title{
-  margin:0 0 6px;
-  color:var(--dark);
-  font-family:"Playfair Display",serif;
+  font-family:Georgia,serif;
+  color:var(--primary);
   text-transform:uppercase;
-  letter-spacing:.06em;
-  font-size:11.5px;
+  letter-spacing:.07em;
+  font-size:11px;
+  font-weight:800;
+  border-bottom:1px solid #ddd9d0;
+  padding-bottom:4px;
+  margin-bottom:7px;
 }
 
-.cv-summary{
-  font-size:10.5px;
+.cv-text{
+  font-size:9.5px;
   line-height:1.45;
-  color:#37403A;
+  color:#333a36;
   white-space:pre-line;
 }
 
 .exp-item{
-  margin-bottom:8px;
+  margin-bottom:9px;
 }
 
-.exp-top{
+.exp-head{
   display:flex;
   justify-content:space-between;
   gap:10px;
-  font-size:10.5px;
-  line-height:1.2;
+  font-size:10px;
+  font-weight:800;
 }
 
-.exp-role{
-  font-weight:700;
-  color:#202720;
-}
-
-.exp-dates{
-  color:#7B817B;
-  font-size:9px;
+.exp-date{
+  color:#777;
+  font-weight:600;
   white-space:nowrap;
 }
 
 .exp-place{
-  color:var(--primary);
-  font-size:9.5px;
-  font-weight:600;
-  margin:2px 0;
+  font-size:9px;
+  color:var(--primary2);
+  margin-top:2px;
 }
 
 .exp-desc{
-  font-size:9.5px;
-  line-height:1.35;
-  color:#465049;
+  font-size:9px;
+  line-height:1.4;
+  margin-top:3px;
+  color:#3e4541;
   white-space:pre-line;
 }
 
@@ -643,304 +594,224 @@ textarea{
 }
 
 .skill{
-  padding:4px 8px;
+  background:#edf2ef;
+  color:var(--primary);
   border-radius:12px;
-  background:#EEF3EF;
-  color:var(--dark);
-  font-size:9px;
+  padding:4px 8px;
+  font-size:8.5px;
   font-weight:700;
 }
 
-.cv-footer{
-  margin-top:15px;
-  padding-top:7px;
-  border-top:1px dashed var(--line);
-  text-align:center;
-  color:#A19D92;
-  font-size:8px;
+/* MODELE 2 */
+
+.a4.model-navy .cv-name,
+.a4.model-navy .cv-section-title{
+  color:#244c70;
 }
 
-/* TEMPLATE MARINE */
-.cv-page.navy{
-  --template-main:#2A4E6E;
-  --template-dark:#183454;
+.a4.model-navy .divider{
+  background:#244c70;
 }
 
-.cv-page.navy .cv-name,
-.cv-page.navy .cv-section-title{
-  color:var(--template-dark);
+.a4.model-navy .skill{
+  background:#e8eef4;
+  color:#244c70;
 }
 
-.cv-page.navy .cv-title,
-.cv-page.navy .exp-place{
-  color:var(--template-main);
-}
+/* MODELE 3 */
 
-.cv-page.navy .divider{
-  background:var(--template-dark);
-}
-
-.cv-page.navy .skill{
-  background:#EAF0F5;
-  color:var(--template-dark);
-}
-
-/* TEMPLATE DORE */
-.cv-page.gold{
-  padding:0;
+.a4.model-gold{
   display:grid;
-  grid-template-columns:55mm 1fr;
+  grid-template-columns:58mm 1fr;
 }
 
-.gold-sidebar{
-  background:#5C4726;
-  color:white;
-  padding:17mm 7mm;
-}
-
-.gold-main{
-  padding:17mm 11mm 13mm;
-}
-
-.gold-sidebar .cv-photo{
-  margin:0 auto 15px;
-  border-color:white;
-}
-
-.gold-sidebar .side-title{
-  margin:14px 0 7px;
-  padding-bottom:5px;
-  border-bottom:1px solid rgba(255,255,255,.35);
-  color:white;
-  font-family:"Playfair Display",serif;
-  text-transform:uppercase;
-  font-size:9.5px;
-}
-
-.gold-sidebar .skill{
+.a4.model-gold .cv-sidebar{
   display:block;
-  width:max-content;
-  margin-bottom:5px;
-  background:rgba(255,255,255,.13);
+  background:#20382f;
   color:white;
+  padding:16mm 9mm;
 }
 
-.gold-sidebar .side-text{
-  font-size:8.5px;
-  line-height:1.5;
-  color:rgba(255,255,255,.88);
+.a4.model-gold .cv-main{
+  padding:16mm 13mm;
 }
 
-.gold-main .cv-name{
-  color:#5C4726;
-}
-
-.gold-main .cv-title,
-.gold-main .exp-place{
-  color:#8A6D3B;
-}
-
-.gold-main .divider{
-  background:#8A6D3B;
-}
-
-/* TEMPLATE MONO */
-.cv-page.mono{
-  padding:0;
-}
-
-.mono-banner{
-  background:#111;
-  color:white;
-  padding:14mm 17mm;
-  display:flex;
-  align-items:center;
-  gap:16px;
-}
-
-.mono-banner .cv-name{
-  color:white;
-}
-
-.mono-banner .cv-title,
-.mono-banner .cv-contact{
-  color:#ddd;
-}
-
-.mono-banner .cv-photo{
+.a4.model-gold .cv-sidebar .cv-photo{
+  display:block;
+  margin:0 auto 14px;
   border-color:white;
 }
 
-.mono-content{
-  padding:11mm 17mm 13mm;
-}
-
-.mono-content .cv-section-title{
-  background:#111;
+.a4.model-gold .cv-sidebar .cv-name{
   color:white;
-  display:inline-block;
-  padding:4px 10px;
-  border-radius:3px;
-  font-family:"DM Sans",sans-serif;
-  font-size:9px;
+  font-size:20px;
+  text-align:center;
 }
 
-.mono-content .skill{
-  background:#111;
+.a4.model-gold .cv-sidebar .cv-title{
+  color:#d8c49a;
+  text-align:center;
+  font-size:10px;
+}
+
+.a4.model-gold .cv-sidebar .cv-contact{
+  color:#dbe4df;
+  display:block;
+  text-align:center;
+  line-height:1.7;
+}
+
+.a4.model-gold .cv-sidebar .cv-section-title{
+  color:white;
+  border-color:rgba(255,255,255,.3);
+  margin-top:18px;
+}
+
+.a4.model-gold .cv-sidebar .skill{
+  background:rgba(255,255,255,.12);
   color:white;
 }
 
-/* LETTRE */
-.letter-layout{
+.a4.model-gold .cv-sidebar .cv-text{
+  color:#e1e8e4;
+}
+
+.a4.model-gold .main-header{
   display:none;
 }
 
-.letter-editor{
-  background:white;
-  border:1px solid var(--line);
-  border-radius:12px;
-  padding:24px;
-  position:sticky;
-  top:88px;
+/* MODELE 4 */
+
+.a4.model-mono .top-banner{
+  background:#242424;
+  color:white;
+  padding:14mm 17mm;
 }
 
-.letter-paper{
+.a4.model-mono .top-banner .cv-name{
+  color:white;
+}
+
+.a4.model-mono .top-banner .cv-title,
+.a4.model-mono .top-banner .cv-contact{
+  color:#ddd;
+}
+
+.a4.model-mono .top-banner .cv-photo{
+  border-color:white;
+}
+
+.a4.model-mono .cv-content{
+  padding-top:12mm;
+}
+
+.a4.model-mono .cv-section-title{
+  color:#222;
+}
+
+.a4.model-mono .divider{
+  background:#222;
+}
+
+.letter-workspace{
+  display:grid;
+  grid-template-columns:390px minmax(0,1fr);
+  gap:18px;
+}
+
+.letter-page{
   width:210mm;
   min-height:297mm;
+  max-width:100%;
+  margin:auto;
   background:white;
-  box-shadow:0 8px 35px rgba(20,30,25,.16);
-  padding:25mm 22mm;
-  color:#2B332E;
-  font-size:11.5px;
-  line-height:1.8;
-  flex-shrink:0;
+  padding:20mm;
+  box-shadow:0 8px 30px rgba(0,0,0,.14);
+  font-size:11px;
+  line-height:1.7;
+  color:#303632;
+}
+
+.letter-page h2{
+  font-family:Georgia,serif;
+  color:var(--primary);
+  font-size:24px;
 }
 
 .letter-date{
   text-align:right;
-  color:#6B7269;
-  margin-bottom:25px;
+  color:#777;
+  margin-bottom:22px;
 }
 
 .letter-object{
-  font-weight:700;
-  color:var(--dark);
+  font-weight:800;
+  color:var(--primary);
   margin-bottom:20px;
 }
 
-.letter-paper p{
-  margin:0 0 14px;
-}
-
-.faq{
-  max-width:700px;
-  margin:auto;
-}
-
-.faq-item{
-  background:white;
-  border:1px solid var(--line);
-  border-radius:9px;
-  margin-bottom:8px;
-  overflow:hidden;
-}
-
-.faq-question{
-  padding:14px;
-  display:flex;
-  justify-content:space-between;
-  font-size:13px;
-  font-weight:700;
-  color:var(--dark);
-  cursor:pointer;
-}
-
-.faq-answer{
-  display:none;
-  padding:0 14px 14px;
-  color:var(--muted);
-  font-size:12px;
-  line-height:1.6;
-}
-
-.faq-item.open .faq-answer{
-  display:block;
-}
-
-.footer{
-  padding:28px 20px;
-  text-align:center;
-  background:var(--dark);
-  color:#CBD8D2;
-  font-size:11px;
-}
-
-/* ASSISTANT */
 .bot{
   position:fixed;
   right:18px;
   bottom:18px;
-  z-index:1500;
+  z-index:150;
 }
 
 .bot-button{
-  width:55px;
-  height:55px;
+  width:54px;
+  height:54px;
   border:0;
   border-radius:50%;
-  background:var(--dark);
+  background:var(--primary);
   color:white;
   font-size:22px;
-  box-shadow:0 8px 25px rgba(0,0,0,.25);
+  box-shadow:0 7px 25px rgba(0,0,0,.25);
 }
 
-.bot-panel{
+.bot-box{
   display:none;
   position:absolute;
   right:0;
-  bottom:68px;
+  bottom:65px;
   width:320px;
-  max-width:calc(100vw - 30px);
+  max-width:calc(100vw - 35px);
   background:white;
   border-radius:12px;
+  box-shadow:0 12px 40px rgba(0,0,0,.25);
   overflow:hidden;
-  box-shadow:0 15px 45px rgba(0,0,0,.25);
 }
 
-.bot-panel.open{
+.bot-box.open{
   display:block;
 }
 
 .bot-head{
-  background:var(--dark);
+  background:var(--primary);
   color:white;
-  padding:12px;
+  padding:13px;
   display:flex;
   justify-content:space-between;
-  font-size:13px;
-  font-weight:700;
+  font-weight:800;
 }
 
 .bot-head button{
-  border:0;
   background:none;
+  border:0;
   color:white;
   font-size:18px;
 }
 
 .bot-body{
   padding:12px;
-  max-height:330px;
-  overflow:auto;
 }
 
-.bot-msg{
-  padding:9px;
+.bot-message{
+  background:#f3f1eb;
+  padding:10px;
   border-radius:8px;
-  background:var(--paper);
-  margin-bottom:8px;
-  font-size:11.5px;
+  font-size:12px;
   line-height:1.5;
+  margin-bottom:9px;
 }
 
 .bot-actions{
@@ -951,114 +822,180 @@ textarea{
 
 .bot-actions button{
   border:1px solid var(--line);
-  background:#FCFBF8;
-  color:var(--dark);
-  border-radius:6px;
+  background:white;
   padding:8px;
-  font-size:10.5px;
+  border-radius:6px;
+  color:var(--primary);
+  font-size:11px;
   font-weight:700;
 }
 
+.faq{
+  max-width:700px;
+  margin:auto;
+}
+
+.faq-item{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:8px;
+  margin-bottom:8px;
+  overflow:hidden;
+}
+
+.faq-q{
+  padding:14px;
+  font-weight:700;
+  color:var(--primary);
+  cursor:pointer;
+  display:flex;
+  justify-content:space-between;
+}
+
+.faq-a{
+  display:none;
+  padding:0 14px 14px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.5;
+}
+
+.faq-item.open .faq-a{
+  display:block;
+}
+
+.footer{
+  background:var(--primary);
+  color:#dce7e1;
+  text-align:center;
+  padding:25px;
+  font-size:12px;
+}
+
 /* MOBILE */
-@media(max-width:1000px){
 
-  .builder-grid{
+@media(max-width:950px){
+  .workspace,
+  .letter-workspace{
     grid-template-columns:1fr;
-  }
-
-  .editor,
-  .letter-editor{
-    position:relative;
-    top:auto;
-    max-height:none;
   }
 
   .preview-area{
-    padding:15px;
+    padding:10px;
   }
 
-  .a4,
-  .letter-paper{
-    transform-origin:top center;
+  .a4{
+    width:100%;
+    min-height:auto;
+    transform:none;
+  }
+
+  .feature-grid{
+    grid-template-columns:1fr 1fr;
   }
 }
 
-@media(max-width:700px){
+@media(max-width:600px){
+  .nav{
+    padding:8px 12px;
+  }
 
-  .features{
-    grid-template-columns:1fr;
+  .hero{
+    padding:40px 15px;
   }
 
   .stats{
     gap:25px;
   }
 
-  .tabs{
-    padding:0;
-  }
-
-  .builder{
-    padding-left:10px;
-    padding-right:10px;
-  }
-
-  .editor{
-    padding:17px;
-  }
-
-  .preview-area{
-    padding:8px;
-    overflow-x:auto;
-    justify-content:flex-start;
-  }
-
-  .a4{
-    transform:scale(.72);
-    transform-origin:top left;
-    margin-right:-59mm;
-    margin-bottom:-83mm;
-  }
-
-  .letter-paper{
-    transform:scale(.72);
-    transform-origin:top left;
-    margin-right:-59mm;
-    margin-bottom:-83mm;
+  .feature-grid{
+    grid-template-columns:1fr;
   }
 
   .row2{
     grid-template-columns:1fr;
   }
 
-  .header-btn{
-    padding:9px 12px;
-    font-size:11px;
+  .tabs{
+    position:sticky;
+    top:64px;
+    z-index:50;
+    background:var(--bg);
+    padding:5px 0;
+  }
+
+  .preview-area{
+    overflow-x:auto;
+  }
+
+  .a4{
+    min-width:0;
+  }
+
+  .cv-content{
+    padding:10mm;
+  }
+
+  .cv-name{
+    font-size:22px;
+  }
+
+  .cv-contact{
+    font-size:8px;
+  }
+
+  .cv-text{
+    font-size:8.5px;
+  }
+
+  .exp-head{
+    font-size:9px;
+  }
+
+  .exp-desc,
+  .exp-place{
+    font-size:8px;
+  }
+
+  .skill{
+    font-size:7.5px;
+  }
+
+  .a4.model-gold{
+    grid-template-columns:42mm 1fr;
+  }
+
+  .a4.model-gold .cv-sidebar{
+    padding:10mm 5mm;
+  }
+
+  .a4.model-gold .cv-main{
+    padding:10mm 7mm;
+  }
+
+  .letter-page{
+    padding:12mm;
   }
 }
 
 /* IMPRESSION A4 */
+
 @page{
   size:A4;
   margin:0;
 }
 
 @media print{
-
-  html,
   body{
-    width:210mm;
-    margin:0;
-    padding:0;
     background:white;
   }
 
   .site-header,
   .hero,
   .stats,
-  .info-section,
+  .features,
   .tabs,
-  .editor,
-  .letter-editor,
+  .panel,
   .bot,
   .footer{
     display:none !important;
@@ -1069,41 +1006,31 @@ textarea{
     margin:0;
   }
 
-  .builder-grid{
+  .workspace,
+  .letter-workspace{
     display:block;
   }
 
   .preview-area{
-    display:block;
     padding:0;
     background:white;
-    border-radius:0;
+    overflow:visible;
   }
 
   .a4{
     width:210mm;
     min-height:297mm;
-    box-shadow:none;
+    max-width:none;
     margin:0;
-    transform:none !important;
+    box-shadow:none;
   }
 
-  .cv-page{
+  .letter-page{
     width:210mm;
     min-height:297mm;
-    box-shadow:none;
-  }
-
-  .letter-layout{
-    display:block !important;
-  }
-
-  .letter-paper{
-    width:210mm;
-    min-height:297mm;
+    max-width:none;
     box-shadow:none;
     margin:0;
-    transform:none !important;
   }
 
   .no-print{
@@ -1116,17 +1043,18 @@ textarea{
 <body>
 
 <header class="site-header">
-  <div class="site-nav">
+  <nav class="nav">
     <div class="logo">
       <div class="logo-mark">CV</div>
       CVPro
     </div>
-    <button class="header-btn" onclick="goToBuilder()">Créer mon CV</button>
-  </div>
+
+    <button onclick="goBuilder()">Créer mon CV</button>
+  </nav>
 </header>
 
 <section class="hero">
-  <div class="badge">🇲🇱 Pensé pour les candidats maliens</div>
+  <div class="hero-badge">🇲🇱 Pensé pour les candidats maliens</div>
 
   <h1>
     Ton CV.<br>
@@ -1135,13 +1063,11 @@ textarea{
   </h1>
 
   <p>
-    Crée gratuitement un CV professionnel directement depuis ton téléphone,
-    ajoute ta photo, choisis ton design et télécharge-le en PDF.
+    Crée gratuitement un CV professionnel et une lettre de motivation
+    directement depuis ton téléphone.
   </p>
 
-  <button class="hero-btn" onclick="goToBuilder()">
-    ✍️ Créer mon CV maintenant
-  </button>
+  <button onclick="goBuilder()">✍️ Commencer gratuitement</button>
 </section>
 
 <div class="stats">
@@ -1152,156 +1078,135 @@ textarea{
 
   <div>
     <strong>100%</strong>
-    <span>gratuit</span>
-  </div>
-
-  <div>
-    <strong>📱</strong>
-    <span>compatible téléphone</span>
+    <span>accessible sur mobile</span>
   </div>
 
   <div>
     <strong>A4</strong>
-    <span>PDF prêt à imprimer</span>
+    <span>format professionnel</span>
   </div>
 </div>
 
-<section class="info-section">
-
-  <div class="section-head">
-    <div class="eyebrow">Pourquoi CVPro ?</div>
-
-    <h2>
-      Tout ce qu'il faut pour un CV professionnel
-    </h2>
-
-    <p>
-      Une interface simple, rapide et entièrement gratuite.
-    </p>
+<section class="features">
+  <div class="section-title">
+    <small>CVPro</small>
+    <h2>Tout ce dont tu as besoin</h2>
+    <p>Sans paiement et sans fonctionnalité verrouillée.</p>
   </div>
 
-  <div class="features">
-
+  <div class="feature-grid">
     <div class="feature">
-      <div class="feature-icon">⚡</div>
-      <h3>Création instantanée</h3>
-      <p>Aperçu de ton CV pendant que tu remplis les informations.</p>
-    </div>
-
-    <div class="feature">
-      <div class="feature-icon">📱</div>
-      <h3>100% mobile</h3>
-      <p>Crée ton CV directement depuis ton smartphone.</p>
+      <div class="feature-icon">📄</div>
+      <h3>CV professionnel</h3>
+      <p>Aperçu en direct avec une mise en page optimisée pour le format A4.</p>
     </div>
 
     <div class="feature">
       <div class="feature-icon">📷</div>
       <h3>Photo de profil</h3>
-      <p>Ajoute facilement ta photo personnelle à ton CV.</p>
+      <p>Ajoute directement ta photo depuis ton téléphone.</p>
     </div>
 
     <div class="feature">
       <div class="feature-icon">🎨</div>
       <h3>4 modèles</h3>
-      <p>Forêt, Marine, Doré et Mono sont disponibles gratuitement.</p>
+      <p>Forêt, Marine, Doré et Mono sont entièrement accessibles.</p>
     </div>
 
     <div class="feature">
       <div class="feature-icon">✉️</div>
       <h3>Lettre de motivation</h3>
-      <p>Prépare également une lettre adaptée à ta candidature.</p>
+      <p>Prépare rapidement une lettre adaptée au poste recherché.</p>
+    </div>
+
+    <div class="feature">
+      <div class="feature-icon">🤖</div>
+      <h3>Assistant CV</h3>
+      <p>Améliore ton profil, tes compétences et tes expériences.</p>
     </div>
 
     <div class="feature">
       <div class="feature-icon">💾</div>
       <h3>Sauvegarde automatique</h3>
-      <p>Tes informations sont conservées automatiquement sur ton appareil.</p>
+      <p>Ton travail reste sauvegardé dans ton navigateur.</p>
     </div>
-
   </div>
 </section>
 
 <main class="builder" id="builder">
 
   <div class="tabs">
-    <button class="tab active" id="tab-cv" onclick="showView('cv')">
+    <button class="tab active" id="cvTab" onclick="showView('cv')">
       📄 Mon CV
     </button>
 
-    <button class="tab" id="tab-letter" onclick="showView('letter')">
+    <button class="tab" id="letterTab" onclick="showView('letter')">
       ✉️ Lettre de motivation
     </button>
   </div>
 
   <!-- ================= CV ================= -->
 
-  <div class="builder-grid" id="cv-view">
+  <div id="cvView" class="workspace">
 
-    <aside class="editor">
+    <aside class="panel">
 
-      <div class="editor-title">
-        <div class="eyebrow">Créateur de CV</div>
-        <h2>Construis ton CV</h2>
-        <p>Toutes les fonctionnalités sont disponibles gratuitement.</p>
+      <h2>Créer mon CV</h2>
+      <div class="panel-subtitle">
+        Remplis les informations et regarde ton CV se construire automatiquement.
       </div>
 
-      <!-- INFORMATIONS -->
       <div class="form-section">
 
-        <div class="form-section-title">
-          👤 Informations personnelles
-        </div>
+        <h3>👤 Informations personnelles</h3>
 
         <label>Nom complet</label>
-        <input id="f-name" value="Aïcha Koné">
+        <input id="name" value="Aïcha Koné">
 
         <label>Titre / poste recherché</label>
-        <input id="f-title" value="Chargée de projet digital">
+        <input id="title" value="Chargée de projet digital">
 
         <div class="row2">
 
           <div>
             <label>Email</label>
-            <input id="f-email" value="aicha.kone@email.com">
+            <input id="email" value="aicha.kone@email.com">
           </div>
 
           <div>
             <label>Téléphone</label>
-            <input id="f-phone" value="+223 67 89 07 55">
+            <input id="phone" value="+223 67 89 07 55">
           </div>
 
         </div>
 
-        <label>Ville / pays</label>
-        <input id="f-city" value="Bamako, Mali">
+        <label>Ville / Pays</label>
+        <input id="city" value="Bamako, Mali">
 
       </div>
 
-      <!-- PHOTO -->
       <div class="form-section">
 
-        <div class="form-section-title">
-          📷 Photo de profil
-        </div>
+        <h3>📷 Photo</h3>
 
         <div class="photo-box">
 
           <input
             type="file"
-            id="f-photo"
+            id="photoInput"
             accept="image/*"
           >
 
           <img
-            id="photo-mini"
+            id="photoMini"
             class="photo-mini"
-            alt="Aperçu de la photo"
+            alt="Photo"
           >
 
           <button
             type="button"
+            id="removePhoto"
             class="remove-photo"
-            id="remove-photo"
             onclick="removePhoto()"
           >
             Retirer la photo
@@ -1311,97 +1216,101 @@ textarea{
 
       </div>
 
-      <!-- PROFIL -->
       <div class="form-section">
 
-        <div class="form-section-title">
-          📝 Profil professionnel
-        </div>
+        <h3>📝 Profil</h3>
 
-        <label>Présentation</label>
-
-        <textarea id="f-summary">Professionnelle organisée avec 4 ans d'expérience en gestion de projets digitaux. Orientée résultats, à l'aise avec les équipes pluridisciplinaires.</textarea>
+        <textarea id="summary">Professionnelle organisée et motivée, orientée résultats et capable de travailler efficacement en équipe. Je souhaite mettre mes compétences au service d'une organisation dynamique tout en continuant à développer mon expérience professionnelle.</textarea>
 
       </div>
 
-      <!-- COMPETENCES -->
       <div class="form-section">
 
-        <div class="form-section-title">
-          🎯 Compétences
-        </div>
+        <h3>🎯 Compétences</h3>
 
-        <label>
-          Sépare les compétences par des virgules
-        </label>
-
-        <textarea id="f-skills">Gestion de projet, Excel avancé, Communication, Réseaux sociaux, Canva</textarea>
+        <textarea id="skills">Gestion de projet, Excel, Communication, Réseaux sociaux, Canva, Organisation</textarea>
 
       </div>
 
-      <!-- LANGUES -->
       <div class="form-section">
 
-        <div class="form-section-title">
-          🌍 Langues & certifications
-        </div>
+        <h3>💼 Expériences professionnelles</h3>
 
-        <textarea id="f-langues">Français (courant), Anglais (intermédiaire), Certification Google Digital Skills</textarea>
+        <div id="experienceList"></div>
 
-      </div>
-
-      <!-- EXPERIENCES -->
-      <div class="form-section">
-
-        <div class="form-section-title">
-          💼 Expériences professionnelles
-        </div>
-
-        <div id="experience-list"></div>
-
-        <button class="add-exp" onclick="addExperience()">
+        <button
+          type="button"
+          class="add"
+          onclick="addExperience()"
+        >
           + Ajouter une expérience
         </button>
 
       </div>
 
-      <!-- MODELES -->
       <div class="form-section">
 
-        <div class="form-section-title">
-          🎨 Modèle du CV
-        </div>
+        <h3>🎓 Formation</h3>
+
+        <label>Diplôme / formation</label>
+        <input id="education" value="Baccalauréat">
+
+        <label>Établissement</label>
+        <input id="school" value="Lycée">
+
+        <label>Année</label>
+        <input id="educationYear" value="2026">
+
+      </div>
+
+      <div class="form-section">
+
+        <h3>🌍 Langues & certifications</h3>
+
+        <textarea id="languages">Français — Courant
+Anglais — Intermédiaire
+Certification Google Digital Skills</textarea>
+
+      </div>
+
+      <div class="form-section">
+
+        <h3>🎨 Modèle</h3>
 
         <div class="template-grid">
 
           <button
+            type="button"
             class="template active"
-            data-template="pine"
-            onclick="setTemplate('pine')"
+            data-model="pine"
+            onclick="changeModel('pine')"
           >
             🌲 Forêt
           </button>
 
           <button
+            type="button"
             class="template"
-            data-template="navy"
-            onclick="setTemplate('navy')"
+            data-model="navy"
+            onclick="changeModel('navy')"
           >
             🔵 Marine
           </button>
 
           <button
+            type="button"
             class="template"
-            data-template="gold"
-            onclick="setTemplate('gold')"
+            data-model="gold"
+            onclick="changeModel('gold')"
           >
-            🟤 Doré
+            🟡 Doré
           </button>
 
           <button
+            type="button"
             class="template"
-            data-template="mono"
-            onclick="setTemplate('mono')"
+            data-model="mono"
+            onclick="changeModel('mono')"
           >
             ⚫ Mono
           </button>
@@ -1410,146 +1319,136 @@ textarea{
 
       </div>
 
-      <!-- COULEUR -->
       <div class="form-section">
 
-        <div class="form-section-title">
-          🎨 Couleur personnalisée
-        </div>
+        <h3>🌈 Couleur</h3>
 
         <div class="color-row">
 
           <input
             type="color"
-            id="custom-color"
-            value="#2F4B3C"
-            oninput="changeCustomColor()"
+            id="customColor"
+            value="#123c32"
           >
 
-          <input
-            type="text"
-            id="custom-color-text"
-            value="#2F4B3C"
-            maxlength="7"
-            oninput="changeCustomColorText()"
-          >
+          <span style="font-size:12px;color:#69736d;">
+            Choisis la couleur principale de ton CV.
+          </span>
 
         </div>
 
       </div>
 
-      <div class="actions">
+      <button
+        type="button"
+        class="action"
+        onclick="window.print()"
+      >
+        📥 Télécharger / Enregistrer en PDF
+      </button>
 
-        <button
-          class="action-btn action-main"
-          onclick="printCV()"
-        >
-          📥 Télécharger PDF
-        </button>
+      <button
+        type="button"
+        class="action secondary"
+        onclick="clearDraft()"
+      >
+        🗑️ Réinitialiser le CV
+      </button>
 
-        <button
-          class="action-btn action-secondary"
-          onclick="resetCV()"
-        >
-          🔄 Réinitialiser
-        </button>
-
-      </div>
-
-      <div class="autosave" id="save-status">
+      <div class="save-status" id="saveStatus">
         ✓ Sauvegarde automatique activée
       </div>
 
     </aside>
 
-    <!-- PREVIEW CV -->
+    <!-- APERÇU CV -->
+
     <section class="preview-area">
 
-      <div class="a4">
+      <div class="a4 model-pine" id="cvPage">
 
-        <div
-          class="cv-page"
-          id="cv-page"
-        >
+        <!-- modèle normal -->
+        <div class="cv-content" id="normalContent">
 
           <div class="cv-header">
 
-            <div class="cv-header-content">
-
-              <h1 class="cv-name" id="p-name">
-                Aïcha Koné
-              </h1>
-
-              <div class="cv-title" id="p-title">
-                Chargée de projet digital
-              </div>
-
-              <div class="cv-contact" id="p-contact"></div>
-
-            </div>
-
             <img
-              id="p-photo"
+              id="cvPhoto"
               class="cv-photo"
               alt="Photo"
             >
+
+            <div class="cv-header-text">
+
+              <h1 class="cv-name" id="previewName">
+                Aïcha Koné
+              </h1>
+
+              <div class="cv-title" id="previewTitle">
+                Chargée de projet digital
+              </div>
+
+              <div class="cv-contact">
+                <span id="previewEmail"></span>
+                <span id="previewPhone"></span>
+                <span id="previewCity"></span>
+              </div>
+
+            </div>
 
           </div>
 
           <div class="divider"></div>
 
-          <div class="cv-section">
+          <section class="cv-section">
 
-            <h2 class="cv-section-title">
+            <div class="cv-section-title">
               Profil
-            </h2>
+            </div>
 
-            <div
-              class="cv-summary"
-              id="p-summary"
-            ></div>
+            <div class="cv-text" id="previewSummary"></div>
 
-          </div>
+          </section>
 
-          <div class="cv-section">
+          <section class="cv-section">
 
-            <h2 class="cv-section-title">
+            <div class="cv-section-title">
               Expérience professionnelle
-            </h2>
+            </div>
 
-            <div id="p-experience"></div>
+            <div id="previewExperience"></div>
 
-          </div>
+          </section>
 
-          <div class="cv-section">
+          <section class="cv-section">
 
-            <h2 class="cv-section-title">
+            <div class="cv-section-title">
               Compétences
-            </h2>
+            </div>
 
-            <div
-              class="skills"
-              id="p-skills"
-            ></div>
+            <div class="skills" id="previewSkills"></div>
 
-          </div>
+          </section>
 
-          <div class="cv-section">
+          <section class="cv-section">
 
-            <h2 class="cv-section-title">
+            <div class="cv-section-title">
+              Formation
+            </div>
+
+            <div class="cv-text" id="previewEducation"></div>
+
+          </section>
+
+          <section class="cv-section">
+
+            <div class="cv-section-title">
               Langues & certifications
-            </h2>
+            </div>
 
-            <div
-              class="cv-summary"
-              id="p-langues"
-            ></div>
+            <div class="cv-text" id="previewLanguages"></div>
 
-          </div>
-
-          <div class="cv-footer">
-            CV créé avec CVPro
-          </div>
+          </section>
 
         </div>
 
@@ -1562,183 +1461,153 @@ textarea{
   <!-- ================= LETTRE ================= -->
 
   <div
-    class="letter-layout"
-    id="letter-view"
+    id="letterView"
+    class="letter-workspace"
+    style="display:none;"
   >
 
-    <div class="builder-grid">
+    <aside class="panel">
 
-      <aside class="letter-editor">
+      <h2>Lettre de motivation</h2>
 
-        <div class="editor-title">
-          <div class="eyebrow">Lettre</div>
-          <h2>Lettre de motivation</h2>
-          <p>Prépare une lettre professionnelle.</p>
-        </div>
+      <div class="panel-subtitle">
+        Prépare une lettre professionnelle adaptée à ta candidature.
+      </div>
 
-        <label>Nom du candidat</label>
-        <input id="l-name" value="Aïcha Koné">
+      <label>Nom complet</label>
+      <input id="letterName" value="Aïcha Koné">
 
-        <label>Poste recherché</label>
-        <input id="l-job" value="Chargée de projet digital">
+      <label>Poste recherché</label>
+      <input id="letterJob" value="Chargée de projet digital">
 
-        <label>Entreprise</label>
-        <input id="l-company" placeholder="Nom de l'entreprise">
+      <label>Entreprise</label>
+      <input id="letterCompany" placeholder="Nom de l'entreprise">
 
-        <label>Ville</label>
-        <input id="l-city" value="Bamako">
+      <label>Ville</label>
+      <input id="letterCity" value="Bamako">
 
-        <label>Pourquoi ce poste t'intéresse ?</label>
+      <label>Pourquoi ce poste t'intéresse ?</label>
+      <textarea
+        id="letterReason"
+        placeholder="Explique brièvement pourquoi tu souhaites ce poste..."
+      ></textarea>
 
-        <textarea
-          id="l-motivation"
-          placeholder="Explique brièvement pourquoi tu souhaites obtenir ce poste."
-        ></textarea>
+      <label>Tes qualités / compétences</label>
+      <textarea
+        id="letterQualities"
+        placeholder="Ex : organisation, communication, maîtrise d'Excel..."
+      ></textarea>
 
-        <div class="actions">
+      <button
+        class="action"
+        onclick="generateLetter()"
+      >
+        🤖 Générer la lettre
+      </button>
 
-          <button
-            class="action-btn action-main"
-            onclick="generateLetter()"
-          >
-            ✍️ Générer
-          </button>
+      <button
+        class="action secondary"
+        onclick="window.print()"
+      >
+        📥 Télécharger en PDF
+      </button>
 
-          <button
-            class="action-btn action-secondary"
-            onclick="printLetter()"
-          >
-            📥 PDF
-          </button>
+    </aside>
 
-        </div>
+    <section class="preview-area">
 
-      </aside>
+      <div class="letter-page" id="letterPage">
 
-      <section class="preview-area">
+        <div id="letterContent">
 
-        <div class="letter-paper">
-
-          <div id="letter-preview">
-            <div class="letter-date">
-              Bamako, le <span id="letter-date"></span>
-            </div>
-
-            <div class="letter-object">
-              Objet : Candidature
-            </div>
-
-            <p>Madame, Monsieur,</p>
-
-            <p>
-              Votre lettre de motivation apparaîtra ici.
-            </p>
-
+          <div class="letter-date">
+            Bamako, le <span id="letterDate"></span>
           </div>
 
+          <h2>Lettre de motivation</h2>
+
+          <div class="letter-object">
+            Objet : Candidature
+          </div>
+
+          <p>
+            Madame, Monsieur,
+          </p>
+
+          <p>
+            Votre lettre de motivation apparaîtra ici.
+            Remplissez le formulaire puis cliquez sur
+            « Générer la lettre ».
+          </p>
+
         </div>
 
-      </section>
+      </div>
 
-    </div>
+    </section>
 
   </div>
 
 </main>
 
-<!-- FAQ -->
+<section class="features">
 
-<section class="info-section">
-
-  <div class="section-head">
-
-    <div class="eyebrow">
-      Questions fréquentes
-    </div>
-
-    <h2>
-      Comment fonctionne CVPro ?
-    </h2>
-
+  <div class="section-title">
+    <small>Questions fréquentes</small>
+    <h2>Comment ça marche ?</h2>
   </div>
 
   <div class="faq">
 
     <div class="faq-item">
-
       <div
-        class="faq-question"
-        onclick="toggleFAQ(this)"
+        class="faq-q"
+        onclick="toggleFaq(this)"
       >
         Est-ce vraiment gratuit ?
         <span>+</span>
       </div>
 
-      <div class="faq-answer">
-        Oui. Toutes les fonctionnalités du créateur sont accessibles gratuitement :
-        modèles, photo, couleurs, langues, certifications et export PDF.
+      <div class="faq-a">
+        Oui. Toutes les fonctionnalités présentes dans cette version
+        sont accessibles sans paiement et sans code de déblocage.
       </div>
-
     </div>
 
     <div class="faq-item">
-
       <div
-        class="faq-question"
-        onclick="toggleFAQ(this)"
+        class="faq-q"
+        onclick="toggleFaq(this)"
       >
-        Puis-je ajouter ma propre photo ?
+        Puis-je ajouter une photo ?
         <span>+</span>
       </div>
 
-      <div class="faq-answer">
-        Oui. Utilise le bouton de sélection de photo dans l'éditeur.
-        La photo apparaît immédiatement dans l'aperçu du CV.
+      <div class="faq-a">
+        Oui. Tu peux sélectionner une photo depuis ton téléphone
+        et elle apparaîtra automatiquement dans ton CV.
       </div>
-
     </div>
 
     <div class="faq-item">
-
       <div
-        class="faq-question"
-        onclick="toggleFAQ(this)"
+        class="faq-q"
+        onclick="toggleFaq(this)"
       >
-        Le CV est-il adapté à une feuille A4 ?
+        Comment télécharger mon CV ?
         <span>+</span>
       </div>
 
-      <div class="faq-answer">
-        Oui. Le modèle est conçu avec les dimensions A4 et les paramètres
-        d'impression sont configurés pour générer une page propre.
+      <div class="faq-a">
+        Clique sur « Télécharger / Enregistrer en PDF », puis
+        choisis « Enregistrer au format PDF » dans la fenêtre
+        d'impression de ton téléphone ou de ton ordinateur.
       </div>
-
-    </div>
-
-    <div class="faq-item">
-
-      <div
-        class="faq-question"
-        onclick="toggleFAQ(this)"
-      >
-        Mes informations sont-elles sauvegardées ?
-        <span>+</span>
-      </div>
-
-      <div class="faq-answer">
-        Oui. Les informations du CV sont sauvegardées automatiquement dans
-        le stockage local du navigateur sur ton appareil.
-      </div>
-
     </div>
 
   </div>
 
 </section>
-
-<footer class="footer">
-  CVPro — Créateur de CV professionnel gratuit.
-</footer>
 
 <!-- ASSISTANT -->
 
@@ -1747,36 +1616,31 @@ textarea{
   <button
     class="bot-button"
     onclick="toggleBot()"
-    aria-label="Assistant CV"
+    aria-label="Assistant"
   >
     🤖
   </button>
 
-  <div
-    class="bot-panel"
-    id="bot-panel"
-  >
+  <div class="bot-box" id="botBox">
 
     <div class="bot-head">
 
-      <span>Assistant CV 🤖</span>
+      <span>Assistant CV</span>
 
-      <button onclick="toggleBot()">
-        ×
-      </button>
+      <button onclick="toggleBot()">×</button>
 
     </div>
 
-    <div class="bot-body" id="bot-body">
+    <div class="bot-body">
 
-      <div class="bot-msg">
+      <div class="bot-message">
         Bonjour 👋 Je peux t'aider à améliorer ton CV.
       </div>
 
       <div class="bot-actions">
 
         <button onclick="improveProfile()">
-          ✍️ Améliorer profil
+          ✍️ Profil
         </button>
 
         <button onclick="suggestSkills()">
@@ -1788,7 +1652,7 @@ textarea{
         </button>
 
         <button onclick="prepareLetter()">
-          ✉️ Préparer lettre
+          ✉️ Lettre
         </button>
 
       </div>
@@ -1799,71 +1663,85 @@ textarea{
 
 </div>
 
-<script>
+<footer class="footer">
+  CVPro — Créateur de CV professionnel
+</footer>
 
+<script>
 /* =========================================================
    CVPRO — JAVASCRIPT COMPLET
+   Aucun système de paiement.
+   Toutes les fonctionnalités sont accessibles.
 ========================================================= */
 
-let currentTemplate = "pine";
-let currentPhoto = "";
+let currentModel = "pine";
+let photoData = null;
 let experienceCounter = 0;
 
-/* ---------------------------------------------------------
-   ELEMENTS
---------------------------------------------------------- */
+/* -----------------------------
+   OUTILS
+----------------------------- */
 
 function $(id){
   return document.getElementById(id);
 }
 
-/* ---------------------------------------------------------
-   NAVIGATION
---------------------------------------------------------- */
+function escapeHTML(value){
+  return String(value || "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
 
-function goToBuilder(){
+function goBuilder(){
   $("builder").scrollIntoView({
     behavior:"smooth"
   });
 }
 
+/* -----------------------------
+   ONGLETS
+----------------------------- */
+
 function showView(view){
 
-  const cvView = $("cv-view");
-  const letterView = $("letter-view");
+  const cv = $("cvView");
+  const letter = $("letterView");
+
+  const cvTab = $("cvTab");
+  const letterTab = $("letterTab");
 
   if(view === "cv"){
 
-    cvView.style.display = "grid";
-    letterView.style.display = "none";
+    cv.style.display = "grid";
+    letter.style.display = "none";
 
-    $("tab-cv").classList.add("active");
-    $("tab-letter").classList.remove("active");
+    cvTab.classList.add("active");
+    letterTab.classList.remove("active");
 
   }else{
 
-    cvView.style.display = "none";
-    letterView.style.display = "block";
+    cv.style.display = "none";
+    letter.style.display = "grid";
 
-    $("tab-cv").classList.remove("active");
-    $("tab-letter").classList.add("active");
+    cvTab.classList.remove("active");
+    letterTab.classList.add("active");
 
-    syncLetterFromCV();
   }
 
 }
 
-/* ---------------------------------------------------------
+/* -----------------------------
    PHOTO
---------------------------------------------------------- */
+----------------------------- */
 
-$("f-photo").addEventListener("change",function(event){
+$("photoInput").addEventListener("change",function(event){
 
   const file = event.target.files[0];
 
-  if(!file){
-    return;
-  }
+  if(!file) return;
 
   if(!file.type.startsWith("image/")){
     alert("Veuillez sélectionner une image.");
@@ -1871,8 +1749,7 @@ $("f-photo").addEventListener("change",function(event){
   }
 
   if(file.size > 5 * 1024 * 1024){
-    alert("La photo est trop lourde. Taille maximale : 5 Mo.");
-    this.value = "";
+    alert("La photo est trop lourde. Maximum : 5 Mo.");
     return;
   }
 
@@ -1880,17 +1757,15 @@ $("f-photo").addEventListener("change",function(event){
 
   reader.onload = function(e){
 
-    currentPhoto = e.target.result;
+    photoData = e.target.result;
 
-    $("photo-mini").src = currentPhoto;
-    $("photo-mini").classList.add("visible");
+    $("photoMini").src = photoData;
+    $("photoMini").classList.add("show");
 
-    $("remove-photo").classList.add("visible");
+    $("removePhoto").classList.add("show");
 
-    $("p-photo").src = currentPhoto;
-    $("p-photo").classList.add("visible");
+    render();
 
-    saveData();
   };
 
   reader.readAsDataURL(file);
@@ -1899,24 +1774,21 @@ $("f-photo").addEventListener("change",function(event){
 
 function removePhoto(){
 
-  currentPhoto = "";
+  photoData = null;
 
-  $("f-photo").value = "";
+  $("photoInput").value = "";
 
-  $("photo-mini").src = "";
-  $("photo-mini").classList.remove("visible");
+  $("photoMini").src = "";
+  $("photoMini").classList.remove("show");
 
-  $("remove-photo").classList.remove("visible");
+  $("removePhoto").classList.remove("show");
 
-  $("p-photo").src = "";
-  $("p-photo").classList.remove("visible");
-
-  saveData();
+  render();
 }
 
-/* ---------------------------------------------------------
-   EXPERIENCES
---------------------------------------------------------- */
+/* -----------------------------
+   EXPÉRIENCES
+----------------------------- */
 
 function addExperience(
   role="",
@@ -1932,6 +1804,7 @@ function addExperience(
   const div = document.createElement("div");
 
   div.className = "experience";
+
   div.id = id;
 
   div.innerHTML = `
@@ -1939,10 +1812,9 @@ function addExperience(
     <label>Poste</label>
 
     <input
-      class="e-role"
-      value="${escapeAttribute(role)}"
-      oninput="renderCV()"
-      placeholder="Ex : Comptable"
+      class="exp-role"
+      value="${escapeHTML(role)}"
+      placeholder="Ex : Assistant commercial"
     >
 
     <div class="row2">
@@ -1952,9 +1824,8 @@ function addExperience(
         <label>Entreprise</label>
 
         <input
-          class="e-company"
-          value="${escapeAttribute(company)}"
-          oninput="renderCV()"
+          class="exp-company"
+          value="${escapeHTML(company)}"
           placeholder="Entreprise"
         >
 
@@ -1965,9 +1836,8 @@ function addExperience(
         <label>Dates</label>
 
         <input
-          class="e-dates"
-          value="${escapeAttribute(dates)}"
-          oninput="renderCV()"
+          class="exp-dates"
+          value="${escapeHTML(dates)}"
           placeholder="2024 — 2026"
         >
 
@@ -1978,14 +1848,13 @@ function addExperience(
     <label>Description</label>
 
     <textarea
-      class="e-description"
-      oninput="renderCV()"
-      placeholder="Décris tes principales responsabilités."
+      class="exp-description"
+      placeholder="Décris tes principales missions..."
     >${escapeHTML(description)}</textarea>
 
     <button
       type="button"
-      class="remove-exp"
+      class="delete-exp"
       onclick="removeExperience('${id}')"
     >
       Supprimer cette expérience
@@ -1993,9 +1862,15 @@ function addExperience(
 
   `;
 
-  $("experience-list").appendChild(div);
+  $("experienceList").appendChild(div);
 
-  renderCV();
+  const fields = div.querySelectorAll("input, textarea");
+
+  fields.forEach(field=>{
+    field.addEventListener("input",render);
+  });
+
+  render();
 }
 
 function removeExperience(id){
@@ -2004,596 +1879,239 @@ function removeExperience(id){
 
   if(element){
     element.remove();
+    render();
   }
 
-  renderCV();
 }
 
-/* ---------------------------------------------------------
-   TEMPLATE
---------------------------------------------------------- */
+/* -----------------------------
+   MODÈLES
+----------------------------- */
 
-function setTemplate(template){
+function changeModel(model){
 
-  currentTemplate = template;
+  currentModel = model;
 
   document.querySelectorAll(".template").forEach(button=>{
     button.classList.toggle(
       "active",
-      button.dataset.template === template
+      button.dataset.model === model
     );
   });
 
-  const page = $("cv-page");
+  const page = $("cvPage");
 
   page.classList.remove(
-    "pine",
-    "navy",
-    "gold",
-    "mono"
+    "model-pine",
+    "model-navy",
+    "model-gold",
+    "model-mono"
   );
 
-  page.classList.add(template);
+  page.classList.add("model-" + model);
 
-  rebuildTemplateLayout();
+  render();
 
-  renderCV();
-
-  saveData();
 }
 
-function rebuildTemplateLayout(){
+/* -----------------------------
+   COULEUR
+----------------------------- */
 
-  const page = $("cv-page");
+$("customColor").addEventListener("input",function(){
 
-  if(currentTemplate === "gold"){
+  document.documentElement.style.setProperty(
+    "--primary",
+    this.value
+  );
 
-    page.innerHTML = `
+  render();
 
-      <div class="gold-sidebar">
+});
 
-        <img
-          id="gold-photo"
-          class="cv-photo"
-          alt="Photo"
-        >
+/* -----------------------------
+   RENDU CV
+----------------------------- */
 
-        <div class="side-title">
-          Compétences
-        </div>
+function render(){
 
-        <div
-          class="skills"
-          id="gold-skills"
-        ></div>
+  const name = $("name").value;
+  const title = $("title").value;
+  const email = $("email").value;
+  const phone = $("phone").value;
+  const city = $("city").value;
+  const summary = $("summary").value;
+  const skills = $("skills").value;
+  const education = $("education").value;
+  const school = $("school").value;
+  const educationYear = $("educationYear").value;
+  const languages = $("languages").value;
 
-        <div class="side-title">
-          Langues & certifications
-        </div>
+  $("previewName").textContent = name;
+  $("previewTitle").textContent = title;
 
-        <div
-          class="side-text"
-          id="gold-langues"
-        ></div>
+  $("previewEmail").textContent =
+    email ? "✉ " + email : "";
 
-      </div>
+  $("previewPhone").textContent =
+    phone ? "☎ " + phone : "";
 
-      <div class="gold-main">
+  $("previewCity").textContent =
+    city ? "📍 " + city : "";
 
-        <div class="cv-header">
+  $("previewSummary").textContent = summary;
 
-          <div class="cv-header-content">
+  /* PHOTO */
 
-            <h1 class="cv-name" id="p-name"></h1>
+  const photo = $("cvPhoto");
 
-            <div class="cv-title" id="p-title"></div>
+  if(photoData){
 
-            <div class="cv-contact" id="p-contact"></div>
-
-          </div>
-
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="cv-section">
-
-          <h2 class="cv-section-title">
-            Profil
-          </h2>
-
-          <div
-            class="cv-summary"
-            id="p-summary"
-          ></div>
-
-        </div>
-
-        <div class="cv-section">
-
-          <h2 class="cv-section-title">
-            Expérience professionnelle
-          </h2>
-
-          <div id="p-experience"></div>
-
-        </div>
-
-        <div class="cv-footer">
-          CV créé avec CVPro
-        </div>
-
-      </div>
-    `;
-
-  }else if(currentTemplate === "mono"){
-
-    page.innerHTML = `
-
-      <div class="mono-banner">
-
-        <img
-          id="mono-photo"
-          class="cv-photo"
-          alt="Photo"
-        >
-
-        <div class="cv-header-content">
-
-          <h1 class="cv-name" id="p-name"></h1>
-
-          <div class="cv-title" id="p-title"></div>
-
-          <div class="cv-contact" id="p-contact"></div>
-
-        </div>
-
-      </div>
-
-      <div class="mono-content">
-
-        <div class="cv-section">
-
-          <h2 class="cv-section-title">
-            Profil
-          </h2>
-
-          <div
-            class="cv-summary"
-            id="p-summary"
-          ></div>
-
-        </div>
-
-        <div class="cv-section">
-
-          <h2 class="cv-section-title">
-            Expérience professionnelle
-          </h2>
-
-          <div id="p-experience"></div>
-
-        </div>
-
-        <div class="cv-section">
-
-          <h2 class="cv-section-title">
-            Compétences
-          </h2>
-
-          <div
-            class="skills"
-            id="p-skills"
-          ></div>
-
-        </div>
-
-        <div class="cv-section">
-
-          <h2 class="cv-section-title">
-            Langues & certifications
-          </h2>
-
-          <div
-            class="cv-summary"
-            id="p-langues"
-          ></div>
-
-        </div>
-
-        <div class="cv-footer">
-          CV créé avec CVPro
-        </div>
-
-      </div>
-    `;
+    photo.src = photoData;
+    photo.classList.add("show");
 
   }else{
 
-    page.innerHTML = `
-
-      <div class="cv-header">
-
-        <div class="cv-header-content">
-
-          <h1 class="cv-name" id="p-name"></h1>
-
-          <div class="cv-title" id="p-title"></div>
-
-          <div class="cv-contact" id="p-contact"></div>
-
-        </div>
-
-        <img
-          id="p-photo"
-          class="cv-photo"
-          alt="Photo"
-        >
-
-      </div>
-
-      <div class="divider"></div>
-
-      <div class="cv-section">
-
-        <h2 class="cv-section-title">
-          Profil
-        </h2>
-
-        <div
-          class="cv-summary"
-          id="p-summary"
-        ></div>
-
-      </div>
-
-      <div class="cv-section">
-
-        <h2 class="cv-section-title">
-          Expérience professionnelle
-        </h2>
-
-        <div id="p-experience"></div>
-
-      </div>
-
-      <div class="cv-section">
-
-        <h2 class="cv-section-title">
-          Compétences
-        </h2>
-
-        <div
-          class="skills"
-          id="p-skills"
-        ></div>
-
-      </div>
-
-      <div class="cv-section">
-
-        <h2 class="cv-section-title">
-          Langues & certifications
-        </h2>
-
-        <div
-          class="cv-summary"
-          id="p-langues"
-        ></div>
-
-      </div>
-
-      <div class="cv-footer">
-        CV créé avec CVPro
-      </div>
-
-    `;
+    photo.src = "";
+    photo.classList.remove("show");
 
   }
 
-  applyCurrentPhoto();
+  /* COMPÉTENCES */
 
-}
-
-/* ---------------------------------------------------------
-   RENDU CV
---------------------------------------------------------- */
-
-function renderCV(){
-
-  const name = $("f-name").value.trim();
-  const title = $("f-title").value.trim();
-  const email = $("f-email").value.trim();
-  const phone = $("f-phone").value.trim();
-  const city = $("f-city").value.trim();
-  const summary = $("f-summary").value.trim();
-  const skills = $("f-skills").value
+  const skillArray = skills
     .split(",")
     .map(x=>x.trim())
     .filter(Boolean);
 
-  const langues = $("f-langues").value.trim();
+  $("previewSkills").innerHTML =
+    skillArray.map(skill=>`
+      <span class="skill">
+        ${escapeHTML(skill)}
+      </span>
+    `).join("");
 
-  if($("p-name")) $("p-name").textContent = name;
-  if($("p-title")) $("p-title").textContent = title;
+  /* EXPÉRIENCES */
 
-  if($("p-contact")){
+  const experiences =
+    document.querySelectorAll(".experience");
 
-    $("p-contact").innerHTML = "";
+  let expHTML = "";
 
-    [email,phone,city]
-      .filter(Boolean)
-      .forEach(value=>{
+  experiences.forEach(exp=>{
 
-        const span = document.createElement("span");
+    const role =
+      exp.querySelector(".exp-role").value.trim();
 
-        span.textContent = value;
+    const company =
+      exp.querySelector(".exp-company").value.trim();
 
-        $("p-contact").appendChild(span);
+    const dates =
+      exp.querySelector(".exp-dates").value.trim();
 
-      });
+    const description =
+      exp.querySelector(".exp-description").value.trim();
 
-  }
-
-  if($("p-summary")){
-    $("p-summary").textContent = summary;
-  }
-
-  if($("p-langues")){
-    $("p-langues").textContent = langues;
-  }
-
-  /* COMPETENCES */
-
-  const skillTargets = [
-    $("p-skills"),
-    $("gold-skills")
-  ].filter(Boolean);
-
-  skillTargets.forEach(target=>{
-
-    target.innerHTML = "";
-
-    skills.forEach(skill=>{
-
-      const span = document.createElement("span");
-
-      span.className = "skill";
-      span.textContent = skill;
-
-      target.appendChild(span);
-
-    });
-
-  });
-
-  /* LANGUES GOLD */
-
-  if($("gold-langues")){
-    $("gold-langues").textContent = langues;
-  }
-
-  /* EXPERIENCES */
-
-  const experiences = Array
-    .from(document.querySelectorAll(".experience"))
-    .map(block=>{
-
-      return {
-
-        role:block.querySelector(".e-role")?.value.trim() || "",
-
-        company:block.querySelector(".e-company")?.value.trim() || "",
-
-        dates:block.querySelector(".e-dates")?.value.trim() || "",
-
-        description:block.querySelector(".e-description")?.value.trim() || ""
-
-      };
-
-    })
-    .filter(exp=>
-      exp.role ||
-      exp.company ||
-      exp.description
-    );
-
-  const target = $("p-experience");
-
-  if(target){
-
-    target.innerHTML = "";
-
-    experiences.forEach(exp=>{
-
-      const item = document.createElement("div");
-
-      item.className = "exp-item";
-
-      const top = document.createElement("div");
-
-      top.className = "exp-top";
-
-      const role = document.createElement("span");
-
-      role.className = "exp-role";
-      role.textContent = exp.role;
-
-      const dates = document.createElement("span");
-
-      dates.className = "exp-dates";
-      dates.textContent = exp.dates;
-
-      top.appendChild(role);
-      top.appendChild(dates);
-
-      const company = document.createElement("div");
-
-      company.className = "exp-place";
-      company.textContent = exp.company;
-
-      const description = document.createElement("div");
-
-      description.className = "exp-desc";
-      description.textContent = exp.description;
-
-      item.appendChild(top);
-      item.appendChild(company);
-      item.appendChild(description);
-
-      target.appendChild(item);
-
-    });
-
-  }
-
-  applyCurrentPhoto();
-
-  saveData();
-
-}
-
-/* ---------------------------------------------------------
-   PHOTO DANS TEMPLATES
---------------------------------------------------------- */
-
-function applyCurrentPhoto(){
-
-  const photos = [
-    $("p-photo"),
-    $("gold-photo"),
-    $("mono-photo")
-  ].filter(Boolean);
-
-  photos.forEach(photo=>{
-
-    if(currentPhoto){
-
-      photo.src = currentPhoto;
-      photo.classList.add("visible");
-
-    }else{
-
-      photo.src = "";
-      photo.classList.remove("visible");
-
+    if(!role && !company && !description){
+      return;
     }
 
+    expHTML += `
+
+      <div class="exp-item">
+
+        <div class="exp-head">
+
+          <span>
+            ${escapeHTML(role)}
+          </span>
+
+          <span class="exp-date">
+            ${escapeHTML(dates)}
+          </span>
+
+        </div>
+
+        <div class="exp-place">
+          ${escapeHTML(company)}
+        </div>
+
+        <div class="exp-desc">
+          ${escapeHTML(description)}
+        </div>
+
+      </div>
+
+    `;
+
   });
 
-}
+  $("previewExperience").innerHTML =
+    expHTML ||
+    `<div class="cv-text">
+      Aucune expérience renseignée.
+    </div>`;
 
-/* ---------------------------------------------------------
-   COULEUR
---------------------------------------------------------- */
+  /* FORMATION */
 
-function changeCustomColor(){
+  $("previewEducation").textContent =
+    [education,school,educationYear]
+      .filter(Boolean)
+      .join(" — ");
 
-  const color = $("custom-color").value;
+  /* LANGUES */
 
-  $("custom-color-text").value = color;
+  $("previewLanguages").textContent =
+    languages;
 
-  document.documentElement.style.setProperty(
-    "--primary",
-    color
-  );
-
-  const dark = darkenColor(color,30);
-
-  document.documentElement.style.setProperty(
-    "--dark",
-    dark
-  );
-
-  saveData();
-}
-
-function changeCustomColorText(){
-
-  let color = $("custom-color-text").value.trim();
-
-  if(!/^#[0-9A-Fa-f]{6}$/.test(color)){
-    return;
-  }
-
-  $("custom-color").value = color;
-
-  document.documentElement.style.setProperty(
-    "--primary",
-    color
-  );
-
-  document.documentElement.style.setProperty(
-    "--dark",
-    darkenColor(color,30)
-  );
-
-  saveData();
-}
-
-function darkenColor(hex,amount){
-
-  const num = parseInt(hex.substring(1),16);
-
-  let r = (num >> 16) - amount;
-  let g = ((num >> 8) & 255) - amount;
-  let b = (num & 255) - amount;
-
-  r = Math.max(0,r);
-  g = Math.max(0,g);
-  b = Math.max(0,b);
-
-  return "#" +
-    [r,g,b]
-      .map(x=>x.toString(16).padStart(2,"0"))
-      .join("");
+  saveDraft();
 
 }
 
-/* ---------------------------------------------------------
+/* -----------------------------
    SAUVEGARDE
---------------------------------------------------------- */
+----------------------------- */
 
-function saveData(){
+function saveDraft(){
 
-  const experiences = Array
-    .from(document.querySelectorAll(".experience"))
-    .map(block=>({
+  const experiences = [];
 
-      role:block.querySelector(".e-role")?.value || "",
+  document.querySelectorAll(".experience").forEach(exp=>{
 
-      company:block.querySelector(".e-company")?.value || "",
+    experiences.push({
 
-      dates:block.querySelector(".e-dates")?.value || "",
+      role:
+        exp.querySelector(".exp-role").value,
 
-      description:block.querySelector(".e-description")?.value || ""
+      company:
+        exp.querySelector(".exp-company").value,
 
-    }));
+      dates:
+        exp.querySelector(".exp-dates").value,
+
+      description:
+        exp.querySelector(".exp-description").value
+
+    });
+
+  });
 
   const data = {
 
-    name:$("f-name").value,
-
-    title:$("f-title").value,
-
-    email:$("f-email").value,
-
-    phone:$("f-phone").value,
-
-    city:$("f-city").value,
-
-    summary:$("f-summary").value,
-
-    skills:$("f-skills").value,
-
-    langues:$("f-langues").value,
-
-    template:currentTemplate,
-
-    photo:currentPhoto,
-
-    color:$("custom-color").value,
-
+    name:$("name").value,
+    title:$("title").value,
+    email:$("email").value,
+    phone:$("phone").value,
+    city:$("city").value,
+    summary:$("summary").value,
+    skills:$("skills").value,
+    education:$("education").value,
+    school:$("school").value,
+    educationYear:$("educationYear").value,
+    languages:$("languages").value,
+    color:$("customColor").value,
+    model:currentModel,
+    photo:photoData,
     experiences:experiences
 
   };
@@ -2601,78 +2119,107 @@ function saveData(){
   try{
 
     localStorage.setItem(
-      "cvpro_data",
+      "cvpro_draft",
       JSON.stringify(data)
     );
 
-    $("save-status").textContent =
+    $("saveStatus").textContent =
       "✓ Sauvegardé automatiquement";
 
   }catch(error){
 
-    $("save-status").textContent =
-      "⚠️ Sauvegarde locale indisponible";
+    $("saveStatus").textContent =
+      "✓ CV actif — sauvegarde limitée";
 
   }
 
 }
 
-function loadData(){
+/* -----------------------------
+   CHARGEMENT
+----------------------------- */
+
+function loadDraft(){
 
   try{
 
-    const raw = localStorage.getItem("cvpro_data");
+    const raw =
+      localStorage.getItem("cvpro_draft");
 
-    if(!raw){
-      return false;
-    }
+    if(!raw) return false;
 
     const data = JSON.parse(raw);
 
-    $("f-name").value = data.name || "";
-    $("f-title").value = data.title || "";
-    $("f-email").value = data.email || "";
-    $("f-phone").value = data.phone || "";
-    $("f-city").value = data.city || "";
-    $("f-summary").value = data.summary || "";
-    $("f-skills").value = data.skills || "";
-    $("f-langues").value = data.langues || "";
+    $("name").value =
+      data.name || "";
+
+    $("title").value =
+      data.title || "";
+
+    $("email").value =
+      data.email || "";
+
+    $("phone").value =
+      data.phone || "";
+
+    $("city").value =
+      data.city || "";
+
+    $("summary").value =
+      data.summary || "";
+
+    $("skills").value =
+      data.skills || "";
+
+    $("education").value =
+      data.education || "";
+
+    $("school").value =
+      data.school || "";
+
+    $("educationYear").value =
+      data.educationYear || "";
+
+    $("languages").value =
+      data.languages || "";
 
     if(data.color){
 
-      $("custom-color").value = data.color;
-      $("custom-color-text").value = data.color;
+      $("customColor").value =
+        data.color;
 
       document.documentElement.style.setProperty(
         "--primary",
         data.color
       );
 
-      document.documentElement.style.setProperty(
-        "--dark",
-        darkenColor(data.color,30)
-      );
+    }
+
+    if(data.model){
+      currentModel = data.model;
+    }
+
+    if(data.photo){
+
+      photoData = data.photo;
+
+      $("photoMini").src =
+        photoData;
+
+      $("photoMini").classList.add("show");
+
+      $("removePhoto").classList.add("show");
 
     }
 
-    currentPhoto = data.photo || "";
+    $("experienceList").innerHTML = "";
 
-    if(currentPhoto){
+    experienceCounter = 0;
 
-      $("photo-mini").src = currentPhoto;
-      $("photo-mini").classList.add("visible");
-
-      $("remove-photo").classList.add("visible");
-
-    }
-
-    currentTemplate =
-      data.template || "pine";
-
-    if(data.experiences &&
-       Array.isArray(data.experiences)){
-
-      $("experience-list").innerHTML = "";
+    if(
+      Array.isArray(data.experiences) &&
+      data.experiences.length
+    ){
 
       data.experiences.forEach(exp=>{
 
@@ -2687,12 +2234,14 @@ function loadData(){
 
     }
 
+    changeModel(currentModel);
+
     return true;
 
   }catch(error){
 
-    console.warn(
-      "Impossible de charger la sauvegarde.",
+    console.log(
+      "Impossible de charger la sauvegarde",
       error
     );
 
@@ -2702,123 +2251,106 @@ function loadData(){
 
 }
 
-/* ---------------------------------------------------------
+/* -----------------------------
    RESET
---------------------------------------------------------- */
+----------------------------- */
 
-function resetCV(){
+function clearDraft(){
 
   const confirmation =
     confirm(
-      "Voulez-vous vraiment réinitialiser votre CV ?"
+      "Voulez-vous vraiment effacer votre CV et recommencer ?"
     );
 
-  if(!confirmation){
-    return;
-  }
+  if(!confirmation) return;
 
-  localStorage.removeItem("cvpro_data");
+  localStorage.removeItem("cvpro_draft");
 
   location.reload();
 
 }
 
-/* ---------------------------------------------------------
-   IMPRESSION
---------------------------------------------------------- */
+/* -----------------------------
+   ÉCOUTE FORMULAIRES
+----------------------------- */
 
-function printCV(){
+[
+  "name",
+  "title",
+  "email",
+  "phone",
+  "city",
+  "summary",
+  "skills",
+  "education",
+  "school",
+  "educationYear",
+  "languages"
+].forEach(id=>{
 
-  showView("cv");
+  $(id).addEventListener(
+    "input",
+    render
+  );
 
-  setTimeout(()=>{
-    window.print();
-  },100);
+});
 
-}
-
-function printLetter(){
-
-  showView("letter");
-
-  setTimeout(()=>{
-    window.print();
-  },100);
-
-}
-
-/* ---------------------------------------------------------
+/* -----------------------------
    LETTRE
---------------------------------------------------------- */
-
-function syncLetterFromCV(){
-
-  $("l-name").value =
-    $("f-name").value;
-
-  $("l-job").value =
-    $("f-title").value;
-
-  $("l-city").value =
-    $("f-city").value.split(",")[0];
-
-}
+----------------------------- */
 
 function generateLetter(){
 
   const name =
-    $("l-name").value.trim();
+    $("letterName").value.trim();
 
   const job =
-    $("l-job").value.trim();
+    $("letterJob").value.trim();
 
   const company =
-    $("l-company").value.trim();
+    $("letterCompany").value.trim();
 
   const city =
-    $("l-city").value.trim();
+    $("letterCity").value.trim();
 
-  const motivation =
-    $("l-motivation").value.trim();
+  const reason =
+    $("letterReason").value.trim();
+
+  const qualities =
+    $("letterQualities").value.trim();
 
   const date =
     new Date().toLocaleDateString(
       "fr-FR",
       {
-        day:"2-digit",
+        day:"numeric",
         month:"long",
         year:"numeric"
       }
     );
 
-  const safeName =
-    escapeHTML(name);
+  $("letterDate").textContent =
+    date;
 
-  const safeJob =
-    escapeHTML(job);
-
-  const safeCompany =
-    escapeHTML(
-      company || "votre entreprise"
-    );
-
-  const safeCity =
-    escapeHTML(city);
-
-  const safeMotivation =
-    escapeHTML(
-      motivation ||
-      "Je souhaite rejoindre votre entreprise afin de mettre mes compétences, ma motivation et mon sérieux au service de votre équipe."
-    );
-
-  $("letter-preview").innerHTML = `
+  $("letterContent").innerHTML = `
 
     <div class="letter-date">
-      ${safeCity}, le ${date}
+      ${escapeHTML(city)}, le ${escapeHTML(date)}
     </div>
 
+    <h2>
+      ${escapeHTML(name)}
+    </h2>
+
+    <div>
+      Candidature au poste de
+      <strong>${escapeHTML(job)}</strong>
+    </div>
+
+    <br>
+
     <div class="letter-object">
-      Objet : Candidature au poste de ${safeJob}
+      Objet : Candidature au poste de ${escapeHTML(job)}
     </div>
 
     <p>
@@ -2827,25 +2359,35 @@ function generateLetter(){
 
     <p>
       Je souhaite vous adresser ma candidature au poste de
-      <strong>${safeJob}</strong>
+      <strong>${escapeHTML(job)}</strong>
       au sein de
-      <strong>${safeCompany}</strong>.
+      <strong>${escapeHTML(company || "votre entreprise")}</strong>.
     </p>
 
     <p>
-      ${safeMotivation}
+      ${escapeHTML(
+        reason ||
+        "Ce poste m'intéresse particulièrement car il représente une excellente opportunité de mettre mes compétences à contribution, d'acquérir davantage d'expérience et de contribuer aux objectifs de votre organisation."
+      )}
     </p>
 
     <p>
-      Sérieux(se), motivé(e), organisé(e) et prêt(e) à apprendre,
-      je suis convaincu(e) de pouvoir contribuer positivement
-      aux activités de votre entreprise.
+      ${escapeHTML(
+        qualities ||
+        "Sérieux(se), motivé(e), organisé(e) et capable d'apprendre rapidement, je suis prêt(e) à m'investir pleinement dans les missions qui me seront confiées."
+      )}
     </p>
 
     <p>
-      Je serais heureux(se) de pouvoir échanger avec vous
-      afin de vous présenter plus en détail ma motivation
-      et mes compétences.
+      Intégrer votre entreprise serait pour moi l'occasion
+      de développer mes compétences tout en apportant une
+      contribution positive à votre équipe.
+    </p>
+
+    <p>
+      Je serais heureux(se) de pouvoir vous rencontrer afin
+      de vous présenter plus en détail ma motivation et mon
+      parcours.
     </p>
 
     <p>
@@ -2853,65 +2395,72 @@ function generateLetter(){
       Madame, Monsieur, l'expression de mes salutations distinguées.
     </p>
 
-    <p>
-      Cordialement,
-      <br><br>
-      <strong>${safeName}</strong>
-    </p>
+    <br>
+
+    <strong>
+      ${escapeHTML(name)}
+    </strong>
 
   `;
 
 }
 
-/* ---------------------------------------------------------
+/* -----------------------------
    ASSISTANT
---------------------------------------------------------- */
+----------------------------- */
 
 function toggleBot(){
 
-  $("bot-panel").classList.toggle("open");
+  $("botBox").classList.toggle("open");
 
 }
 
 function botMessage(message){
 
+  const body =
+    document.querySelector(".bot-body");
+
   const div =
     document.createElement("div");
 
-  div.className = "bot-msg";
+  div.className =
+    "bot-message";
 
-  div.textContent = message;
+  div.textContent =
+    message;
 
-  $("bot-body").appendChild(div);
-
-  $("bot-body").scrollTop =
-    $("bot-body").scrollHeight;
-
-}
-
-function improveProfile(){
-
-  const job =
-    $("f-title").value.trim() ||
-    "le poste recherché";
-
-  const profile =
-    `Professionnel(le) motivé(e), organisé(e) et orienté(e) résultats, disposant de compétences adaptées au poste de ${job}. Sérieux(se), capable d'apprendre rapidement et de travailler efficacement en équipe.`;
-
-  $("f-summary").value = profile;
-
-  renderCV();
-
-  botMessage(
-    "J'ai amélioré ton profil. Tu peux maintenant le personnaliser."
+  body.insertBefore(
+    div,
+    body.querySelector(".bot-actions")
   );
 
 }
 
+/* PROFIL */
+
+function improveProfile(){
+
+  const job =
+    $("title").value ||
+    "le poste recherché";
+
+  $("summary").value =
+    `Professionnel(le) motivé(e), organisé(e) et orienté(e) résultats, avec des compétences adaptées au poste de ${job}. Capable de travailler efficacement en équipe, d'apprendre rapidement et de contribuer aux objectifs de l'organisation.`;
+
+  render();
+
+  botMessage(
+    "J'ai amélioré ton profil. Pense à vérifier que la formulation correspond bien à ton expérience réelle."
+  );
+
+}
+
+/* COMPÉTENCES */
+
 function suggestSkills(){
 
   const job =
-    $("f-title").value.toLowerCase();
+    $("title").value.toLowerCase();
 
   let skills = [
     "Communication",
@@ -2931,12 +2480,14 @@ function suggestSkills(){
       "Réseaux sociaux",
       "Canva",
       "Création de contenu",
-      "Communication"
+      "Communication",
+      "Analyse"
     ];
 
-  }else if(
-    job.includes("compt") ||
-    job.includes("finance")
+  }
+
+  else if(
+    job.includes("compt")
   ){
 
     skills = [
@@ -2944,12 +2495,15 @@ function suggestSkills(){
       "Excel",
       "Saisie de données",
       "Analyse financière",
-      "Organisation"
+      "Organisation",
+      "Rigueur"
     ];
 
-  }else if(
+  }
+
+  else if(
     job.includes("informat") ||
-    job.includes("tech")
+    job.includes("web")
   ){
 
     skills = [
@@ -2957,34 +2511,40 @@ function suggestSkills(){
       "Microsoft Office",
       "Gestion de données",
       "Résolution de problèmes",
-      "Support technique"
+      "Support technique",
+      "Organisation"
     ];
 
-  }else if(
-    job.includes("vente") ||
-    job.includes("commercial")
+  }
+
+  else if(
+    job.includes("commercial") ||
+    job.includes("vente")
   ){
 
     skills = [
       "Relation client",
-      "Négociation",
       "Prospection",
+      "Négociation",
       "Communication",
+      "Vente",
       "Sens du résultat"
     ];
 
   }
 
-  $("f-skills").value =
+  $("skills").value =
     skills.join(", ");
 
-  renderCV();
+  render();
 
   botMessage(
-    "J'ai ajouté une liste de compétences adaptées au poste indiqué."
+    "J'ai proposé une liste de compétences en fonction du poste indiqué."
   );
 
 }
+
+/* EXPÉRIENCE */
 
 function improveExperience(){
 
@@ -2996,7 +2556,7 @@ function improveExperience(){
     addExperience();
 
     botMessage(
-      "J'ai ajouté une expérience vide. Remplis-la avec tes informations."
+      "J'ai ajouté une expérience. Remplis-la avec tes informations réelles."
     );
 
     return;
@@ -3004,43 +2564,46 @@ function improveExperience(){
   }
 
   const description =
-    first.querySelector(".e-description");
+    first.querySelector(".exp-description");
 
-  if(
-    description &&
-    !description.value.trim()
-  ){
+  if(!description.value.trim()){
 
     description.value =
-      "Participation aux activités du service, organisation des tâches, collaboration avec l'équipe et contribution aux objectifs de l'entreprise.";
+      "Participation aux activités du service, organisation des tâches, collaboration avec l'équipe et contribution aux objectifs de l'organisation.";
 
-    renderCV();
+    render();
 
   }
 
   botMessage(
-    "J'ai proposé une formulation professionnelle pour ton expérience."
+    "J'ai proposé une formulation professionnelle. Modifie-la afin qu'elle corresponde exactement à ce que tu as réellement fait."
   );
 
 }
 
+/* PRÉPARER LETTRE */
+
 function prepareLetter(){
+
+  $("letterName").value =
+    $("name").value;
+
+  $("letterJob").value =
+    $("title").value;
 
   showView("letter");
 
-  syncLetterFromCV();
-
   generateLetter();
 
-  $("bot-panel").classList.remove("open");
+  $("botBox").classList.remove("open");
 
 }
 
-/* ---------------------------------------------------------
+/* -----------------------------
    FAQ
---------------------------------------------------------- */
+----------------------------- */
 
-function toggleFAQ(element){
+function toggleFaq(element){
 
   const item =
     element.parentElement;
@@ -3049,83 +2612,36 @@ function toggleFAQ(element){
 
 }
 
-/* ---------------------------------------------------------
-   SECURITE TEXTE
---------------------------------------------------------- */
+/* -----------------------------
+   INITIALISATION
+----------------------------- */
 
-function escapeHTML(value){
+const loaded =
+  loadDraft();
 
-  return String(value || "")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+if(!loaded){
 
-}
-
-function escapeAttribute(value){
-
-  return escapeHTML(value);
-
-}
-
-/* ---------------------------------------------------------
-   ECOUTE DES CHAMPS
---------------------------------------------------------- */
-
-[
-  "f-name",
-  "f-title",
-  "f-email",
-  "f-phone",
-  "f-city",
-  "f-summary",
-  "f-skills",
-  "f-langues"
-].forEach(id=>{
-
-  $(id).addEventListener(
-    "input",
-    renderCV
+  addExperience(
+    "Chargée de projet digital",
+    "Agence Kora Média — Bamako",
+    "2022 — Aujourd'hui",
+    "Pilotage de campagnes digitales, coordination des tâches et suivi des résultats."
   );
 
-});
+  addExperience(
+    "Assistante marketing",
+    "Nexa Group — Bamako",
+    "2020 — 2022",
+    "Gestion des réseaux sociaux, création de contenus et participation aux actions marketing."
+  );
 
-/* ---------------------------------------------------------
-   INITIALISATION
---------------------------------------------------------- */
+}
 
-(function init(){
+changeModel(currentModel);
 
-  const loaded =
-    loadData();
+render();
 
-  if(!loaded){
-
-    addExperience(
-      "Chargée de projet digital",
-      "Agence Kora Média — Bamako",
-      "2022 — Aujourd'hui",
-      "Pilotage de campagnes clients, coordination de l'équipe et suivi des objectifs."
-    );
-
-    addExperience(
-      "Assistante marketing",
-      "Nexa Group — Bamako",
-      "2020 — 2022",
-      "Gestion des réseaux sociaux et création de contenus pour plusieurs marques."
-    );
-
-  }
-
-  setTemplate(currentTemplate);
-
-  renderCV();
-
-  generateLetter();
-
-})();
+generateLetter();
 
 </script>
 
