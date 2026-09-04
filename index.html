@@ -1466,12 +1466,27 @@ Certification Google Digital Skills</textarea>
     <h3>🔒 Débloquer le PDF</h3>
     <p>
       Entre le code de la semaine reçu après ton paiement Mobile Money.
-      Pas encore de code ? Contacte-nous sur WhatsApp pour l'obtenir.
     </p>
     <input id="unlockCodeInput" placeholder="Ex : CV-12345">
     <button class="btn btn-primary" style="width:100%" onclick="checkUnlockCode()">
       Valider et imprimer
     </button>
+
+    <hr style="border:none;border-top:1px solid var(--border);margin:16px 0">
+
+    <p style="margin-bottom:8px">
+      Pas encore de code ? Demande-le sur WhatsApp.
+    </p>
+
+    <div class="field" style="text-align:left">
+      <label>Code parrain (optionnel)</label>
+      <input id="referralCodeInput" placeholder="Ex : AMINATA10">
+    </div>
+
+    <button class="btn btn-light" style="width:100%;background:#25D366;color:white;border:0" onclick="requestCodeOnWhatsapp()">
+      💬 Demander mon code sur WhatsApp
+    </button>
+
     <button class="btn btn-light" style="width:100%;margin-top:8px" onclick="closeUnlockModal()">
       Annuler
     </button>
@@ -2201,6 +2216,50 @@ function prepareLetter(){
 
 }
 
+/* ================= PARRAINAGE ================= */
+
+/*
+  IMPORTANT : remplace ce numéro par ton vrai numéro WhatsApp,
+  au format international SANS le + ni espaces.
+  Exemple pour +223 67 89 07 55 -> "22367890755"
+*/
+const WHATSAPP_NUMBER = "22367890755";
+
+function initReferral(){
+
+  const params = new URLSearchParams(window.location.search);
+  const refFromLink = params.get("ref");
+
+  if(refFromLink){
+    localStorage.setItem("cvpro_referral", refFromLink);
+  }
+
+  const saved = localStorage.getItem("cvpro_referral");
+
+  if(saved && $("referralCodeInput")){
+    $("referralCodeInput").value = saved;
+  }
+}
+
+function requestCodeOnWhatsapp(){
+
+  const ref = $("referralCodeInput").value.trim();
+  const name = $("name") ? $("name").value : "";
+
+  let message =
+    `Bonjour, je viens de créer mon CV sur CVPro (${name || "sans nom"}) et je voudrais un code de déblocage pour télécharger mon PDF.`;
+
+  if(ref){
+    message += ` Code parrain : ${ref}.`;
+    localStorage.setItem("cvpro_referral", ref);
+  }
+
+  const url =
+    `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
+  window.open(url, "_blank");
+}
+
 /* ================= DEBLOCAGE (CODE HEBDOMADAIRE AUTOMATIQUE) ================= */
 
 /*
@@ -2317,6 +2376,8 @@ addExperience({
 
 loadDraft();
 
+initReferral();
+
 render();
 
 changeDesign(currentDesign);
@@ -2327,4 +2388,5 @@ generateLetter();
 
 </body>
 </html>
+
 
