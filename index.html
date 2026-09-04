@@ -818,6 +818,61 @@ footer{
   font-size:12px;
 }
 
+/* MODAL DEBLOCAGE */
+
+.unlock-overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(11,41,34,.6);
+  z-index:2000;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.unlock-overlay.open{
+  display:flex;
+}
+
+.unlock-box{
+  background:white;
+  border-radius:14px;
+  padding:26px;
+  max-width:340px;
+  width:100%;
+  text-align:center;
+  box-shadow:0 20px 60px rgba(0,0,0,.3);
+}
+
+.unlock-box h3{
+  margin:0 0 10px;
+  color:var(--primary2);
+  font-family:Georgia,serif;
+}
+
+.unlock-box p{
+  font-size:12.5px;
+  color:var(--muted);
+  line-height:1.6;
+  margin-bottom:16px;
+}
+
+.unlock-box input{
+  text-align:center;
+  text-transform:uppercase;
+  margin-bottom:12px;
+  font-weight:700;
+  letter-spacing:1px;
+}
+
+.unlock-error{
+  display:none;
+  color:#b13d36;
+  font-size:12px;
+  margin-top:10px;
+}
+
 /* MOBILE */
 
 @media(max-width:950px){
@@ -885,6 +940,7 @@ footer{
   .tabs,
   .form-panel,
   .bot,
+  .unlock-overlay,
   footer{
     display:none!important;
   }
@@ -1132,7 +1188,7 @@ Certification Google Digital Skills</textarea>
         </div>
 
         <div class="actions">
-          <button class="btn btn-primary" onclick="window.print()">
+          <button class="btn btn-primary" onclick="unlockedPrint()">
             🖨️ Imprimer / PDF
           </button>
 
@@ -1289,7 +1345,7 @@ Certification Google Digital Skills</textarea>
           🤖 Générer la lettre
         </button>
 
-        <button class="btn btn-light" style="width:100%;margin-top:8px" onclick="window.print()">
+        <button class="btn btn-light" style="width:100%;margin-top:8px" onclick="unlockedPrint()">
           🖨️ Imprimer / PDF
         </button>
 
@@ -1403,6 +1459,26 @@ Certification Google Digital Skills</textarea>
 
 </div>
 
+<!-- ================= MODAL DEBLOCAGE ================= -->
+
+<div class="unlock-overlay" id="unlockOverlay">
+  <div class="unlock-box">
+    <h3>🔒 Débloquer le PDF</h3>
+    <p>
+      Entre le code de la semaine reçu après ton paiement Mobile Money.
+      Pas encore de code ? Contacte-nous sur WhatsApp pour l'obtenir.
+    </p>
+    <input id="unlockCodeInput" placeholder="Ex : CV-12345">
+    <button class="btn btn-primary" style="width:100%" onclick="checkUnlockCode()">
+      Valider et imprimer
+    </button>
+    <button class="btn btn-light" style="width:100%;margin-top:8px" onclick="closeUnlockModal()">
+      Annuler
+    </button>
+    <p class="unlock-error" id="unlockError">Code invalide. Vérifie qu'il correspond bien à celui reçu cette semaine.</p>
+  </div>
+</div>
+
 <section class="section">
 
   <div class="section-title">
@@ -1443,8 +1519,8 @@ Certification Google Digital Skills</textarea>
       </div>
 
       <div class="faq-a">
-        Oui. Le bouton « Imprimer / PDF » utilise la fonction
-        d'impression du navigateur. Choisis ensuite « Enregistrer en PDF ».
+        Oui. Après paiement Mobile Money, tu reçois un code de déblocage
+        valable pour la semaine en cours. Entre-le au moment d'imprimer.
       </div>
     </div>
 
@@ -1455,8 +1531,8 @@ Certification Google Digital Skills</textarea>
       </div>
 
       <div class="faq-a">
-        Non. Cette version du site fonctionne sans paiement,
-        sans code de déblocage et sans fonctionnalités Premium verrouillées.
+        La création du CV est entièrement gratuite. Seul le téléchargement
+        du PDF final nécessite un code, obtenu après paiement Mobile Money.
       </div>
     </div>
 
@@ -2125,6 +2201,76 @@ function prepareLetter(){
 
 }
 
+/* ================= DEBLOCAGE (CODE HEBDOMADAIRE AUTOMATIQUE) ================= */
+
+/*
+  IMPORTANT : ce mot secret doit être EXACTEMENT le même
+  que celui dans le fichier admin.html.
+  Change-le pour un mot que TOI SEUL connais avant de publier.
+*/
+const UNLOCK_SECRET = "GardeCeMotSecret2026";
+
+function weekCode(date){
+
+  const oneJan = new Date(date.getFullYear(),0,1);
+
+  const week = Math.ceil(
+    (((date - oneJan) / 86400000) + oneJan.getDay() + 1) / 7
+  );
+
+  const seed = UNLOCK_SECRET + date.getFullYear() + "-" + week;
+
+  let hash = 0;
+
+  for(let i = 0; i < seed.length; i++){
+    hash = (hash * 31 + seed.charCodeAt(i)) % 100000;
+  }
+
+  return "CV-" + String(hash).padStart(5,"0");
+}
+
+function isUnlockedThisWeek(){
+
+  const stored = localStorage.getItem("cvpro_unlocked_code");
+
+  return stored === weekCode(new Date());
+}
+
+function unlockedPrint(){
+
+  if(isUnlockedThisWeek()){
+    window.print();
+  }else{
+    $("unlockOverlay").classList.add("open");
+    $("unlockError").style.display = "none";
+    $("unlockCodeInput").value = "";
+    $("unlockCodeInput").focus();
+  }
+}
+
+function closeUnlockModal(){
+  $("unlockOverlay").classList.remove("open");
+}
+
+function checkUnlockCode(){
+
+  const entered = $("unlockCodeInput").value.trim().toUpperCase();
+
+  if(entered === weekCode(new Date())){
+
+    localStorage.setItem("cvpro_unlocked_code", entered);
+
+    closeUnlockModal();
+
+    window.print();
+
+  }else{
+
+    $("unlockError").style.display = "block";
+
+  }
+}
+
 /* ================= FAQ ================= */
 
 function toggleFAQ(element){
@@ -2180,4 +2326,5 @@ generateLetter();
 </script>
 
 </body>
-              </html>
+</html>
+
