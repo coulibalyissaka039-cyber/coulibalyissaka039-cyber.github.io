@@ -456,11 +456,11 @@ input:focus,textarea:focus,select:focus{
   width:55px;
   height:3px;
   background:var(--accent);
-  margin:22px 0;
+  margin:34px 0;
 }
 
 .cv-section{
-  margin-top:24px;
+  margin-top:38px;
 }
 
 .cv-section h3{
@@ -474,14 +474,14 @@ input:focus,textarea:focus,select:focus{
 
 .cv-section p{
   margin:0;
-  font-size:11.5px;
-  line-height:1.65;
+  font-size:12.5px;
+  line-height:1.9;
   color:#333b36;
   white-space:pre-line;
 }
 
 .exp-item{
-  margin-bottom:14px;
+  margin-bottom:24px;
 }
 
 .exp-top{
@@ -1464,6 +1464,29 @@ Certification Google Digital Skills</textarea>
 <div class="unlock-overlay" id="unlockOverlay">
   <div class="unlock-box">
     <h3>🔒 Débloquer le PDF</h3>
+    <div style="background:#edf3ef;color:var(--primary2);border-radius:10px;padding:10px;font-weight:800;font-size:22px;margin-bottom:12px;">
+      2000 FCFA
+    </div>
+
+    <div style="text-align:left;background:#fcfbf8;border:1px solid var(--border);border-radius:10px;padding:12px;margin-bottom:14px;font-size:13px;">
+      <div style="font-weight:700;margin-bottom:8px;color:var(--primary2);">Paye sur l'un de ces numéros :</div>
+
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;">
+        <span><strong>Wave</strong> — 67 89 07 55</span>
+        <button type="button" onclick="copyNumber('67890755',this)" style="border:1px solid var(--border);background:white;border-radius:6px;padding:5px 9px;font-size:11px;font-weight:700;color:var(--primary);">Copier</button>
+      </div>
+
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;">
+        <span><strong>Moov Money</strong> — 67 89 07 55</span>
+        <button type="button" onclick="copyNumber('67890755',this)" style="border:1px solid var(--border);background:white;border-radius:6px;padding:5px 9px;font-size:11px;font-weight:700;color:var(--primary);">Copier</button>
+      </div>
+
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;">
+        <span><strong>Orange Money</strong> — 77 38 91 50</span>
+        <button type="button" onclick="copyNumber('77389150',this)" style="border:1px solid var(--border);background:white;border-radius:6px;padding:5px 9px;font-size:11px;font-weight:700;color:var(--primary);">Copier</button>
+      </div>
+    </div>
+
     <p>
       Entre le code de la semaine reçu après ton paiement Mobile Money.
     </p>
@@ -1978,6 +2001,7 @@ function loadDraft(){
 
     if(draft.experiences && draft.experiences.length){
 
+      $("experiences").innerHTML = "";
       draft.experiences.forEach(addExperience);
 
     }
@@ -2224,6 +2248,27 @@ function prepareLetter(){
   Exemple pour +223 67 89 07 55 -> "22367890755"
 */
 const WHATSAPP_NUMBER = "22367890755";
+
+/* ================= COPIE DES NUMEROS MOBILE MONEY ================= */
+
+function copyNumber(number, button){
+
+  navigator.clipboard.writeText(number).then(function(){
+
+    const original = button.textContent;
+
+    button.textContent = "Copié ✓";
+
+    setTimeout(function(){
+      button.textContent = original;
+    }, 1500);
+
+  }).catch(function(){
+
+    alert("Numéro : " + number);
+
+  });
+}
 
 function initReferral(){
 
